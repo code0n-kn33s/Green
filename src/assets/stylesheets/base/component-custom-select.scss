@@ -1,0 +1,87 @@
+/* important - use next css for custom-select__dropdown
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+*/
+
+custom-select {
+  //use you variables
+  --duration-default: 0.3s;
+
+  position: relative;
+  display: block;
+  min-width: 155px;
+
+  span, button {
+    transition: all var(--duration-default) linear;
+
+    @include media-query($small) {
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  .custom-select__btn {
+    display: flex;
+    width: 100%;
+    margin: 0 0 0 auto;
+    background-color: $primary-bg-color;
+    color: inherit;
+    border: none;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    padding: 10px 20px;
+    text-align: left;
+    cursor: pointer;
+
+    svg.icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 12px;
+      height: 6px;
+      transform: translateY(-50%);
+      transition: all var(--duration-default) linear;
+      z-index: 1;
+    }
+  }
+
+  &.custom-select--open .custom-select__btn .icon {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .custom-select__dropdown {
+    position: absolute;
+    padding: 10px 20px;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: $primary-bg-color;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
+    z-index: 0;
+  }
+
+  .custom-select__dropdown[aria-expanded="true"] {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  button[data-dropdown-button] {
+    width: 100%;
+  }
+
+  .custom-select__dropdown-option:not(:last-child) {
+    padding-bottom: 10px;
+  }
+}

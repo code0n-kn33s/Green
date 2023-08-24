@@ -1,0 +1,186 @@
+.statistics-page {
+  .statistics-section {
+    margin-bottom: 86px;
+    overflow: hidden;
+
+    @include media-query($small) {
+      margin-bottom: 30px;
+    }
+  }
+
+  .statistics-section__main-heading {
+    margin-top: 50px;
+    margin-bottom: 15px;
+  }
+  .statistics-section__balance-wrapper {
+    padding: 26px 27px 25px;
+    margin-bottom: 64px;
+    display: flex;
+    border: $main-border;
+    border-radius: $main-border-radius;
+
+    @include media-query($small) {
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .statistics-section__balance-current {
+      margin-right: 68px;
+      font-weight: 500;
+
+      .statistics-section__balance-counter--usdt {
+        font-size: $font-size-9;
+        color: $primary-color;
+      }
+    }
+
+    .statistics-section__balance-heading {
+      font-weight: 500;
+      font-size: $primary-font-size;
+    }
+
+    .statistics-section__balance-counter {
+      display: flex;
+      align-items: center;
+      color: $secondary-color;
+      font-weight: 700;
+    }
+
+    .statistics-section__balance-counter--eq {
+      margin: 0 5px;
+    }
+
+    .statistics-section__balance-revenue-per-day {
+      margin-right: 31px;
+    }
+  }
+
+  .statistics-section__graphics-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+  }
+
+  .statistics-section__graphics-column {
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      width: 51.5%;
+      gap: 15px;
+      overflow: hidden;
+
+      @include media-query($medium-down) {
+        width: 100%;
+      }
+
+      .statistics-section__graphics-row {
+        .statistics-section__graphics-row-body {
+          canvas {
+            max-height: 88px;
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        &:nth-child(2) {
+          canvas {
+            max-height: unset;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      width: calc(100% - 51.5% - 17px);
+      gap: 9px;
+
+      @include media-query($medium-down) {
+        width: 100%;
+      }
+
+      .statistics-section__graphics-row {
+        min-height: 290px;
+
+        &:first-child {
+          .statistics-section__graphics-row-heading-wrapper {
+            margin-bottom: 25px;
+          }
+        }
+      }
+
+
+    }
+  }
+  .statistics-section__graphics-row {
+    padding: 31px 38px;
+    border: $main-border;
+    border-radius: $main-border-radius;
+
+    @include media-query($small) {
+      padding: 20px 20px;
+    }
+  }
+
+  .statistics-section__graphics-row-heading-wrapper {
+    display: flex;
+    gap: 17px;
+    font-weight: 700;
+    font-size: $primary-font-size;
+  }
+  .statistics-section__graphics-row-heading {
+    margin-bottom: 12px;
+  }
+
+  .statistics-section__graphics-row-counter {}
+  .statistics-section__graphics-row-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 21px;
+
+    .statistics-section__graphics-row-body-column {
+      max-width: 174px;
+
+      .statistics-section__graphics-row-vaults-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .statistics-section__graphics-row-vaults-item {
+        position: relative;
+        display: flex;
+        margin-left: 20px;
+        font-weight: 700;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: -20px;
+          top: 50%;
+          transform: translate(0, -50%);
+          width: 10px;
+          height: 10px;
+          background-color: var(--bg-color);
+          border-radius: 50%;
+        }
+
+        .statistics-section__graphics-row-vaults-item-currency {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  .statistics-section__graphics-row-image-wrapper {}
+  .statistics-section__graphics-row-image {}
+  .statistics-section__footer {
+    margin-top: 13px;
+    font-size: $font-size-9;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+}

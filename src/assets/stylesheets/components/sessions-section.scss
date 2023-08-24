@@ -1,0 +1,138 @@
+.sessions-section {
+  width: 100%;
+  padding: 18px 27px 36px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+  border: $main-border;
+  border-radius: $main-border-radius;
+
+  @include media-query($extra-small) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 18px 20px 20px;
+  }
+
+  .sessions-section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 17px;
+  }
+
+  .sessions-section__header-heading {
+    font-weight: 600;
+    font-size: $font-size-4;
+  }
+
+  .sessions-section__header-settings {
+    display: flex;
+    align-items: center;
+    gap: 37px;
+    font-size: $font-size-7;
+
+    & > span {
+      letter-spacing: 0.03em;
+    }
+  }
+
+  .custom-select {
+    padding: 9px 13px;
+    min-width: 56px;
+    border: $main-border;
+    border-radius: $main-border-radius;
+    font-weight: 600;
+
+    .custom-select__dropdown[aria-expanded=true] {
+      border: $main-border;
+      border-radius: $main-border-radius;
+    }
+  }
+
+  .sessions-section__table-wrapper {
+    margin-bottom: 52px;
+
+    @include media-query($extra-small) {
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      @include media-query($extra-small) {
+        font-size: $font-size-9;
+      }
+    }
+
+    th {
+      text-align: left;
+      padding-right: 17px;
+    }
+
+    .sessions-section__table-heading-row {
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4px;
+        width: 100%;
+        border-radius: $main-border-radius;
+        background-color: $secondary-bg-color;
+      }
+    }
+
+    .sessions-section__table-td-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: $font-size-7;
+        font-weight: 600;
+        padding-bottom: 14px;
+
+        span:last-child {
+          font-size: $font-size-9;
+        }
+
+        svg {
+          color: black;
+        }
+      }
+
+    .sessions-section__table-body-row {
+      font-weight: 600;
+      border-bottom: $main-border;
+
+      td {
+        padding: 17px 17px 17px 0;
+        text-align: left;
+      }
+    }
+  }
+
+  .sessions-section__controls {
+    display: flex;
+    align-items: center;
+    gap: 47px;
+
+    .sessions-section__controls-counter {
+      font-size: $font-size-7;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .sessions-section__controls-buttons {
+      display: flex;
+      gap: 32px;
+    }
+  }
+}
+
+.alert-container {
+  border: $main-border;
+  border-radius: $main-border-radius;
+}
+
+#error_explanation {
+  padding: 17px;
+}

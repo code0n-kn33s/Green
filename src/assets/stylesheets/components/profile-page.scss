@@ -1,0 +1,16 @@
+.profile-page {
+  justify-content: flex-start;
+
+  .profile-page__body-wrapper {
+    display: flex;
+
+    @include media-query($small) {
+      flex-direction: column;
+    }
+  }
+
+  .profile-page__sections-wrapper {
+    flex: 1;
+  }
+
+}

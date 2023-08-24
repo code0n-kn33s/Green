@@ -1,0 +1,465 @@
+.form-container {
+	.form-container__successful-message-wrapper {
+		min-width: 200px;
+		width: 100%;
+		position: absolute;
+		top: -2px;
+		right: calc(-100% - 14px);
+		display: flex;
+		align-items: center;
+		gap: 9px;
+		padding: 12px 9px 11px 21px;
+		font-weight: 700;
+		background-color: $primary-color;
+		color: $alternative-color;
+		border-radius: $main-border-radius;
+		transition: $transition-duration;
+
+		&[aria-hidden="true"] {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		&[aria-hidden="false"] {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		svg {
+			height: 18px;
+			width: 18px;
+		}
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: -1px;
+			top: 50%;
+			transform: translate(0, -50%) rotate(-45deg);
+			width: 18px;
+			height: 18px;
+			background-color: $primary-color;
+		}
+	}
+
+	.password__container {
+		position: relative;
+	}
+
+	input, textarea, .custom-input {
+		padding: 10px 15px;
+		color: $primary-color;
+		outline:none;
+		width: 100%;
+		min-width: 305px;
+		background: unset;
+		border-radius: $main-border-radius;
+		border: $main-border;
+		font-family: $secondary-font;
+		font-size: $primary-font-size;
+		line-height: 1.2;
+		font-weight: 400;
+
+		&::placeholder {
+			color: $primary-color;
+		}
+
+		&:focus {
+			border: $main-border;
+		}
+	}
+
+	&.error input {
+		border: 1px solid $primary-error-color;
+	}
+
+	.form__error-message {
+		position: absolute;
+		top: 105%;
+		display: none;
+		color: $primary-error-color;
+		font-family: $primary-font;
+		font-size: $font-size-8;
+		padding-left: 15px;
+	}
+
+	&.error .form__error-message {
+		display: block;
+	}
+
+	label {
+		display: block;
+		font-family: $primary-font;
+		color: $primary-color;
+		padding: 0 0 7px 15px;
+		line-height: 1.2;
+	}
+
+	&.password {
+		.password__eye {
+			position: absolute;
+			display: flex;
+			bottom: 50%;
+			right: 12px;
+			transform: translateY(50%);
+			cursor: pointer;
+			transition: $transition-duration;
+			background-color: unset;
+			border: unset;
+			color: $primary-color;
+		}
+
+		.password__eye:hover,
+		.active .password__eye {
+			color: $primary-hover-color;
+		}
+	}
+}
+
+.form-container--checkbox.checkbox {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+	width: fit-content;
+
+	label {
+		font-family: $primary-font;
+		line-height: 1.2;
+		font-size: $primary-font-size;
+		width: auto;
+		cursor: pointer;
+
+		@include media-query($small) {
+			display: block;
+		}
+	}
+
+	.form__custom-checkbox {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+		padding-bottom: 0;
+		cursor: pointer;
+	}
+
+	.form__custom-checkbox + label {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		user-select: none;
+		color: $primary-color;
+	}
+
+	.form__custom-checkbox + label::before {
+		content: '';
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+		flex-grow: 0;
+		border: $main-border;
+		border-radius: 50%;
+		margin-right: 20px;
+		background-repeat: no-repeat;
+		background-position: 0 center;
+		background-size: 110% 110%;
+	}
+
+	.form__custom-checkbox + label::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		display: inline-block;
+		width: 30px;
+		height: 25px;
+		flex-shrink: 0;
+		flex-grow: 0;
+		margin-right: 20px;
+		background-repeat: no-repeat;
+		background-position: 2px center;
+		background-size: 90% 100%;
+	}
+
+	.form__custom-checkbox:checked + label::before {
+		border-color: $primary-color;
+		background-color: transparent;
+	}
+
+	.form__custom-checkbox:checked + label::after {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='16' viewBox='0 0 22 16' fill='none'%3E%3Cpath d='M21.9023 0.414848C21.95 0.362073 21.9737 0.290228 21.963 0.219942C21.946 0.108815 21.8504 0.0271852 21.738 0.0233169C21.4483 0.0133416 21.1541 -0.0102188 20.8801 0.0271386C18.7877 0.36314 16.8786 1.18787 15.107 2.30278C12.2663 4.10497 9.91424 6.41116 7.71496 8.90063C7.04296 9.66426 6.95132 9.61845 6.29459 8.82426C5.36295 7.69408 4.41604 6.53334 3.36222 5.52534C2.29312 4.51734 0.414572 5.14352 0.0174799 6.54862C-0.0436113 6.79298 0.0632982 7.15953 0.216026 7.37335C2.18621 9.93917 4.18695 12.4745 6.17241 15.025C6.64587 15.6359 7.37896 15.7123 7.94405 15.1472C8.15787 14.9334 8.32587 14.6737 8.49387 14.4141C10.6321 11.2068 12.9841 8.18281 15.6721 5.41843C17.4437 3.5857 19.2765 1.82933 21.6132 0.683868C21.721 0.623976 21.81 0.51711 21.9023 0.414848Z' fill='%23FFF831'/%3E%3Cpath d='M21.9607 0.234511C21.9738 0.299158 21.952 0.36021 21.9076 0.408994C21.8134 0.512485 21.7231 0.619797 21.6132 0.668609C19.2918 1.81407 17.459 3.58571 15.6721 5.40317C12.9841 8.16754 10.6321 11.1916 8.49391 14.3988C8.32591 14.6585 8.15791 14.9181 7.94409 15.1319C7.379 15.697 6.64591 15.6207 6.17245 15.0098C4.18699 12.4592 2.20153 9.92391 0.231339 7.35809C0.0633387 7.14427 -0.0435707 6.77772 0.0327932 6.53336C0.429885 5.12826 2.29316 4.50208 3.36226 5.51008C4.43135 6.51808 5.36299 7.67882 6.29463 8.809C6.95136 9.60319 7.043 9.649 7.715 8.88537C9.91428 6.3959 12.2663 4.08971 15.107 2.3028C16.8939 1.17261 18.7878 0.34788 20.8801 0.0271516C21.1515 -0.0221832 21.4427 0.00816371 21.7298 0.0216706C21.8425 0.0269729 21.9383 0.123958 21.9607 0.234511Z' fill='%23FFF831'/%3E%3C/svg%3E");
+	}
+
+	.form__custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
+		border-color: $primary-hover-color;
+	}
+
+	.form__custom-checkbox:not(:disabled):active + label::before {
+		background-color: $primary-hover-color;
+		border-color: $primary-hover-color;
+	}
+
+	.form__custom-checkbox:focus + label::before {
+		box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.25);
+	}
+
+	.form__custom-checkbox:focus:not(:checked) + label::before {
+		border-color: $primary-hover-color;
+	}
+
+	.form__custom-checkbox:disabled + label::before {
+		background-color: #e9ecef;
+	}
+}
+
+	.form__pincode {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		input {
+			min-width: unset;
+			width: 40px;
+			height: 40px;
+		}
+	}
+
+.form {
+	.form__buttons {
+		.btn {
+			width: fit-content;
+			margin: 0 auto;
+		}
+	}
+
+	.form-container--image {
+		min-height: 240px;
+		text-align: center;
+		padding: 31px 30px 12px;
+		border: $main-border;
+		border-radius: $main-border-radius;
+
+		label.focus {
+			outline: none!important;
+		}
+
+		input {
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			position: absolute;
+			z-index: -10;
+		}
+
+		label.btn {
+			@extend .btn;
+			@extend .btn--secondary;
+
+			padding: 5px 8px;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			width: fit-content;
+			gap: 7px;
+			border-radius: 5px;
+			line-height: 1;
+			font-size: $font-size-8;
+
+			svg {
+				display: flex;
+				margin: auto;
+			}
+		}
+
+		.file-input-reset {
+			padding-top: 50px;
+			position: relative;
+			margin-top: -40px;
+			width: 100%;
+			background: black;
+			text-align: center;
+		}
+
+		.form-set-image {
+			position: relative;
+			max-width: 180px;
+			width: 100%;
+			height: 140px;
+			margin: 0 auto;
+			background-size: cover;
+			background-position: center center;
+			z-index: 1;
+		}
+
+		.form-container--placeholder {
+			position: absolute;
+			top: 31px;
+			left: 50%;
+			transform: translate(-50%,0);
+			background-color: $primary-bg-color;
+			font-size: $font-size-5;
+			font-weight: 700;
+		}
+
+		.form-container--placeholder-icon-wrapper {
+			max-width: 110px;
+		}
+
+		.form-container--placeholder-title {
+			margin-top: 20px;
+		}
+	}
+
+	.form-container--file {
+		position: relative;
+
+		.custom-input {
+			min-height: 38px;
+		}
+
+		input {
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			position: absolute;
+			z-index: -10;
+		}
+	}
+
+}
+
+.form-container.form-container--range {
+	padding: 0;
+
+	label {
+		padding-bottom: 22px;
+	}
+
+	input[type=range] {
+		position: relative;
+		height: 6px;
+		padding: 0;
+		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+		width: 100%; /* Specific width is required for Firefox. */
+		background: transparent; /* Otherwise white in Chrome */
+		z-index: 1;
+	}
+
+	input[type=range]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+	}
+
+	input[type=range]:focus {
+		outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+	}
+
+	input[type=range]::-ms-track {
+		width: 100%;
+		cursor: pointer;
+
+		/* Hides the slider so custom styles can be added */
+		background: transparent;
+		border-color: transparent;
+		color: transparent;
+	}
+
+	/* Special styling for WebKit/Blink */
+	input[type=range]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		height: 10px;
+		width: 10px;
+		border-radius: 50%;
+		background: $primary-color;
+		box-shadow: 0 4px 14px $primary-hover-color;
+		cursor: pointer;
+		margin-top: -2px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+	}
+
+	/* All the same stuff for Firefox */
+	input[type=range]::-moz-range-thumb {
+		-webkit-appearance: none;
+		height: 10px;
+		width: 10px;
+		border-radius: 50%;
+		background: $primary-color;
+		cursor: pointer;
+	}
+
+	/* All the same stuff for IE */
+	input[type=range]::-ms-thumb {
+		-webkit-appearance: none;
+		height: 40px;
+		width: 40px;
+		border-radius: 50%;
+		background: $primary-color;
+		cursor: pointer;
+	}
+
+	input[type=range]::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 6px;
+		cursor: pointer;
+		background: rgba(147, 147, 147, 0.3);
+		border-radius: 6px;
+
+	}
+
+	input[type=range]:focus::-webkit-slider-runnable-track {
+	}
+
+	input[type=range]::-moz-range-track {
+		width: 100%;
+		height: 6px;
+		cursor: pointer;
+		background: rgba(147, 147, 147, 0.3);
+		border-radius: 6px;
+	}
+
+	input[type=range]::-ms-track {
+		width: 100%;
+		height: 6px;
+		cursor: pointer;
+		background: rgba(147, 147, 147, 0.3);
+		border-radius: 6px;
+	}
+
+	.range__list {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0 0;
+		margin: 0 -5px -5px -5px;
+
+		.range__list-item {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			font-size: $font-size-9;
+			font-weight: 500;
+			line-height: 1;
+
+			&:after {
+				content: "";
+				position: absolute;
+				top: calc(100% + 2px);
+				height: 6px;
+				width: 6px;
+				border-radius: 50%;
+				background: $primary-color;
+				cursor: pointer;
+				z-index: 0;
+			}
+
+			&:first-child {
+				&:after {
+					left: 6px;
+				}
+			}
+
+			&:last-child {
+				&:after {
+					right: 6px;
+				}
+			}
+		}
+	}
+}

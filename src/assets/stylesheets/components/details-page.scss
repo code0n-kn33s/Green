@@ -1,0 +1,114 @@
+.details-page {
+  .sessions-section {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 27px 27px 11px 46px;
+
+    @include media-query($small) {
+      padding: 10px;
+    }
+
+    .sessions-section__table-body {
+      @include media-query($small) {
+        font-size: 10px;
+      }
+    }
+
+    .sessions-section__table-wrapper {
+      margin-bottom: 12px;
+
+      th {
+        @include media-query($extra-small) {
+          padding-right: 7px;
+        }
+      }
+    }
+
+    .sessions-section__table-td-wrapper {
+      justify-content: center;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: $font-size-7;
+      font-weight: 600;
+
+      span:last-child {
+        font-size: inherit;
+      }
+    }
+    
+    .sessions-section__table-body-row {
+      text-align: center;
+
+      &:nth-child(2) {
+        td {
+          padding: 17px 17px 16px 0;
+        }
+      }
+      
+      td {
+        padding: 22px 17px 16px 0;
+        width: 21%;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    
+    .sessions-section__footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sessions-section__controls {
+      @include media-query($small) {
+        gap: 10px;
+      }
+
+      .sessions-section__controls-buttons {
+        @include media-query($small) {
+          gap: 10px;
+        }
+      }
+    }
+
+    .sessions-section__footer-settings {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: $font-size-7;
+      text-transform: uppercase;
+
+      @include media-query($small) {
+        gap: 10px;
+      }
+
+      .custom-select__btn {
+        padding: 0;
+      }
+    }
+  }
+
+  .modal-dialog--warning {
+    max-width: 322px;
+    max-height: 342px;
+    padding: 15px;
+
+    .modal-dialog__body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+    }
+
+    .modal-dialog__warning-icon {
+      margin: 25px auto 57px;
+    }
+
+    .price-with-currency {
+      font-size: $font-size-2;
+      text-transform: uppercase;
+    }
+  }
+}

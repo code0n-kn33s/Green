@@ -1,0 +1,49 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+
+  .login {
+    display: flex;
+    gap: 20px;
+
+    @include media-query($small) {
+      flex-direction: column;
+    }
+  }
+
+  .login__side {
+    flex: 1 1 50%;
+
+    &:last-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border: $main-border;
+      border-radius: $main-border-radius;
+
+      .login__heading {
+        text-align: center;
+        margin-bottom: 76px;
+      }
+    }
+  }
+
+  .login__heading {
+    margin: 0 0 5px 0;
+  }
+
+  .form-container {
+    margin-top: 20px;
+  }
+
+  .form-container__buttons-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    margin-top: 24px;
+  }
+}

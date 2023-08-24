@@ -1,0 +1,395 @@
+.withdrawal-page {
+  .withdrawal-section {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 110px;
+
+    @include media-query($small) {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .withdrawal-section__wrapper {
+      display: flex;
+      gap: 60px;
+      padding: 45px 27px;
+      border: $main-border;
+      border-radius: $main-border-radius;
+      z-index: 1;
+      margin-bottom: 30px;
+
+      @include media-query($small) {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .main {
+        min-height: 580px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        @include media-query($extra-small) {
+          font-size: $font-size-9;
+        }
+      }
+
+      th {
+        text-align: left;
+        padding-right: 17px;
+
+        @include media-query($small) {
+          padding-right: 3px;
+        }
+      }
+
+      .withdrawal-section__table-body {
+        @include media-query($small) {
+          font-size: 10px;
+        }
+      }
+
+      .withdrawal-section__table-td-wrapper {
+        justify-content: center;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: $font-size-7;
+        font-weight: 600;
+
+        span:last-child {
+          font-size: inherit;
+        }
+      }
+
+      .withdrawal-section__table-body-row {
+        font-weight: 700;
+
+        td {
+          padding: 13px 17px 13px 0;
+          text-align: center;
+
+          @include media-query($small) {
+            padding: 3px 7px 3px 0;
+            font-size: $font-size-9;
+          }
+        }
+      }
+    }
+
+    .withdrawal-section__table-heading-row {
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4px;
+        width: 100%;
+        border-radius: $main-border-radius;
+        background-color: $secondary-bg-color;
+      }
+    }
+
+    .withdrawal-section__table-td-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: $font-size-7;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-bottom: 14px;
+
+      @include media-query($small) {
+        font-size: $font-size-9;
+      }
+
+      @include media-query($extra-small) {
+        font-size: 7px
+      }
+    }
+
+    .withdrawal-section__body-heading {
+      padding-left: 16px;
+      padding-bottom: 7px;
+      font-size: $primary-font-size;
+      font-weight: 500;
+    }
+
+    .withdrawal-section__invoice-network-heading {
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .withdrawal-section__invoice-network-wrapper {
+      display: flex;
+      gap: 21px;
+    }
+
+    .form-container--checkbox-btn {
+      input:checked ~ label {
+        background-color: $primary-hover-color;
+        border-color: $primary-hover-color;
+      }
+
+      label {
+        padding: 7px 12px;
+        font-family: $alternative-font;
+        font-size: $font-size-8;
+        font-weight: 400;
+        color: $alternative-color;
+
+        &:before {
+          content: unset;
+        }
+
+        &:after {
+          content: unset;
+        }
+      }
+    }
+
+    .form-container--range {
+      input {
+        min-width: unset;
+      }
+
+      .range__list {
+        padding-top: 38px;
+
+        @include media-query($small) {
+          padding-top: 8px;
+        }
+      }
+
+      .range__list-item {
+        &:after {
+          z-index: 2;
+        }
+
+        &:not(.range__list-item:first-child) {
+          padding-left: 20%;
+
+          @include media-query($extra-small) {
+            padding-left: 17%;
+          }
+
+          &:after {
+            content: unset;
+          }
+        }
+
+        &:last-child {
+          padding-left: 18%!important;
+        }
+      }
+
+      .min-max__range-item-wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+        font-family: $alternative-font;
+        font-size: $font-size-7;
+      }
+    }
+
+    .form-container--wallet {
+      margin-top: 27px;
+      margin-bottom: 18px;
+
+      @include media-query($small) {
+        margin-top: 10px;
+      }
+
+      input {
+        min-width: unset;
+
+        &::placeholder {
+          font-weight: 500;
+          color: $primary-error-color;
+        }
+      }
+    }
+
+    .withdrawal-section__description {
+      margin-top: 16px;
+      font-size: $font-size-9;
+      font-weight: 500;
+      line-height: 1.8;
+    }
+
+    .tabs__navigation {
+      margin-bottom: 8px;
+    }
+
+    .custom-select {
+      z-index: 3;
+
+      .icon {
+        left: 15px;
+        right: auto;
+        width: 20px;
+        height: 10px;
+        color: $alternative-color;
+      }
+
+      .custom-select__dropdown {
+        padding: 8px 11px 8px 20px;
+        border: $main-border;
+        border-radius: $main-border-radius;
+      }
+
+      .custom-select__btn-text-wrapper {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .custom-select__dropdown-button {
+        display: flex;
+        border-bottom: $main-border;
+        padding-bottom: 8px;
+        padding-left: 23px;
+      }
+
+      .custom-select__dropdown-option {
+        &:last-child {
+          .custom-select__dropdown-button {
+            border-bottom: unset;
+          }
+        }
+      }
+
+      .custom-select__btn {
+        padding: 8px 15px 8px 43px;
+        border: $main-border;
+        border-radius: $main-border-radius;
+      }
+
+      .custom-select__btn-text {
+        flex: 0 1 46%;
+        font-size: $font-size-6;
+        font-weight: 700;
+      }
+
+      .custom-select__btn-money {
+        position: relative;
+        display: flex;
+        min-height: 46px;
+        flex-direction: column;
+        justify-content: center;
+        flex: 0 1 50%;
+        padding-left: 20px;
+
+        &:before {
+          position: absolute;
+          content: "";
+          width: 1px;
+          height: 100%;
+          left: 0;
+          top: 0;
+          background-color: $primary-color;
+        }
+
+        .custom-select__btn-money-local {
+          font-family: $alternative-font;
+          font-size: $font-size-4;
+          font-weight: 400;
+          margin-bottom: 2px;
+
+          @include media-query($extra-small) {
+            font-size: $font-size-6;
+          }
+        }
+
+        .custom-select__btn-money-universal {
+          font-weight: 500;
+
+          @include media-query($extra-small) {
+            font-size: $font-size-8;
+          }
+        }
+      }
+    }
+
+    .withdrawal-section__wrapper-side {
+      flex: 0 1 430px;
+
+      @include media-query($small) {
+        flex: 1;
+      }
+
+      &:last-child {
+        flex: 0 1 320px;
+        padding-top: 32px;
+
+        @include media-query($small) {
+          padding-top: 0;
+          flex: 1;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+      }
+    }
+
+    .withdrawal-section__balance {
+      .withdrawal-section__balance-heading {
+        margin-bottom: 7px;
+        font-size: $primary-font-size;
+        font-weight: 500;
+      }
+
+      .withdrawal-section__balance-money {
+        font-family: $alternative-font;
+        font-size: $font-size-6;
+        font-weight: 400;
+      }
+    }
+
+    .withdrawal-section__balance--full {
+      margin-bottom: 50px;
+
+      @include media-query($small) {
+        margin-bottom: 0;
+      }
+    }
+
+    .withdrawal-section__balance--available {
+      margin-bottom: 70px;
+
+      @include media-query($small) {
+        margin-bottom: 0;
+      }
+    }
+
+    .withdrawal-section__add-deposit {
+      font-weight: 500;
+      font-size: $font-size-9;
+      line-height: 1.8;
+
+      .form-container--checkbox {
+        margin-bottom: 9px;
+
+        label {
+          font-size: inherit;
+          font-weight: inherit;
+
+          &:before {
+            border-radius: 3px;
+            margin-right: 9px;
+          }
+        }
+      }
+
+      .form__custom-checkbox {
+
+      }
+
+      .withdrawal-section__add-deposit-description {
+
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-base-fill: #000000;
+    --color-base: #FFF831;
+    --color-text-base: #FFF831;
+  }
+
+  .input-default {
+    border-radius: 10px;
+    background-color: var(--color-base-fill);
+    border: 1px solid var(--color-base);
+  }
+
+  .btn-primary {
+    background-color: var(--color-base);
+    color: var(--color-base-fill);
+    border-radius: 10px;
+    padding: 12px 30px;
+  }
+
+  .border-yellow {
+    border: 2px solid var(--color-base);
+    border-radius: 10px;
+  }
+
+  .content-account {
+    margin: 65px 42px;
+    align-items: center;
+  }
+
+  .head-text {
+    font-family: Montserrat;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+}

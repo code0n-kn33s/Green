@@ -1,0 +1,11 @@
+.hide-on-mobile {
+	@include media-query($small) {
+		display: none;
+	}
+}
+
+.show-on-mobile {
+	@include media-query($medium-up) {
+		display: none;
+	}
+}

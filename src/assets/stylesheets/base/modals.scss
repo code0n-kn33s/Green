@@ -1,0 +1,241 @@
+.modal-dialog {
+  --color-modal-bg:  #000000;
+  --duration: 0.3s;
+  --color-text-primary: #FFF831;
+
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 500px;
+  max-height: 580px;
+  width: 70%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%,-50%);
+  border-radius: $main-border-radius;
+  border: $main-border;
+  z-index: -1;
+  background-color: var(--color-modal-bg);
+  transition: background-color, visibility, opacity var(--duration, .3s);
+
+  @include media-query($small) {
+    width: 90%;
+    height: 90%;
+  }
+
+  &[aria-hidden="false"] {
+    visibility: visible;
+    opacity: 1;
+    z-index: 15;
+  }
+
+  .modal-dialog__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-dialog__toggle {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    color: var(--color-text-primary);
+    z-index: 2;
+
+    @include media-query($small) {
+      top: 0;
+      right: 0;
+      padding: 10px 20px;
+    }
+
+    .plus-icon {
+      width: 18px;
+      height: 18px;
+      transform: rotate(45deg);
+    }
+  }
+
+  button[data-close-popup] {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  &.modal-dialog--warning {
+    max-width: 322px;
+    max-height: 342px;
+    padding: 15px;
+
+    .modal-dialog__body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+    }
+
+    .modal-dialog__warning-icon {
+      margin: 25px auto 57px;
+    }
+
+    .price-with-currency {
+      font-size: $font-size-2;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.profile-page, .page__sections-wrapper {
+  .modal-dialog {
+    max-width: 576px;
+  }
+
+  .modal-dialog__success-wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+
+    .modal-dialog__success-icon {
+      margin-bottom: 24px;
+    }
+
+    .modal-dialog__success-heading {
+      margin-bottom: 50px;
+      font-size: $font-size-1;
+    }
+
+    .modal-dialog__success-description {
+      margin-bottom: 85px;
+      font-size: $font-size-1;
+    }
+
+    .modal-dialog__success-btn {
+      position: relative;
+      top: auto;
+      right: auto;
+    }
+  }
+
+  #twoFA .modal-dialog__body {
+    width: 86%;
+  }
+
+  .modal-dialog__twoFA-wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked+.link {
+      color: #FFA500;
+    }
+
+    .modal-dialog__twoFA-heading {
+      margin-bottom: 30px;
+      font-size: $font-size-3;
+    }
+
+    .modal-dialog__twoFA-links-wrapper {
+      display: flex;
+      width: 100%;
+      gap: 14px;
+      margin-bottom: 68px;
+    }
+
+    .modal-dialog__twoFA-link {
+      display: block;
+      width: 50%;
+      padding: 41px;
+      border: $main-border;
+      border-radius: $main-border-radius;
+
+      @include media-query($small) {
+        padding: 20px;
+      }
+
+      .modal-dialog__twoFA-link-label {
+        margin-top: 32px;
+        font-size: $font-size-3;
+        font-weight: 700;
+      }
+    }
+
+    .modal-dialog__twoFA-btn {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin: auto;
+    }
+  }
+
+  .modal-dialog--banner {
+    max-width: 432px;
+    min-height: 110px;
+    height: fit-content;
+    padding: 21px;
+
+    button[data-close-popup] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: $primary-color;
+      border-radius: 50%;
+      color: $alternative-color;
+    }
+
+    .modal-dialog__content {
+      display: flex;
+      gap: 16px;
+    }
+
+    .modal-dialog__content-image {
+      padding-top: 67px;
+      min-width: 87px;
+      overflow: hidden;
+      border-radius: $main-border-radius;
+    }
+
+    .modal-dialog__content-text {
+      .modal-dialog__content-text-heading {
+        margin-bottom: 8px;
+        font-size: $font-size-5;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .modal-dialog__content-text-description {
+        font-size: $font-size-8;
+        line-height: 1.8;
+      }
+    }
+  }
+}
+
+.fa-form {
+  display: grid;
+
+  .btn { margin: 20px auto }
+  svg { margin: auto }
+}
