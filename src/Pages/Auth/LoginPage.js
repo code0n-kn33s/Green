@@ -1,4 +1,5 @@
 import { ReactComponent as PassIcon } from '../../assets/icons/PassIcon.svg'
+import { Link } from 'react-router-dom';
 
 export default function Login(props) {
 
@@ -34,7 +35,7 @@ export default function Login(props) {
                             Войти
                         </button>
 
-                        <a className="link" href="./restore-password.html">Забыли пароль?</a>
+                        <Link className="link" to="restore-password.html" > Забыли пароль? </Link>
                     </div>
                 </form>
             </div>
@@ -42,7 +43,7 @@ export default function Login(props) {
             <div className="login__side">
                 <h2 className="login__heading h3">Создать Аккаунт</h2>
 
-                <a className="btn" href="./register.html">Регистрация</a>
+                <Link className="btn" to="register">Регистрация</Link>
             </div>
             </section>
         </div>
