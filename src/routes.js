@@ -3,11 +3,13 @@ import Todo from './Pages/Todo'
 import Main from './Pages/Main'
 import Login from './Pages/Login/Login'
 import TodoItem from './Pages/TodoItem'
-import NewFitches from './Pages/NewFitches'
+import FaqPage from './Pages/Faq/FaqPage'
+import ProfilePage from './Pages/Profile/ProfilePage'
+import StatisticPage from './Pages/Statistics/StatisticPage'
 import Placeholders from './Pages/Placeholders'
 import PlaceholdersItem from './Pages/PlaceholdersItem'
-import NotFound from './Pages/NotFound'
 import AlgoritmsPage from './Pages/Algoritms/AlgoritmsPage'
+import NotFound from './Pages/NotFound'
 
 export const routes = [
     {
@@ -15,8 +17,16 @@ export const routes = [
       element: <Main />,
       children: [
         {
-          path: "new",
-          element: <NewFitches />,
+          path: "profile",
+          element: <ProfilePage />,
+        },
+        {
+          path: "statistics",
+          element: <StatisticPage />,
+        },
+        {
+          path: "faq",
+          element: <FaqPage />,
         },
         {
           path: "todo",

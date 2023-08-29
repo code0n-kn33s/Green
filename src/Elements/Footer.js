@@ -1,3 +1,8 @@
+import { ReactComponent as TelegramIcon } from '../assets/icons/TelegramIcon.svg';
+import { ReactComponent as YouTubeIcon } from '../assets/icons/YouTubeIcon.svg';
+import { ReactComponent as Facebook } from '../assets/icons/Facebook.svg';
+import { ReactComponent as InstaIcon } from '../assets/icons/InstaIcon.svg';
+
 export default function Footer(params) {
     return (
         <footer className="footer">
@@ -27,18 +32,23 @@ export default function Footer(params) {
           <div className="footer__main-social-links">
             <a className="link" href="/">
               {/* <!--youtube--> */}
+              <YouTubeIcon />
 
             </a>
             <a className="link" href="/">
               {/* <!--instagram--> */}
+              <InstaIcon />
+
 
             </a>
             <a className="link" href="/">
               {/* <!--facebook--> */}
+              <Facebook />
 
             </a>
             <a className="link" href="/">
                 {/* telegram */}
+                <TelegramIcon />
             </a>
           </div>
         </div>

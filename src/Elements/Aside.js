@@ -1,3 +1,5 @@
+import {NavLink} from 'react-router-dom'
+
 import {ReactComponent as GlobusIcon} from '../assets/icons/GlobusIcon.svg';
 import {ReactComponent as FlowerIcon} from '../assets/icons/FlowerIcon.svg';
 import {ReactComponent as AttentionIcon} from '../assets/icons/AttentionIcon.svg';
@@ -11,31 +13,30 @@ export default function Aside(props) {
           <ul className="main-nav__first-lvl">
             <li className="main-nav__first-lvl-item">
               <div className="main-nav__first-lvl-item-wrapper">
-                <span>
-                  <FlowerIcon />
-                </span>
+                <span> <FlowerIcon /> </span>
 
                 <span>AI Arbitrage</span>
               </div>
 
               <ul className="main-nav__second-lvl">
                 <li className="main-nav__second-lvl-item">
-                  <a data-nav-link className="link" href="/profile.html">Алгоритмы</a>
+                  <NavLink className="link" to="algoritms"> Алгоритмы </NavLink>
                 </li>
 
                 <li className="main-nav__second-lvl-item">
-                  <a data-nav-link className="link" href="/">Статистика</a>
+                  <NavLink className="link" to="statistics">Статистика</NavLink>
                 </li>
               </ul>
             </li>
 
             <li className="main-nav__first-lvl-item">
-              <a className="link" href="/">
+
+              <NavLink className="link" to="faq">
                 <span>
                   <AttentionIcon/>
                 </span>
                 <span>F.A.Q</span>
-              </a>
+              </NavLink>
             </li>
 
             <li className="main-nav__first-lvl-item">
