@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodos, deleteTodo, editTodo } from '../toolkitReducers/todos-slice-builder';
+import { fetchTodos, deleteTodo, editTodo } from '../toolkitReducers/todos.slice';
 
 export default function Todo() {
   const dispatch = useDispatch()

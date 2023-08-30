@@ -26,7 +26,7 @@ export const routes = [
         },
         {
           path: "profile",
-          element: <ProfilePage />,
+          element: <ProfilePage /> ,
         },
         {
           path: "restore-password",
@@ -57,12 +57,16 @@ export const routes = [
           path: "placeholders",
           element: <Placeholders />,
         },
-        {
-          path: "login",
-          element: <LoginPage />,
-        },
+        // {
+        //   path: "login",
+        //   element: <LoginPage />,
+        // },
         {
           path: "algoritms",
+          element: <AlgoritmsPage />,
+        },
+        {
+          path: "algoritms/:id",
           element: <AlgoritmsPage />,
         },
         {
