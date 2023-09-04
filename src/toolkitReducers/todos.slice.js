@@ -1,5 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+const REQUEST_USER_LOGIN = "REQUEST_USER_LOGIN"
+const REQUEST_USER_LOGOUT = "REQUEST_USER_LOGOUT"
+const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS"
+const LOGIN_USER_ERROR = "LOGIN_USER_ERROR"
+const CHECK_USER_AUTH_REQUEST = "CHECK_USER_AUTH_REQUEST"
+const CHECK_USER_AUTH_SUCCESS = "CHECK_USER_AUTH_SUCCESS"
+const CHECK_USER_AUTH_ERROR = "CHECK_USER_AUTH_ERROR"
+
 export const fetchTodos = createAsyncThunk(
     'async/todos',
     async function (param, options) {
@@ -19,20 +27,21 @@ export const fetchTodos = createAsyncThunk(
     }
 )
 
-export const editTodo = createAsyncThunk(
-    'async/editTodo',
+export const loginUser = createAsyncThunk(
+    'async/loginUser',
     async function (id, options) {
-        fetch('https://jsonplaceholder.typicode.com/posts/1', {
-            method: 'PUT',
+        console.log('id :>> ', id);
+        console.log('options :>> ', options);
+
+        fetch('https://dummyjson.com/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                id: id,
-                title: 'foo',
-                body: 'bar',
-                userId: id,
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
+
+                username: 'kminchelle',
+                password: '0lelplR',
+                // expiresInMins: 60, // optional
+            })
         })
         .then((response) => response.json())
         .then((json) => console.log(json))
@@ -88,16 +97,16 @@ const todosSlice = createSlice({
             state.status = "rejected"
             state.error = action.error.message || action.error.stack
         })
-        builder.addCase(editTodo.pending, (state, action) => {
+        builder.addCase(loginUser.pending, (state, action) => {
             state.status = "loading"
         })
-        builder.addCase(editTodo.fulfilled, (state, action) => {
+        builder.addCase(loginUser.fulfilled, (state, action) => {
             console.log('action edit', action)
             state.status = "fulfilled"
             // const deletedId = action.meta.arg
             // state.list = state.list.filter(todo => todo.id !== deletedId)
         })
-        builder.addCase(editTodo.rejected, (state, action) => {
+        builder.addCase(loginUser.rejected, (state, action) => {
             state.status = "rejected"
             state.error = action.error.message || action.error.stack
         })
@@ -116,6 +125,6 @@ const todosSlice = createSlice({
     }
 })
 
-// const { fetchTodos } = todosSlice.actions
+// const { loginUser } = todosSlice.actions
 
 export default todosSlice.reducer;

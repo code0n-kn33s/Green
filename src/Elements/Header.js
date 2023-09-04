@@ -1,6 +1,7 @@
 import React from 'react'
-
-import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { userLogout } from './../toolkitReducers'
 
 import { ReactComponent as IconProfile } from '../assets/icons/ProfileIcon.svg'
 import { ReactComponent as BellIcon } from '../assets/icons/BellIcon.svg'
@@ -8,6 +9,15 @@ import { ReactComponent as LoginIcon } from '../assets/icons/LoginIcon.svg'
 import { ReactComponent as LogoutIcon } from '../assets/icons/LogoutIcon.svg'
 
 export default function Header() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const logout = () => {
+    navigate('/login')
+    console.log('logout :>> ', userLogout);
+    dispatch(userLogout())
+  }
+
   return (
 
     <header className="main-header">
@@ -38,7 +48,7 @@ export default function Header() {
                   Профиль
                 </p>
               </NavLink>
-              <div className="main-header__icons-profile-login-row main-header-icon">
+              <div onClick={logout} className="main-header__icons-profile-login-row main-header-icon">
                 <div className="main-header__icons-profile-login-icon">
                   <LogoutIcon />
                 </div>

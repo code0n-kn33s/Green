@@ -2,10 +2,10 @@ import {combineReducers} from "@reduxjs/toolkit"
 
 import todosSlice from './todos.slice'
 import authSlice from './auth.slice'
-
+export * from './auth.slice'
 
 const rootReducer = combineReducers({
-    todos: todosSlice,
+    // todos: todosSlice,
     auth: authSlice
 })
 

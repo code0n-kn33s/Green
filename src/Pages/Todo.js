@@ -6,7 +6,7 @@ export default function Todo() {
   const dispatch = useDispatch()
 
   const todos = useSelector(state => {
-    return state.todos.list
+    return state.todos.list 
   })
 
   useEffect(() => {
