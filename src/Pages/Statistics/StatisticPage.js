@@ -1,10 +1,12 @@
-
-import Graphic3 from './Graphic3'
-import Graphic2 from './Graphic2'
-import Graphic1 from './Graphic1'
+import { useRef } from 'react'
+// import Graphic2 from './Graphic2'
+// import Graphic1 from './Graphic1'
+import G3 from './G3'
+import G2 from './G2'
 import G1 from './G1'
 
 export default function StatisticPage(params) {
+  const chartRef = useRef(null);
 
   return (
     <div className="statistics-page page">
@@ -24,9 +26,8 @@ export default function StatisticPage(params) {
                 <span className="statistics-section__balance-counter--usdt">$0.00</span>
               </p>
 
-              <Graphic3 />
-
-              <Graphic1 />
+              {/* <Graphic3 />
+              <Graphic1 /> */}
             </div>
 
             <div className="statistics-section__balance-revenue-per-day">
@@ -59,7 +60,7 @@ export default function StatisticPage(params) {
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  <canvas id="intervalBar1"></canvas>
+                  {/* <canvas ref={chartRef}></canvas> */}
                 </div>
               </div>
 
@@ -70,7 +71,8 @@ export default function StatisticPage(params) {
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  <canvas id="intervalBar2"></canvas>
+                  {/* <canvas id="intervalBar2"></canvas> */}
+                  <G2 />
                 </div>
               </div>
 
@@ -81,7 +83,8 @@ export default function StatisticPage(params) {
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  <canvas id="intervalBar3"></canvas>
+                  {/* <canvas id="intervalBar3"></canvas> */}
+                  <G3 />
                 </div>
               </div>
             </div>
@@ -96,7 +99,7 @@ export default function StatisticPage(params) {
                   <div className="statistics-section__graphics-row-body-column">
                     {/* <canvas id="ArbitrageAI">
                     </canvas> */}
-                      {/* <G1 /> */}
+                      <G1 />
                   </div>
 
                   <div className="statistics-section__graphics-row-body-column">
@@ -124,7 +127,7 @@ export default function StatisticPage(params) {
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  <canvas id="intervalPercentage"></canvas>
+                  {/* <canvas id="intervalPercentage"></canvas> */}
                 </div>
               </div>
             </div>
