@@ -5,15 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const data = {
-    // labels: [
-        //     'BTC',
-        //     'USDT',
-        //     'ETH'
-        // ],
-        // TooltipLabelStyle: {
-            //     backgroundColor: '#000000',
-            // },
-            labels: null,
+    labels: null,
     datasets: [{
         label: 'ArbitrageAI',
         data: [2.8054, 2.8054, 1.0921],
@@ -37,7 +29,7 @@ const data = {
 
 const config = {
     type: 'doughnut',
-    data: {data},
+    data: { data },
     options: {
         plugins: {
             legend: {

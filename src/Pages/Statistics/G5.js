@@ -29,14 +29,14 @@ export const options = {
     legend: {
       position: 'top',
     },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
+    // title: {
+    //   display: true,
+    //   text: 'Chart.js Line Chart',
+    // },
   },
 };
 
-const labels = ['January', 'February', 'March', ];
+const labels = ['6:00', '18:00', '23:00', ];
 
 export const data = {
   labels,
@@ -45,9 +45,9 @@ export const data = {
       fill: true,
       label: 'Dataset 2',
     //   data: labels.map(() => Math.floor(Math.random() * 2000) - 1000),
-      data: ["-300", "900", "400"],
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      data: ["-1300", "1900", "4400"],
+      borderColor: '#FFF831',
+      backgroundColor: '#fff83170',
     },
   ],
 };

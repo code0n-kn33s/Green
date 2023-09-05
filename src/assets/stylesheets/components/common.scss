@@ -19,3 +19,14 @@
         fill: $primary-color;
     }
 }
+
+.copy-email {
+    background: transparent;
+    border: none;
+    color: yellow;
+    padding: 2px 4px;
+    &-label {
+        top: 3px;
+        position: relative;
+    }
+}
