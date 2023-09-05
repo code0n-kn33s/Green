@@ -5,16 +5,18 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const data = {
-    labels: [
-        'BTC',
-        'USDT'
-    ],
-    TooltipLabelStyle: {
-        backgroundColor: '#000000',
-    },
+    // labels: [
+        //     'BTC',
+        //     'USDT',
+        //     'ETH'
+        // ],
+        // TooltipLabelStyle: {
+            //     backgroundColor: '#000000',
+            // },
+            labels: null,
     datasets: [{
         label: 'ArbitrageAI',
-        data: [2.8054, 2.8054],
+        data: [2.8054, 2.8054, 1.0921],
         backgroundColor: [
             '#FF0000',
             '#47B64C',
@@ -25,10 +27,10 @@ const data = {
             '#000000',
             '#000000',
         ],
-        borderWidth: 10,
+        borderWidth: 7,
         cutout: '70%',
-        rotation: 160,
-        radius: 90,
+        // rotation: 160,
+        // radius: 90,
         hoverOffset: 4
     }]
 };

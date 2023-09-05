@@ -41,7 +41,33 @@ export const options = {
     },
 };
 
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+export const data1 = {
+    labels,
+    datasets: [
+        {
+            label: 'Dataset 1',
+            data: labels.map(() => Math.floor(Math.random() * 2000) - 1000),
+            backgroundColor: 'rgb(255, 99, 132)',
+            stack: 'Stack 0',
+        },
+        {
+            label: 'Dataset 2',
+            data: labels.map(() => Math.floor(Math.random() * 2000) - 1000),
+            backgroundColor: 'rgb(75, 192, 192)',
+            stack: 'Stack 0',
+        },
+        {
+            label: 'Dataset 3',
+            data: labels.map(() => Math.floor(Math.random() * 2000) - 1000),
+            backgroundColor: 'rgb(53, 162, 235)',
+            stack: 'Stack 1',
+        },
+    ],
+};
 const data = {
+
     labels: ["01-02", "01-03", "01-04", "01-05", "01-06", "01-07", "01-08"],
     datasets: [
         {

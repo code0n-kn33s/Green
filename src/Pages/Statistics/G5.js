@@ -1,58 +1,57 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+);
 
-const data = {
-    labels: [
-        'BTC',
-        'USDT'
-    ],
-    TooltipLabelStyle: {
-        backgroundColor: '#000000',
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
     },
-    datasets: [{
-        label: 'ArbitrageAI',
-        data: [2.8054, 2.8054],
-        backgroundColor: [
-            '#FF0000',
-            '#47B64C',
-            '#FF7508'
-        ],
-        borderColor: [
-            '#000000',
-            '#000000',
-            '#000000',
-        ],
-        borderWidth: 10,
-        cutout: '70%',
-        rotation: 160,
-        radius: 90,
-        hoverOffset: 4
-    }]
+    title: {
+      display: true,
+      text: 'Chart.js Line Chart',
+    },
+  },
 };
 
-const config = {
-    type: 'doughnut',
-    data: {data},
-    options: {
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
+const labels = ['January', 'February', 'March', ];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      fill: true,
+      label: 'Dataset 2',
+    //   data: labels.map(() => Math.floor(Math.random() * 2000) - 1000),
+      data: ["-300", "900", "400"],
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
 };
 
-export default function G1(props) {
-    return (
-
-        <Doughnut
-            options={config}
-            config={config}
-            data={data}
-            {...props}
-        />
-    )
+export default function G5() {
+  return <Line options={options} data={data} />;
 }

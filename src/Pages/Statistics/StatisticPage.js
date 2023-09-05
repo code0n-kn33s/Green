@@ -1,6 +1,9 @@
 import { useRef } from 'react'
 // import Graphic2 from './Graphic2'
 // import Graphic1 from './Graphic1'
+import G6 from './G6'
+import G5 from './G5'
+import G4 from './G4'
 import G3 from './G3'
 import G2 from './G2'
 import G1 from './G1'
@@ -26,8 +29,6 @@ export default function StatisticPage(params) {
                 <span className="statistics-section__balance-counter--usdt">$0.00</span>
               </p>
 
-              {/* <Graphic3 />
-              <Graphic1 /> */}
             </div>
 
             <div className="statistics-section__balance-revenue-per-day">
@@ -61,6 +62,8 @@ export default function StatisticPage(params) {
 
                 <div className="statistics-section__graphics-row-body">
                   {/* <canvas ref={chartRef}></canvas> */}
+                  <G5 />
+
                 </div>
               </div>
 
@@ -104,15 +107,15 @@ export default function StatisticPage(params) {
 
                   <div className="statistics-section__graphics-row-body-column">
                     <ul className="statistics-section__graphics-row-vaults-list list-menu">
-                      <li className="statistics-section__graphics-row-vaults-item" style={{ backgroundColor: "#FF7508" }}>
+                      <li className="statistics-section__graphics-row-vaults-item">
                         <span className="statistics-section__graphics-row-vaults-item-currency">BTC</span>
                         <span className="statistics-section__graphics-row-vaults-item-price">(2.8054/40.00%)</span>
                       </li>
-                      <li className="statistics-section__graphics-row-vaults-item" style={{ backgroundColor: "#FF0000" }}>
+                      <li className="statistics-section__graphics-row-vaults-item">
                         <span className="statistics-section__graphics-row-vaults-item-currency">ETH</span>
                         <span className="statistics-section__graphics-row-vaults-item-price">(2.8054/40.00%)</span>
                       </li>
-                      <li className="statistics-section__graphics-row-vaults-item" style={{ backgroundColor: "#47B64C" }}>
+                      <li className="statistics-section__graphics-row-vaults-item">
                         <span className="statistics-section__graphics-row-vaults-item-currency">USDT</span>
                         <span className="statistics-section__graphics-row-vaults-item-price">(2.8054/40.00%)</span>
                       </li>
@@ -128,6 +131,7 @@ export default function StatisticPage(params) {
 
                 <div className="statistics-section__graphics-row-body">
                   {/* <canvas id="intervalPercentage"></canvas> */}
+                  <G4 />
                 </div>
               </div>
             </div>

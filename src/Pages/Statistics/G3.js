@@ -19,81 +19,71 @@ ChartJS.register(
     Legend
 );
 
-export const options = {
-    plugins: {
-        title: {
-            display: true,
-            text: 'Chart.js Bar Chart - Stacked',
-        },
-    },
-    responsive: true,
-    interaction: {
-        mode: 'index',
-        intersect: false,
-    },
-    scales: {
-        x: {
-            stacked: true,
-        },
-        y: {
-            stacked: true,
-        },
-    },
-};
-
+const labels = ["01-02", "01-03", "01-04", "01-05", "01-06", "01-07", "01-08"]
 const data = {
-    labels: 0,
-    datasets: [
-        {
-            labels: 0,
-            datasets: [
-                {
-                    label: 'Прибыль за сутки',
-                    data: 0,
-                    borderColor: "#FFF831",
-                    backgroundColor: "#FFF831",
-                    borderWidth: 1,
-                    borderRadius: 10,
-                    borderSkipped: false,
-                }
-            ],
-            annotations: [0, 0.5, 1]
-        },
-        {
-            labels: ["01-02", "01-03", "01-04", "01-05", "01-06", "01-07", "01-08"],
-            datasets: [
-                {
-                    label: 'Прибыль платформы от сделок',
-                    data: [10, 20, -30, 40, 50, 60, 70],
-                    borderColor: "#FFF831",
-                    backgroundColor: "#FFF831",
-                    borderWidth: 1,
-                    borderRadius: 10,
-                    borderSkipped: false,
-                }
-            ],
-            annotations: [-40, -20, 0, 20, 40, 60, 80]
-        },
-        {
-            labels: 0,
-            datasets: [
-                {
-                    label: 'Прибыль за сутки',
-                    data: 0,
-                    borderColor: "#FFF831",
-                    backgroundColor: "#FFF831",
-                    borderWidth: 1,
-                    borderRadius: 10,
-                    borderSkipped: false,
-                }
-            ],
-            annotations: [0, 0.5, 1]
-        },
+    labels: labels,
+    datasets: [{
+        label: 'Interval Percentage',
+        data: [2, 5, 3, 8, 14, 10, 6],
+        fill: false,
+        borderColor: '#FFF831',
+        borderWidth: 2,
+        tension: 0,
+        pointStyle: 'triangle',
+        pointBackgroundColor: "#ffffff",
+        pointBorderColor: "#FFF831",
+        pointBorderWidth: 1,
+        pointRadius: 7,
+        pointHoverRadius: 10
+    }]
+}
 
-    ],
-    annotations: [0, 0.5, 1]
+const config = {
+    type: 'line',
+    data: data,
+    options: {
+        scales: {
+            y: {
+                display: true,
+                ticks: {
+                    callback: function (value, index, values) {
+                        if (index === 0 || index === values.length - 1) {
+                            return (value + "%");
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            annotation: {
+                annotations: [{
+                    type: 'line',
+                    mode: 'horizontal',
+                    scaleID: 'y',
+                    value: 0,
+                    borderColor: '#FFF831',
+                    borderWidth: 1
+                },
+                {
+                    type: 'line',
+                    mode: 'horizontal',
+                    scaleID: 'y',
+                    value: 20,
+                    borderColor: '#FFF831',
+                    borderWidth: 1,
 
+                }],
+            }
+        }
+    }
 };
+
+// Chart.defaults.color = '#FFF831';
 
 
 export default function G2(props) {
@@ -104,6 +94,7 @@ export default function G2(props) {
             // options={config}
             data={data}
             {...props}
+            {...config}
         />
     )
 }

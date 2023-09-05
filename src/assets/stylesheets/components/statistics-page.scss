@@ -138,9 +138,9 @@
   .statistics-section__graphics-row-body {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     justify-content: center;
-    gap: 21px;
+    gap: 11px;
 
     .statistics-section__graphics-row-body-column {
       max-width: 174px;
@@ -157,6 +157,17 @@
         margin-left: 20px;
         font-weight: 700;
 
+        &:nth-child(1):before {
+          background-color: #FF7508
+        }
+        &:nth-child(2):before {
+          background-color: #FF0000
+
+        }
+        &:nth-child(3):before {
+          background-color: #47B64C
+
+        }
         &:before {
           content: "";
           position: absolute;

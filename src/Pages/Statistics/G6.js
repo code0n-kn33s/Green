@@ -1,58 +1,37 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Radar } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
-const data = {
-    labels: [
-        'BTC',
-        'USDT'
-    ],
-    TooltipLabelStyle: {
-        backgroundColor: '#000000',
+export const data = {
+  labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
+  datasets: [
+    {
+      label: '# of Votes',
+      data: [2, 9, 3, 5, 2, 3,],
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: '#FFF831',
+      borderWidth: 1,
     },
-    datasets: [{
-        label: 'ArbitrageAI',
-        data: [2.8054, 2.8054],
-        backgroundColor: [
-            '#FF0000',
-            '#47B64C',
-            '#FF7508'
-        ],
-        borderColor: [
-            '#000000',
-            '#000000',
-            '#000000',
-        ],
-        borderWidth: 10,
-        cutout: '70%',
-        rotation: 160,
-        radius: 90,
-        hoverOffset: 4
-    }]
+  ],
 };
 
-const config = {
-    type: 'doughnut',
-    data: {data},
-    options: {
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-};
-
-export default function G1(props) {
-    return (
-
-        <Doughnut
-            options={config}
-            config={config}
-            data={data}
-            {...props}
-        />
-    )
+export default function G6() {
+  return <Radar data={data} />;
 }
