@@ -21,13 +21,13 @@ import { ReactComponent as OkIcon } from '../../assets/icons/OkIcon.svg'
 
 
 export default function Table(params) {
-    return (
-        <table className="algorithms-history__table-body">
-        <tbody>
+  return (
+    <table className="algorithms-history__table-body">
+      <tbody>
         <tr className="algorithms-history__table-heading-row rel">
           <th>
             <div className="algorithms-history__table-td-wrapper">
-               <span>Дата создания</span>
+              <span>Дата создания</span>
             </div>
           </th>
 
@@ -42,7 +42,7 @@ export default function Table(params) {
           <th>
             <div className="algorithms-history__table-td-wrapper">
               <span>
-               Прибыль за период
+                Прибыль за период
               </span>
             </div>
           </th>
@@ -68,22 +68,7 @@ export default function Table(params) {
           <td>
             <a href="#" className="link algorithms-history__table-body-row-link">
               <span>
-                <OkIcon/>
-              </span>
-
-              <span>Подробно</span>
-            </a>
-          </td>
-        </tr>
-        <tr className="algorithms-history__table-body-row">
-          <td>03.10.2020</td>
-          <td>296.55 USDT</td>
-          <td>296.55 USDT</td>
-          <td>0.00998268 ETH</td>
-          <td>
-            <a href="#" className="link algorithms-history__table-body-row-link">
-              <span>
-              <OkIcon />
+                <OkIcon />
               </span>
 
               <span>Подробно</span>
@@ -113,7 +98,7 @@ export default function Table(params) {
           <td>
             <a href="#" className="link algorithms-history__table-body-row-link">
               <span>
-                <OkIcon/>
+                <OkIcon />
               </span>
 
               <span>Подробно</span>
@@ -135,9 +120,24 @@ export default function Table(params) {
             </a>
           </td>
         </tr>
-        </tbody>
-      </table>
+        <tr className="algorithms-history__table-body-row">
+          <td>03.10.2020</td>
+          <td>296.55 USDT</td>
+          <td>296.55 USDT</td>
+          <td>0.00998268 ETH</td>
+          <td>
+            <a href="#" className="link algorithms-history__table-body-row-link">
+              <span>
+                <OkIcon />
+              </span>
+
+              <span>Подробно</span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
 
-    )
+  )
 }

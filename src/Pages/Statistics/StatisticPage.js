@@ -1,6 +1,5 @@
 import { useRef } from 'react'
-// import Graphic2 from './Graphic2'
-// import Graphic1 from './Graphic1'
+
 import G6 from './G6'
 import G5 from './G5'
 import G4 from './G4'

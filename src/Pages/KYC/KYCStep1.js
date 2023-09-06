@@ -37,18 +37,18 @@ export default function KYCPage(params) {
             </div>
 
             <div class="KYS-section__inputs-wrapper">
-                <h2 class="KYS-section__inputs-heading">Адрес Проживания</h2>
+                <h2 class="KYS-section__inputs-heading">Telegram</h2>
 
                 <div class="KYS-section__inputs-row">
                     <div class="form-container">
-                        <input required type="text" placeholder="Адрес" name="address" id="address" />
+                        <input required type="text" placeholder="Telegram" name="address" id="address" />
                     </div>
                 </div>
 
                 <div class="KYS-section__inputs-row">
-                    <div class="form-container">
+                    {/* <div class="form-container">
                         <input required type="text" placeholder="Индекс" name="zip-code" id="zip-code" />
-                    </div>
+                    </div> */}
 
                     <div class="form-container">
                         <input required type="text" placeholder="Страна" name="country" id="country" />
