@@ -1,26 +1,49 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { setToken, privateFetch, getToken, clearToken } from '../helpers'
 
-const REQUEST_USER_LOGIN = "REQUEST_USER_LOGIN"
-const REQUEST_USER_LOGOUT = "REQUEST_USER_LOGOUT"
-const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS"
-const LOGIN_USER_ERROR = "LOGIN_USER_ERROR"
-const CHECK_USER_AUTH_REQUEST = "CHECK_USER_AUTH_REQUEST"
-const CHECK_USER_AUTH_SUCCESS = "CHECK_USER_AUTH_SUCCESS"
-const CHECK_USER_AUTH_ERROR = "CHECK_USER_AUTH_ERROR"
-
 export const getUserData = createAsyncThunk(
-    'async/todos',
+    'async/getUserData',
     async function (param, options) {
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=15')
+            const response = await privateFetch('get_user_data/')
+            console.log('get user response :>> ', response);
 
             if (!response.ok) {
                 throw new Error('Wrong request')
             }
 
             const data = await response.json()
+            console.log('get user data :>> ', data);
+            return data
+        } catch (error) {
+            options.rejectWithValue(error.message)
+        }
+    }
+)
 
+export const registerNewUser = createAsyncThunk(
+    'async/registerNewUser',
+    async function (param, options) {
+        try {
+            // const response = await fetch(process.env.REACT_APP_API_URL + 'dashboard/register_user', {
+            const response = await fetch(process.env.REACT_APP_API_URL + 'register_user/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: param.username,
+                        email: param.email,
+                        password: param.password,
+                        // refID: param.refID,
+                    })
+            })
+            console.log('registerNewUser response :>> ', response);
+
+            if (!response.ok) {
+                throw new Error('Wrong request')
+            }
+
+            const data = await response.json()
+            console.log('registerNewUser data :>> ', data);
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -30,19 +53,19 @@ export const getUserData = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
     'async/loginUser',
-    async function (state, options) {
-        console.log('process.env :>> ', process.env);
-        const response = await fetch(process.env.REACT_APP_API_URL + '/auth/login', {
+    async function (data, options) {
+        const response = await fetch(process.env.REACT_APP_API_URL + 'login_user/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                username: 'kminchelle',
-                password: '0lelplR',
+                email: data.useLogin,
+                password: data.usePassword,
             })
         })
 
         if (!response.ok) {
             const errorData = await response.json();
+            console.log('errorData :>> ', errorData);
             throw new Error(errorData.message || 'Failed to log in');
         }
 
@@ -51,28 +74,7 @@ export const loginUser = createAsyncThunk(
         return json;
     }
 )
-// export const logoutUser = createAsyncThunk(
-//     'async/loginUser',
-//     async function (state, options) {
-//         // const response = await fetch('https://dummyjson.com/auth/login', {
-//         //     method: 'GET',
-//         //     headers: { 'Content-Type': 'application/json' },
-//         //     body: JSON.stringify({
-//         //         username: 'kminchelle',
-//         //         password: '0lelplR',
-//         //     })
-//         // })
 
-//         if (!response.ok) {
-//             const errorData = await response.json();
-//             throw new Error(errorData.message || 'Failed to log in');
-//         }
-
-//         const json = await response.json();
-
-//         return json;
-//     }
-// )
 
 export const editUserData = createAsyncThunk(
     'async/editUserData',
@@ -95,14 +97,23 @@ const todosSlice = createSlice({
         user: null,
         isAuth: false,
         fething: false,
+        registered: false,
         error: ''
     },
     reducers: {
         userLogout: (state, action) => {
-            console.log('userLogout :>> ', state);
+            state.user = null
             state.isAuth = false
+            state.fething = false
+            state.error = ''
 
             clearToken()
+        },
+        clearUserData: (state, action) => {
+            state.user = null
+            state.isAuth = false
+            state.fething = false
+            state.error = ''
         }
     },
     extraReducers: (builder) => {
@@ -111,10 +122,10 @@ const todosSlice = createSlice({
         })
         builder.addCase(getUserData.fulfilled, (state, action) => {
             state.fething = "fullfilled"
-            const deletedId = action.meta.arg
 
-            state.list = state.list.filter(todo => todo.id !== deletedId)
-            state.list = action.payload
+            state.isAuth = true
+            state.user = action.payload
+            state.error = ''
         })
         builder.addCase(getUserData.rejected, (state, action) => {
             state.fething = "rejected"
@@ -124,7 +135,6 @@ const todosSlice = createSlice({
         builder.addCase(loginUser.pending, (state, action) => {
             state.fething = "loading"
         })
-
         builder.addCase(loginUser.fulfilled, (state, action) => {
             state.fething = "fulfilled"
 
@@ -133,11 +143,23 @@ const todosSlice = createSlice({
 
                 state.isAuth = true
                 state.user = action.payload
+                state.error = ''
             }
         })
-
         builder.addCase(loginUser.rejected, (state, action) => {
             state.fething = "rejected"
+            state.error = action.error.message || action.error.stack
+        })
+        builder.addCase(registerNewUser.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(registerNewUser.fulfilled, (state, action) => {
+            state.fething = "fulfilled"
+            state.registered = true
+        })
+        builder.addCase(registerNewUser.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.registered = false
             state.error = action.error.message || action.error.stack
         })
         builder.addCase(editUserData.pending, (state, action) => {
@@ -155,6 +177,6 @@ const todosSlice = createSlice({
     }
 })
 
-export const { userLogout } = todosSlice.actions
+export const { userLogout, clearUserData } = todosSlice.actions
 
 export default todosSlice.reducer;

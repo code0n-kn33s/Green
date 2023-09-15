@@ -1,8 +1,53 @@
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { AuthLogo } from './AuthLogo';
 import { BackButton } from '../../Elements/Library';
+import { registerNewUser } from './../../toolkitReducers';
+import { ReactComponent as IconYeas } from '../../assets/icons/PassIcon.svg'
 
-export default function RegisterPage(params) {
+
+export default function RegisterPage() {
+    const [showPass, setShowPass] = useState(false)
+    const [isError, setisError] = useState(false)
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        refID: '',
+        acceptTerms: false,
+    });
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        isRegistered && navigate('/login')
+    }, [])
+
+    const isRegistered = useSelector((state) => state.auth.registered)
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        const newValue = type === 'checkbox' ? checked : value;
+        setisError(false)
+        setFormData({
+            ...formData,
+            [name]: newValue,
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log('isRegistered', isRegistered);
+        if(formData.password === formData.confirmPassword) {
+            dispatch(registerNewUser(formData))
+        } else {
+            setisError(true)
+            console.log('isError :>> ', isError);
+        }
+    };
 
     return (
         <div className="register-page page">
@@ -15,39 +60,69 @@ export default function RegisterPage(params) {
                     <p className="register__description">Заполните пожалуйста информацию ниже:</p>
                 </div>
 
-                <form className="form register__form" action="/action_page.php" method="post">
+                <form className="form register__form" onSubmit={handleSubmit}>
                     <div className="form__main-content">
                         <div className="register__side">
                             <div className="form-container">
-                                <label htmlFor="full-name">Имя пользователя</label>
-                                <input required type="text" placeholder="Имя пользователя" name="full-name" id="full-name" />
+                                <label htmlFor="username">Имя пользователя</label>
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Имя пользователя"
+                                    name="username"
+                                    id="username"
+                                    value={formData.username}
+                                    onChange={handleChange}
+                                />
                             </div>
 
                             <div className="form-container password">
                                 <label htmlFor="password">Пароль</label>
 
-                                <div className="password__container">
-                                    <button type="button" className="password__eye">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 12C9 13.642 10.358 15 12 15C13.641 15 15 13.642 15 12C15 10.359 13.641 9 12 9C10.358 9 9 10.359 9 12ZM2.10543 11.684L2 12L2.10444 12.316C2.12632 12.383 4.408 19 12 19C19.592 19 21.8737 12.383 21.8946 12.316L22 12L21.8956 11.684C21.8737 11.617 19.592 5 12 5C4.408 5 2.12632 11.617 2.10543 11.684ZM4.11657 12C4.61786 10.842 6.68072 7 12 7C17.3223 7 19.3841 10.846 19.8834 12C19.3821 13.158 17.3193 17 12 17C6.67774 17 4.61587 13.154 4.11657 12Z" />
-                                        </svg>
+                                <div className="password__container" >
+                                    <button type="button" className="password__eye" onClick={() => setShowPass(!showPass)}>
+                                        <IconYeas />
+
                                     </button>
 
-                                    <input required type="password" placeholder="Password" name="password" id="password" />
-                                    <span aria-label="valid-email" className="form__error-message">Error message</span>
+                                    <input
+                                        required
+                                        type={showPass ? "text" : "password"}
+                                        placeholder="Password"
+                                        name="password"
+                                        id="password"
+                                        value={formData.password}
+                                        onChange={handleChange}
+                                    />
+                                    {isError ? <span aria-label="valid-email" className={`${isError && "active"}  password-error form__error-message`} >Passwords must be the same</span> : null}
                                 </div>
                             </div>
 
                             <div className="form-container">
                                 <label htmlFor="ref-id">Ref ID</label>
-                                <input placeholder="7809432" type="text" name="ref-id" id="ref-id" />
+                                <input
+                                    placeholder="7809432"
+                                    type="text"
+                                    name="refID"
+                                    id="ref-id"
+                                    value={formData.refID}
+                                    onChange={handleChange}
+                                />
                             </div>
                         </div>
 
                         <div className="register__side">
                             <div className="form-container js-form-parent">
                                 <label htmlFor="email">Email адрес</label>
-                                <input required type="email" placeholder="Email" name="email" id="email" />
+                                <input
+                                    required
+                                    type="email"
+                                    placeholder="Email"
+                                    name="email"
+                                    id="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
                                 <span aria-label="valid-email" className="form__error-message">Error message</span>
                             </div>
 
@@ -55,32 +130,47 @@ export default function RegisterPage(params) {
                                 <label htmlFor="confirm-password">Повторить пароль</label>
 
                                 <div className="password__container">
-                                    <button type="button" className="password__eye">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 12C9 13.642 10.358 15 12 15C13.641 15 15 13.642 15 12C15 10.359 13.641 9 12 9C10.358 9 9 10.359 9 12ZM2.10543 11.684L2 12L2.10444 12.316C2.12632 12.383 4.408 19 12 19C19.592 19 21.8737 12.383 21.8946 12.316L22 12L21.8956 11.684C21.8737 11.617 19.592 5 12 5C4.408 5 2.12632 11.617 2.10543 11.684ZM4.11657 12C4.61786 10.842 6.68072 7 12 7C17.3223 7 19.3841 10.846 19.8834 12C19.3821 13.158 17.3193 17 12 17C6.67774 17 4.61587 13.154 4.11657 12Z" />
-                                        </svg>
-                                    </button>
+                                    {/* SVG иконка глаза */}
+                                    {/* <button type="button" className="password__eye" onClick={() => setShowPass(!showPass)}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </svg>
+                  </button> */}
 
-                                    <input required type="password" placeholder="Password" name="confirm-password" id="confirm-password" />
+                                    <input
+                                        required
+                                        type={showPass ? "text" : "password"}
+                                        placeholder="Password"
+                                        name="confirmPassword"
+                                        id="confirm-password"
+                                        value={formData.confirmPassword}
+                                        onChange={handleChange}
+                                    />
                                     <span aria-label="valid-email" className="form__error-message">Error message</span>
                                 </div>
                             </div>
 
+                            <div className="form-container--checkbox checkbox">
+                                <input
+                                    required
+                                    className="form__custom-checkbox"
+                                    type="checkbox"
+                                    name="acceptTerms"
+                                    id="accept"
+                                    checked={formData.acceptTerms}
+                                    onChange={handleChange}
+                                />
+                                <label htmlFor="accept">
+                                    Я согласен с условиями пользования платформой
+                                </label>
+                            </div>
+
                             <button type="submit" className="js-send-btn btn">
-                                Зарегистрироватся
+                                Зарегистрироваться
                             </button>
                         </div>
-                    </div>
-
-                    <div className="form-container--checkbox checkbox">
-                        <input required className="form__custom-checkbox" type="checkbox" name="accept" id="accept" />
-
-                        <label htmlFor="accept">
-                            Я согласен с условиями пользования платформой
-                        </label>
                     </div>
                 </form>
             </section>
         </div>
-    )
+    );
 }

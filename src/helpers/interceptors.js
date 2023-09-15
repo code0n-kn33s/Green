@@ -32,10 +32,10 @@ export function privateFetch (url, options) {
         'Content-Type': 'application/json',
     };
 
-    if (getToken) {
-        headers.Authorization = `Bearer ${getToken}`;
+    if (getToken()) {
+        headers.Authorization = `Token ${getToken()}`;
 
-        return fetch(url, {
+        return fetch(process.env.REACT_APP_API_URL + url, {
             ...options,
             headers,
         });

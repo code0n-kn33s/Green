@@ -1,4 +1,9 @@
 import { useState, useRef } from 'react'
+
+import { setSum } from '../../toolkitReducers/actions.slice'
+import { useSelector, useDispatch } from 'react-redux'
+
+
 export default function CustomSelect(params) {
     const { currencies, wallet_addresses, switchDone } = params
 
@@ -6,6 +11,7 @@ export default function CustomSelect(params) {
     const [activeMenu, setActiveMenu] = useState(0)
     const [isCopied, setCopied] = useState(false)
 
+    const dispatch = useDispatch()
     const inputRef = useRef(null)
 
     const copyText = () => {
@@ -19,6 +25,14 @@ export default function CustomSelect(params) {
         setActiveMenu(index)
         setOpenMenu(false)
     }
+
+    const playNext = () => {
+        if('done'){
+            switchDone(true)
+            dispatch(setSum({sum: 123, type: 'bitcoin'}))
+        }
+    }
+
     return (
         <>
             <custom-select class="custom-select">
@@ -110,7 +124,9 @@ export default function CustomSelect(params) {
                         </p>
                     </div>
 
-                    <button className='modal-dialog__invoice-btn btn btn--primary btn--large' onClick={() => switchDone(true)}> Далее</button>
+                    <button className='modal-dialog__invoice-btn btn btn--primary btn--large' onClick={
+                        playNext
+                        }> Далее</button>
                     {/* <%= button_tag t(:next), type: :submit, class: 'modal-dialog__invoice-btn btn btn--primary btn--large', data: { 'close-popup': true } %> */}
                 </div>
             </div>

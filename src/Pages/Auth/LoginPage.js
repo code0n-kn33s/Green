@@ -3,17 +3,24 @@ import { ReactComponent as PassIcon } from '../../assets/icons/PassIcon.svg'
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLogo } from './AuthLogo';
 import { useDispatch, useSelector } from 'react-redux';
-import {loginUser, userLogout} from './../../toolkitReducers';
+import { loginUser, getUserData, clearUserData } from './../../toolkitReducers';
+import { getToken } from "./../../helpers";
 
 export default function Login(props) {
     const dispatch = useDispatch()
     const [useLogin, setLogin] = useState('')
     const [usePassword, setPassword] = useState('')
     const [visionPassword, setVisionPassword] = useState(false)
-    const isLoggedIn = useSelector(state =>  state.auth.isAuth)
+    const isLoggedIn = useSelector(state => state.auth.isAuth)
+    const errorText = useSelector(state => state.auth.error)
     const navigate = useNavigate();
 
+
     useEffect(() => {
+        if (getToken() !== null) {
+            dispatch(getUserData())
+        }
+
         isLoggedIn && navigate('/profile')
     })
 
@@ -22,8 +29,7 @@ export default function Login(props) {
     }
 
     const submitAuth = () => {
-        console.log('object :>> ', useLogin, usePassword);
-        const data = {useLogin, usePassword}
+        const data = { useLogin, usePassword }
         dispatch(loginUser(data))
     }
 
@@ -33,12 +39,16 @@ export default function Login(props) {
             <section className="login small-wrapper">
                 <div className="login__side">
                     <h1 className="login__heading h3">Логин</h1>
-                    <p className="login__description">Вход в аккаунт</p>
+                    <p className="login__description">Вход в аккаунт     {errorText && <span aria-label="valid-email" className="form__error-message">- {errorText}</span>}</p>
+
 
                     <form className="form-container" >
                         <div className="form-container js-form-parent">
                             <label htmlFor="email">Email адрес</label>
-                            <input required type="text" value={useLogin} onChange={(e) => setLogin(e.target.value)} placeholder="Email" name="email" id="email" />
+                            <input required type="text" value={useLogin} onChange={(e) => {
+                                setLogin(e.target.value)
+                                dispatch(clearUserData())
+                            }} placeholder="Email" name="email" id="email" />
                             <span aria-label="valid-email" className="form__error-message">Error message</span>
                         </div>
 
@@ -49,8 +59,10 @@ export default function Login(props) {
                                 <button onClick={showPass} type="button" className="password__eye">
                                     <PassIcon />
                                 </button>
-
-                                <input required type={!visionPassword ? 'password' : 'text'} value={usePassword} onChange={(e) => setPassword(e.target.value)} placeholder="Password" name="password" id="password" />
+                                <input required type={!visionPassword ? 'password' : 'text'} value={usePassword} onChange={(e) => {
+                                    setPassword(e.target.value)
+                                    dispatch(clearUserData())
+                                }} placeholder="Password" name="password" id="password" />
                                 <span aria-label="valid-email" className="form__error-message">Error message</span>
                             </div>
                         </div>
@@ -63,6 +75,7 @@ export default function Login(props) {
                             <Link className="link" to="/restore">Забыли пароль?</Link>
                         </div>
                     </form>
+
                 </div>
 
                 <div className="login__side">
