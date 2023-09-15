@@ -23,7 +23,7 @@ export const getUserWallet = createAsyncThunk(
     'async/getUserWallet',
     async function (param, options) {
         try {
-            const response = await privateFetch('get_wallet/')
+            const response = await privateFetch('get_wallet/?type=' + param.toUpperCase())
 
             if (!response.ok) {
                 throw new Error('Wrong request')
@@ -98,14 +98,14 @@ export const setUserRisks = createAsyncThunk(
 export const setSum = createAsyncThunk(
     'async/setSum',
     async function (param, options) {
+        console.log('param :>> ', param);
         try {
             const response = await privateFetch('set_sum/', {
                 method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         sum: param.sum,
-                        // type: param.type,
-                        type: 'btc',
+                        type: param.typeSum,
             })})
 
             if (!response.ok) {
@@ -143,8 +143,13 @@ export const setWithdrawal = createAsyncThunk(
 const todosSlice = createSlice({
     name: 'todos',
     initialState: {
+        currencies: [
+            { value: 'eth', name: "Ethereum", index: 0 },
+            { value: 'btc', name: "Bitcoin", index: 1 },
+            { value: 'usdt', name: "USDT", index: 2 }
+        ],
         sessions: null,
-        wallet: null,
+        wallet: '',
         risks: null,
         statistics: null,
         isAuth: false,
@@ -253,7 +258,8 @@ const todosSlice = createSlice({
         builder.addCase(getUserWallet.fulfilled, (state, action) => {
             state.fething = "fullfilled"
 
-            state.wallet = action.payload
+
+            if(action.payload) state.wallet = action.payload
             state.error = ''
         })
         builder.addCase(getUserWallet.rejected, (state, action) => {

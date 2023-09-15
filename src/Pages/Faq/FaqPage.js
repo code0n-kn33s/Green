@@ -1,4 +1,32 @@
+import { useEffect } from 'react'
+import {
+  getUserSessions,
+  getUserWallet,
+  getRisks,
+  getGlobalStatistics,
+} from '../../toolkitReducers/actions.slice'
+import { useSelector, useDispatch } from 'react-redux'
+
 export default function FaqPage(params) {
+  const dispatch = useDispatch()
+  // const state = useSelector(state => state.state)
+  const sessions = useSelector(state => state.state.sessions)
+  const wallet = useSelector(state => state.state.wallet)
+  const risks = useSelector(state => state.state.risks)
+  const statistics = useSelector(state => state.state.statistics)
+
+  useEffect(() => {
+    console.log('risks :>> ', risks);
+    console.log('statistics :>> ', statistics);
+  }, [ ])
+
+
+  const clickFaq = () => {
+    dispatch(getRisks())
+    dispatch(getGlobalStatistics())
+  }
+
+
     return (
         <div className="page__sections-wrapper medium-wrapper">
         <section className="details-section" data-limit="2000">
@@ -118,7 +146,7 @@ export default function FaqPage(params) {
               </div>
 
               <div className="details-section__footer-column">
-                <button type="submit" className="details-section__form-submit-btn btn btn--primary">
+                <button type="button" onClick={clickFaq} className="details-section__form-submit-btn btn btn--primary">
                   Применить
                 </button>
               </div>
@@ -244,7 +272,12 @@ export default function FaqPage(params) {
               <span>На странице :</span>
 
               <custom-select className="custom-select">
-                <button className="custom-select__btn" tabIndex="0" aria-expanded="false" aria-controls="dropdown-2">
+                <button
+                  className="custom-select__btn"
+                  tabIndex="0"
+                  aria-expanded="false"
+                  aria-controls="dropdown-2"
+                >
                   <span data-button-label className="custom-select__btn-text">10</span>
 
                   <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="14" height="9" viewBox="0 0 14 9" fill="none">

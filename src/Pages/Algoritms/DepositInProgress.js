@@ -1,12 +1,15 @@
 import { useState, useRef } from 'react'
 
-import { setSum } from '../../toolkitReducers/actions.slice'
 import { useSelector, useDispatch } from 'react-redux'
+import { setSum, getUserWallet } from '../../toolkitReducers/actions.slice'
 
 
 export default function CustomSelect(params) {
-    const { currencies, wallet_addresses, switchDone } = params
+    const { currencies, wallet } = useSelector(state => state.state)
+    const { promotion, switchDone } = params
 
+    const [isSmallerSum, showSmallerSum] = useState(false)
+    const [isSum, setIsSum] = useState('')
     const [isOpenMenu, setOpenMenu] = useState(false)
     const [activeMenu, setActiveMenu] = useState(0)
     const [isCopied, setCopied] = useState(false)
@@ -21,15 +24,33 @@ export default function CustomSelect(params) {
         setTimeout(() => setCopied(false), 500)
     }
 
+    const sumChange = (e) => {
+        showSmallerSum(false)
+        setIsSum(e.target.value)
+    }
+
     const chooseMenuItem = (index) => {
         setActiveMenu(index)
         setOpenMenu(false)
+        showSmallerSum(false)
+
+        dispatch(getUserWallet(currencies[index].value))
     }
 
     const playNext = () => {
-        if('done'){
+        if (Number(isSum) < Number(promotion)) {
+            return showSmallerSum(true)
+        }
+
+        if ('done') {
             switchDone(true)
-            dispatch(setSum({sum: 123, type: 'bitcoin'}))
+
+            const obj = {
+                sum: isSum,
+                typeSum: currencies[activeMenu].value
+            }
+            dispatch(setSum(obj))
+
         }
     }
 
@@ -41,7 +62,7 @@ export default function CustomSelect(params) {
                         <path d="M0.721313 1.42859L6.86885 7.50002L13.0164 1.42859" stroke="#FFF831" color="currentColor" stroke-width="1.5" />
                     </svg>
                     <span data-button-label class="custom-select__btn-text">
-                        {currencies[activeMenu].value}
+                        {currencies[activeMenu].name}
                     </span>
                 </button>
 
@@ -62,7 +83,7 @@ export default function CustomSelect(params) {
                                     aria-controls={`tabpanel-replenish-deposit-${item.index}`}
                                     onClick={() => chooseMenuItem(item.index)}
                                     aria-selected="true">
-                                    {item.value}
+                                    {item.name}
                                 </button>
                             </li>
                         )
@@ -75,6 +96,17 @@ export default function CustomSelect(params) {
                     value="Ethereum"
                 />
             </custom-select>
+            <br />
+            <div class="form-container rel">
+
+                <input required onChange={sumChange} value={isSum} min={500} type="number" placeholder="Сумма" name="sum" />
+                {isSmallerSum && <div class="modal-dialog__invoice-description-wrapper">
+                    <p class="modal-dialog__invoice-description">
+                        Внимание!<br /> сумма должна быть больше {promotion}USD
+                    </p>
+                </div>}
+            </div>
+
             <div class="tabs__list"
                 id="tabpanel-replenish-deposit-1"
                 role="tabpanel"
@@ -85,6 +117,7 @@ export default function CustomSelect(params) {
                     <p class="modal-dialog__invoice-heading">
                         Адрес
                     </p>
+
 
                     <copy-past class="form-container rel">
                         <label onClick={copyText} aria-roledescription="button" for="payment-address-eth">
@@ -98,12 +131,12 @@ export default function CustomSelect(params) {
                             id="payment-address-eth"
                             readonly
                             ref={inputRef}
-                            value={wallet_addresses.first_address}
+                            value={wallet === '' ? wallet : wallet.wallet_address}
                         />
                         <div
                             // data-message
                             class={`form-container__successful-message-wrapper`}
-                            aria-hidden={isCopied ? "false": "true"}
+                            aria-hidden={isCopied ? "false" : "true"}
                         >
 
                             <span className="text-copied">
@@ -126,8 +159,8 @@ export default function CustomSelect(params) {
 
                     <button className='modal-dialog__invoice-btn btn btn--primary btn--large' onClick={
                         playNext
-                        }> Далее</button>
-                    {/* <%= button_tag t(:next), type: :submit, class: 'modal-dialog__invoice-btn btn btn--primary btn--large', data: { 'close-popup': true } %> */}
+                    }> Далее</button>
+
                 </div>
             </div>
         </>

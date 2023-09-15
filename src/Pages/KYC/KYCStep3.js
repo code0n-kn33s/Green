@@ -1,36 +1,92 @@
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ReactComponent as Icon1 } from './Icon1.svg'
+import { ReactComponent as Icon2 } from './Icon2.svg'
+
 export default function KYCPage(params) {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const navigate = useNavigate()
+  const handleFileChange = (event) => {
+    const file = event.target.files[0]; // Получаем первый выбранный файл
+
+    if (file) {
+      setSelectedFile(URL.createObjectURL(file)); // Создаем URL для выбранного файла
+    }
+  };
+
+  const handleUpload = () => {
+    if (selectedFile) {
+      // Здесь вы можете отправить файл на сервер или выполнить другие действия с ним
+      console.log('Загружен файл:', selectedFile.name);
+    } else {
+      console.log('Файл не выбран');
+    }
+  };
+
+  const clickDone = () => {
+    console.log('params :>> ', params);
+
+    
+  }
+
+  const clickForward = () => {
+    navigate('/profile/kyc/step1');
+  }
+
   return (
-    <div class="form-container form-container--image rel">
-      <div class="form-set-image"></div>
-
-      <div class="form-container--placeholder">
-        <div class="form-container--placeholder-icon-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M76.125 19.25C76.125 18.7668 75.7332 18.375 75.25 18.375H8.75C8.26675 18.375 7.875 18.7667 7.875 19.25V22.3125C7.875 23.7622 6.69974 24.9375 5.25 24.9375C3.80025 24.9375 2.625 23.7622 2.625 22.3125V19.25C2.625 15.8673 5.36726 13.125 8.75 13.125H75.25C78.6327 13.125 81.375 15.8673 81.375 19.25V50.5312C81.375 51.981 80.1997 53.1562 78.75 53.1562C77.3003 53.1562 76.125 51.981 76.125 50.5312V19.25ZM78.75 56.4375C80.1997 56.4375 81.375 57.6128 81.375 59.0625V64.75C81.375 68.1327 78.6327 70.875 75.25 70.875H8.75C5.36725 70.875 2.625 68.1327 2.625 64.75V42C2.625 40.5502 3.80025 39.375 5.25 39.375C6.69974 39.375 7.875 40.5502 7.875 42V64.75C7.875 65.2332 8.26675 65.625 8.75 65.625H75.25C75.7332 65.625 76.125 65.2332 76.125 64.75V59.0625C76.125 57.6128 77.3003 56.4375 78.75 56.4375ZM5.25 28C6.69974 28 7.875 29.1752 7.875 30.625V33.25C7.875 34.6997 6.69974 35.875 5.25 35.875C3.80025 35.875 2.625 34.6997 2.625 33.25V30.625C2.625 29.1752 3.80025 28 5.25 28Z" fill="#FFF831" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.7073 53.0703C17.7978 54.4182 17.5 55.6256 17.5 56H38.5C38.5 55.6256 38.2022 54.4182 36.2927 53.0703C34.4767 51.7884 31.6214 50.75 28 50.75C24.3786 50.75 21.5233 51.7884 19.7073 53.0703ZM28 45.5C18.8125 45.5 12.25 50.75 12.25 56V57.75C12.25 59.683 13.817 61.25 15.75 61.25H40.25C42.183 61.25 43.75 59.683 43.75 57.75V56C43.75 50.75 37.1875 45.5 28 45.5Z" fill="#FFF831" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M46.375 29.75C46.375 28.3003 47.5503 27.125 49 27.125H58.5359C59.9856 27.125 61.1609 28.3003 61.1609 29.75C61.1609 31.1997 59.9856 32.375 58.5359 32.375H49C47.5503 32.375 46.375 31.1997 46.375 29.75ZM63.3079 29.75C63.3079 28.3003 64.4831 27.125 65.9329 27.125H68.25C69.6997 27.125 70.875 28.3003 70.875 29.75C70.875 31.1997 69.6997 32.375 68.25 32.375H65.9329C64.4831 32.375 63.3079 31.1997 63.3079 29.75Z" fill="#FFF831" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M46.375 38.5C46.375 37.0503 47.5503 35.875 49 35.875H64.75C66.1997 35.875 67.375 37.0503 67.375 38.5C67.375 39.9497 66.1997 41.125 64.75 41.125H49C47.5503 41.125 46.375 39.9497 46.375 38.5Z" fill="#FFF831" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M46.375 47.25C46.375 45.8003 47.5503 44.625 49 44.625H59.5C60.9497 44.625 62.125 45.8003 62.125 47.25C62.125 48.6997 60.9497 49.875 59.5 49.875H49C47.5503 49.875 46.375 48.6997 46.375 47.25Z" fill="#FFF831" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M28 38.5C29.933 38.5 31.5 36.933 31.5 35C31.5 33.067 29.933 31.5 28 31.5C26.067 31.5 24.5 33.067 24.5 35C24.5 36.933 26.067 38.5 28 38.5ZM28 43.75C32.8325 43.75 36.75 39.8325 36.75 35C36.75 30.1675 32.8325 26.25 28 26.25C23.1675 26.25 19.25 30.1675 19.25 35C19.25 39.8325 23.1675 43.75 28 43.75Z" fill="#FFF831" />
-          </svg>
-        </div>
-
-        <p class="form-container--placeholder-title">ID-Карта</p>
+    <div className="form-container form-container--image rel">
+      <div className="form-set-image">
+        {selectedFile && <img src={selectedFile} alt="Превью изображения" />}
       </div>
 
-      <input id="file-input-2" type="file" name="id-card" />
-      <label for="file-input-2" class="btn btn--secondary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
-          <path d="M13.3846 9.00004H10.6923C10.3949 9.00004 10.1538 9.2828 10.1538 9.63163C10.1538 9.98045 10.3949 10.2632 10.6923 10.2632H13.3846C13.682 10.2632 13.9231 10.546 13.9231 10.8948V17.1053C13.9231 17.4542 13.682 17.7369 13.3846 17.7369H2.61539C2.31799 17.7369 2.07691 17.4542 2.07691 17.1053V10.8948C2.07691 10.5459 2.31799 10.2632 2.61539 10.2632H4.30769C4.60508 10.2632 4.84616 9.98041 4.84616 9.63159C4.84616 9.28277 4.60508 9 4.30769 9H2.61539C1.72323 9 1 9.8483 1 10.8947V17.1053C1 18.1517 1.72323 19 2.61539 19H13.3846C14.2768 19 15 18.1517 15 17.1053V10.8948C15 9.84834 14.2768 9.00004 13.3846 9.00004Z" fill="#FFF831" stroke="#FFF831" stroke-width="0.4" />
-          <path d="M11.6694 4.40253L8.45515 1.18823C8.20413 0.937255 7.79717 0.937255 7.54615 1.18823L4.33182 4.40253C4.08517 4.65792 4.09225 5.06488 4.34764 5.31153C4.59677 5.55215 4.99172 5.55215 5.24085 5.31153L7.35782 3.19457V13.8571C7.35782 14.2122 7.64563 14.5 8.00069 14.5C8.35575 14.5 8.64356 14.2122 8.64356 13.8571V3.19461L10.7605 5.31157C11.0159 5.55822 11.4229 5.55113 11.6695 5.29575C11.9101 5.04661 11.9101 4.65167 11.6694 4.40253Z" fill="#FFF831" stroke="#FFF831" stroke-width="0.4" />
-        </svg>
+      <div className="form-container--placeholder">
+        <div className="form-container--placeholder-icon-wrapper">
+          <Icon1 />
+        </div>
 
-        <span>ЗАГРУЗИТЬ</span>
+        <p className="form-container--placeholder-title">ID-Карта</p>
+      </div>
+
+      <input
+        type="file"
+        id="file-input-2"
+        name="id-card"
+        onChange={handleFileChange}
+      />
+
+      <label htmlFor="file-input-2" className="btn btn--secondary">
+        <Icon2 />
+        <span onClick={handleUpload}>ЗАГРУЗИТЬ</span>
       </label>
 
-      <button type="button" class="file-input-reset hide btn--reset link">
+      <button type="button" className="file-input-reset hide btn--reset link">
         <span>Удалить файл</span>
       </button>
+      <div className='kiss-buttons-wrap'>
+        <button
+          className="KYS-section__next-page btn btn--primary"
+          onClick={clickForward}
+          role="tab"
+          type="button"
+          tabIndex="0"
+          aria-controls="tabpanel-2"
+          aria-selected="false"
+        >
+          Назад
+        </button>
+        <button
+          className="KYS-section__next-page btn btn--primary"
+          onClick={clickDone}
+          role="tab"
+          type="button"
+          tabIndex="0"
+          aria-controls="tabpanel-2"
+          aria-selected="false"
+        >
+          Готово
+        </button>
+
+      </div>
     </div>
-  )
+  );
 }

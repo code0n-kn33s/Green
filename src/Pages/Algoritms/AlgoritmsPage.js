@@ -1,15 +1,38 @@
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
 import Table from './Table'
 import ModalDialog from './Modal'
+import {
+  getUserSessions,
+  getUserWallet,
+  getRisks,
+  getGlobalStatistics,
+  setUserRisks,
+  setSum,
+} from '../../toolkitReducers/actions.slice'
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function Algoritms(params) {
   const [isModal, setModal] = useState(false)
-  const openModal = () => {
+  const [isPromotion, setPromotion] = useState(100)
+  const dispatch = useDispatch()
+
+  const wallet = useSelector(state => state.state.wallet)
+  const statistics = useSelector(state => state.state.statistics)
+  // const risks = useSelector(state => state.state.risks)
+
+  // useEffect(() => {
+  //   dispatch(getRisks())
+  // }, [dispatch])
+
+  const openModal = (prom) => {
+    setPromotion(prom)
     setModal(!isModal)
   }
+
   return (
     <div className="algorithms-page algorithms-page__body-wrapper page__body-wrapper">
-      <ModalDialog modalState={isModal} setModalState={openModal}/>
+      <ModalDialog modalState={isModal} setModalState={openModal} promotion={isPromotion}/>
       <div className="algorithms-page__sections-wrapper page__sections-wrapper medium-wrapper">
         <section className="algorithms-section">
           <h1 className="algorithms-section__heading h3">Алгоритмы</h1>
@@ -41,7 +64,7 @@ export default function Algoritms(params) {
                   aria-haspopup="true"
                   aria-expanded="false"
                   aria-label=""
-                  onClick={openModal}
+                  onClick={() => openModal(100)}
                 > Запустить AI</button>
               </modal-opener>
             </div>
@@ -71,7 +94,10 @@ export default function Algoritms(params) {
                   aria-controls="#replenishDeposit"
                   aria-haspopup="true"
                   aria-expanded="false"
-                  aria-label=""> Запустить AI</button>
+                  aria-label=""
+                  onClick={() => openModal(500)}
+
+                  > Запустить AI</button>
               </modal-opener>
             </div>
 
@@ -81,7 +107,7 @@ export default function Algoritms(params) {
         <section className="algorithms-history">
           <tabs-component className="tabs">
             <div className="tabs__wrapper rel">
-              <div className="tabs__navigation  hide-scrollbar" role="tablist" aria-labelledby="tablist">
+              {/* <div className="tabs__navigation  hide-scrollbar" role="tablist" aria-labelledby="tablist">
                 <button className="tabs__header-tab btn btn--primary"
                   role="tab"
                   type="button"
@@ -103,7 +129,7 @@ export default function Algoritms(params) {
                   <span className="world_1">Завершено</span>
                   <span className="world_2">0</span>
                 </button>
-              </div>
+              </div> */}
 
               <div className="tabs__accordions-wrapper">
                 <div className="tabs__list"

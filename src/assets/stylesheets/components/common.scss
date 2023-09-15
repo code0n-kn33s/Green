@@ -37,3 +37,14 @@
         display: block;
     }
 }
+
+.form-set-image {
+    img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+}
+
+.kiss-buttons-wrap {
+    display: flex;
+}

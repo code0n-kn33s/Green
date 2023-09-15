@@ -1,10 +1,20 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getUserSessions } from '../../toolkitReducers/actions.slice'
+
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function ProfilePage() {
   const [useTwoFa, setTwoFa] = useState(false)
   const [useBot, setBot] = useState(false)
+
+  const dispatch = useDispatch()
+  const sessions = useSelector(state => state.state.sessions)
+
   const inputRef = useRef()
+  useEffect(() => {
+    dispatch(getUserSessions())
+  }, [dispatch])
 
   return (
     <div className="profile-page__body-wrapper">
@@ -68,7 +78,7 @@ export default function ProfilePage() {
                         <path d="M7.91647 15H3.04176C1.9159 15 1 14.0187 1 12.8125V5.40234C1 4.19612 1.9159 3.21484 3.04176 3.21484H7.91647C9.04233 3.21484 9.95824 4.19612 9.95824 5.40234V12.8125C9.95824 14.0187 9.04233 15 7.91647 15ZM3.04176 4.30859C2.47888 4.30859 2.02088 4.79929 2.02088 5.40234V12.8125C2.02088 13.4156 2.47888 13.9062 3.04176 13.9062H7.91647C8.47935 13.9062 8.93736 13.4156 8.93736 12.8125V5.40234C8.93736 4.79929 8.47935 4.30859 7.91647 4.30859H3.04176ZM12 11.4453V3.1875C12 1.98128 11.0841 1 9.95824 1H4.29234C4.0104 1 3.7819 1.24481 3.7819 1.54688C3.7819 1.84894 4.0104 2.09375 4.29234 2.09375H9.95824C10.5211 2.09375 10.9791 2.58444 10.9791 3.1875V11.4453C10.9791 11.7474 11.2076 11.9922 11.4896 11.9922C11.7715 11.9922 12 11.7474 12 11.4453Z" fill="#FFF831" stroke="#FFF831" strokeWidth="0.5" />
                       </svg>
                     </label>
-                    <input className="copy-email" type="text" name="register-link" id="register-link" value="http://dashboard.arbitech7.com" readOnly ref={inputRef}/>
+                    <input className="copy-email" type="text" name="register-link" id="register-link" value="http://dashboard.arbitech7.com" readOnly ref={inputRef} />
                   </copy-past>
                 </div>
 
@@ -271,36 +281,16 @@ export default function ProfilePage() {
                 </th>
               </tr>
 
-              <tr className="sessions-section__table-body-row">
-                <td>19.08.20 19:36:10</td>
-                <td>178.128.248.131</td>
-                <td>Mac OS X</td>
-                <td>Chrome 8</td>
-              </tr>
-              <tr className="sessions-section__table-body-row">
-                <td>19.08.20 19:36:10</td>
-                <td>178.128.248.131</td>
-                <td>Mac OS X</td>
-                <td>Chrome 8</td>
-              </tr>
-              <tr className="sessions-section__table-body-row">
-                <td>19.08.20 19:36:10</td>
-                <td>178.128.248.131</td>
-                <td>Mac OS X</td>
-                <td>Chrome 8</td>
-              </tr>
-              <tr className="sessions-section__table-body-row">
-                <td>19.08.20 19:36:10</td>
-                <td>178.128.248.131</td>
-                <td>Mac OS X</td>
-                <td>Chrome 8</td>
-              </tr>
-              <tr className="sessions-section__table-body-row">
-                <td>19.08.20 19:36:10</td>
-                <td>178.128.248.131</td>
-                <td>Mac OS X</td>
-                <td>Chrome 8</td>
-              </tr>
+              {
+                sessions && sessions.map(session => (
+                  <tr className="sessions-section__table-body-row">
+                    <td>{session.last_login_date}</td>
+                    <td>{session.last_ip_address}</td>
+                    <td>{session.last_os}</td>
+                    <td>{session.last_browser}</td>
+                  </tr>
+                ))
+              }
             </table>
           </div>
 

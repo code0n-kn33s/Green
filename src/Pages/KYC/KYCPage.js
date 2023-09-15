@@ -21,7 +21,7 @@ export default function KYCPage(params) {
                                 <tabs-component class="tabs">
                                     <div class="tabs__wrapper">
                                         <div class="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
-                                            <Link to="step1" class="tabs__header-tab btn btn--primary"
+                                            <div class="tabs__header-tab btn btn--primary"
                                                 role="tab"
                                                 type="button"
                                                 tabindex="0"
@@ -30,9 +30,9 @@ export default function KYCPage(params) {
                                                 aria-selected={activeTab}>
                                                 <span class="world_1">Шаг</span>
                                                 <span class="world_2">1</span>
-                                            </Link>
+                                            </div>
 
-                                            <Link to="step2"  class="tabs__header-tab btn btn--primary"
+                                            <div   class="tabs__header-tab btn btn--primary"
                                                 role="tab"
                                                 type="button"
                                                 tabindex="-1"
@@ -41,7 +41,7 @@ export default function KYCPage(params) {
                                                 aria-selected={!activeTab}>
                                                 <span class="world_1">Шаг</span>
                                                 <span class="world_2">2</span>
-                                            </Link>
+                                            </div>
                                         </div>
 
                                         <Outlet />

@@ -12,8 +12,6 @@ export default function Main() {
   React.useEffect(() => {
     if(getToken() === null) {
       navigate('/login')
-    } else {
-      navigate('/profile')
     }
   },[])
 

@@ -1,78 +1,203 @@
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function KYCPage(params) {
-    const navigate = useNavigate()
-    const { tab } = params
+function KYCPage({ tab }) {
+  const navigate = useNavigate();
 
-    console.log('params :>> ', params);
-    return (
-        <div class="tabs__accordions-wrapper">
-        <div class="tabs__list"
-            id="tabpanel-1"
-            role="tabpanel"
-            tabindex="0"
-            aria-labelledby="tab-1">
-            <div class="KYS-section__inputs-wrapper">
-                <h2 class="KYS-section__inputs-heading">Общая Информация</h2>
+  // Состояние для хранения значений инпутов
+  const [formData, setFormData] = useState({
+    name: { value: '', required: true },
+    patronymic: { value: '', required: false },
+    surname: { value: '', required: false },
+    birthday: { value: '', required: true },
+    telegram: { value: '', required: true },
+    country: { value: '', required: true },
+    city: { value: '', required: false },
+  });
 
-                <div class="KYS-section__inputs-row">
-                    <div class="form-container">
-                        <input required type="text" placeholder="Имя" name="name" id="name" />
-                    </div>
+  // Состояние для хранения ошибок
+  const [errors, setErrors] = useState({
+    name: false,
+    patronymic: false,
+    surname: false,
+    birthday: false,
+    telegram: false,
+    country: false,
+    city: false,
+  });
 
-                    <div class="form-container">
-                        <input required type="text" placeholder="Отчество (При наличии)" name="patronymic" id="patronymic" />
-                    </div>
-                </div>
+  const validateForm = () => {
+    const newErrors = {};
 
-                <div class="KYS-section__inputs-row">
-                    <div class="form-container">
-                        <input required type="text" placeholder="Фамилия" name="surname" id="surname" />
-                    </div>
+    // Проверяем каждое поле на пустоту
+    for (const field in formData) {
+      const { value, required } = formData[field];
+      if (required && value.trim() === '') {
+        newErrors[field] = true;
+      } else {
+        newErrors[field] = false;
+      }
+    }
 
-                    <div class="form-container">
-                        <input required type="text" placeholder="Дата Рождения" name="birthday" id="birthday" />
-                    </div>
-                </div>
+    setErrors(newErrors);
+
+    // Проверяем, есть ли хотя бы одна ошибка
+    return Object.values(newErrors).every((error) => !error);
+  };
+
+  const goToStep2 = () => {
+    if (validateForm()) {
+      navigate('/profile/kyc/step2');
+      dispatch(setKissFields(formData))
+    }
+  };
+
+  // Обработчик изменения для инпутов
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: {
+        ...formData[name],
+        value: value,
+      },
+    });
+  };
+
+  return (
+    <div className="tabs__accordions-wrapper">
+      <div
+        className="tabs__list"
+        id="tabpanel-1"
+        role="tabpanel"
+        tabIndex="0"
+        aria-labelledby="tab-1"
+      >
+        <div className="KYS-section__inputs-wrapper">
+          <h2 className="KYS-section__inputs-heading">Общая Информация</h2>
+
+          <div className="KYS-section__inputs-row">
+            <div className="form-container">
+              <input
+                required={formData.name.required}
+                type="text"
+                placeholder="Имя *"
+                name="name"
+                id="name"
+                value={formData.name.value}
+                onChange={handleInputChange}
+                className={errors.name ? 'error' : ''}
+              />
+              {errors.name && <span className="error-message">Заполните поле</span>}
             </div>
 
-            <div class="KYS-section__inputs-wrapper">
-                <h2 class="KYS-section__inputs-heading">Telegram</h2>
+            <div className="form-container">
+              <input
+                type="text"
+                placeholder="Отчество (При наличии)"
+                name="patronymic"
+                id="patronymic"
+                value={formData.patronymic.value}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
 
-                <div class="KYS-section__inputs-row">
-                    <div class="form-container">
-                        <input required type="text" placeholder="Telegram" name="address" id="address" />
-                    </div>
-                </div>
-
-                <div class="KYS-section__inputs-row">
-                    {/* <div class="form-container">
-                        <input required type="text" placeholder="Индекс" name="zip-code" id="zip-code" />
-                    </div> */}
-
-                    <div class="form-container">
-                        <input required type="text" placeholder="Страна" name="country" id="country" />
-                    </div>
-
-                    <div class="form-container">
-                        <input required type="text" placeholder="Город" name="city" id="city" />
-                    </div>
-                </div>
+          <div className="KYS-section__inputs-row">
+            <div className="form-container">
+              <input
+                required={formData.surname.required}
+                type="text"
+                placeholder="Фамилия"
+                name="surname"
+                id="surname"
+                value={formData.surname.value}
+                onChange={handleInputChange}
+                className={errors.surname ? 'error' : ''}
+              />
+              {errors.surname && <span className="error-message">Заполните поле</span>}
             </div>
 
-            <button class="KYS-section__next-page btn btn--primary"
-                // onclick="if(window.submitForm()) document.getElementById('tab-2').click();"
-                onClick={() => navigate('/profile/kyc/step2')}
-                role="tab"
-                type="button"
-                tabindex="0"
-                aria-controls="tabpanel-2"
-                aria-selected="false">
-                Далее
-            </button>
+            <div className="form-container">
+              <input
+                required={formData.birthday.required}
+                type="text"
+                placeholder="Дата Рождения *"
+                name="birthday"
+                id="birthday"
+                value={formData.birthday.value}
+                onChange={handleInputChange}
+                className={errors.birthday ? 'error' : ''}
+              />
+              {errors.birthday && <span className="error-message">Заполните поле</span>}
+            </div>
+          </div>
         </div>
 
+        <div className="KYS-section__inputs-wrapper">
+          <h2 className="KYS-section__inputs-heading">Контактная информация</h2>
 
+          <div className="KYS-section__inputs-row">
+            <div className="form-container">
+              <input
+                required={formData.telegram.required}
+                type="text"
+                placeholder="Telegram *"
+                name="telegram"
+                id="telegram"
+                value={formData.telegram.value}
+                onChange={handleInputChange}
+                className={errors.telegram ? 'error' : ''}
+              />
+              {errors.telegram && <span className="error-message">Заполните поле</span>}
+            </div>
+          </div>
+
+          <div className="KYS-section__inputs-row">
+            <div className="form-container">
+              <input
+                required={formData.country.required}
+                type="text"
+                placeholder="Страна *"
+                name="country"
+                id="country"
+                value={formData.country.value}
+                onChange={handleInputChange}
+                className={errors.country ? 'error' : ''}
+              />
+              {errors.country && <span className="error-message">Заполните поле</span>}
+            </div>
+
+            <div className="form-container">
+              <input
+                required={formData.city.required}
+                type="text"
+                placeholder="Город"
+                name="city"
+                id="city"
+                value={formData.city.value}
+                onChange={handleInputChange}
+                className={errors.city ? 'error' : ''}
+              />
+              {errors.city && <span className="error-message">Заполните поле</span>}
+            </div>
+          </div>
+        </div>
+
+        <button
+          className="KYS-section__next-page btn btn--primary"
+          onClick={goToStep2}
+          role="tab"
+          type="button"
+          tabIndex="0"
+          aria-controls="tabpanel-2"
+          aria-selected="false"
+        >
+          Далее
+        </button>
+      </div>
     </div>
-    )
+  );
 }
+
+export default KYCPage;

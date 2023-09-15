@@ -3,7 +3,7 @@ import DepositWrap from './DepositWrap'
 import {useState} from 'react'
 
 export default function Modal(params) {
-    const { modalState, setModalState } = params;
+    const { modalState, setModalState, promotion } = params;
     const [isDone, setDone] = useState(false)
 
     const switchDone = (bool) => {
@@ -29,6 +29,7 @@ export default function Modal(params) {
                         isDone={isDone}
                         setDone={setDone}
                         switchDone={switchDone}
+                        promotion={promotion}
                         setModalState={setModalState} />
 
                 </div>
