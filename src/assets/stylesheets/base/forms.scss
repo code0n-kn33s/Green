@@ -436,9 +436,11 @@
 			font-size: $font-size-9;
 			font-weight: 500;
 			line-height: 1;
+			right: -6px;
+
 
 			&:after {
-				content: "";
+				// content: "";
 				position: absolute;
 				top: calc(100% + 2px);
 				height: 6px;

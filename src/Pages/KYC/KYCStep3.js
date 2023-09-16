@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { clearKissFields, setKiss } from '../../toolkitReducers/actions.slice'
+
+
 import { ReactComponent as Icon1 } from './Icon1.svg'
 import { ReactComponent as Icon2 } from './Icon2.svg'
 
 export default function KYCPage(params) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const { kissFields } = useSelector(state => state.state)
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   const handleFileChange = (event) => {
     const file = event.target.files[0]; // Получаем первый выбранный файл
 
     if (file) {
-      setSelectedFile(URL.createObjectURL(file)); // Создаем URL для выбранного файла
+      // setSelectedFile(URL.createObjectURL(file)); // Создаем URL для выбранного файла
+      setSelectedFile({ selectedFile: file });
+
     }
   };
 
@@ -22,14 +30,30 @@ export default function KYCPage(params) {
       console.log('Файл не выбран');
     }
   };
-
+  const clickShow = () => {
+    console.log('selectedFile :>> ', selectedFile);
+  }
   const clickDone = () => {
-    console.log('params :>> ', params);
+    const margedKissFields = {
+      name: kissFields.name.value,
+      second_name: kissFields.surname.value,
+      third_name: kissFields.patronymic.value,
+      birth_date: kissFields.birthday.value,
+      city: kissFields.city.value,
+      country: kissFields.country.value,
+      telegram: kissFields.telegram.value, //nety
+      document_image: selectedFile
+    }
+    // user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    // post_code = models.CharField(max_length=20)
+    // address = models.CharField(max_length=200)
 
-    
+    dispatch(setKiss(margedKissFields))
+
   }
 
   const clickForward = () => {
+    dispatch(clearKissFields())
     navigate('/profile/kyc/step1');
   }
 
@@ -84,6 +108,17 @@ export default function KYCPage(params) {
           aria-selected="false"
         >
           Готово
+        </button>
+        <button
+          className="KYS-section__next-page btn btn--primary"
+          onClick={clickShow}
+          role="tab"
+          type="button"
+          tabIndex="0"
+          aria-controls="tabpanel-2"
+          aria-selected="false"
+        >
+          Show
         </button>
 
       </div>

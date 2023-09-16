@@ -40,7 +40,7 @@ export default function Table(params) {
           <th>
             <div className="algorithms-history__table-td-wrapper">
               <span>
-                Пользователь
+                Сумма прибыли
               </span>
             </div>
           </th>
@@ -70,8 +70,8 @@ export default function Table(params) {
           risks?.map(risk => (
             <tr className="algorithms-history__table-body-row">
             <td>{risk.date}</td>
-            <td>{risk.profit}</td>
-            <td>{risk.risk}</td>
+            <td>{risk.profit}USD</td>
+            <td>{risk.risk}USD</td>
             <td>{risk.user}</td>
             {/* <td>
               <a href="#" className="link algorithms-history__table-body-row-link">

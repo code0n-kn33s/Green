@@ -169,10 +169,10 @@
         }
 
         &:not(.range__list-item:first-child) {
-          padding-left: 20%;
+
 
           @include media-query($extra-small) {
-            padding-left: 17%;
+
           }
 
           &:after {
@@ -181,7 +181,6 @@
         }
 
         &:last-child {
-          padding-left: 18%!important;
         }
       }
 

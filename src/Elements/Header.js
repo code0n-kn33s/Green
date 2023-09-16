@@ -29,7 +29,8 @@ export default function Header() {
         <div className="main-header__icons">
           <NavLink to="/" className="main-header__icons-messages main-header-icon btn rel">
 
-            <span className="main-header__icons-messages-bubble">11</span>
+            {/* Звоночек */}
+            {/* <span className="main-header__icons-messages-bubble">11</span> */}
 
             <BellIcon />
           </NavLink>

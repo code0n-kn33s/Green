@@ -66,25 +66,29 @@ export const data1 = {
         },
     ],
 };
-const data = {
-
-    labels: ["01-02", "01-03", "01-04", "01-05", "01-06", "01-07", "01-08"],
-    datasets: [
-        {
-            label: 'Прибыль платформы от сделок',
-            data: [10, 20, -30, 40, 50, 60, 70],
-            borderColor: "#FFF831",
-            backgroundColor: "#FFF831",
-            borderWidth: 1,
-            borderRadius: 10,
-            borderSkipped: false,
-        }
-    ],
-    annotations: [-40, -20, 0, 20, 40, 60, 80]
-};
 
 
 export default function G2(props) {
+    console.log('props G2:>> ', props);
+    const data = {
+
+        labels: props.prop.labels,
+        // labels: ['Su', 'Mo', 'Th', 'We', 'Tu', 'Fr', 'Sa'],
+        datasets: [
+            {
+                label: 'Прибыль платформы от сделок',
+                data: props.prop.data ,
+                // data: [10, 20, -30, 40, 50, 60, 70],
+                borderColor: "#FFF831",
+                backgroundColor: "#FFF831",
+                borderWidth: 1,
+                borderRadius: 10,
+                borderSkipped: false,
+            }
+        ],
+        annotations: [-40, -20, 0, 20, 40, 60, 80]
+    };
+
     return (
 
         <Bar

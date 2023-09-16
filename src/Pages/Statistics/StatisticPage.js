@@ -1,4 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getGlobalStatistics } from '../../toolkitReducers/actions.slice'
 
 import G6 from './G6'
 import G5 from './G5'
@@ -8,7 +10,27 @@ import G2 from './G2'
 import G1 from './G1'
 
 export default function StatisticPage(params) {
-  const chartRef = useRef(null);
+  // const chartRef = useRef(null);
+  // const data = useSelector(state => state.state.statistics)
+  const dispatch = useDispatch();
+
+  // const {
+  //   // chart_data,
+  //   user_balance,
+  //   user_crypto_deposit_btc_usd,
+  //   user_crypto_deposit_eth_usd,
+  //   user_crypto_deposit_usdt_usd,
+  //   user_profit_last_week,
+  //   user_total_profit,
+  // } = useSelector(state => state.state.statistics)
+
+  // eth_balance btc_balance usdt_balance percent_weekly_profit weekly_profit
+  const data = useSelector(state => state.state.statistics)
+
+  useEffect(() => {
+    dispatch(getGlobalStatistics())
+    // console.log('data :>> ', data);
+  }, [dispatch])
 
   return (
     <div className="statistics-page page">
@@ -23,10 +45,24 @@ export default function StatisticPage(params) {
               </h2>
 
               <p className="statistics-section__balance-counter">
-                <span className="statistics-section__balance-counter--btc">0.00000000 BTC </span>
-                <span className="statistics-section__balance-counter--eq"> = </span>
-                <span className="statistics-section__balance-counter--usdt">$0.00</span>
+                <span className="statistics-section__balance-counter--usdt">${data?.user_balance} </span>
               </p>
+              <p className="statistics-section__balance-counter">
+                <span className="statistics-section__balance-counter--btc">BTC </span>
+                <span className="statistics-section__balance-counter--eq"> = </span>
+                <span className="statistics-section__balance-counter--btc">{data?.user_crypto_deposit_btc_usd}</span>
+              </p>
+              <p className="statistics-section__balance-counter">
+                <span className="statistics-section__balance-counter--btc">ETH </span>
+                <span className="statistics-section__balance-counter--eq"> = </span>
+                <span className="statistics-section__balance-counter--btc">{data?.user_crypto_deposit_eth_usd}</span>
+              </p>
+              <p className="statistics-section__balance-counter">
+                <span className="statistics-section__balance-counter--btc">USDT </span>
+                <span className="statistics-section__balance-counter--eq"> = </span>
+                <span className="statistics-section__balance-counter--btc">{data?.user_crypto_deposit_usdt_usd}</span>
+              </p>
+
 
             </div>
 
@@ -36,7 +72,7 @@ export default function StatisticPage(params) {
               </h2>
 
               <p className="statistics-section__balance-counter">
-                <span className="statistics-section__balance-counter--usdt">$0</span>
+                <span className="statistics-section__balance-counter--usdt">${data?.user_profit_last_week}</span>
               </p>
             </div>
 
@@ -46,7 +82,7 @@ export default function StatisticPage(params) {
               </h2>
 
               <p className="statistics-section__balance-counter">
-                <span className="statistics-section__balance-counter--usdt">$0</span>
+                <span className="statistics-section__balance-counter--usdt">${data?.user_total_profit}</span>
               </p>
             </div>
           </div>
@@ -55,38 +91,45 @@ export default function StatisticPage(params) {
             <div className="statistics-section__graphics-column">
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
-                  <span className="statistics-section__graphics-row-heading"> Прибыль за сутки</span>
-                  <span className="statistics-section__graphics-row-counter"> 0$</span>
+                  <span className="statistics-section__graphics-row-heading">
+                    {/* {data?.chart_data?.datasets[0].label} */}
+                    Прибыль за сутки (%)
+                  </span>
+                  {/* <span className="statistics-section__graphics-row-counter"> 0$</span> */}
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  {/* <canvas ref={chartRef}></canvas> */}
-                  <G5 />
+                  {/* I First */}
+                  {data?.chart_data?.percent_daily_profit_today && <G5 prop={data?.chart_data?.percent_daily_profit_today} />}
 
                 </div>
               </div>
 
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
-                  <span className="statistics-section__graphics-row-heading"> Прибыль платформы от сделок</span>
-                  <span className="statistics-section__graphics-row-counter"> 0$</span>
+                  <span className="statistics-section__graphics-row-heading">
+                    Прибыль платформы от сделок за неделю
+                  </span>
+                  <span className="statistics-section__graphics-row-counter">
+                    {data?.user_profit_last_week}$
+                  </span>
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  {/* <canvas id="intervalBar2"></canvas> */}
-                  <G2 />
+                  {/* II Second */}
+                  {data?.chart_data?.weekly_profit && <G2 prop={data?.chart_data?.weekly_profit} />}
                 </div>
               </div>
 
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
                   <span className="statistics-section__graphics-row-heading"> Прибыль за сутки</span>
-                  <span className="statistics-section__graphics-row-counter"> 0$</span>
+                  <span className="statistics-section__graphics-row-counter"> {data?.user_profit_last_week}$</span>
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  {/* <canvas id="intervalBar3"></canvas> */}
-                  <G3 />
+                  {/* III Second */}
+                  {data?.chart_data?.daily_profit_today && <G3 prop={data?.chart_data?.daily_profit_today} />}
                 </div>
               </div>
             </div>
@@ -99,24 +142,27 @@ export default function StatisticPage(params) {
 
                 <div className="statistics-section__graphics-row-body">
                   <div className="statistics-section__graphics-row-body-column">
-                    {/* <canvas id="ArbitrageAI">
-                    </canvas> */}
-                      <G1 />
+                    {/* IV Second */}
+                    {data?.chart_data?.currencies_balance
+                      && <G1 prop={data?.chart_data?.currencies_balance} />}
                   </div>
 
                   <div className="statistics-section__graphics-row-body-column">
                     <ul className="statistics-section__graphics-row-vaults-list list-menu">
                       <li className="statistics-section__graphics-row-vaults-item">
+                        <span className="statistics-section__graphics-row-vaults-item-currency">USDT</span>
+                        <span className="statistics-section__graphics-row-vaults-item-price">
+                          ({data?.chart_data?.currencies_balance.usdt})</span>
+                      </li>
+                      <li className="statistics-section__graphics-row-vaults-item">
                         <span className="statistics-section__graphics-row-vaults-item-currency">BTC</span>
-                        <span className="statistics-section__graphics-row-vaults-item-price">(2.8054/40.00%)</span>
+                        <span className="statistics-section__graphics-row-vaults-item-price">
+                          ({data?.chart_data?.currencies_balance.btc})</span>
                       </li>
                       <li className="statistics-section__graphics-row-vaults-item">
                         <span className="statistics-section__graphics-row-vaults-item-currency">ETH</span>
-                        <span className="statistics-section__graphics-row-vaults-item-price">(2.8054/40.00%)</span>
-                      </li>
-                      <li className="statistics-section__graphics-row-vaults-item">
-                        <span className="statistics-section__graphics-row-vaults-item-currency">USDT</span>
-                        <span className="statistics-section__graphics-row-vaults-item-price">(2.8054/40.00%)</span>
+                        <span className="statistics-section__graphics-row-vaults-item-price">
+                          ({data?.chart_data?.currencies_balance.eth})</span>
                       </li>
                     </ul>
                   </div>
@@ -125,12 +171,17 @@ export default function StatisticPage(params) {
 
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
-                  <span className="statistics-section__graphics-row-heading"> Процент доходности за период</span>
+                  <span className="statistics-section__graphics-row-heading"> Процент доходности за неделю (%)</span>
+
+                  {/* <span className="statistics-section__graphics-row-heading"> Прибыль за сутки</span> */}
+                  {/* <span className="statistics-section__graphics-row-counter">{data?.user_total_profit}$</span> */}
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  {/* <canvas id="intervalPercentage"></canvas> */}
-                  <G4 />
+                  {/* V Second */}
+                  {data?.chart_data?.percent_weekly_profit
+                    && <G4 prop={data?.chart_data?.percent_weekly_profit} />
+                  }
                 </div>
               </div>
             </div>

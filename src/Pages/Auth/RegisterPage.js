@@ -20,12 +20,11 @@ export default function RegisterPage() {
     });
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const isRegistered = useSelector((state) => state.auth.registered)
 
     useEffect(() => {
         isRegistered && navigate('/login')
-    }, [])
-
-    const isRegistered = useSelector((state) => state.auth.registered)
+    }, [isRegistered])
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;

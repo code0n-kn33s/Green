@@ -107,6 +107,7 @@ export default function Algoritms(params) {
         <section className="algorithms-history">
           <tabs-component className="tabs">
             <div className="tabs__wrapper rel">
+              {/* tabs */}
               {/* <div className="tabs__navigation  hide-scrollbar" role="tablist" aria-labelledby="tablist">
                 <button className="tabs__header-tab btn btn--primary"
                   role="tab"

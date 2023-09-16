@@ -1,12 +1,36 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { setToken, privateFetch, getToken, clearToken } from '../helpers'
+import { setToken, privateFetch, getToken, clearToken, setStorage } from '../helpers'
+import BrowserDetector from 'browser-dtector';
+
+const browser = new BrowserDetector(window.navigator.userAgent);
+let showUserAgent = browser.parseUserAgent();
+
+const fieldsUserAgent = {
+    isAndroid: false,
+    isDesktop: true,
+    isIE: false,
+    isMobile: false,
+    isTablet: false,
+    isWebkit: true,
+    name: "Google Chrome",
+    platform: "Macintosh",
+    shortVersion: "116",
+    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+    version: "116.0.0.0",
+}
 
 export const getUserData = createAsyncThunk(
     'async/getUserData',
     async function (param, options) {
         try {
-            const response = await privateFetch('get_user_data/')
-            console.log('get user response :>> ', response);
+            const response = await privateFetch('get_user_data/', {
+                method: "POST",
+                body: JSON.stringify({
+                    browser: fieldsUserAgent.name,
+                    os: fieldsUserAgent.platform,
+                    version: fieldsUserAgent.version,
+                })
+            })
 
             if (!response.ok) {
                 throw new Error('Wrong request')
@@ -27,14 +51,14 @@ export const registerNewUser = createAsyncThunk(
         try {
             // const response = await fetch(process.env.REACT_APP_API_URL + 'dashboard/register_user', {
             const response = await fetch(process.env.REACT_APP_API_URL + 'register_user/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        username: param.username,
-                        email: param.email,
-                        password: param.password,
-                        // refID: param.refID,
-                    })
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: param.username,
+                    email: param.email,
+                    password: param.password,
+                    // refID: param.refID,
+                })
             })
             console.log('registerNewUser response :>> ', response);
 
@@ -60,6 +84,9 @@ export const loginUser = createAsyncThunk(
             body: JSON.stringify({
                 email: data.useLogin,
                 password: data.usePassword,
+                browser: fieldsUserAgent.name,
+                os: fieldsUserAgent.platform,
+                version: fieldsUserAgent.version,
             })
         })
 
@@ -122,6 +149,8 @@ const todosSlice = createSlice({
         })
         builder.addCase(getUserData.fulfilled, (state, action) => {
             state.fething = "fullfilled"
+            // console.log('action.payload :>> ', action.payload);
+            setStorage(action.payload?.user)
 
             state.isAuth = true
             state.user = action.payload
@@ -138,7 +167,7 @@ const todosSlice = createSlice({
         builder.addCase(loginUser.fulfilled, (state, action) => {
             state.fething = "fulfilled"
 
-            if(action.payload.token) {
+            if (action.payload.token) {
                 setToken(action.payload)
 
                 state.isAuth = true
@@ -152,14 +181,18 @@ const todosSlice = createSlice({
         })
         builder.addCase(registerNewUser.pending, (state, action) => {
             state.fething = "loading"
+
         })
         builder.addCase(registerNewUser.fulfilled, (state, action) => {
             state.fething = "fulfilled"
             state.registered = true
+
+            setTimeout(() => {
+                state.registered = false
+            }, 2000);
         })
         builder.addCase(registerNewUser.rejected, (state, action) => {
             state.fething = "rejected"
-            state.registered = false
             state.error = action.error.message || action.error.stack
         })
         builder.addCase(editUserData.pending, (state, action) => {

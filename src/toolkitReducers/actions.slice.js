@@ -12,7 +12,7 @@ export const getUserSessions = createAsyncThunk(
             }
 
             const data = await response.json()
-            console.log("response :>>",data);
+            
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -30,7 +30,7 @@ export const getUserWallet = createAsyncThunk(
             }
 
             const data = await response.json()
-            console.log("response :>>",data);
+            
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -49,7 +49,7 @@ export const getRisks = createAsyncThunk(
             }
 
             const data = await response.json()
-            console.log("response :>>",data);
+            
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -68,7 +68,7 @@ export const getGlobalStatistics = createAsyncThunk(
             }
 
             const data = await response.json()
-            console.log("response :>>",data);
+            
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -87,7 +87,7 @@ export const setUserRisks = createAsyncThunk(
             }
 
             const data = await response.json()
-            console.log("response :>>",data);
+            
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -98,22 +98,44 @@ export const setUserRisks = createAsyncThunk(
 export const setSum = createAsyncThunk(
     'async/setSum',
     async function (param, options) {
-        console.log('param :>> ', param);
         try {
             const response = await privateFetch('set_sum/', {
                 method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        sum: param.sum,
-                        type: param.typeSum,
-            })})
+                body: JSON.stringify({
+                    sum: param.sum,
+                    type: param.typeSum,
+                })
+            })
 
             if (!response.ok) {
                 throw new Error('Wrong request')
             }
 
             const data = await response.json()
-            console.log("response :>>",data);
+            
+            return data
+        } catch (error) {
+            options.rejectWithValue(error.message)
+        }
+    }
+)
+export const setRisks = createAsyncThunk(
+    'async/setRisks',
+    async function (param, options) {
+        try {
+            const response = await privateFetch('set_risk/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    current_risk: param.current_risk,
+                })
+            })
+
+            if (!response.ok) {
+                throw new Error('Wrong request')
+            }
+
+            const data = await response.json()
+            
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -125,14 +147,21 @@ export const setWithdrawal = createAsyncThunk(
     'async/setWithdrawal',
     async function (param, options) {
         try {
-            const response = await privateFetch('withdrawal_sum/')
+            const response = await privateFetch('withdrawal_sum/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    withdrawal_sum: param.withdrawal_sum,
+                    currency: param.currency,
+                    address: param.address,
+                })
+            })
 
             if (!response.ok) {
                 throw new Error('Wrong request')
             }
 
             const data = await response.json()
-            console.log("response :>>",data);
+            
             return data
         } catch (error) {
             options.rejectWithValue(error.message)
@@ -140,7 +169,44 @@ export const setWithdrawal = createAsyncThunk(
     }
 )
 
-const todosSlice = createSlice({
+export const setKiss = createAsyncThunk(
+    'async/setKiss',
+    async function (param, options) {
+
+        const formData = new FormData();
+
+        // Добавляем текстовые данные
+        formData.append('birth_date', param.birth_date);
+        formData.append('city', param.city);
+        formData.append('country', param.country);
+        formData.append('name', param.name);
+        formData.append('second_name', param.second_name);
+        formData.append('telegram', param.telegram);
+        formData.append('third_name', param.third_name);
+
+        // Добавляем изображение в поле document_image
+        formData.append('document_image', param.document_image.selectedFile);
+
+        try {
+            const response = await privateFetch('submit_user_data/', {
+                method: 'POST',
+                body: formData
+            }, true)
+
+            if (!response.ok) {
+                throw new Error('Wrong request')
+            }
+
+            const data = await response.json()
+            
+            return data
+        } catch (error) {
+            options.rejectWithValue(error.message)
+        }
+    }
+)
+
+const actionsSlice = createSlice({
     name: 'todos',
     initialState: {
         currencies: [
@@ -155,6 +221,7 @@ const todosSlice = createSlice({
         isAuth: false,
         fething: false,
         registered: false,
+        kissFields: null,
         error: ''
     },
     reducers: {
@@ -166,15 +233,52 @@ const todosSlice = createSlice({
 
             clearToken()
         },
+
         clearUserData: (state, action) => {
             state.user = null
             state.isAuth = false
             state.fething = false
             state.error = ''
+        },
+
+        transportKissFields: (state, action) => {
+            state.kissFields = action.payload;
+        },
+
+        clearKissFields: (state) => {
+            state.kissFields = null
         }
     },
     extraReducers: (builder) => {
+        //set risks
+        builder.addCase(setRisks.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(setRisks.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
 
+            // state.statistics = action.payload
+            state.error = ''
+        })
+        builder.addCase(setRisks.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.error.message || action.error.stack
+        })
+
+        //set Kiss
+        builder.addCase(setKiss.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(setKiss.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+
+            // state.statistics = action.payload
+            state.error = ''
+        })
+        builder.addCase(setKiss.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.error.message || action.error.stack
+        })
 
         //set Withdrawal
         builder.addCase(setWithdrawal.pending, (state, action) => {
@@ -259,7 +363,7 @@ const todosSlice = createSlice({
             state.fething = "fullfilled"
 
 
-            if(action.payload) state.wallet = action.payload
+            if (action.payload) state.wallet = action.payload
             state.error = ''
         })
         builder.addCase(getUserWallet.rejected, (state, action) => {
@@ -286,6 +390,11 @@ const todosSlice = createSlice({
     }
 })
 
-export const { userLogout, clearUserData } = todosSlice.actions
+export const {
+    userLogout,
+    clearUserData,
+    transportKissFields,
+    clearKissFields
+} = actionsSlice.actions
 
-export default todosSlice.reducer;
+export default actionsSlice.reducer;

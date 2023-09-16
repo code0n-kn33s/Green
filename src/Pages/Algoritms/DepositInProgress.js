@@ -17,6 +17,14 @@ export default function CustomSelect(params) {
     const dispatch = useDispatch()
     const inputRef = useRef(null)
 
+    const chooseMenuItem = (index) => {
+        setActiveMenu(index)
+        setOpenMenu(false)
+        showSmallerSum(false)
+
+        dispatch(getUserWallet(currencies[index].value))
+    }
+    
     const copyText = () => {
         navigator.clipboard.writeText(inputRef.current.value)
 
@@ -29,13 +37,7 @@ export default function CustomSelect(params) {
         setIsSum(e.target.value)
     }
 
-    const chooseMenuItem = (index) => {
-        setActiveMenu(index)
-        setOpenMenu(false)
-        showSmallerSum(false)
 
-        dispatch(getUserWallet(currencies[index].value))
-    }
 
     const playNext = () => {
         if (Number(isSum) < Number(promotion)) {

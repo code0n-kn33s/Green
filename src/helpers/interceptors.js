@@ -4,10 +4,7 @@ export function setToken(user) {
     expires.setDate(expires.getDate() + 999);
     document.cookie = `token=${user.token}; expires=${expires.toUTCString()}; path=/`;
 
-    window.localStorage.setItem('user-email', user.email)
-    window.localStorage.setItem('user-username', user.username)
-    window.localStorage.setItem('user-id', user.id)
-    window.localStorage.setItem('user-image', user.image)
+    setStorage(user)
 }
 
 export function getToken() {
@@ -27,10 +24,25 @@ export function getToken() {
     return null;
 }
 
-export function privateFetch (url, options) {
-    const headers = {
-        'Content-Type': 'application/json',
-    };
+export function setStorage(user) {
+    localStorage.setItem('balance', `${user.balance}`)
+    localStorage.setItem('crypto_deposit_btc', `${user.crypto_deposit_btc}`)
+    localStorage.setItem('crypto_deposit_eth', `${user.crypto_deposit_eth}`)
+    localStorage.setItem('crypto_deposit_usdt', `${user.crypto_deposit_usdt}`)
+    localStorage.setItem('is_active', `${user.is_active}`)
+    localStorage.setItem('username', `${user.username}`)
+    localStorage.setItem('email', `${user.email}`)
+    localStorage.setItem('first_name', `${user.first_name}`)
+    localStorage.setItem('last_name', `${user.last_name}`)
+}
+
+export function privateFetch (url, options, exclude) {
+    let headers = {}
+    if (!exclude) {
+        headers = {
+            'Content-Type': 'application/json',
+        };
+    }
 
     if (getToken()) {
         headers.Authorization = `Token ${getToken()}`;

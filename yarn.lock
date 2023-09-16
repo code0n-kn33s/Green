@@ -3340,6 +3340,11 @@
   dependencies:
     "fill-range" "^7.0.1"
 
+"browser-dtector@^3.4.0":
+  "integrity" "sha512-c+4bsh6L8Kb5ehAR7nQT8Nx/s/FSCcJN7UXWOgMkp2KK+bQ5uX8W602dmx6yd5m1yvEuVUVTfq09ZrqIlV1obg=="
+  "resolved" "https://registry.npmjs.org/browser-dtector/-/browser-dtector-3.4.0.tgz"
+  "version" "3.4.0"
+
 "browser-process-hrtime@^1.0.0":
   "integrity" "sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow=="
   "resolved" "https://registry.npmjs.org/browser-process-hrtime/-/browser-process-hrtime-1.0.0.tgz"

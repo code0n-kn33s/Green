@@ -34,16 +34,34 @@ export default function ProfilePage() {
                   </div>
 
                   <div className="profile-section__client-info">
-                    <h2 className="profile-section__client-name h2">Павел Техник</h2>
+                    <h2 className="profile-section__client-name h2">
+                      {localStorage.getItem('first_name')} {localStorage.getItem('last_name')}
+                    </h2>
 
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">Баланс BTC:</p>
-                      <p className="profile-section__client-btc-info-balance h3">0.00034221 BTC</p>
+                      <p className="profile-section__client-btc-info-balance h3">
+                        {localStorage.getItem('crypto_deposit_btc')} BTC
+                      </p>
+                    </div>
+                    <div className="profile-section__client-btc-info">
+                      <p className="profile-section__client-btc-info-title">Баланс ETH:</p>
+                      <p className="profile-section__client-btc-info-balance h3">
+                        {localStorage.getItem('crypto_deposit_eth')} ETH
+                      </p>
+                    </div>
+                    <div className="profile-section__client-btc-info">
+                      <p className="profile-section__client-btc-info-title">Баланс USDT:</p>
+                      <p className="profile-section__client-btc-info-balance h3">
+                        {localStorage.getItem('crypto_deposit_usdt')} USDT
+                      </p>
                     </div>
 
                     <div className="profile-section__client-usd-info">
                       <p className="profile-section__client-usd-info-title">Баланс USD:</p>
-                      <p className="profile-section__client-usd-info-balance">$ 12,341.34 USD</p>
+                      <p className="profile-section__client-usd-info-balance">
+                        $ {localStorage.getItem('balance')} USD
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -51,12 +69,12 @@ export default function ProfilePage() {
                 <div className="profile-section__client-contacts">
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--login">
                     <p className="profile-section__client-contacts-item-title">Login:</p>
-                    <p className="profile-section__client-contacts-item-info">Pavel_tech</p>
+                    <p className="profile-section__client-contacts-item-info">{localStorage.getItem('username')}</p>
                     <Link to="/new-password" className="profile-section__client-contacts-item-link link">Сменить пароль</Link>
                   </div>
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--email">
                     <p className="profile-section__client-contacts-item-title">E-mail:</p>
-                    <p className="profile-section__client-contacts-item-info">pavel777@gmail.com</p>
+                    <p className="profile-section__client-contacts-item-info">{localStorage.getItem('email')}</p>
                     <a href="https://web.telegram.org/a/" className="profile-section__client-contacts-item-link link">Подтвердить</a>
                   </div>
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--get-money">
@@ -244,19 +262,6 @@ export default function ProfilePage() {
                 <th>
                   <div className="sessions-section__table-td-wrapper">
                     <span>
-                      IP address
-                    </span>
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
-                        <path d="M9 6L5 2L1 6" stroke="#FFF831" strokeWidth="1.5" />
-                      </svg>
-                    </span>
-                  </div>
-                </th>
-
-                <th>
-                  <div className="sessions-section__table-td-wrapper">
-                    <span>
                       OS
                     </span>
                     <span>
@@ -285,7 +290,6 @@ export default function ProfilePage() {
                 sessions && sessions.map(session => (
                   <tr className="sessions-section__table-body-row">
                     <td>{session.last_login_date}</td>
-                    <td>{session.last_ip_address}</td>
                     <td>{session.last_os}</td>
                     <td>{session.last_browser}</td>
                   </tr>
