@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ee9ff915.css",
+    "main.js": "/static/js/main.12712f06.js",
+    "static/media/logo.svg": "/static/media/logo.b775874b10b81deb37d625da3884f315.svg",
+    "static/media/Icon1.svg": "/static/media/Icon1.389d64b10417c36a9ca5189aedf61fe2.svg",
+    "static/media/GlobusIcon.svg": "/static/media/GlobusIcon.ab5667bfee44193c9424850226e05359.svg",
+    "static/media/BellIcon.svg": "/static/media/BellIcon.49dc4a281339361f2a6a5ebb8eb42fe2.svg",
+    "static/media/LogoutIcon.svg": "/static/media/LogoutIcon.81dcf6259eaf79ccdbc4fcdcec2b6d25.svg",
+    "static/media/FlowerIcon.svg": "/static/media/FlowerIcon.7941d8c8b8094c08e5d53f8fd283a1a8.svg",
+    "static/media/Icon2.svg": "/static/media/Icon2.22485dd5de3631e74596d70a4fea3811.svg",
+    "static/media/LoginIcon.svg": "/static/media/LoginIcon.4e73b148994003adbf68fb7fcd99ff00.svg",
+    "static/media/ProfileIcon.svg": "/static/media/ProfileIcon.be2d18b3c8cf7ed902119de93d50b803.svg",
+    "index.html": "/index.html",
+    "static/media/PassIcon.svg": "/static/media/PassIcon.3e4a4aa5094ea2493caa039b98244e2d.svg",
+    "static/media/InstaIcon.svg": "/static/media/InstaIcon.9cbe075b35d3bdddb87421c0a91a27ec.svg",
+    "static/media/AttentionIcon.svg": "/static/media/AttentionIcon.b6c0806aedd81b85787cb64ea9e3d7b2.svg",
+    "static/media/YouTubeIcon.svg": "/static/media/YouTubeIcon.08222e2dbe87f778f227aed6196a4495.svg",
+    "static/media/TelegramIcon.svg": "/static/media/TelegramIcon.3d7f4c77ff99f13935c1c27349e799af.svg",
+    "static/media/Facebook.svg": "/static/media/Facebook.4857b0ec5b1c6220814de9fdcdbb2e79.svg",
+    "static/media/arrow-left.svg": "/static/media/arrow-left.62e6236f41490217cf2598229f0b470c.svg",
+    "static/media/ArrowDownIcon.svg": "/static/media/ArrowDownIcon.7f0d27d31b0dc5f508d482841ff5cd88.svg",
+    "main.ee9ff915.css.map": "/static/css/main.ee9ff915.css.map",
+    "main.12712f06.js.map": "/static/js/main.12712f06.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ee9ff915.css",
+    "static/js/main.12712f06.js"
+  ]
+}
