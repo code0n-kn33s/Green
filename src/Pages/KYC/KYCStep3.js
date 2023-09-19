@@ -25,13 +25,10 @@ export default function KYCPage(params) {
   const handleUpload = () => {
     if (selectedFile) {
       // Здесь вы можете отправить файл на сервер или выполнить другие действия с ним
-      console.log('Загружен файл:', selectedFile.name);
     } else {
-      console.log('Файл не выбран');
     }
   };
   const clickShow = () => {
-    console.log('selectedFile :>> ', selectedFile);
   }
   const clickDone = () => {
     const margedKissFields = {

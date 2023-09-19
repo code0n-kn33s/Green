@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import {
   getRisks,
   getGlobalStatistics,
@@ -7,24 +7,49 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function FaqPage(params) {
+  const [isLoaded, setIsLoaded] = useState(false)
   const [percentage, setPercentage] = useState(0)
+  const [isPercentRists, setIsPercentRisk] = useState(0)
   const dispatch = useDispatch()
   const risks = useSelector(state => state.state.risks)
-  const statistics = useSelector(state => state.state.statistics)
 
   useEffect(() => {
-    console.log('risks :>> ', risks);
-    console.log('statistics :>> ', statistics);
-  }, [])
+    dispatch(getRisks())
+  }, [dispatch])
+
+  useEffect(() => {
+    if (risks && !isLoaded) {
+      setPercentage(Math.ceil(risks[risks.length - 1].risk))
+      setChecks(Math.ceil(risks[risks.length - 1].risk))
+      setIsLoaded(true)
+    }
+  }, [risks, isLoaded])
 
   const handlePercentageChange = (event) => {
     setPercentage(event.target.value);
+    setChecks(event.target.value)
 };
 
+const setChecks = (value) => {
+  if(value >= 75) {
+    setIsPercentRisk(3)
+  }
+  if(value >= 45) {
+    setIsPercentRisk(3)
+  }
+  if(value >= 15 && value <= 45) {
+    setIsPercentRisk(2)
+  }
+  if(value >= 0 && value <= 15) {
+    setIsPercentRisk(1)
+  }
+  if(value == 0 ) {
+    setIsPercentRisk(0)
+  }
+}
   const clickFaq = () => {
     // dispatch(getRisks())
     // dispatch(getGlobalStatistics())
-    console.log('percentage :>> ', percentage);
     dispatch(setRisks({ current_risk: percentage }))
 
   }
@@ -76,7 +101,14 @@ export default function FaqPage(params) {
 
               <div className="details-section__footer-column-checkboxes">
                 <div className="form-container--checkbox checkbox">
-                  <input data-min-price="1500" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl1-1" />
+                  <input
+                    data-min-price="1500"
+                    className="form__custom-checkbox"
+                    type="checkbox"
+                    name="accept"
+                    checked={isPercentRists > 0 && true}
+                    id="controlLvl1-1"
+                  />
 
                   <label htmlFor="controlLvl1-1">
                     Разрешить длинные цепочки обмена
@@ -84,7 +116,7 @@ export default function FaqPage(params) {
                 </div>
 
                 <div className="form-container--checkbox checkbox">
-                  <input data-min-price="1500" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl1-2" />
+                  <input checked={isPercentRists > 0 && true} data-min-price="1500" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl1-2" />
 
                   <label htmlFor="controlLvl1-2">
                     Разрешить использовать новые токены
@@ -105,7 +137,7 @@ export default function FaqPage(params) {
 
               <div className="details-section__footer-column-checkboxes">
                 <div className="form-container--checkbox checkbox">
-                  <input data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-1" />
+                  <input checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-1" />
 
                   <label htmlFor="controlLvl2-1">
                     Разрешить использовать новые обменные площадки
@@ -113,7 +145,7 @@ export default function FaqPage(params) {
                 </div>
 
                 <div className="form-container--checkbox checkbox">
-                  <input data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-2" />
+                  <input checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-2" />
 
                   <label htmlFor="controlLvl2-2">
                     Не использовать классические пары
@@ -134,7 +166,7 @@ export default function FaqPage(params) {
 
               <div className="details-section__footer-column-checkboxes">
                 <div className="form-container--checkbox checkbox">
-                  <input data-min-price="5000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-1" />
+                  <input data-min-price="5000" checked={isPercentRists > 2 && true} className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-1" />
 
                   <label htmlFor="controlLvl3-1">
                     Использовать только новые токены
@@ -142,7 +174,7 @@ export default function FaqPage(params) {
                 </div>
 
                 <div className="form-container--checkbox checkbox">
-                  <input data-min-price="5000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-2" />
+                  <input checked={isPercentRists > 2 && true} data-min-price="5000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-2" />
 
                   <label htmlFor="controlLvl3-2">
                     Использовать только свопы
@@ -178,14 +210,6 @@ export default function FaqPage(params) {
               <th>
                 <div className="sessions-section__table-td-wrapper">
                   <span>
-                    валюта
-                  </span>
-                </div>
-              </th>
-
-              <th>
-                <div className="sessions-section__table-td-wrapper">
-                  <span>
                     Сумма
                   </span>
                 </div>
@@ -194,7 +218,15 @@ export default function FaqPage(params) {
               <th>
                 <div className="sessions-section__table-td-wrapper">
                   <span>
-                    Тип
+                  Тип
+                  </span>
+                </div>
+              </th>
+
+              <th>
+                <div className="sessions-section__table-td-wrapper">
+                  <span>
+                  Пользователь
                   </span>
                 </div>
               </th>
@@ -208,41 +240,16 @@ export default function FaqPage(params) {
               </th>
             </tr>
 
-            <tr className="sessions-section__table-body-row">
-              <td>03.10.2020 13:26:26</td>
-              <td>USDT</td>
-              <td>350</td>
-              <td>50%</td>
-              <td>Success</td>
-            </tr>
-            <tr className="sessions-section__table-body-row">
-              <td>03.10.2020 13:26:26</td>
-              <td>USDT</td>
-              <td>350</td>
-              <td>50%</td>
-              <td>Success</td>
-            </tr>
-            <tr className="sessions-section__table-body-row">
-              <td>03.10.2020 13:26:26</td>
-              <td>USDT</td>
-              <td>350</td>
-              <td>25%</td>
-              <td>Success</td>
-            </tr>
-            <tr className="sessions-section__table-body-row">
-              <td>03.10.2020 13:26:26</td>
-              <td>USDT</td>
-              <td>350</td>
-              <td>25%</td>
-              <td>Success</td>
-            </tr>
-            <tr className="sessions-section__table-body-row">
-              <td>03.10.2020 13:26:26</td>
-              <td>USDT</td>
-              <td>-35</td>
-              <td>20%</td>
-              <td>Success</td>
-            </tr>
+            {risks?.map(risk => (
+              <tr key={risk.id} className="sessions-section__table-body-row">
+                <td>{risk.date}</td>
+                <td>{risk.profit}USD</td>
+                <td>{risk.risk}%</td>
+                <td>{risk.user}</td>
+                <td>Success</td>
+              </tr>
+            ))}
+
           </table>
         </div>
 

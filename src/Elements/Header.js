@@ -13,9 +13,8 @@ export default function Header() {
   const dispatch = useDispatch()
 
   const logout = () => {
-    navigate('/login')
-    console.log('logout :>> ', userLogout);
     dispatch(userLogout())
+    navigate('/login')
   }
 
   return (

@@ -46,7 +46,7 @@
 		position: relative;
 	}
 
-	input, textarea, .custom-input {
+	input, textarea, .custom-input, input:-webkit-autofill {
 		padding: 10px 15px;
 		color: $primary-color;
 		outline:none;

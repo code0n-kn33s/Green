@@ -52,6 +52,7 @@ $grid-extra-widescreen: 1600px;
 
 $extra-small: 'extra-small';
 $small: 'small';
+$small-up: 'small-up';
 $medium: 'medium';
 $medium-down: 'medium-down';
 $medium-up: 'medium-up';
@@ -69,6 +70,7 @@ $extra-widescreen: 'extra-widescreen';
 $breakpoints: (
         $extra-small '(max-width: #{$grid-extra-small - 1})',
         $small '(max-width: #{$grid-medium - 1})',
+        $small-up '(min-width: 669px) and (max-width: 767px)',
         $medium '(min-width: #{$grid-medium}) and (max-width: #{$grid-large - 1})',
         $medium-down '(max-width: #{$grid-large - 1})',
         $medium-up '(min-width: #{$grid-medium})',

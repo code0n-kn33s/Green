@@ -8,7 +8,6 @@ export const store = configureStore({
 
 // if (getToken()) {
 //     let stored = store.getState();
-//     console.log('stored :>> ', stored);
 //     store.dispatch(loginUser)
 // }
 

@@ -30,7 +30,6 @@ function WithdrawPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Здесь вы можете отправить данные на сервер или выполнить другие действия
         console.log('Выбрана монета:', selectedCoin);
         console.log('Процент:', percentage);
         console.log('Адрес кошелька:', walletAddress);

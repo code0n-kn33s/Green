@@ -10,11 +10,25 @@ export default function Login(props) {
     const dispatch = useDispatch()
     const [useLogin, setLogin] = useState('')
     const [usePassword, setPassword] = useState('')
+    const [isMounted, setisMounted] = useState('')
     const [visionPassword, setVisionPassword] = useState(false)
     const isLoggedIn = useSelector(state => state.auth.isAuth)
     const errorText = useSelector(state => state.auth.error)
     const navigate = useNavigate();
 
+    // useEffect(() => {
+    //     if (getToken() !== null) {
+    //         dispatch(getUserData())
+    //     }
+
+    //     if (isMounted && isLoggedIn) {
+    //         navigate('/profile')
+    //     }
+
+    //     return () => {
+    //         setisMounted(false);
+    //     };
+    // }, [dispatch, isLoggedIn, navigate]);
 
     useEffect(() => {
         if (getToken() !== null) {
@@ -22,13 +36,15 @@ export default function Login(props) {
         }
 
         isLoggedIn && navigate('/profile')
-    })
+    },[isLoggedIn])
 
     const showPass = () => {
         setVisionPassword(!visionPassword)
     }
 
-    const submitAuth = () => {
+    const submitAuth = (e) => {
+        e.preventDefault()
+
         const data = { useLogin, usePassword }
         dispatch(loginUser(data))
     }
@@ -39,13 +55,13 @@ export default function Login(props) {
             <section className="login small-wrapper">
                 <div className="login__side">
                     <h1 className="login__heading h3">Логин</h1>
-                    <p className="login__description">Вход в аккаунт     {errorText && <span aria-label="valid-email" className="form__error-message">- {errorText}</span>}</p>
+                    <p className="login__description">Вход в аккаунт     {errorText && <span aria-label="valid-email" className="form__error-message">- Неправилный email или пароль</span>}</p>
 
 
-                    <form className="form-container" >
+                    <form className="form-container" onSubmit={submitAuth}>
                         <div className="form-container js-form-parent">
                             <label htmlFor="email">Email адрес</label>
-                            <input required type="text" value={useLogin} onChange={(e) => {
+                            <input tabIndex="1" required type="text" value={useLogin} onChange={(e) => {
                                 setLogin(e.target.value)
                                 dispatch(clearUserData())
                             }} placeholder="Email" name="email" id="email" />
@@ -59,7 +75,7 @@ export default function Login(props) {
                                 <button onClick={showPass} type="button" className="password__eye">
                                     <PassIcon />
                                 </button>
-                                <input required type={!visionPassword ? 'password' : 'text'} value={usePassword} onChange={(e) => {
+                                <input tabIndex="2"  required type={!visionPassword ? 'password' : 'text'} value={usePassword} onChange={(e) => {
                                     setPassword(e.target.value)
                                     dispatch(clearUserData())
                                 }} placeholder="Password" name="password" id="password" />
@@ -68,7 +84,7 @@ export default function Login(props) {
                         </div>
 
                         <div className="form-container__buttons-wrapper">
-                            <button type="button" onClick={submitAuth} className="js-send-btn btn">
+                            <button tabIndex="3" type="submit" className="js-send-btn btn">
                                 Войти
                             </button>
 

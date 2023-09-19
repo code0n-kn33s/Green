@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setSum, getUserWallet } from '../../toolkitReducers/actions.slice'
@@ -17,6 +17,10 @@ export default function CustomSelect(params) {
     const dispatch = useDispatch()
     const inputRef = useRef(null)
 
+    useEffect(() => {
+        dispatch(getUserWallet(currencies[activeMenu].value))
+    }, [])
+
     const chooseMenuItem = (index) => {
         setActiveMenu(index)
         setOpenMenu(false)
@@ -24,7 +28,7 @@ export default function CustomSelect(params) {
 
         dispatch(getUserWallet(currencies[index].value))
     }
-    
+
     const copyText = () => {
         navigator.clipboard.writeText(inputRef.current.value)
 

@@ -22,194 +22,169 @@ const fieldsUserAgent = {
 export const getUserData = createAsyncThunk(
     'async/getUserData',
     async function (param, options) {
-        try {
             const response = await privateFetch('get_user_data/', {
                 method: "POST",
                 body: JSON.stringify({
-                    browser: fieldsUserAgent.name,
-                    os: fieldsUserAgent.platform,
-                    version: fieldsUserAgent.version,
+                    browser: showUserAgent.name,
+                    os: showUserAgent.platform,
+                    version: showUserAgent.version,
                 })
             })
+            const data = await response.json()
 
             if (!response.ok) {
-                throw new Error('Wrong request')
+                // throw new Error('Oops! Something went wrong')
+                return options.rejectWithValue(data);
             }
 
-            const data = await response.json()
-            console.log('get user data :>> ', data);
+
             return data
-        } catch (error) {
-            options.rejectWithValue(error.message)
-        }
     }
 )
+
 
 export const registerNewUser = createAsyncThunk(
     'async/registerNewUser',
     async function (param, options) {
-        try {
-            // const response = await fetch(process.env.REACT_APP_API_URL + 'dashboard/register_user', {
-            const response = await fetch(process.env.REACT_APP_API_URL + 'register_user/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    username: param.username,
-                    email: param.email,
-                    password: param.password,
-                    // refID: param.refID,
-                })
+        const response = await fetch(process.env.REACT_APP_API_URL + 'register_user/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: param.username,
+                email: param.email,
+                password: param.password,
+                ref_id: param.refID,
             })
-            console.log('registerNewUser response :>> ', response);
+        })
 
-            if (!response.ok) {
-                throw new Error('Wrong request')
-            }
+        const data = await response.json();
 
-            const data = await response.json()
-            console.log('registerNewUser data :>> ', data);
-            return data
-        } catch (error) {
-            options.rejectWithValue(error.message)
+        if (!response.ok) {
+            return options.rejectWithValue(data);
         }
+
+        return data
     }
 )
 
 export const loginUser = createAsyncThunk(
     'async/loginUser',
-    async function (data, options) {
+    async function (param, options) {
         const response = await fetch(process.env.REACT_APP_API_URL + 'login_user/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                email: data.useLogin,
-                password: data.usePassword,
-                browser: fieldsUserAgent.name,
-                os: fieldsUserAgent.platform,
-                version: fieldsUserAgent.version,
+                email: param.useLogin,
+                password: param.usePassword,
+                browser: showUserAgent.name,
+                os: showUserAgent.platform,
+                version: showUserAgent.version,
             })
         })
 
+        const data = await response.json();
+
         if (!response.ok) {
-            const errorData = await response.json();
-            console.log('errorData :>> ', errorData);
-            throw new Error(errorData.message || 'Failed to log in');
+            return options.rejectWithValue(data);
         }
 
-        const json = await response.json();
-
-        return json;
+        return data;
     }
 )
 
-
-export const editUserData = createAsyncThunk(
-    'async/editUserData',
-    async function (id, options) {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/todo/${id}`, { //with
-            method: 'PATCH',
-        });
-
-        if (!response.ok) {
-            throw new Error()
-        }
-
-        // options.fulfillWithValue(id)
-    }
-)
-
-const todosSlice = createSlice({
-    name: 'todos',
+const authSlice = createSlice({
+    name: 'auth',
     initialState: {
         user: null,
         isAuth: false,
         fething: false,
         registered: false,
-        error: ''
+        error: '',
+        registerErrors: ''
+
     },
     reducers: {
         userLogout: (state, action) => {
+            // state={...state}
             state.user = null
             state.isAuth = false
             state.fething = false
             state.error = ''
+            state.registerErrors = ''
 
             clearToken()
+        },
+        resetRegister: (state) => {
+            state.registered = false
         },
         clearUserData: (state, action) => {
             state.user = null
             state.isAuth = false
             state.fething = false
             state.error = ''
+            state.registerErrors = ''
+
         }
     },
-    extraReducers: (builder) => {
-        builder.addCase(getUserData.pending, (state, action) => {
-            state.fething = "loading"
-        })
-        builder.addCase(getUserData.fulfilled, (state, action) => {
-            state.fething = "fullfilled"
-            // console.log('action.payload :>> ', action.payload);
-            setStorage(action.payload?.user)
-
-            state.isAuth = true
-            state.user = action.payload
-            state.error = ''
-        })
-        builder.addCase(getUserData.rejected, (state, action) => {
-            state.fething = "rejected"
-            state.error = action.error.message || action.error.stack
-        })
-
-        builder.addCase(loginUser.pending, (state, action) => {
-            state.fething = "loading"
-        })
-        builder.addCase(loginUser.fulfilled, (state, action) => {
-            state.fething = "fulfilled"
-
-            if (action.payload.token) {
-                setToken(action.payload)
+    extraReducers:
+        (builder) => {
+            builder.addCase(getUserData.pending, (state, action) => {
+                state.fething = "loading"
+            })
+            builder.addCase(getUserData.fulfilled, (state, action) => {
+                state.fething = "fullfilled"
+                action.payload && setStorage(action.payload?.user)
 
                 state.isAuth = true
-                state.user = action.payload
+                if (action.payload) state.user = action.payload
                 state.error = ''
-            }
-        })
-        builder.addCase(loginUser.rejected, (state, action) => {
-            state.fething = "rejected"
-            state.error = action.error.message || action.error.stack
-        })
-        builder.addCase(registerNewUser.pending, (state, action) => {
-            state.fething = "loading"
+                state.registerErrors = ''
 
-        })
-        builder.addCase(registerNewUser.fulfilled, (state, action) => {
-            state.fething = "fulfilled"
-            state.registered = true
+            })
+            builder.addCase(getUserData.rejected, (state, action) => {
+                state.fething = "rejected"
+                state.error = action.error.message || action.error.stack
+            })
 
-            setTimeout(() => {
-                state.registered = false
-            }, 2000);
-        })
-        builder.addCase(registerNewUser.rejected, (state, action) => {
-            state.fething = "rejected"
-            state.error = action.error.message || action.error.stack
-        })
-        builder.addCase(editUserData.pending, (state, action) => {
-            state.fething = "loading"
-        })
-        builder.addCase(editUserData.fulfilled, (state, action) => {
-            state.fething = "fulfilled"
-            const deletedId = action.meta.arg
-            state.list = state.list.filter(todo => todo.id !== deletedId)
-        })
-        builder.addCase(editUserData.rejected, (state, action) => {
-            state.fething = "rejected"
-            state.error = action.error.message || action.error.stack
-        })
-    }
+            builder.addCase(loginUser.pending, (state, action) => {
+                state.fething = "loading"
+            })
+            builder.addCase(loginUser.fulfilled, (state, action) => {
+                state.fething = "fulfilled"
+
+                if (action.payload.token) {
+                    setToken(action.payload)
+
+                    state.isAuth = true
+                    state.user = action.payload
+                    state.error = ''
+                    state.registerErrors = ''
+
+                }
+            })
+            builder.addCase(loginUser.rejected, (state, action) => {
+                state.fething = "rejected"
+                state.error = action.error.message || action.error.stack
+            })
+            builder.addCase(registerNewUser.pending, (state, action) => {
+                state.fething = "loading"
+                state.registerErrors = ''
+            })
+            builder.addCase(registerNewUser.fulfilled, (state, action) => {
+                state.fething = "fulfilled"
+                state.registered = true
+                state.registerErrors = ''
+
+            })
+            builder.addCase(registerNewUser.rejected, (state, action) => {
+                state.fething = "rejected"
+
+                state.registerErrors = action.payload
+            })
+
+        }
 })
 
-export const { userLogout, clearUserData } = todosSlice.actions
+export const { userLogout, clearUserData, resetRegister } = authSlice.actions
 
-export default todosSlice.reducer;
+export default authSlice.reducer;

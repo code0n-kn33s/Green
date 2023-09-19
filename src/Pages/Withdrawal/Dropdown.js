@@ -37,7 +37,8 @@ export function Dropdown({ handleCoinChange ,options, value, onChange }) {
             {currencies.map((item) => {
                 return (
                     <li class="custom-select__dropdown-option"
-                        // data-option-value={item.value} aria-selected="false"
+                        // data-option-value={item.value}
+                        // aria-selected="false"
                         key={item.index}
                     >
                         <button class="tabs__header-tab btn--reset link custom-select__dropdown-button"

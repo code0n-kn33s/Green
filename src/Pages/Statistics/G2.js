@@ -69,7 +69,6 @@ export const data1 = {
 
 
 export default function G2(props) {
-    console.log('props G2:>> ', props);
     const data = {
 
         labels: props.prop.labels,

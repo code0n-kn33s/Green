@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getUserSessions } from '../../toolkitReducers/actions.slice'
+import { getUserSessions,  } from '../../toolkitReducers/actions.slice'
+import { getUserData  } from '../../toolkitReducers/auth.slice'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -14,6 +15,7 @@ export default function ProfilePage() {
   const inputRef = useRef()
   useEffect(() => {
     dispatch(getUserSessions())
+    // dispatch(getUserData())
   }, [dispatch])
 
   return (
@@ -287,8 +289,8 @@ export default function ProfilePage() {
               </tr>
 
               {
-                sessions && sessions.map(session => (
-                  <tr className="sessions-section__table-body-row">
+                sessions && sessions.map((session, index) => (
+                  <tr key={index} className="sessions-section__table-body-row">
                     <td>{session.last_login_date}</td>
                     <td>{session.last_os}</td>
                     <td>{session.last_browser}</td>

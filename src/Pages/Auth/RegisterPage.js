@@ -3,13 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AuthLogo } from './AuthLogo';
 import { BackButton } from '../../Elements/Library';
-import { registerNewUser } from './../../toolkitReducers';
+import { registerNewUser, resetRegister } from './../../toolkitReducers';
 import { ReactComponent as IconYeas } from '../../assets/icons/PassIcon.svg'
 
 
 export default function RegisterPage() {
     const [showPass, setShowPass] = useState(false)
     const [isError, setisError] = useState(false)
+    const [isMounted, setIsMounted] = useState(false)
+
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -21,10 +23,21 @@ export default function RegisterPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isRegistered = useSelector((state) => state.auth.registered)
-
+    const registerErrors = useSelector((state) => state.auth.registerErrors)
+    console.log('registerErrors :>> ', registerErrors);
+    // chrome optimize
     useEffect(() => {
-        isRegistered && navigate('/login')
-    }, [isRegistered])
+        setIsMounted(true)
+
+        if (isRegistered && isMounted && !registerErrors) {
+            dispatch(resetRegister())
+            navigate('/login');
+        }
+        return () => {
+            setIsMounted(false);
+
+        };
+    }, [isRegistered, isMounted]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -39,12 +52,10 @@ export default function RegisterPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log('isRegistered', isRegistered);
-        if(formData.password === formData.confirmPassword) {
+        if (formData.password === formData.confirmPassword) {
             dispatch(registerNewUser(formData))
         } else {
             setisError(true)
-            console.log('isError :>> ', isError);
         }
     };
 
@@ -69,10 +80,28 @@ export default function RegisterPage() {
                                     type="text"
                                     placeholder="Имя пользователя"
                                     name="username"
+                                    tabIndex="1"
                                     id="username"
                                     value={formData.username}
                                     onChange={handleChange}
                                 />
+                                {registerErrors?.username && <div>{registerErrors?.username[0]}</div>}
+
+                            </div>
+                            <div className="form-container js-form-parent">
+                                <label htmlFor="email">Email адрес</label>
+                                <input
+                                    required
+                                    type="email"
+                                    placeholder="Email"
+                                    name="email"
+                                    id="email"
+                                    tabIndex="2"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
+                                {registerErrors?.email && <div>{registerErrors?.email[0]}</div>}
+                                <span aria-label="valid-email" className="form__error-message">Неверный формат</span>
                             </div>
 
                             <div className="form-container password">
@@ -89,6 +118,7 @@ export default function RegisterPage() {
                                         type={showPass ? "text" : "password"}
                                         placeholder="Password"
                                         name="password"
+                                        tabIndex="3"
                                         id="password"
                                         value={formData.password}
                                         onChange={handleChange}
@@ -96,44 +126,10 @@ export default function RegisterPage() {
                                     {isError ? <span aria-label="valid-email" className={`${isError && "active"}  password-error form__error-message`} >Passwords must be the same</span> : null}
                                 </div>
                             </div>
-
-                            <div className="form-container">
-                                <label htmlFor="ref-id">Ref ID</label>
-                                <input
-                                    placeholder="7809432"
-                                    type="text"
-                                    name="refID"
-                                    id="ref-id"
-                                    value={formData.refID}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="register__side">
-                            <div className="form-container js-form-parent">
-                                <label htmlFor="email">Email адрес</label>
-                                <input
-                                    required
-                                    type="email"
-                                    placeholder="Email"
-                                    name="email"
-                                    id="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                />
-                                <span aria-label="valid-email" className="form__error-message">Error message</span>
-                            </div>
-
                             <div className="form-container password">
                                 <label htmlFor="confirm-password">Повторить пароль</label>
 
                                 <div className="password__container">
-                                    {/* SVG иконка глаза */}
-                                    {/* <button type="button" className="password__eye" onClick={() => setShowPass(!showPass)}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    </svg>
-                  </button> */}
 
                                     <input
                                         required
@@ -141,13 +137,25 @@ export default function RegisterPage() {
                                         placeholder="Password"
                                         name="confirmPassword"
                                         id="confirm-password"
+                                        tabIndex="4"
                                         value={formData.confirmPassword}
                                         onChange={handleChange}
                                     />
                                     <span aria-label="valid-email" className="form__error-message">Error message</span>
                                 </div>
                             </div>
-
+                            <div className="form-container">
+                                <label htmlFor="ref-id">Ref ID</label>
+                                <input
+                                    placeholder="7809432"
+                                    type="text"
+                                    name="refID"
+                                    id="ref-id"
+                                    tabIndex="5"
+                                    value={formData.refID}
+                                    onChange={handleChange}
+                                />
+                            </div>
                             <div className="form-container--checkbox checkbox">
                                 <input
                                     required
@@ -157,13 +165,14 @@ export default function RegisterPage() {
                                     id="accept"
                                     checked={formData.acceptTerms}
                                     onChange={handleChange}
+                                    tabIndex="6"
                                 />
                                 <label htmlFor="accept">
                                     Я согласен с условиями пользования платформой
                                 </label>
                             </div>
 
-                            <button type="submit" className="js-send-btn btn">
+                            <button type="submit" className="js-send-btn btn" tabIndex="7">
                                 Зарегистрироваться
                             </button>
                         </div>

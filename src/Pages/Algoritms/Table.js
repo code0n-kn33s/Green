@@ -67,13 +67,13 @@ export default function Table(params) {
         </tr> */}
         {/* date : "2023-09-13" id : 1 profit : "12.50" risk : "50.00" user : 3 */}
         {
-          risks?.map(risk => (
-            <tr className="algorithms-history__table-body-row">
-            <td>{risk.date}</td>
-            <td>{risk.profit}USD</td>
-            <td>{risk.risk}USD</td>
-            <td>{risk.user}</td>
-            {/* <td>
+          risks?.map((risk, index) => (
+            <tr key={index} className="algorithms-history__table-body-row">
+              <td>{risk.date}</td>
+              <td>{risk.profit}USD</td>
+              <td>{risk.risk}USD</td>
+              <td>{risk.user}</td>
+              {/* <td>
               <a href="#" className="link algorithms-history__table-body-row-link">
                 <span>
                   <OkIcon />
@@ -82,7 +82,8 @@ export default function Table(params) {
                 <span>Подробно</span>
               </a>
             </td> */}
-          </tr>))
+            </tr>
+          ))
         }
       </tbody>
     </table>

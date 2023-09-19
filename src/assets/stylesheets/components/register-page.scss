@@ -24,17 +24,23 @@
 
 
   .register__side {
-    flex: 1 1 50%;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px 20px;
+    @include media-query($small) {
+      align-items: unset;
+      gap: 0px;
+    }
+    @include media-query($small-up) {
+      align-items: unset;
+      gap: 10px 20px;
+    }
 
-    &:last-child {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+    .form-container {
+      flex: 1 1 40%;
 
-      @include media-query($small) {
-        align-items: unset;
-      }
     }
   }
 
