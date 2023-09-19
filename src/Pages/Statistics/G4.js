@@ -24,7 +24,7 @@ ChartJS.register(
 
 
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['Январь', 'Февраль', '', 'April', 'May', 'June', 'July'];
 
 // const labels = ["01-02", "01-03", "01-04", "01-05", "01-06", "01-07", "01-08"]
 
@@ -33,7 +33,7 @@ export default function G1(props) {
 
 
     const data = {
-        labels: labels,
+        labels: props.prop.labels,
         datasets: [{
             label: 'Interval Percentage',
             data: props.prop.data,

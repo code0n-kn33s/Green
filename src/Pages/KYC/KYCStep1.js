@@ -6,7 +6,7 @@ import { transportKissFields } from '../../toolkitReducers/actions.slice'
 function KYCPage({ tab }) {
     const [formData, setFormData] = useState({
         name: { value: '', required: true },
-        patronymic: { value: '', required: false },
+        phone: { value: '', required: false },
         surname: { value: '', required: false },
         birthday: { value: '', required: true },
         telegram: { value: '', required: true },
@@ -93,20 +93,6 @@ function KYCPage({ tab }) {
                             />
                             {errors.name && <span className="error-message">Заполните поле</span>}
                         </div>
-
-                        <div className="form-container">
-                            <input
-                                type="text"
-                                placeholder="Отчество (При наличии)"
-                                name="patronymic"
-                                id="patronymic"
-                                value={formData.patronymic.value}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="KYS-section__inputs-row">
                         <div className="form-container">
                             <input
                                 required={formData.surname.required}
@@ -119,6 +105,20 @@ function KYCPage({ tab }) {
                                 className={errors.surname ? 'error' : ''}
                             />
                             {errors.surname && <span className="error-message">Заполните поле</span>}
+                        </div>
+                    </div>
+
+                    <div className="KYS-section__inputs-row">
+
+                        <div className="form-container">
+                            <input
+                                type="tel"
+                                placeholder="Номер телефона"
+                                name="phone"
+                                id="phone"
+                                value={formData.phone.value}
+                                onChange={handleInputChange}
+                            />
                         </div>
 
                         <div className="form-container">

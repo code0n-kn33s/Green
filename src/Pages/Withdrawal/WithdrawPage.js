@@ -146,7 +146,7 @@ function WithdrawPage() {
                             </div>
 
                             <div className="withdrawal-section__add-deposit">
-                                <div className="form-container--checkbox checkbox">
+                                {/* <div className="form-container--checkbox checkbox">
                                     <input
                                         className="form__custom-checkbox"
                                         type="checkbox"
@@ -156,9 +156,12 @@ function WithdrawPage() {
                                         onChange={handleAddToDepositChange}
                                     />
                                     <label htmlFor="addToDeposit">Добавить остаток к размещенной сумме</label>
-                                </div>
-                                <p className="withdrawal-section__add-deposit-description">
+                                </div> */}
+                                {/* <p className="withdrawal-section__add-deposit-description">
                                     *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
+                                </p> */}
+                                <p className="withdrawal-section__add-deposit-description">
+                                    *Средства могут сниматься раз в 10 дней
                                 </p>
                             </div>
                         </div>

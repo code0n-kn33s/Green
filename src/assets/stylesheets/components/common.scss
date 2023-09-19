@@ -52,3 +52,12 @@
 .main-header {
     position: relative;
 }
+
+input[type=range].disabled {
+    border-color: lightgray !important;
+    -webkit-appearance: media-slider !important;
+    &:hover {
+        cursor: unset !important;
+
+    }
+}

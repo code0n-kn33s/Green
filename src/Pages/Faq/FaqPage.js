@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export default function FaqPage(params) {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isDisabled, setDisabled] = useState(false)
   const [percentage, setPercentage] = useState(0)
   const [isPercentRists, setIsPercentRisk] = useState(0)
   const dispatch = useDispatch()
@@ -61,8 +62,9 @@ const setChecks = (value) => {
         <h1 className="details-section__main-heading h3">Подробно:</h1>
 
         <form className="details-section__wrapper form details-section__form rel" action="/action_page.php" method="post">
-          <h2 className="details-section__heading">Настройка доходности:</h2>
-
+          <h2 className="details-section__heading">Настройка доходности: {percentage}%
+          <div style={{ fontWeight: 300, fontSize: '10px'}}>*доходность можно менять только после пополнения баланса</div>
+          </h2>
           <div className="details-section__progress-bar-wrapper">
             <div className="details-section__progress-bar">
               <div className="form-container form-container--range range">
@@ -74,7 +76,7 @@ const setChecks = (value) => {
                   <li className="range__list-item">60%</li>
                   <li className="range__list-item">75%</li>
                 </ul>
-                <input
+                <input disabled
                   type="range"
                   value={percentage}
                   onChange={handlePercentageChange}
@@ -83,6 +85,8 @@ const setChecks = (value) => {
                   min="0"
                   max="75"
                   step="15"
+                  disabled={isDisabled ? true : false}
+                  className={`${isDisabled && 'disabled'} `}
                 />
               </div>
             </div>
@@ -101,9 +105,9 @@ const setChecks = (value) => {
 
               <div className="details-section__footer-column-checkboxes">
                 <div className="form-container--checkbox checkbox">
-                  <input
+                  <input disabled
                     data-min-price="1500"
-                    className="form__custom-checkbox"
+                    className="form__custom-checkbox disabled-checkbox"
                     type="checkbox"
                     name="accept"
                     checked={isPercentRists > 0 && true}
@@ -116,7 +120,7 @@ const setChecks = (value) => {
                 </div>
 
                 <div className="form-container--checkbox checkbox">
-                  <input checked={isPercentRists > 0 && true} data-min-price="1500" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl1-2" />
+                  <input disabled checked={isPercentRists > 0 && true} data-min-price="1500" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl1-2" />
 
                   <label htmlFor="controlLvl1-2">
                     Разрешить использовать новые токены
@@ -137,7 +141,7 @@ const setChecks = (value) => {
 
               <div className="details-section__footer-column-checkboxes">
                 <div className="form-container--checkbox checkbox">
-                  <input checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-1" />
+                  <input disabled checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-1" />
 
                   <label htmlFor="controlLvl2-1">
                     Разрешить использовать новые обменные площадки
@@ -145,7 +149,7 @@ const setChecks = (value) => {
                 </div>
 
                 <div className="form-container--checkbox checkbox">
-                  <input checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-2" />
+                  <input disabled checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-2" />
 
                   <label htmlFor="controlLvl2-2">
                     Не использовать классические пары
@@ -166,7 +170,7 @@ const setChecks = (value) => {
 
               <div className="details-section__footer-column-checkboxes">
                 <div className="form-container--checkbox checkbox">
-                  <input data-min-price="5000" checked={isPercentRists > 2 && true} className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-1" />
+                  <input disabled data-min-price="5000" checked={isPercentRists > 2 && true} className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-1" />
 
                   <label htmlFor="controlLvl3-1">
                     Использовать только новые токены
@@ -174,7 +178,7 @@ const setChecks = (value) => {
                 </div>
 
                 <div className="form-container--checkbox checkbox">
-                  <input checked={isPercentRists > 2 && true} data-min-price="5000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-2" />
+                  <input disabled checked={isPercentRists > 2 && true} data-min-price="5000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-2" />
 
                   <label htmlFor="controlLvl3-2">
                     Использовать только свопы
@@ -244,6 +248,7 @@ const setChecks = (value) => {
               <tr key={risk.id} className="sessions-section__table-body-row">
                 <td>{risk.date}</td>
                 <td>{risk.profit}USD</td>
+                {/* <td>{risk.risk}%</td> */}
                 <td>{risk.risk}%</td>
                 <td>{risk.user}</td>
                 <td>Success</td>
@@ -329,7 +334,7 @@ const setChecks = (value) => {
                 </li>
               </ul>
 
-              <input type="hidden" className="custom-select__input-hidden" value="10" />
+              <input disabled type="hidden" className="custom-select__input-hidden" value="10" />
             </custom-select>
           </div>
         </div>

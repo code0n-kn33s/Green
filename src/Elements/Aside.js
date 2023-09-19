@@ -35,7 +35,7 @@ export default function Aside(props) {
                 <span>
                   <AttentionIcon/>
                 </span>
-                <span>F.A.Q</span>
+                <span>Риски</span>
               </NavLink>
             </li>
 
@@ -47,7 +47,7 @@ export default function Aside(props) {
                   </span>
                   <span data-button-label className="custom-select__btn-text">RUSSIAN</span>
 
-                  <ArrowDownIcon />
+                  {/* <ArrowDownIcon /> */}
                 </button>
 
                 <ul data-dropdown className="custom-select__dropdown list-menu" id="dropdown-1">

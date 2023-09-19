@@ -15,7 +15,7 @@ export default function ProfilePage() {
   const inputRef = useRef()
   useEffect(() => {
     dispatch(getUserSessions())
-    // dispatch(getUserData())
+    dispatch(getUserData())
   }, [dispatch])
 
   return (

@@ -3,6 +3,8 @@ import { ReactComponent as YouTubeIcon } from '../assets/icons/YouTubeIcon.svg';
 import { ReactComponent as Facebook } from '../assets/icons/Facebook.svg';
 import { ReactComponent as InstaIcon } from '../assets/icons/InstaIcon.svg';
 
+import { ReactComponent as LogoIcon } from './../assets/images/logo.svg';
+
 export default function Footer(params) {
     return (
         <footer className="footer">
@@ -10,7 +12,8 @@ export default function Footer(params) {
           <div className="footer__main-info">
             <div className="footer__main-info-logo rel">
               {/* <a className="logo-link img-abs" href="/index.html"></a> */}
-              <img className="img-abs" src="./images/logo.svg" alt="logotype"/>
+              {/* <img className="img-abs" src="./../assets/images/logo.svg" alt="logotype"/> */}
+              <LogoIcon className="img-abs"/>
             </div>
 
             <ul className="footer__main-links">

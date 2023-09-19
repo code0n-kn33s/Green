@@ -8,15 +8,17 @@ import { ReactComponent as Icon1 } from './Icon1.svg'
 import { ReactComponent as Icon2 } from './Icon2.svg'
 
 export default function KYCPage(params) {
+  const [previewFile, setPreviewFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const { kissFields } = useSelector(state => state.state)
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleFileChange = (event) => {
     const file = event.target.files[0]; // Получаем первый выбранный файл
 
     if (file) {
-      // setSelectedFile(URL.createObjectURL(file)); // Создаем URL для выбранного файла
+      setPreviewFile(URL.createObjectURL(file)); // Создаем URL для выбранного файла
       setSelectedFile({ selectedFile: file });
 
     }
@@ -29,12 +31,23 @@ export default function KYCPage(params) {
     }
   };
   const clickShow = () => {
+    const margedKissFields = {
+      name: kissFields.name.value,
+      second_name: kissFields.surname.value,
+      phone: kissFields.phone.value,
+      birth_date: kissFields.birthday.value,
+      city: kissFields.city.value,
+      country: kissFields.country.value,
+      telegram: kissFields.telegram.value, //nety
+      document_image: selectedFile
+    }
+
   }
   const clickDone = () => {
     const margedKissFields = {
       name: kissFields.name.value,
       second_name: kissFields.surname.value,
-      third_name: kissFields.patronymic.value,
+      phone: kissFields.phone.value,
       birth_date: kissFields.birthday.value,
       city: kissFields.city.value,
       country: kissFields.country.value,
@@ -57,7 +70,7 @@ export default function KYCPage(params) {
   return (
     <div className="form-container form-container--image rel">
       <div className="form-set-image">
-        {selectedFile && <img src={selectedFile} alt="Превью изображения" />}
+        {previewFile && <img src={previewFile} alt="Превью изображения" />}
       </div>
 
       <div className="form-container--placeholder">

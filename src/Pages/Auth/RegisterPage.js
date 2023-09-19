@@ -24,7 +24,7 @@ export default function RegisterPage() {
     const navigate = useNavigate()
     const isRegistered = useSelector((state) => state.auth.registered)
     const registerErrors = useSelector((state) => state.auth.registerErrors)
-    console.log('registerErrors :>> ', registerErrors);
+
     // chrome optimize
     useEffect(() => {
         setIsMounted(true)
