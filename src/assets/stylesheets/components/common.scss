@@ -91,3 +91,29 @@ input[type=range].disabled {
     transition: 0.3s;
     cursor: pointer;
 }
+
+.currencies-exchange-wrap {
+
+}
+.currencies-exchange-input {
+    padding: 15px 40% 16px 4% !important;
+    &::placeholder {
+        color: #fff831a3 !important;
+    }
+}
+
+.currencies-exchange-input-values {
+    position: absolute;
+    top: 9px;
+    right: 0;
+    width: 40%;
+    margin: auto;
+    height: fit-content;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0; /* Установите отступ между стрелочкой и полем ввода, если необходимо */
+}

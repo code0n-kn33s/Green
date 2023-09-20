@@ -23,7 +23,7 @@ export default function Header() {
       <div className="main-header__wrapper rel">
         <div className="main-header__content">
           <span className="main-header__content-title">Balance update</span>
-          <span className="main-header__content-date">2021-01-17</span>
+          <span className="main-header__content-date">{new Date().toLocaleDateString()}</span>
         </div>
         <div className="main-header__icons">
           <NavLink to="/" className="main-header__icons-messages main-header-icon btn rel">

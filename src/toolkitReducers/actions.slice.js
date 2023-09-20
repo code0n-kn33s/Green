@@ -4,15 +4,11 @@ import { setToken, privateFetch, getToken, clearToken } from '../helpers'
 export const getCurrencies = createAsyncThunk(
     'async/getCurrencies',
     async function (param, options) {
-        const response = await fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=usdt&convert=usd', {
+        const response = await fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC,ETH,USDT&convert=USD', {
             headers: {
                 'X-CMC_PRO_API_KEY': "1a3e27f2-f2d5-48b0-811a-0f826d662aed",
                 'Accept': 'application/json',
             },
-            params: {
-                'symbol': "btc",
-                'convert': 'USD',
-            }
         })
 
         const data = await response.json()
@@ -121,7 +117,7 @@ export const setUserRisks = createAsyncThunk(
 
     }
 )
-// balance : "69.99" crypto_deposit_btc : "0.00" crypto_deposit_eth : "0.00" crypto_deposit_usdt : "0.00" is_active : true username :
+
 export const setSum = createAsyncThunk(
     'async/setSum',
     async function (param, options) {
@@ -233,7 +229,7 @@ const actionsSlice = createSlice({
         ],
         sessions: null,
         wallet: '',
-        currenciesNow: null,
+        currenciesFetch: null,
         risks: null,
         statistics: null,
         tooltip: false,
@@ -270,9 +266,36 @@ const actionsSlice = createSlice({
         })
         builder.addCase(getCurrencies.fulfilled, (state, action) => {
             state.fething = "fullfilled"
-            console.log('action.payload :>> ', action.payload);
-            // state.statistics = action.payload
-            state.currenciesNow = action.payload
+
+            const { data } = action.payload;
+
+            const btcPriceInUSD = data.BTC.quote.USD.price;
+            const ethPriceInUSD = data.ETH.quote.USD.price;
+            const usdtPriceInUSD = data.USDT.quote.USD.price;
+
+            const joinCurrencies = {
+                btc: {
+                    id: data.BTC.id,
+                    name: data.BTC.name,
+                    symbol: data.BTC.symbol,
+                    rate: btcPriceInUSD
+                },
+                eth: {
+                    id: data.ETH.id,
+                    name: data.ETH.name,
+                    symbol: data.ETH.symbol,
+                    rate: ethPriceInUSD
+                },
+                usdt: {
+                    id: data.USDT.id,
+                    name: data.USDT.name,
+                    symbol: data.USDT.symbol,
+                    rate: usdtPriceInUSD
+                },
+            }
+
+            state.currenciesFetch = joinCurrencies
+
             state.error = ''
         })
         builder.addCase(getCurrencies.rejected, (state, action) => {
