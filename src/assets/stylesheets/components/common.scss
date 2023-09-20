@@ -1,119 +1,153 @@
 .auth-headings {
-    position: relative;
+  position: relative;
 }
 
 .back-button {
-    position: absolute;
-    left: 0;
-    top: 7px;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    svg {
-        height: 100%;
-        width: 100%;
-        fill: $primary-color;
-    }
+  position: absolute;
+  left: 0;
+  top: 7px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  svg {
+    height: 100%;
+    width: 100%;
+    fill: $primary-color;
+  }
 }
 
 .copy-email {
-    background: transparent;
-    border: none;
-    color: yellow;
-    padding: 2px 4px;
-    &-label {
-        top: 3px;
-        position: relative;
-    }
+  background: transparent;
+  border: none;
+  color: yellow;
+  padding: 2px 4px;
+  &-label {
+    top: 3px;
+    position: relative;
+  }
 }
 
-.password-error{
-    &.active {
-        left: 0;
-        display: block;
-    }
+.password-error {
+  &.active {
+    left: 0;
+    display: block;
+  }
 }
 
 .form-set-image {
-    img {
-        max-height: 100%;
-        max-width: 100%;
-    }
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
 
 .kiss-buttons-wrap {
-    display: flex;
+  display: flex;
 }
 
 .main-header {
-    position: relative;
+  position: relative;
 }
 
-input[type=range].disabled {
-    border-color: lightgray !important;
-    -webkit-appearance: media-slider !important;
-    &:hover {
-        cursor: unset !important;
-
-    }
+input[type="range"].disabled {
+  border-color: lightgray !important;
+  -webkit-appearance: media-slider !important;
+  &:hover {
+    cursor: unset !important;
+  }
 }
 
 .tooltip {
-    flex-direction: column;
-    gap: 20px;
-    padding: 80px 50px;
-    position: absolute;
-    z-index: 999;
-    background: black;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    height: fit-content;
-    width: fit-content;
+  flex-direction: column;
+  gap: 20px;
+  padding: 80px 50px;
+  position: absolute;
+  z-index: 999;
+  background: black;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: fit-content;
+  width: fit-content;
 
-    display: flex;
-    align-items: center;
-    color: #FFF831;
-    border: 1px solid #FFF831;
-    border-radius: 10px;
-    font-family: "Rubik", sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 1.2;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: 0.3s;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #fff831;
+  border: 1px solid #fff831;
+  border-radius: 10px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .currencies-exchange-wrap {
-
 }
 .currencies-exchange-input {
-    padding: 15px 40% 16px 4% !important;
-    &::placeholder {
-        color: #fff831a3 !important;
-    }
+  padding: 15px 40% 16px 4% !important;
+  &::placeholder {
+    color: #fff831a3 !important;
+  }
 }
 
 .currencies-exchange-input-values {
-    position: absolute;
-    top: 9px;
-    right: 0;
-    width: 40%;
-    margin: auto;
-    height: fit-content;
-}
+  position: absolute;
+  top: 9px;
+  right: 0;
+  width: 47%;
+  margin: auto;
+  height: fit-content;
+  @include media-query($small) {
+    display: flex;
+    position: initial;
+    margin-bottom: 10px;
+    width: 100%;
 
+    span {
+      white-space: nowrap;
+    }
+  }
+}
+.currencies-exchange-deposit {
+    margin: 15px 0;
+  @include media-query($small) {
+    display: flex;
+    flex-direction: column;
+  }
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
   margin: 0; /* Установите отступ между стрелочкой и полем ввода, если необходимо */
+}
+
+.algorithms-page .modal-dialog {
+  @include media-query($small) {
+      height: initial;
+      max-height: initial;
+
+    }
+}
+.currencies-exchange-deposit {
+    font-weight: 700;
+    font-size: 16px;
+    span:first-of-type {
+        font-size: 14px;
+    }
+    @include media-query($small) {
+        display: flex;
+        flex-direction: column;
+    }
+
 }

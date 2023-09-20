@@ -58,32 +58,37 @@ export default function CustomSelect(params) {
     }
 
     const checkSum = () => {
-        if (Number(isSumUsd) !== '' && Number(isSumUsd) < Number(promotion)) {
+        showSmallerSumUsd(false)
+        showSmallerSumCripto(false)
+
+        if (isSumCrypto === '' && isSumUsd !== '' && Number(isSumUsd) < Number(promotion)) {
+            showSmallerSumUsd(true)
+            console.log('>>>>USD :>> ');
+            return false
+        }
+
+        if (isSumUsd === '' && isSumCrypto !== '' && Number(getActiveValueCurrency())*Number(isSumCrypto) < Number(promotion)) {
+            console.log('>>>>CRIPTO :>> ');
+
+            showSmallerSumCripto(true)
+            return false
+        }
+        if (isSumCrypto === '' && isSumUsd === '') {
+            console.log('>>>>BOTH :>> ');
+
+            showSmallerSumCripto(true)
             showSmallerSumUsd(true)
             return false
         }
-        if (!isSmallerSumCripto && !isSmallerSumUsd) {
-            showSmallerSumUsd(true)
-            return false
-        }
-        // if (Number(isSumUsd) !== '' && Number(getActiveValueCurrency()/) < Number(promotion)) {
-        //     return showSmallerSum(true)
-        // }
+        return true
     }
 
     const playNext = () => {
-        // !!! dopisat
-        // if (Number(isSumCrypto) < Number(promotion)) {
-        //     return showSmallerSum(true)
-        // }
-        console.log('isSumUsd :>> ', isSumUsd);
-
-
         if (checkSum()) {
             switchDone(true)
-
+            console.log('getFinalSum() :>> ', getFinalSum());
             const obj = {
-                sum: isSumCrypto,
+                sum: getFinalSum(),
                 typeSum: currencies[activeMenu].value
             }
             dispatch(setSum(obj))
@@ -102,14 +107,18 @@ export default function CustomSelect(params) {
     console.log('activeMenu :>> ', activeMenu);
 
     const getEqwiwalent = () => {
-        return 1/getActiveValueCurrency()
+        return 1 / getActiveValueCurrency()
+    }
+
+    const convertCriptToUSD = () => {
+        return Number(getActiveValueCurrency())*Number(isSumCrypto)
     }
 
     const getFinalSum = () => {
-        if(isSumUsd) {
-            return Number(isSumUsd)/getActiveValueCurrency()
+        if (isSumUsd) {
+            return Number(isSumUsd) / getActiveValueCurrency()
         }
-        if(isSumCrypto){
+        if (isSumCrypto) {
             return isSumCrypto
         }
         return 0
@@ -159,13 +168,28 @@ export default function CustomSelect(params) {
             </custom-select>
             <br />
             <div class="form-container rel currencies-exchange-wrap">
+                {currenciesFetch && <div className="currencies-exchange-input-values">
+                    <span>1 {getActiveCurrency().toUpperCase()}=</span>
 
-                <input className="currencies-exchange-input" required onChange={sumChangeCrypto} value={isSumCrypto} min={500} type="number" placeholder={"Введите сумму в " + getActiveCurrency().toUpperCase()} name="cryptosum" />
-                {currenciesFetch&&<div className="currencies-exchange-input-values">
-                    <span>1 {currenciesFetch&& getActiveCurrency().toUpperCase()}=</span>
-                    <br />
-                    <span>{currenciesFetch&&getActiveValueCurrency()+ " USD"}</span>
+                    <span>{getActiveValueCurrency() + " USD"}</span>
                 </div>}
+                <input className="currencies-exchange-input" required onChange={sumChangeCrypto} value={isSumCrypto} type="number" placeholder={"Введите сумму в " + getActiveCurrency().toUpperCase()} name="cryptosum" />
+
+
+                {isSmallerSumCripto && <div class="modal-dialog__invoice-description-wrapper">
+                    <p class="modal-dialog__invoice-description">
+                        Внимание!<br /> сумма должна быть больше {currenciesFetch && getEqwiwalent() * promotion}{currenciesFetch && getActiveCurrency().toUpperCase()}
+                    </p>
+                </div>}
+            </div>
+
+            <div class="form-container rel currencies-exchange-wrap">
+                {currenciesFetch && <div className="currencies-exchange-input-values">
+                    <span>1 USD=</span>
+                    <span>  {currenciesFetch && getEqwiwalent() + " " + currenciesFetch && getActiveCurrency().toUpperCase()}</span>
+                </div>}
+
+                <input className="currencies-exchange-input" required onChange={sumChangeUsd} value={isSumUsd} min={500} type="number" placeholder={"Введите сумму в USD"} name="usdsum" />
 
                 {isSmallerSumUsd && <div class="modal-dialog__invoice-description-wrapper">
                     <p class="modal-dialog__invoice-description">
@@ -174,23 +198,12 @@ export default function CustomSelect(params) {
                 </div>}
             </div>
 
-            <div class="form-container rel currencies-exchange-wrap">
+            <div className="currencies-exchange-deposit" >
 
-                <input className="currencies-exchange-input" required onChange={sumChangeUsd} value={isSumUsd} min={500} type="number" placeholder={"Введите сумму в USD"} name="usdsum" />
-                {currenciesFetch&&<div className="currencies-exchange-input-values">
-                <span>1 USD=</span>
-                    <br />
-                <span>  {getEqwiwalent() + " " + getActiveCurrency().toUpperCase()}</span>
-                </div>}
-                {isSmallerSumCripto && <div class="modal-dialog__invoice-description-wrapper">
-                    <p class="modal-dialog__invoice-description">
-                        Внимание!<br /> сумма должна быть больше {promotion}USD
-                    </p>
-                </div>}
-            </div>
+                    <span>Сумма пополнения: </span>
+                    <div>{currenciesFetch && getActiveCurrency().toUpperCase()}: {currenciesFetch && getFinalSum()}  </div>
+                    <div>USD: {currenciesFetch && isSumCrypto ? currenciesFetch&& convertCriptToUSD() : isSumUsd} </div>
 
-            <div>
-                <h3>Сумма пополнения: {getFinalSum()} {getActiveCurrency().toUpperCase()}  </h3>
             </div>
             <div class="tabs__list"
                 id="tabpanel-replenish-deposit-1"

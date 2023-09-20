@@ -269,9 +269,9 @@ const actionsSlice = createSlice({
 
             const { data } = action.payload;
 
-            const btcPriceInUSD = data.BTC.quote.USD.price;
-            const ethPriceInUSD = data.ETH.quote.USD.price;
-            const usdtPriceInUSD = data.USDT.quote.USD.price;
+            const btcPriceInUSD = data?.BTC?.quote?.USD?.price;
+            const ethPriceInUSD = data?.ETH?.quote?.USD?.price;
+            const usdtPriceInUSD = data?.USDT?.quote?.USD?.price;
 
             const joinCurrencies = {
                 btc: {
