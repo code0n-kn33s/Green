@@ -246,7 +246,7 @@ const setChecks = (value) => {
               </th>
             </tr>
 
-            {risks.length && risks?.map(risk => (
+            {risks && risks.length && risks.map(risk => (
               <tr key={risk.id} className="sessions-section__table-body-row">
                 <td>{risk.date}</td>
                 <td>{risk.profit}USD</td>
