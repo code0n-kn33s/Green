@@ -85,7 +85,8 @@ export default function CustomSelect(params) {
         if (checkSum()) {
             console.log('getFinalSum() :>> ', getFinalSum());
             const obj = {
-                sum: summ % 1 ?  summ.toFixed(7) : summ ,
+                sum: summ ,
+                // sum: summ % 1 ?  summ.toFixed(6) : summ ,
                 typeSum: currencies[activeMenu].value
             }
             if(!error) {
@@ -101,9 +102,15 @@ export default function CustomSelect(params) {
     }
 
     const getActiveValueCurrency = () => {
+        console.log('getActiveCurrency() :>> ', getActiveCurrency());
+        console.log('currenciesFetch[getActiveCurrency()] :>> ', currenciesFetch[getActiveCurrency()]);
+        console.log('currenciesFetch :>> ', currenciesFetch);
+        console.log('onon :>> ', currenciesFetch[getActiveCurrency()].rate);
+
         return currenciesFetch[getActiveCurrency()].rate
     }
 
+    currenciesFetch&& console.log('>>> getActiveValueCurrency :>> ', getActiveValueCurrency());
     const getEqwiwalent = () => {
         return 1 / getActiveValueCurrency()
     }
@@ -169,7 +176,7 @@ export default function CustomSelect(params) {
                 {currenciesFetch && <div className="currencies-exchange-input-values">
                     <span>1 {getActiveCurrency().toUpperCase()}=</span>
 
-                    <span>{getActiveValueCurrency().toFixed(7) + " USD"}</span>
+                    <span>{Number(getActiveValueCurrency()).toFixed(7) + " USD"}</span>
                 </div>}
                 <input className="currencies-exchange-input" required onChange={sumChangeCrypto} value={isSumCrypto} type="number" placeholder={"Введите сумму в " + getActiveCurrency().toUpperCase()} name="cryptosum" />
 

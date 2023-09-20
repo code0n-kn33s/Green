@@ -67,6 +67,7 @@ const setChecks = (value) => {
         <form className="details-section__wrapper form details-section__form rel" action="/action_page.php" method="post">
           <h2 className="details-section__heading">Настройка доходности: {percentage}%
           <div style={{ fontWeight: 300, fontSize: '10px'}}>*доходность можно менять только после пополнения баланса</div>
+          { error && <div>{error?.message}</div>}
           </h2>
           <div className="details-section__progress-bar-wrapper">
             <div className="details-section__progress-bar">
@@ -164,6 +165,7 @@ const setChecks = (value) => {
                 *Доступно при размещении от 3000USD.
                 Каждый пункт добавляет до 10% доходности.
               </p>
+
             </div>
 
             <div className="details-section__footer-column">
@@ -195,7 +197,7 @@ const setChecks = (value) => {
               </p>
             </div>
 
-            { error && <div>{error?.message}</div>}
+
             <div className="details-section__footer-column">
               <button type="button" onClick={clickFaq} className="details-section__form-submit-btn btn btn--primary">
                 Применить

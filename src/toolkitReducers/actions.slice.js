@@ -4,12 +4,7 @@ import { setToken, privateFetch, getToken, clearToken } from '../helpers'
 export const getCurrencies = createAsyncThunk(
     'async/getCurrencies',
     async function (param, options) {
-        const response = await fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC,ETH,USDT&convert=USD', {
-            headers: {
-                'X-CMC_PRO_API_KEY': "1a3e27f2-f2d5-48b0-811a-0f826d662aed",
-                'Accept': 'application/json',
-            },
-        })
+        const response = await privateFetch('get_crypto_prices/')
 
         const data = await response.json()
         if (!response.ok) {
@@ -19,6 +14,24 @@ export const getCurrencies = createAsyncThunk(
         return data
     }
 )
+// export const getCurrencies = createAsyncThunk(
+//     'async/getCurrencies',
+//     async function (param, options) {
+//         const response = await fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC,ETH,USDT&convert=USD', {
+//             headers: {
+//                 'X-CMC_PRO_API_KEY': "1a3e27f2-f2d5-48b0-811a-0f826d662aed",
+//                 'Accept': 'application/json',
+//             },
+//         })
+
+//         const data = await response.json()
+//         if (!response.ok) {
+//             return options.rejectWithValue(data);
+//         }
+
+//         return data
+//     }
+// )
 
 export const getUserSessions = createAsyncThunk(
     'async/getUserSessions',
@@ -220,7 +233,7 @@ export const setKiss = createAsyncThunk(
 )
 
 const actionsSlice = createSlice({
-    name: 'todos',
+    name: 'state',
     initialState: {
         currencies: [
             { value: 'eth', name: "Ethereum", index: 0 },
@@ -267,30 +280,20 @@ const actionsSlice = createSlice({
         builder.addCase(getCurrencies.fulfilled, (state, action) => {
             state.fething = "fullfilled"
 
-            const { data } = action.payload;
-
-            const btcPriceInUSD = data?.BTC?.quote?.USD?.price;
-            const ethPriceInUSD = data?.ETH?.quote?.USD?.price;
-            const usdtPriceInUSD = data?.USDT?.quote?.USD?.price;
+            const { payload } = action;
 
             const joinCurrencies = {
                 btc: {
-                    id: data.BTC.id,
-                    name: data.BTC.name,
-                    symbol: data.BTC.symbol,
-                    rate: btcPriceInUSD
+                    name: "BTC",
+                    rate: payload.BTC
                 },
                 eth: {
-                    id: data.ETH.id,
-                    name: data.ETH.name,
-                    symbol: data.ETH.symbol,
-                    rate: ethPriceInUSD
+                    name: "ETH",
+                    rate: payload.ETH
                 },
                 usdt: {
-                    id: data.USDT.id,
-                    name: data.USDT.name,
-                    symbol: data.USDT.symbol,
-                    rate: usdtPriceInUSD
+                    name: "USDT",
+                    rate: payload.USDT
                 },
             }
 

@@ -100,8 +100,8 @@ const authSlice = createSlice({
         fething: false,
         registered: false,
         error: '',
-        registerErrors: ''
-
+        registerErrors: '',
+        liq: false
     },
     reducers: {
         userLogout: (state, action) => {
@@ -124,7 +124,13 @@ const authSlice = createSlice({
             state.error = ''
             state.registerErrors = ''
 
-        }
+        },
+        openLiq: (state, action) => {
+            state.liq = true
+        },
+        closeLiq: (state) => {
+            state.liq = false
+        },
     },
     extraReducers:
         (builder) => {
@@ -134,9 +140,15 @@ const authSlice = createSlice({
             builder.addCase(getUserData.fulfilled, (state, action) => {
                 state.fething = "fullfilled"
                 action.payload && setStorage(action.payload?.user)
-
+                // /dashboard/get_crypto_prices/
                 state.isAuth = true
-                if (action.payload) state.user = action.payload
+                if (action.payload) {
+                    state.user = action.payload
+
+                    if(action.payload.user.liquidated === true) {
+                        state.liq = true
+                    }
+                }
                 state.error = ''
                 state.registerErrors = ''
 
@@ -185,6 +197,7 @@ const authSlice = createSlice({
         }
 })
 
-export const { userLogout, clearUserData, resetRegister } = authSlice.actions
+export const { userLogout, clearUserData, resetRegister , openLiq,
+    closeLiq} = authSlice.actions
 
 export default authSlice.reducer;

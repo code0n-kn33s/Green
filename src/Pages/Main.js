@@ -6,24 +6,24 @@ import Overlay from "../Elements/Overlay";
 import Footer from '../Elements/Footer';
 import { getToken } from '../helpers';
 import { useDispatch, useSelector } from "react-redux";
-import { closeTooltip } from "../toolkitReducers";
+import { closeTooltip, openTooltip, openLiq, closeLiq } from "../toolkitReducers";
 
 export default function Main() {
   const navigate = useNavigate()
-  const {tooltip} = useSelector(({state}) => state)
 
   React.useEffect(() => {
     if (getToken() === null) {
       navigate('/login')
     }
+
   }, [])
 
-  console.log('tooltip :>> ', tooltip);
   return (
     <div className="page">
       <Overlay />
       <Header />
-      {tooltip && <Tooltip />}
+      <Tooltip />
+      <Liquidated />
       <div className="page__body-wrapper">
         <Aside />
 
@@ -40,24 +40,71 @@ export const Tooltip = (props) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const { tooltip } = useSelector(({ state }) => state)
+
   const clickDone = () => {
     navigate('/profile')
     dispatch(closeTooltip())
   }
+
   return (
     <>
-      <div class="tooltip">
-        <div>Данные были успешно обновленны</div>
-        <div>
-        <button
-          className="KYS-section__next-page btn btn--primary"
-          onClick={clickDone}
-          type="button"
-        >
-          Готово
-        </button>
+      {tooltip && <div class="tooltip">
+         <div>Данные были успешно обновленны</div>
+
+
+          <button
+            className="KYS-section__next-page btn btn--primary"
+            onClick={clickDone}
+            type="button"
+          >
+            Готово
+          </button>
+
+      </div>}
+    </>
+  )
+}
+
+export const Liquidated = (props) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { liq } = useSelector((state) => state.auth)
+
+  React.useEffect(() => {
+    if (liq === true) {
+      dispatch(openLiq())
+    }
+  }, [liq])
+
+  const clickDone = () => {
+    navigate('/profile')
+    dispatch(closeLiq())
+  }
+
+  return (
+    <>
+      {(liq) && <div class="tooltip">
+
+        {liq && <div className="tooltip-liqi">
+          <h2>УВЕДОМЛЕНИЕ О ЛИКВИДАЦИИ ПОЗИЦИИ!</h2>
+          <p>Мы с сожалением сообщаем вам, что ваша позиция на арбитражном аккаунте Arbitech7, была ликвидирована.</p>
+          <p>Пожалуйста, подходите к управлению рисками со всей ответственностью.</p>
+          <p>Узнайте больше о том, как минимизировать риски, на странице  «Управление рисками»</p>
+
+
         </div>
-      </div>
+        }
+        <div>
+          <button
+            className="KYS-section__next-page btn btn--primary"
+            onClick={clickDone}
+            type="button"
+          >
+            Готово
+          </button>
+        </div>
+      </div>}
     </>
   )
 }

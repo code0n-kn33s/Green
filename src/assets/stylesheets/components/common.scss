@@ -74,7 +74,7 @@ input[type="range"].disabled {
   right: 0;
   margin: auto;
   height: fit-content;
-  width: fit-content;
+  width: 70%;
 
   display: flex;
   align-items: center;
@@ -86,9 +86,11 @@ input[type="range"].disabled {
   font-size: 14px;
   line-height: 1.2;
   text-decoration: none;
-  white-space: nowrap;
   transition: 0.3s;
   cursor: pointer;
+  &-liqi p{
+    margin: 20px 0;
+  }
 }
 
 .currencies-exchange-wrap {
