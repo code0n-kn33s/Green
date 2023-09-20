@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Elements/Header";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import Aside from "../Elements/Aside";
 import Overlay from "../Elements/Overlay";
 import Footer from '../Elements/Footer';
@@ -10,10 +10,17 @@ import { closeTooltip, openTooltip, openLiq, closeLiq } from "../toolkitReducers
 
 export default function Main() {
   const navigate = useNavigate()
+  const location = useLocation()
 
   React.useEffect(() => {
+    console.log('location :>> ', location);
     if (getToken() === null) {
       navigate('/login')
+    }
+    if(location.pathname === "/") {
+      navigate('/profile')
+
+
     }
 
   }, [])

@@ -122,7 +122,7 @@ input[type="range"].disabled {
 }
 .currencies-exchange-deposit {
     margin: 15px 0;
-  @include media-query($small) {
+  @include media-query($extra-small) {
     display: flex;
     flex-direction: column;
   }
@@ -147,7 +147,7 @@ input[type="number"]::-webkit-outer-spin-button {
     span:first-of-type {
         font-size: 14px;
     }
-    @include media-query($small) {
+    @include media-query($extra-small) {
         display: flex;
         flex-direction: column;
     }

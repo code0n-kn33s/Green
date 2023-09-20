@@ -83,7 +83,6 @@ export default function CustomSelect(params) {
     const playNext = () => {
         let summ = getFinalSum();
         if (checkSum()) {
-            console.log('getFinalSum() :>> ', getFinalSum());
             const obj = {
                 sum: summ ,
                 // sum: summ % 1 ?  summ.toFixed(6) : summ ,
@@ -102,15 +101,9 @@ export default function CustomSelect(params) {
     }
 
     const getActiveValueCurrency = () => {
-        console.log('getActiveCurrency() :>> ', getActiveCurrency());
-        console.log('currenciesFetch[getActiveCurrency()] :>> ', currenciesFetch[getActiveCurrency()]);
-        console.log('currenciesFetch :>> ', currenciesFetch);
-        console.log('onon :>> ', currenciesFetch[getActiveCurrency()].rate);
-
         return currenciesFetch[getActiveCurrency()].rate
     }
 
-    currenciesFetch&& console.log('>>> getActiveValueCurrency :>> ', getActiveValueCurrency());
     const getEqwiwalent = () => {
         return 1 / getActiveValueCurrency()
     }

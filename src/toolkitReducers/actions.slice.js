@@ -236,9 +236,9 @@ const actionsSlice = createSlice({
     name: 'state',
     initialState: {
         currencies: [
-            { value: 'eth', name: "Ethereum", index: 0 },
+            { value: 'usdt', name: "USDT", index: 0 },
             { value: 'btc', name: "Bitcoin", index: 1 },
-            { value: 'usdt', name: "USDT", index: 2 }
+            { value: 'eth', name: "Ethereum", index: 2 },
         ],
         sessions: null,
         wallet: '',
@@ -283,6 +283,10 @@ const actionsSlice = createSlice({
             const { payload } = action;
 
             const joinCurrencies = {
+                usdt: {
+                    name: "USDT",
+                    rate: payload.USDT
+                },
                 btc: {
                     name: "BTC",
                     rate: payload.BTC
@@ -290,10 +294,6 @@ const actionsSlice = createSlice({
                 eth: {
                     name: "ETH",
                     rate: payload.ETH
-                },
-                usdt: {
-                    name: "USDT",
-                    rate: payload.USDT
                 },
             }
 
