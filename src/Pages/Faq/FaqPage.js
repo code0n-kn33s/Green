@@ -2,7 +2,8 @@ import { useEffect, useState, useCallback } from 'react'
 import {
   getRisks,
   getGlobalStatistics,
-  setRisks
+  setRisks,
+  getCurrencies
 } from '../../toolkitReducers/actions.slice'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -51,7 +52,8 @@ const setChecks = (value) => {
   const clickFaq = () => {
     // dispatch(getRisks())
     // dispatch(getGlobalStatistics())
-    dispatch(setRisks({ current_risk: percentage }))
+    dispatch(getCurrencies({ current_risk: percentage }))
+    // dispatch(setRisks({ current_risk: percentage }))
 
   }
 

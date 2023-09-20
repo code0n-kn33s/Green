@@ -1,6 +1,29 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { setToken, privateFetch, getToken, clearToken } from '../helpers'
 
+export const getCurrencies = createAsyncThunk(
+    'async/getCurrencies',
+    async function (param, options) {
+        const response = await fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=usdt&convert=usd', {
+            headers: {
+                'X-CMC_PRO_API_KEY': "1a3e27f2-f2d5-48b0-811a-0f826d662aed",
+                'Accept': 'application/json',
+            },
+            params: {
+                'symbol': "btc",
+                'convert': 'USD',
+            }
+        })
+
+        const data = await response.json()
+        if (!response.ok) {
+            return options.rejectWithValue(data);
+        }
+
+        return data
+    }
+)
+
 export const getUserSessions = createAsyncThunk(
     'async/getUserSessions',
     async function (param, options) {
@@ -210,6 +233,7 @@ const actionsSlice = createSlice({
         ],
         sessions: null,
         wallet: '',
+        currenciesNow: null,
         risks: null,
         statistics: null,
         fething: false,
@@ -226,6 +250,21 @@ const actionsSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
+        //ger currencies
+        builder.addCase(getCurrencies.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(getCurrencies.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+            console.log('action.payload :>> ', action.payload);
+            // state.statistics = action.payload
+            state.currenciesNow = action.payload
+            state.error = ''
+        })
+        builder.addCase(getCurrencies.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.payload
+        })
         //get risks
         builder.addCase(getUserRisks.pending, (state, action) => {
             state.fething = "loading"

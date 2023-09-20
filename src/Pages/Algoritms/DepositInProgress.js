@@ -18,7 +18,7 @@ export default function CustomSelect(params) {
     const inputRef = useRef(null)
 
     useEffect(() => {
-        dispatch(getUserWallet(currencies[activeMenu].value))
+        currencies && dispatch(getUserWallet(currencies[activeMenu].value))
     }, [])
 
     const chooseMenuItem = (index) => {
