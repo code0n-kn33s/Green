@@ -73,13 +73,13 @@ export default function KYCPage(params) {
         {previewFile && <img src={previewFile} alt="Превью изображения" />}
       </div>
 
-      <div className="form-container--placeholder">
+      {!previewFile && <div className="form-container--placeholder">
         <div className="form-container--placeholder-icon-wrapper">
           <Icon1 />
         </div>
 
         <p className="form-container--placeholder-title">ID-Карта</p>
-      </div>
+      </div>}
 
       <input
         type="file"
@@ -118,17 +118,6 @@ export default function KYCPage(params) {
           aria-selected="false"
         >
           Готово
-        </button>
-        <button
-          className="KYS-section__next-page btn btn--primary"
-          onClick={clickShow}
-          role="tab"
-          type="button"
-          tabIndex="0"
-          aria-controls="tabpanel-2"
-          aria-selected="false"
-        >
-          Show
         </button>
 
       </div>

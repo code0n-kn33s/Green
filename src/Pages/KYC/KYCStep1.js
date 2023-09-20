@@ -21,7 +21,7 @@ function KYCPage({ tab }) {
     // Состояние для хранения ошибок
     const [errors, setErrors] = useState({
         name: false,
-        patronymic: false,
+        phone: false,
         surname: false,
         birthday: false,
         telegram: false,

@@ -236,6 +236,8 @@ const actionsSlice = createSlice({
         currenciesNow: null,
         risks: null,
         statistics: null,
+        tooltip: false,
+        tooltipText: '',
         fething: false,
         registered: false, kissFields: null,
         error: ''
@@ -247,6 +249,18 @@ const actionsSlice = createSlice({
 
         clearKissFields: (state) => {
             state.kissFields = null
+        },
+        openTooltip: (state, action) => {
+            state.tooltip = true
+        },
+        closeTooltip: (state) => {
+            state.tooltip = false
+        },
+        textTooltip: (state, action) => {
+            state.tooltipText = action.payload
+        },
+        textTooltipClear: (state, action) => {
+            state.tooltipText = ''
         }
     },
     extraReducers: (builder) => {
@@ -286,6 +300,7 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setRisks.fulfilled, (state, action) => {
             state.fething = "fullfilled"
+            state.tooltip = true
 
             // state.statistics = action.payload
             state.error = ''
@@ -301,6 +316,7 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setKiss.fulfilled, (state, action) => {
             state.fething = "fullfilled"
+            state.tooltip = true
 
             // state.statistics = action.payload
             state.error = ''
@@ -316,6 +332,7 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setWithdrawal.fulfilled, (state, action) => {
             state.fething = "fullfilled"
+            state.tooltip = true
 
             // state.statistics = action.payload
             state.error = ''
@@ -348,6 +365,7 @@ const actionsSlice = createSlice({
             state.fething = "fullfilled"
 
             // state.statistics = action.payload
+            state.tooltip = true
             state.error = ''
         })
         builder.addCase(setUserRisks.rejected, (state, action) => {
@@ -422,7 +440,11 @@ const actionsSlice = createSlice({
 
 export const {
     transportKissFields,
-    clearKissFields
+    clearKissFields,
+    openTooltip,
+    closeTooltip,
+    textTooltip,
+    textTooltipClear,
 } = actionsSlice.actions
 
 export default actionsSlice.reducer;

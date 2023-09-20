@@ -61,3 +61,33 @@ input[type=range].disabled {
 
     }
 }
+
+.tooltip {
+    flex-direction: column;
+    gap: 20px;
+    padding: 80px 50px;
+    position: absolute;
+    z-index: 999;
+    background: black;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: fit-content;
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    color: #FFF831;
+    border: 1px solid #FFF831;
+    border-radius: 10px;
+    font-family: "Rubik", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.3s;
+    cursor: pointer;
+}

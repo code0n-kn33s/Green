@@ -9,6 +9,7 @@ function WithdrawPage() {
     const [percentage, setPercentage] = useState(0);
     const [walletAddress, setWalletAddress] = useState('');
     const [addToDeposit, setAddToDeposit] = useState(false);
+    const { error } = useSelector(({state}) => state)
     const dispatch = useDispatch()
 
     const handleCoinChange = (index) => {
@@ -160,9 +161,9 @@ function WithdrawPage() {
                                 {/* <p className="withdrawal-section__add-deposit-description">
                                     *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
                                 </p> */}
-                                <p className="withdrawal-section__add-deposit-description">
+                                {error && <p className="withdrawal-section__add-deposit-description">
                                     *Средства могут сниматься раз в 10 дней
-                                </p>
+                                </p>}
                             </div>
                         </div>
                     </form>

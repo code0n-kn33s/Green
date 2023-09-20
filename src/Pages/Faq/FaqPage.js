@@ -12,12 +12,13 @@ export default function FaqPage(params) {
   const [isDisabled, setDisabled] = useState(false)
   const [percentage, setPercentage] = useState(0)
   const [isPercentRists, setIsPercentRisk] = useState(0)
-  const dispatch = useDispatch()
   const risks = useSelector(state => state.state.risks)
+  const error = useSelector(state => state.state.error)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getRisks())
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     if (risks && !isLoaded && risks.length) {
@@ -52,8 +53,8 @@ const setChecks = (value) => {
   const clickFaq = () => {
     // dispatch(getRisks())
     // dispatch(getGlobalStatistics())
-    dispatch(getCurrencies({ current_risk: percentage }))
-    // dispatch(setRisks({ current_risk: percentage }))
+
+    dispatch(setRisks({ current_risk: percentage }))
 
   }
 
@@ -194,6 +195,7 @@ const setChecks = (value) => {
               </p>
             </div>
 
+            { error && <div>{error?.message}</div>}
             <div className="details-section__footer-column">
               <button type="button" onClick={clickFaq} className="details-section__form-submit-btn btn btn--primary">
                 Применить

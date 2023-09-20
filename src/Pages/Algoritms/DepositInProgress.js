@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setSum, getUserWallet } from '../../toolkitReducers/actions.slice'
+import { setSum, getUserWallet, getCurrencies } from '../../toolkitReducers/actions.slice'
 
 
 export default function CustomSelect(params) {
@@ -19,6 +19,10 @@ export default function CustomSelect(params) {
 
     useEffect(() => {
         currencies && dispatch(getUserWallet(currencies[activeMenu].value))
+    }, [])
+
+    useEffect(() => {
+        currencies && dispatch(getCurrencies())
     }, [])
 
     const chooseMenuItem = (index) => {
