@@ -108,7 +108,7 @@ export default function ProfilePage() {
                   <ul className="profile-section__social-links-list">
                     <li className="profile-section__social-links-list-item link">
                       <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                        <g clip-path="url(#clip0_101_1183)">
+                        <g clipPath="url(#clip0_101_1183)">
                           <path d="M10.9973 10.9996V10.9992H11.0001V6.96494C11.0001 4.99136 10.5752 3.47107 8.26795 3.47107C7.15879 3.47107 6.41445 4.07974 6.11058 4.65678H6.07849V3.65532H3.89087V10.9992H6.16879V7.36278C6.16879 6.40532 6.35029 5.47949 7.53599 5.47949C8.70429 5.47949 8.7217 6.57215 8.7217 7.42419V10.9996H10.9973Z" fill="black" />
                           <path d="M0.181641 3.65588H2.46231V10.9998H0.181641V3.65588Z" fill="black" />
                           <path d="M1.32092 0C0.591708 0 0 0.591708 0 1.32092C0 2.05013 0.591708 2.65421 1.32092 2.65421C2.05013 2.65421 2.64183 2.05013 2.64183 1.32092C2.64138 0.591708 2.04967 0 1.32092 0V0Z" fill="black" />

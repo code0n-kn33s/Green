@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeTooltip, openTooltip, openLiq, closeLiq } from "../toolkitReducers";
 
 export default function Main() {
+  const {fetching} = useSelector(state => state.state)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -24,9 +25,11 @@ export default function Main() {
 
   return (
     <div className="page">
-      <Overlay />
+      <Overlay > </Overlay>
+      {fetching === "loading" && <Spinner />}
       <Header />
       <Tooltip />
+
       <Liquidated />
       <div className="page__body-wrapper">
         <Aside />
@@ -111,4 +114,8 @@ export const Liquidated = (props) => {
       </div>}
     </>
   )
+}
+
+const Spinner = () => {
+  return <div className="site-spinner"><span class="loader"></span></div>
 }
