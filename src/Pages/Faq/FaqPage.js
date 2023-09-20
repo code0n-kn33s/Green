@@ -20,7 +20,7 @@ export default function FaqPage(params) {
   }, [dispatch])
 
   useEffect(() => {
-    if (risks && !isLoaded) {
+    if (risks && !isLoaded && risks.length) {
       setPercentage(Math.ceil(risks[risks.length - 1].risk))
       setChecks(Math.ceil(risks[risks.length - 1].risk))
       setIsLoaded(true)
@@ -246,7 +246,7 @@ const setChecks = (value) => {
               </th>
             </tr>
 
-            {risks?.map(risk => (
+            {risks.length && risks?.map(risk => (
               <tr key={risk.id} className="sessions-section__table-body-row">
                 <td>{risk.date}</td>
                 <td>{risk.profit}USD</td>
