@@ -13,14 +13,11 @@ export default function Main() {
   const location = useLocation()
 
   React.useEffect(() => {
-    console.log('location :>> ', location);
+    if(location.pathname === "/" && getToken() !== null) {
+      navigate('/profile')
+    }
     if (getToken() === null) {
       navigate('/login')
-    }
-    if(location.pathname === "/") {
-      navigate('/profile')
-
-
     }
 
   }, [])
