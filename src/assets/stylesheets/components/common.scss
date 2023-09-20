@@ -133,9 +133,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .algorithms-page .modal-dialog {
+    height: initial;
+    max-height: initial;
   @include media-query($small) {
-      height: initial;
-      max-height: initial;
 
     }
 }

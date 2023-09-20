@@ -5,7 +5,7 @@ import { setSum, getUserWallet, getCurrencies } from '../../toolkitReducers/acti
 
 
 export default function CustomSelect(params) {
-    const { currencies, wallet, currenciesFetch } = useSelector(state => state.state)
+    const { currencies, wallet, currenciesFetch, error } = useSelector(state => state.state)
     const { promotion, switchDone } = params
 
     const [isSmallerSumUsd, showSmallerSumUsd] = useState(false)
@@ -63,18 +63,15 @@ export default function CustomSelect(params) {
 
         if (isSumCrypto === '' && isSumUsd !== '' && Number(isSumUsd) < Number(promotion)) {
             showSmallerSumUsd(true)
-            console.log('>>>>USD :>> ');
             return false
         }
 
         if (isSumUsd === '' && isSumCrypto !== '' && Number(getActiveValueCurrency())*Number(isSumCrypto) < Number(promotion)) {
-            console.log('>>>>CRIPTO :>> ');
 
             showSmallerSumCripto(true)
             return false
         }
         if (isSumCrypto === '' && isSumUsd === '') {
-            console.log('>>>>BOTH :>> ');
 
             showSmallerSumCripto(true)
             showSmallerSumUsd(true)
@@ -84,14 +81,17 @@ export default function CustomSelect(params) {
     }
 
     const playNext = () => {
+        let summ = getFinalSum();
         if (checkSum()) {
-            switchDone(true)
             console.log('getFinalSum() :>> ', getFinalSum());
             const obj = {
-                sum: getFinalSum(),
+                sum: summ % 1 ?  summ.toFixed(7) : summ ,
                 typeSum: currencies[activeMenu].value
             }
-            dispatch(setSum(obj))
+            if(!error) {
+                switchDone(true)
+                dispatch(setSum(obj))
+            }
 
         }
     }
@@ -103,8 +103,6 @@ export default function CustomSelect(params) {
     const getActiveValueCurrency = () => {
         return currenciesFetch[getActiveCurrency()].rate
     }
-    console.log('currenciesFetch :>> ', currenciesFetch);
-    console.log('activeMenu :>> ', activeMenu);
 
     const getEqwiwalent = () => {
         return 1 / getActiveValueCurrency()
@@ -171,7 +169,7 @@ export default function CustomSelect(params) {
                 {currenciesFetch && <div className="currencies-exchange-input-values">
                     <span>1 {getActiveCurrency().toUpperCase()}=</span>
 
-                    <span>{getActiveValueCurrency() + " USD"}</span>
+                    <span>{getActiveValueCurrency().toFixed(7) + " USD"}</span>
                 </div>}
                 <input className="currencies-exchange-input" required onChange={sumChangeCrypto} value={isSumCrypto} type="number" placeholder={"Введите сумму в " + getActiveCurrency().toUpperCase()} name="cryptosum" />
 
@@ -186,7 +184,7 @@ export default function CustomSelect(params) {
             <div class="form-container rel currencies-exchange-wrap">
                 {currenciesFetch && <div className="currencies-exchange-input-values">
                     <span>1 USD=</span>
-                    <span>  {currenciesFetch && getEqwiwalent() + " " + currenciesFetch && getActiveCurrency().toUpperCase()}</span>
+                    <span>  { getEqwiwalent().toFixed(7) + " " +   getActiveCurrency().toUpperCase()}</span>
                 </div>}
 
                 <input className="currencies-exchange-input" required onChange={sumChangeUsd} value={isSumUsd} min={500} type="number" placeholder={"Введите сумму в USD"} name="usdsum" />
@@ -202,7 +200,7 @@ export default function CustomSelect(params) {
 
                     <span>Сумма пополнения: </span>
                     <div>{currenciesFetch && getActiveCurrency().toUpperCase()}: {currenciesFetch && getFinalSum()}  </div>
-                    <div>USD: {currenciesFetch && isSumCrypto ? currenciesFetch&& convertCriptToUSD() : isSumUsd} </div>
+                    <div>USD: {currenciesFetch && isSumCrypto ? convertCriptToUSD().toFixed(7) : Number(isSumUsd)} </div>
 
             </div>
             <div class="tabs__list"
@@ -254,7 +252,7 @@ export default function CustomSelect(params) {
                             может привести к их утере.
                         </p>
                     </div>
-
+                    {error?.sum}
                     <button className='modal-dialog__invoice-btn btn btn--primary btn--large' onClick={
                         playNext
                     }> Далее</button>
