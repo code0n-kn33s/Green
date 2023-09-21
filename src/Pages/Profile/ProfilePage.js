@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getUserSessions,  } from '../../toolkitReducers/actions.slice'
-import { getUserData  } from '../../toolkitReducers/auth.slice'
+import { getUserSessions, } from '../../toolkitReducers/actions.slice'
+import { getUserData } from '../../toolkitReducers/auth.slice'
 import { ReactComponent as Twitter } from '../../assets/icons/social-links/linkedin.svg'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -77,7 +77,7 @@ export default function ProfilePage() {
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--email">
                     <p className="profile-section__client-contacts-item-title">E-mail:</p>
                     <p className="profile-section__client-contacts-item-info">{localStorage.getItem('email')}</p>
-                    <a href="https://web.telegram.org/a/" className="profile-section__client-contacts-item-link link">Подтвердить</a>
+                    {/* <a href="https://web.telegram.org/a/" className="profile-section__client-contacts-item-link link">Подтвердить</a> */}
                   </div>
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--get-money">
                     <p className="profile-section__client-contacts-item-title">Вывод средств:</p>
@@ -106,44 +106,44 @@ export default function ProfilePage() {
                   <p className="profile-section__social-links-title">Поделится:</p>
 
                   <ul className="profile-section__social-links-list">
-                  <a  target="_blank" href="https://www.instagram.com/arbitech7/?igshid=MzRlODBiNWFlZA%3D%3D">
-                    <li className="profile-section__social-links-list-item link">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                        <g clipPath="url(#clip0_101_1183)">
-                          <path d="M10.9973 10.9996V10.9992H11.0001V6.96494C11.0001 4.99136 10.5752 3.47107 8.26795 3.47107C7.15879 3.47107 6.41445 4.07974 6.11058 4.65678H6.07849V3.65532H3.89087V10.9992H6.16879V7.36278C6.16879 6.40532 6.35029 5.47949 7.53599 5.47949C8.70429 5.47949 8.7217 6.57215 8.7217 7.42419V10.9996H10.9973Z" fill="black" />
-                          <path d="M0.181641 3.65588H2.46231V10.9998H0.181641V3.65588Z" fill="black" />
-                          <path d="M1.32092 0C0.591708 0 0 0.591708 0 1.32092C0 2.05013 0.591708 2.65421 1.32092 2.65421C2.05013 2.65421 2.64183 2.05013 2.64183 1.32092C2.64138 0.591708 2.04967 0 1.32092 0V0Z" fill="black" />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_101_1183">
-                            <rect width="11" height="11" fill="white" />
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </li>
-                      </a>
+                    <a target="_blank" href="https://www.instagram.com/arbitech7/?igshid=MzRlODBiNWFlZA%3D%3D">
+                      <li className="profile-section__social-links-list-item link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+                          <g clipPath="url(#clip0_101_1183)">
+                            <path d="M10.9973 10.9996V10.9992H11.0001V6.96494C11.0001 4.99136 10.5752 3.47107 8.26795 3.47107C7.15879 3.47107 6.41445 4.07974 6.11058 4.65678H6.07849V3.65532H3.89087V10.9992H6.16879V7.36278C6.16879 6.40532 6.35029 5.47949 7.53599 5.47949C8.70429 5.47949 8.7217 6.57215 8.7217 7.42419V10.9996H10.9973Z" fill="black" />
+                            <path d="M0.181641 3.65588H2.46231V10.9998H0.181641V3.65588Z" fill="black" />
+                            <path d="M1.32092 0C0.591708 0 0 0.591708 0 1.32092C0 2.05013 0.591708 2.65421 1.32092 2.65421C2.05013 2.65421 2.64183 2.05013 2.64183 1.32092C2.64138 0.591708 2.04967 0 1.32092 0V0Z" fill="black" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_101_1183">
+                              <rect width="11" height="11" fill="white" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </li>
+                    </a>
 
-                    <a  target="_blank" href="https://www.facebook.com/profile.php?id=100090426237643">
-                    <li className="profile-section__social-links-list-item link">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
-                        <path d="M4.35239 11V5.98275H6.0358L6.28836 4.02686H4.35239V2.77831C4.35239 2.21221 4.50895 1.82642 5.32165 1.82642L6.3565 1.82599V0.0765765C6.17754 0.0533199 5.56322 0 4.84823 0C3.3552 0 2.33304 0.911331 2.33304 2.5846V4.02686H0.644531V5.98275H2.33304V11H4.35239Z" fill="black" />
-                      </svg>
-                    </li>
-                      </a>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100090426237643">
+                      <li className="profile-section__social-links-list-item link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
+                          <path d="M4.35239 11V5.98275H6.0358L6.28836 4.02686H4.35239V2.77831C4.35239 2.21221 4.50895 1.82642 5.32165 1.82642L6.3565 1.82599V0.0765765C6.17754 0.0533199 5.56322 0 4.84823 0C3.3552 0 2.33304 0.911331 2.33304 2.5846V4.02686H0.644531V5.98275H2.33304V11H4.35239Z" fill="black" />
+                        </svg>
+                      </li>
+                    </a>
 
-                    <a  target="_blank" href="https://t.me/arbitech777">
-                    <li className="profile-section__social-links-list-item link">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path d="M2.88739 6.83762L4.37988 10.5686L6.32291 8.62555L9.65433 11.2734L12 0.726562L0 5.72498L2.88739 6.83762ZM8.57098 3.75256L4.89798 7.10275L4.44049 8.82697L3.59537 6.71375L8.57098 3.75256Z" fill="black" />
-                      </svg>
-                    </li>
-                      </a>
+                    <a target="_blank" href="https://t.me/arbitech777">
+                      <li className="profile-section__social-links-list-item link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M2.88739 6.83762L4.37988 10.5686L6.32291 8.62555L9.65433 11.2734L12 0.726562L0 5.72498L2.88739 6.83762ZM8.57098 3.75256L4.89798 7.10275L4.44049 8.82697L3.59537 6.71375L8.57098 3.75256Z" fill="black" />
+                        </svg>
+                      </li>
+                    </a>
 
-                    <a  target="_blank" href="https://twitter.com/?lang=ru">
-                    <li className="profile-section__social-links-list-item link">
+                    <a target="_blank" href="https://twitter.com/?lang=ru">
+                      <li className="profile-section__social-links-list-item link">
                         <Twitter />
-                    </li>
-                      </a>
+                      </li>
+                    </a>
                   </ul>
                 </div>
               </div>
