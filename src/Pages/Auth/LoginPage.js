@@ -5,6 +5,7 @@ import { AuthLogo } from './AuthLogo';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, getUserData, clearUserData } from './../../toolkitReducers';
 import { getToken } from "./../../helpers";
+import Footer from "../../Elements/Footer"
 
 export default function Login(props) {
     const dispatch = useDispatch()
@@ -100,6 +101,7 @@ export default function Login(props) {
                     <Link className="btn" to="/register">Регистрация</Link>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }
