@@ -35,7 +35,7 @@ export default function Algoritms(params) {
       <ModalDialog modalState={isModal} setModalState={openModal} promotion={isPromotion}/>
       <div className="algorithms-page__sections-wrapper page__sections-wrapper medium-wrapper">
         <section className="algorithms-section">
-          <h1 className="algorithms-section__heading h3">Алгоритмы</h1>
+          <h1 className="algorithms-section__heading h3">Пулы</h1>
 
           <div className="algorithms-section__wrapper">
             <div className="algorithms-section__item">

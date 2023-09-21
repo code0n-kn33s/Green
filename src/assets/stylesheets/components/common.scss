@@ -65,7 +65,7 @@ input[type="range"].disabled {
   flex-direction: column;
   gap: 20px;
   padding: 80px 50px;
-  position: absolute;
+  position: fixed;
   z-index: 999;
   background: black;
   top: 0;

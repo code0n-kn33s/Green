@@ -62,7 +62,7 @@ const setChecks = (value) => {
   return (
     <div className="page__sections-wrapper medium-wrapper">
       <section className="details-section" data-limit="2000">
-        <h1 className="details-section__main-heading h3">Подробно:</h1>
+        <h1 className="details-section__main-heading h3">Алгоритмы:</h1>
 
         <form className="details-section__wrapper form details-section__form rel" action="/action_page.php" method="post">
           <h2 className="details-section__heading">Настройка доходности: {percentage}%

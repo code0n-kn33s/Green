@@ -40,23 +40,23 @@ export default function Footer(params) {
 
         </div>
         <div className="footer__main-social-links">
-          <a className="link" href="/">
+          <a className="link" target="_blank" href="https://www.youtube.com/">
             {/* <!--youtube--> */}
             <YouTubeIcon />
 
           </a>
-          <a className="link" href="/">
+          <a className="link" target="_blank" href="https://www.instagram.com/arbitech7/?igshid=MzRlODBiNWFlZA%3D%3D">
             {/* <!--instagram--> */}
             <InstaIcon />
 
 
           </a>
-          <a className="link" href="/">
+          <a className="link" target="_blank" href="https://www.facebook.com/profile.php?id=100090426237643">
             {/* <!--facebook--> */}
             <Facebook />
 
           </a>
-          <a className="link" href="/">
+          <a className="link" target="_blank" href="https://t.me/arbitech777">
             {/* telegram */}
             <TelegramIcon />
           </a>

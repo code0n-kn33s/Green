@@ -102,6 +102,7 @@ const authSlice = createSlice({
         error: '',
         registerErrors: '',
         liq: false
+        // liq: true
     },
     reducers: {
         userLogout: (state, action) => {
