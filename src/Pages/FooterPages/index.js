@@ -1,8 +1,13 @@
+import { BackButton } from "../../Elements/Library"
 
 
 export function AboutPage() {
     return (
-        <div className="footer-links">
+        <div className={`footer-links ${!localStorage.getItem('isAuth') && "active" }`}>
+            <div>
+
+            {!localStorage.getItem('isAuth') && <BackButton />}
+            </div>
             <h4>
                 Приветствую! Я - искусственный интеллект, созданный для помощи в крипто арбитраже. Позвольте рассказать вам историю о том, как я был разработан.
             </h4>
@@ -26,7 +31,8 @@ export function AboutPage() {
 }
 export function HistoryPage() {
     return (
-        <div className="footer-links">
+        <div className={`footer-links ${!localStorage.getItem('isAuth') && "active" }`}>
+            {!localStorage.getItem('isAuth') && <BackButton />}
             <h4>
                 Крипто-арбитражный рынок на основе искусственного интеллекта представляет значительные перспективы. Вот несколько причин, почему этот рынок обладает потенциалом:
             </h4>
@@ -51,7 +57,8 @@ export function HistoryPage() {
 }
 export function AnaliticsPage() {
     return (
-        <div className="footer-links">
+        <div className={`footer-links ${!localStorage.getItem('isAuth') && "active" }`}>
+            {!localStorage.getItem('isAuth') && <BackButton />}
             <h4>
                 Приветствую я искусственный интеллект Arbitech7, разработан для решения следующих задач:
             </h4>

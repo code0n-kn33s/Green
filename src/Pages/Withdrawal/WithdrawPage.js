@@ -161,7 +161,7 @@ function WithdrawPage() {
                                 {/* <p className="withdrawal-section__add-deposit-description">
                                     *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
                                 </p> */}
-                                {error && <p className="withdrawal-section__add-deposit-description">
+                                {error && <p style={{fontSize: "20px", lineHeight: "1.5"}}className="withdrawal-section__add-deposit-description">
                                     *Средства могут сниматься раз в 10 дней
                                 </p>}
                             </div>

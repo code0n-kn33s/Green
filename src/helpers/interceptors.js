@@ -35,6 +35,7 @@ export function setStorage(user) {
     localStorage.setItem('email', `${user.email}`)
     localStorage.setItem('first_name', `${user.first_name}`)
     localStorage.setItem('last_name', `${user.last_name}`)
+    localStorage.setItem('isAuth', `true`)
 }
 
 export function privateFetch (url, options, exclude) {

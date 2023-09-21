@@ -119,4 +119,16 @@ export const routes = [
       path: "/register",
       element: <RegisterPage/>
     },
+    {
+      path: "/about-guest",
+      element: <AboutPage /> ,
+    },
+    {
+      path: "/history-guest",
+      element: <HistoryPage /> ,
+    },
+    {
+      path: "/analitics-guest",
+      element: <AnaliticsPage /> ,
+    },
   ]

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getUserSessions,  } from '../../toolkitReducers/actions.slice'
 import { getUserData  } from '../../toolkitReducers/auth.slice'
-
+import { ReactComponent as Twitter } from '../../assets/icons/social-links/linkedin.svg'
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function ProfilePage() {
@@ -106,6 +106,7 @@ export default function ProfilePage() {
                   <p className="profile-section__social-links-title">Поделится:</p>
 
                   <ul className="profile-section__social-links-list">
+                  <a  target="_blank" href="https://www.instagram.com/arbitech7/?igshid=MzRlODBiNWFlZA%3D%3D">
                     <li className="profile-section__social-links-list-item link">
                       <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
                         <g clipPath="url(#clip0_101_1183)">
@@ -120,24 +121,29 @@ export default function ProfilePage() {
                         </defs>
                       </svg>
                     </li>
+                      </a>
 
+                    <a  target="_blank" href="https://www.facebook.com/profile.php?id=100090426237643">
                     <li className="profile-section__social-links-list-item link">
                       <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                         <path d="M4.35239 11V5.98275H6.0358L6.28836 4.02686H4.35239V2.77831C4.35239 2.21221 4.50895 1.82642 5.32165 1.82642L6.3565 1.82599V0.0765765C6.17754 0.0533199 5.56322 0 4.84823 0C3.3552 0 2.33304 0.911331 2.33304 2.5846V4.02686H0.644531V5.98275H2.33304V11H4.35239Z" fill="black" />
                       </svg>
                     </li>
+                      </a>
 
+                    <a  target="_blank" href="https://t.me/arbitech777">
                     <li className="profile-section__social-links-list-item link">
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2.88739 6.83762L4.37988 10.5686L6.32291 8.62555L9.65433 11.2734L12 0.726562L0 5.72498L2.88739 6.83762ZM8.57098 3.75256L4.89798 7.10275L4.44049 8.82697L3.59537 6.71375L8.57098 3.75256Z" fill="black" />
                       </svg>
                     </li>
+                      </a>
 
+                    <a  target="_blank" href="https://twitter.com/?lang=ru">
                     <li className="profile-section__social-links-list-item link">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 13 11" fill="none">
-                        <path d="M13 1.65669C12.5166 1.86875 12.0014 2.00931 11.4644 2.07756C12.0169 1.74769 12.4386 1.22931 12.6368 0.6045C12.1217 0.911625 11.5529 1.12856 10.9468 1.24963C10.4577 0.728813 9.76056 0.40625 9.00006 0.40625C7.52456 0.40625 6.33669 1.60388 6.33669 3.07206C6.33669 3.28331 6.35456 3.48644 6.39844 3.67981C4.18275 3.57175 2.22219 2.50981 0.905125 0.892125C0.675187 1.29106 0.540313 1.74769 0.540313 2.23925C0.540313 3.16225 1.01562 3.98044 1.72413 4.45412C1.29594 4.446 0.875875 4.32169 0.52 4.12587C0.52 4.134 0.52 4.14456 0.52 4.15512C0.52 5.45025 1.44381 6.526 2.65525 6.77381C2.43831 6.83313 2.20187 6.86156 1.9565 6.86156C1.78587 6.86156 1.61362 6.85181 1.45194 6.81606C1.79725 7.8715 2.77713 8.64744 3.94225 8.67262C3.0355 9.38194 1.88419 9.80931 0.637812 9.80931C0.41925 9.80931 0.209625 9.79956 0 9.77275C1.18056 10.5341 2.57969 10.9688 4.0885 10.9688C8.99275 10.9688 11.674 6.90625 11.674 3.38487C11.674 3.26706 11.6699 3.15331 11.6643 3.04037C12.1932 2.665 12.6376 2.19619 13 1.65669Z" fill="black" />
-                      </svg>
+                        <Twitter />
                     </li>
+                      </a>
                   </ul>
                 </div>
               </div>

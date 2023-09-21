@@ -18,23 +18,22 @@ export default function Footer(params) {
 
           <ul className="footer__main-links">
             <li className="footer__main-links-item">
-              <Link to="about">
-                О компании </Link>
+              <Link
+                to={localStorage.getItem('isAuth') ? "/about": "/about-guest"}
+              >
+                О компании
+                </Link>
             </li>
 
             <li className="footer__main-links-item">
 
-              <Link to="history">
+              <Link to={localStorage.getItem('isAuth') ? "/history": "/history-guest"}>
                 История компании
               </Link>
             </li>
 
-            {/* <li className="footer__main-links-item">
-                <a className="link" href="/">Новости</a>
-              </li> */}
-
             <li className="footer__main-links-item">
-              <Link to="analitics"> Аналитика рынка</Link>
+              <Link to={localStorage.getItem('isAuth') ?"/analitics" : "/analitics-guest"}> Аналитика рынка</Link>
             </li>
           </ul>
 
@@ -43,18 +42,14 @@ export default function Footer(params) {
           <a className="link" target="_blank" href="https://www.youtube.com/">
             {/* <!--youtube--> */}
             <YouTubeIcon />
-
           </a>
           <a className="link" target="_blank" href="https://www.instagram.com/arbitech7/?igshid=MzRlODBiNWFlZA%3D%3D">
             {/* <!--instagram--> */}
             <InstaIcon />
-
-
           </a>
           <a className="link" target="_blank" href="https://www.facebook.com/profile.php?id=100090426237643">
             {/* <!--facebook--> */}
             <Facebook />
-
           </a>
           <a className="link" target="_blank" href="https://t.me/arbitech777">
             {/* telegram */}

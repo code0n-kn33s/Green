@@ -248,6 +248,11 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+.footer-links {
+  &.active {
+    margin-top: 50px;
+  }
+}
 .footer__main-links {
   display: flex;
   gap: 20px;
