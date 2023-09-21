@@ -15,6 +15,10 @@ import WithdrawPage from './Pages/Withdrawal/WithdrawPage'
 import FaqPage from './Pages/Faq/FaqPage'
 import ProfilePage from './Pages/Profile/ProfilePage'
 
+import {AboutPage} from './Pages/FooterPages/'
+import {HistoryPage} from './Pages/FooterPages/'
+import {AnaliticsPage} from './Pages/FooterPages/'
+
 import StatisticPage from './Pages/Statistics/StatisticPage'
 import Placeholders from './Pages/Placeholders'
 import PlaceholdersItem from './Pages/PlaceholdersItem'
@@ -30,6 +34,22 @@ export const routes = [
       path: "/",
       element: <Main />,
       children: [
+        {
+          path: "about",
+          element: <AboutPage /> ,
+        },
+        {
+          path: "history",
+          element: <HistoryPage /> ,
+        },
+        {
+          path: "analitics",
+          element: <AnaliticsPage /> ,
+        },
+        {
+          path: "profile",
+          element: <ProfilePage /> ,
+        },
         {
           path: "profile",
           element: <ProfilePage /> ,

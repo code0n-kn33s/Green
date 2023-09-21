@@ -73,7 +73,6 @@ const setChecks = (value) => {
             <div className="details-section__progress-bar">
               <div className="form-container form-container--range range">
                 <ul className="range__list">
-                  <li className="range__list-item">0%</li>
                   <li className="range__list-item">15%</li>
                   <li className="range__list-item">30%</li>
                   <li className="range__list-item">45%</li>
@@ -86,7 +85,7 @@ const setChecks = (value) => {
                   onChange={handlePercentageChange}
                   id="percent"
                   name="royalty"
-                  min="0"
+                  min="15"
                   max="75"
                   step="15"
                   disabled={isDisabled ? true : false}

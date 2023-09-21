@@ -235,3 +235,23 @@ input[type="number"]::-webkit-outer-spin-button {
     box-shadow: .2em -.2em 0 0 currentcolor;
   }
 }
+.page__sections-wrapper.medium-wrapper {
+  min-height: 75vh;
+}
+.footer-links {
+  padding: 20px 40px;
+  h4 {
+    margin: 20px 0;
+  }
+  div {
+    margin: 15px;
+  }
+}
+
+.footer__main-links {
+  display: flex;
+  gap: 20px;
+  li a {
+    color: #fff831 ;
+  }
+}

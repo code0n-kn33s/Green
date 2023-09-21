@@ -20,7 +20,7 @@ export default function Aside(props) {
 
               <ul className="main-nav__second-lvl">
                 <li className="main-nav__second-lvl-item">
-                  <NavLink className="link" to="algoritms"> Алгоритмы </NavLink>
+                  <NavLink className="link" to="algoritms"> Пулы </NavLink>
                 </li>
 
                 <li className="main-nav__second-lvl-item">
@@ -35,7 +35,7 @@ export default function Aside(props) {
                 <span>
                   <AttentionIcon/>
                 </span>
-                <span>Риски</span>
+                <span>Алгоритмы</span>
               </NavLink>
             </li>
 
