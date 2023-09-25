@@ -208,7 +208,7 @@ export default function ProfilePage() {
           <div className="sessions-section__header">
             <h2 className="sessions-section__header-heading">История сеансов</h2>
 
-            <div className="sessions-section__header-settings">
+            {/* <div className="sessions-section__header-settings">
               <span>ОТОБРАЗИТЬ</span>
 
               <custom-select className="custom-select">
@@ -248,7 +248,7 @@ export default function ProfilePage() {
 
                 <input type="hidden" className="custom-select__input-hidden" value="10" />
               </custom-select>
-            </div>
+            </div> */}
           </div>
 
           <div className="sessions-section__table-wrapper">
