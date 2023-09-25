@@ -33,9 +33,10 @@
 
       span:last-child {
         font-size: inherit;
+
       }
     }
-    
+
     .sessions-section__table-body-row {
       text-align: center;
 
@@ -44,7 +45,7 @@
           padding: 17px 17px 16px 0;
         }
       }
-      
+
       td {
         padding: 22px 17px 16px 0;
         width: 21%;
@@ -52,7 +53,7 @@
         text-transform: uppercase;
       }
     }
-    
+
     .sessions-section__footer-wrapper {
       display: flex;
       justify-content: space-between;

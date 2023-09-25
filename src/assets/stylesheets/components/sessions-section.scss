@@ -91,7 +91,9 @@
         padding-bottom: 14px;
 
         span:last-child {
-          font-size: $font-size-9;
+          // font-size: $font-size-9;
+          font-size: 8px;
+          padding: 2px;
         }
 
         svg {
@@ -104,7 +106,7 @@
       border-bottom: $main-border;
 
       td {
-        padding: 17px 17px 17px 0;
+        padding: 4px;
         text-align: left;
       }
     }
