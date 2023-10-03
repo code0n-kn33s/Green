@@ -17,14 +17,14 @@ export default function Table(params) {
         <tr className="algorithms-history__table-heading-row rel">
           <th>
             <div className="algorithms-history__table-td-wrapper">
-              <span>Дата создания</span>
+              <span>Дата</span>
             </div>
           </th>
 
           <th>
             <div className="algorithms-history__table-td-wrapper">
               <span>
-                Сумма
+                Сумма пибыли
               </span>
             </div>
           </th>
@@ -32,21 +32,9 @@ export default function Table(params) {
           <th>
             <div className="algorithms-history__table-td-wrapper">
               <span>
-                Уровень риска
+                Доход дня
               </span>
             </div>
-          </th>
-
-          <th>
-            <div className="algorithms-history__table-td-wrapper">
-              <span>
-                Сумма прибыли
-              </span>
-            </div>
-          </th>
-
-          <th>
-            <div className="algorithms-history__table-td-wrapper"></div>
           </th>
         </tr>
 
@@ -72,7 +60,7 @@ export default function Table(params) {
               <td>{risk.date}</td>
               <td>{risk.profit}USD</td>
               <td>{risk.risk}%</td>
-              <td>{risk.user}</td>
+              {/* <td>{risk.user}</td> */}
               {/* <td>
               <a href="#" className="link algorithms-history__table-body-row-link">
                 <span>

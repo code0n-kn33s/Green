@@ -19,7 +19,16 @@ export default function Footer(params) {
           <ul className="footer__main-links">
             <li className="footer__main-links-item">
               <Link
-                to={localStorage.getItem('isAuth') ? "/about": "/about-guest"}
+                to={localStorage.getItem('isAuth') ? "/profile": "/login"}
+                style={{"whiteSpace": "nowrap"}}
+              >
+                Главная
+                </Link>
+            </li>
+            <li className="footer__main-links-item">
+              <Link
+                to={localStorage.getItem('isAuth') ? "/private/about": "/public/about"}
+                style={{"whiteSpace": "nowrap"}}
               >
                 О компании
                 </Link>
@@ -27,13 +36,22 @@ export default function Footer(params) {
 
             <li className="footer__main-links-item">
 
-              <Link to={localStorage.getItem('isAuth') ? "/history": "/history-guest"}>
-                История компании
+              <Link to={localStorage.getItem('isAuth') ? "/private/terms": "/public/terms"}>
+                Правила
               </Link>
             </li>
+            {/* <li className="footer__main-links-item">
+
+              <Link to={localStorage.getItem('isAuth') ? "/history": "/public/history"}>
+                История
+              </Link>
+            </li> */}
 
             <li className="footer__main-links-item">
-              <Link to={localStorage.getItem('isAuth') ?"/analitics" : "/analitics-guest"}> Аналитика рынка</Link>
+              <Link to={localStorage.getItem('isAuth') ?"/private/analitics" : "/public/analitics"}> Аналитика</Link>
+            </li>
+            <li className="footer__main-links-item">
+              <Link to={localStorage.getItem('isAuth') ?"/private/partners" : "/public/partners"}> Партнеры</Link>
             </li>
           </ul>
 

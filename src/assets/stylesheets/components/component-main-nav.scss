@@ -17,6 +17,7 @@
 
   .main-nav__first-lvl {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     gap: 15px;
 
