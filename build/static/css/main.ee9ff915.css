@@ -513,14 +513,9 @@ img[data-sizes] {
 .page .footer .footer__main-links-item {
   display: block;
   font-size: 13px;
-  line-height: calc(23px / $font-size-7);
   margin-bottom: 5px;
 }
-.page .footer .footer__main-links-item:first-child {
-  font-size: 15px;
-  line-height: calc(27px / $font-size-6);
-  margin-bottom: 13px;
-}
+
 .page .footer .footer__main-social-links {
   align-items: flex-end;
   display: flex;
