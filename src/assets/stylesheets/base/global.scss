@@ -311,7 +311,7 @@ img[data-sizes] {
 				cursor: pointer;
 
 				&:first-child {
-					border-bottom: $main-border;
+					// border-bottom: $main-border;
 				}
 			}
 
@@ -384,9 +384,9 @@ img[data-sizes] {
 			line-height: calc(23px / $font-size-7);
 
 			&:first-child {
-				margin-bottom: 13px;
-				font-size: $font-size-6;
-				line-height: calc(27px / $font-size-6);
+				// margin-bottom: 13px;
+				// font-size: $font-size-6;
+				// line-height: calc(27px / $font-size-6);
 			}
 		}
 

@@ -14,6 +14,22 @@ export const getCurrencies = createAsyncThunk(
         return data
     }
 )
+
+export const getGlobalProfit = createAsyncThunk(
+    'async/getGlobalProfit',
+    async function (param, options) {
+        const response = await fetch(process.env.REACT_APP_API_URL + 'get_global_profit/')
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            return options.rejectWithValue(data);
+        }
+
+        return data
+    }
+)
+
 // export const getCurrencies = createAsyncThunk(
 //     'async/getCurrencies',
 //     async function (param, options) {
@@ -242,6 +258,7 @@ const actionsSlice = createSlice({
         ],
         sessions: null,
         wallet: '',
+        globalProfit: null,
         currenciesFetch: null,
         risks: null,
         statistics: null,
