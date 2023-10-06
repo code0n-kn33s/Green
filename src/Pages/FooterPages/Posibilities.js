@@ -10,7 +10,7 @@ import water from './img/water.png'
 
 export function Posibilities(params) {
     const dispatch = useDispatch()
-    const globalProfit = useSelector(store => store.globalProfit)
+    const {globalProfit} = useSelector((store) => store.state)
 
     React.useEffect(() => {
         dispatch(getGlobalProfit())

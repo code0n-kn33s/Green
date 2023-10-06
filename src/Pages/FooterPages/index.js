@@ -9,6 +9,7 @@ export { Posibilities } from './Posibilities'
 export { Partners } from './Partners'
 export { Terms } from './Terms'
 export { PrimaryLogin } from './PrimaryLogin'
+export { Points } from './Points'
 
 export { PublicWrap } from './PublicWrap'
 export { PrivateWrap } from './PrivateWrap'

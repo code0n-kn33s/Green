@@ -4,6 +4,7 @@ import { StoryMap } from '../FooterPages'
 import { Posibilities } from '../FooterPages'
 import { Partners } from '../FooterPages'
 import { Terms } from '../FooterPages'
+import { Points } from '../FooterPages'
 import { PrimaryLogin } from '../FooterPages'
 import Login from './LoginPage'
 import Footer from './../../Elements/Footer'
@@ -18,6 +19,7 @@ export function LoginWrap(params) {
                 <StoryMap />
                 <Posibilities />
                 <Partners />
+                <Points />
                 <Terms />
                 <Login />
             </div>

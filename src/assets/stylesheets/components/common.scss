@@ -462,17 +462,23 @@ html {
 
 .posibilities-content {
   padding: 20px;
-  width: fit-content;
+  width: 100%;
   margin: auto;
   & > div {
     margin-bottom: 5px;
+  }
+}
+.posibilities-content-grafic {
+  height: 300px;
+  @include media-query($w700) {
+    height: initial;
+
   }
 }
 
 .posibilities-content-imgs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   img {
     max-width: 150px;
     @include media-query($small) {
@@ -776,4 +782,71 @@ html {
     position: fixed;
     bottom: 0;
   }
+}
+
+.points {
+
+}
+.points-title {
+
+}
+.points-info {
+
+}
+.points-info-wrap {
+
+}
+.points-info-top {
+  display: flex;
+  justify-content: space-around;
+}
+.points-info-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.points-info-line {
+  height: 5px;
+  background: #fff831;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    background-color: black;
+    border: 3px solid;
+    border-radius: 50%;
+    height: 14px;
+    width: 14px;
+
+  }
+}
+
+.point-item {
+  text-align: center;
+  .point-item-number {
+    font-size: 30px;
+    border-radius: 50%;
+    border: 2px solid;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+  }
+  .point-item-hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: .3s ease;
+  }
+  &.active {
+    .point-item-hidden {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+.point-item-title {
+
+}
+.point-item-text {
+
 }
