@@ -94,7 +94,7 @@ export default function StatisticPage(params) {
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
                   <span className="statistics-section__graphics-row-heading">
                     {/* {data?.chart_data?.datasets[0].label} */}
-                    Глобальная статистика
+                    Доходы пользователей 75%
                   </span>
                   {/* <span className="statistics-section__graphics-row-counter"> 0$</span> */}
                 </h2>

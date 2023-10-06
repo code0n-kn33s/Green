@@ -698,7 +698,7 @@ html {
   width: 80vw;
   margin: auto;
   & > div {
-    padding-top: 20px;
+    padding-top: 60px;
   }
 }
 
@@ -707,7 +707,6 @@ html {
 
   .primary-login-wrap {
     text-align: center;
-    margin-top: 5%;
   }
   .primary-login-icon {
     padding: 30px 0 30px;
@@ -900,4 +899,9 @@ html {
     display: none !important;
   }
 
+}
+
+.statistics-section__balance-counter  span:last-of-type {
+  font-size: 18px;
+  text-transform: uppercase;
 }
