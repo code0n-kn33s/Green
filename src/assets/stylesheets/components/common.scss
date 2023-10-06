@@ -458,6 +458,7 @@ html {
 .about-ai {
 }
 .about-me-title {
+  margin-top: 0;
 }
 
 .posibilities-content {
@@ -472,7 +473,6 @@ html {
   height: 300px;
   @include media-query($w700) {
     height: initial;
-
   }
 }
 
@@ -525,7 +525,7 @@ html {
 }
 
 .login-page.page {
-  padding: 60px 0 120px;
+  padding: 60px 0 220px;
 }
 .partners-table {
   @include media-query($medium-mid) {
@@ -545,7 +545,6 @@ html {
   padding: 30px 20px;
   @include media-query($w1100) {
     margin-bottom: 30px;
-
   }
 
   & > div {
@@ -699,6 +698,9 @@ html {
 .login-wrap-container {
   width: 80vw;
   margin: auto;
+  & > div {
+    padding-top: 20px;
+  }
 }
 
 .primary-login-page {
@@ -733,7 +735,6 @@ html {
     @include media-query($w500) {
       font-size: 30px;
     }
-
   }
   .primary-login-text {
     font-size: 20px;
@@ -742,15 +743,14 @@ html {
     @include media-query($w500) {
       font-size: 18px;
     }
-
   }
-    .primary-login-pretitle,
-    .primary-login-text {
-      text-shadow: 2px 2px 0px gray;
-    }
+  .primary-login-pretitle,
+  .primary-login-text {
+    text-shadow: 2px 2px 0px gray;
+  }
 
   .primary-login-buttons {
-    margin-top: 10%;
+    margin-top: 5%;
     display: flex;
     justify-content: center;
     gap: 15%;
@@ -760,7 +760,6 @@ html {
       justify-content: center;
       align-items: center;
     }
-
   }
   .primary-login-button {
     border-radius: 20px;
@@ -772,10 +771,10 @@ html {
     border: none;
     font-size: 18px;
     width: 164px;
-    transition: .3s ease;
+    transition: 0.3s ease;
     cursor: pointer;
     &:hover {
-      background-color: #FFA500;
+      background-color: #ffa500;
     }
   }
   .page .footer {
@@ -793,32 +792,29 @@ html {
   }
 }
 .points-title {
-
 }
 .points-info {
   height: 260px;
   padding: 30px 0;
 }
 .points-info-wrap {
-
 }
 .points-info-top {
   position: relative;
   display: flex;
   justify-content: space-around;
-  .point-item-hidden  {
+  .point-item-hidden {
     bottom: 85px;
     width: 299px;
     left: -100px;
   }
-
 }
 .points-info-bottom {
   display: flex;
   position: relative;
 
   justify-content: space-between;
-  .point-item-hidden  {
+  .point-item-hidden {
     top: 85px;
     width: 282px;
   }
@@ -836,7 +832,6 @@ html {
     border-radius: 50%;
     height: 14px;
     width: 14px;
-
   }
 }
 
@@ -860,7 +855,7 @@ html {
     // opacity: 0;
     // left: 53px;
     position: absolute;
-    transition: .3s ease;
+    transition: 0.3s ease;
   }
   &.active {
     .point-item-hidden {
@@ -870,9 +865,40 @@ html {
   }
 }
 .point-item-title {
-font-size: 24px;
-font-weight: 600;
+  font-size: 24px;
+  font-weight: 600;
 }
 .point-item-text {
+}
+
+.public-footer {
+  position: fixed;
+  background-color: black;
+  bottom: 0;
+  li {
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+.footer__main-info-logo {
+  @include media-query($w550) {
+    display: none;
+  }
+}
+.foter-public-links {
+  .footer__main-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+.footer__copyright {
+  @include media-query($w950) {
+    display: none !important;
+  }
 
 }

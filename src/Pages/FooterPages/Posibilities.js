@@ -16,7 +16,6 @@ export function Posibilities(params) {
         dispatch(getGlobalProfit())
     }, [])
 
-    console.log('globalProfit :>> ', globalProfit);
     return (
         <div className="posibilities">
             <div className="posibilities-title public-title">

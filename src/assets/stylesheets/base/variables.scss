@@ -69,6 +69,7 @@ $extra-widescreen: 'extra-widescreen';
 
 $w1100: 'w1100';
 $w1000: 'w1000';
+$w950: 'w950';
 $w900: 'w900';
 $w850: 'w850';
 $w800: 'w800';
@@ -87,6 +88,7 @@ $w320: 'w320';
 $breakpoints: (
   $w1100 '(max-width: 1100px)',
   $w1000 '(max-width: 1000px)',
+  $w950 '(max-width: 950px)',
   $w900 '(max-width: 900px)',
   $w850 '(max-width: 850px)',
   $w800 '(max-width: 800px)',
