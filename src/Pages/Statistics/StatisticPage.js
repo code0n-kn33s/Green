@@ -8,6 +8,7 @@ import G4 from './G4'
 import G3 from './G3'
 import G2 from './G2'
 import G1 from './G1'
+import G7 from '../FooterPages/G7'
 
 export default function StatisticPage(params) {
   // const chartRef = useRef(null);
@@ -93,14 +94,14 @@ export default function StatisticPage(params) {
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
                   <span className="statistics-section__graphics-row-heading">
                     {/* {data?.chart_data?.datasets[0].label} */}
-                    Прибыль за сутки (%)
+                    Глобальная статистика
                   </span>
                   {/* <span className="statistics-section__graphics-row-counter"> 0$</span> */}
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
                   {/* I First */}
-                  {data?.chart_data?.percent_daily_profit_today && <G5 prop={data?.chart_data?.percent_daily_profit_today} />}
+                  <G7  />
 
                 </div>
               </div>

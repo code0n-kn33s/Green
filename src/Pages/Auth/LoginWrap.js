@@ -22,12 +22,6 @@ export function LoginWrap(params) {
     const refLogin = useRef(null)
 
     useEffect(() => {
-        // window.scrollIntoView({})
-        // window.scrollTo({
-        //     top: 100000,
-        //     behavior: "smooth",
-        // });
-
         console.log('refAboutUs :>> ', refAboutUs);
         refPrimaryLogin.current.scrollIntoView({
             behavior: "smooth",

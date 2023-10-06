@@ -1,6 +1,4 @@
 import React from 'react'
-import { useSelector, useDispatch } from "react-redux"
-import { getGlobalProfit } from '../../toolkitReducers'
 
 import G7 from './G7'
 import circle from './img/circle.png'
@@ -9,12 +7,7 @@ import triangle from './img/triangle.png'
 import water from './img/water.png'
 
 export function Posibilities(params) {
-    const dispatch = useDispatch()
-    const {globalProfit} = useSelector((store) => store.state)
 
-    React.useEffect(() => {
-        dispatch(getGlobalProfit())
-    }, [])
 
     return (
         <div className="posibilities">
@@ -41,7 +34,7 @@ export function Posibilities(params) {
                 </div>
 
                 <div className='posibilities-content-grafic'>
-                    {globalProfit && <G7 data={globalProfit}/>}
+                    <G7 />
                 </div>
 
                 <div className="posibilities-content-imgs">
