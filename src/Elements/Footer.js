@@ -1,11 +1,17 @@
+
+import { Link, useLocation } from 'react-router-dom'
+
 import { ReactComponent as TelegramIcon } from '../assets/icons/TelegramIcon.svg';
 import { ReactComponent as YouTubeIcon } from '../assets/icons/YouTubeIcon.svg';
 import { ReactComponent as Facebook } from '../assets/icons/Facebook.svg';
 import { ReactComponent as InstaIcon } from '../assets/icons/InstaIcon.svg';
-import { Link } from 'react-router-dom'
 import { ReactComponent as LogoIcon } from './../assets/images/logo.svg';
 
 export default function Footer(params) {
+  const location = useLocation();
+
+  const isLogin = location.pathname === '/login' ? true : false
+
   return (
     <footer className="footer">
       <div className="footer__main">
@@ -16,7 +22,7 @@ export default function Footer(params) {
             <LogoIcon className="img-abs" />
           </div>
 
-          <ul className="footer__main-links">
+          {!isLogin && <ul className="footer__main-links">
             <li className="footer__main-links-item">
               <Link
                 to={localStorage.getItem('isAuth') ? "/profile": "/login"}
@@ -53,7 +59,7 @@ export default function Footer(params) {
             <li className="footer__main-links-item">
               <Link to={localStorage.getItem('isAuth') ?"/private/partners" : "/public/partners"}> Партнеры</Link>
             </li>
-          </ul>
+          </ul>}
 
         </div>
         <div className="footer__main-social-links">

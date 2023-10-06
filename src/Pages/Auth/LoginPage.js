@@ -101,7 +101,6 @@ export default function Login(props) {
                     <Link className="btn" to="/register">Регистрация</Link>
                 </div>
             </section>
-            <Footer />
         </div>
     )
 }

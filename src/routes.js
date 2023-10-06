@@ -16,19 +16,20 @@ import WithdrawPage from './Pages/Withdrawal/WithdrawPage'
 import FaqPage from './Pages/Faq/FaqPage'
 import ProfilePage from './Pages/Profile/ProfilePage'
 
-import { AboutPage } from './Pages/FooterPages/'
-import { HistoryPage } from './Pages/FooterPages/'
-import { AnaliticsPage } from './Pages/FooterPages/'
+import { AboutPage } from './Pages/FooterPages'
+import { HistoryPage } from './Pages/FooterPages'
+import { AnaliticsPage } from './Pages/FooterPages'
 
 // Footer pages
-import { PrivateWrap } from './Pages/FooterPages/'
+import { LoginWrap } from './Pages/Auth/LoginWrap'
+import { PrivateWrap } from './Pages/FooterPages'
+import { PublicWrap } from './Pages/FooterPages'
 
-import { PublicWrap } from './Pages/FooterPages/'
-import { AboutUs } from './Pages/FooterPages/'
-import { StoryMap } from './Pages/FooterPages/'
-import { Posibilities } from './Pages/FooterPages/'
-import { Partners } from './Pages/FooterPages/'
-import { Terms } from './Pages/FooterPages/'
+import { AboutUs } from './Pages/FooterPages'
+import { StoryMap } from './Pages/FooterPages'
+import { Posibilities } from './Pages/FooterPages'
+import { Partners } from './Pages/FooterPages'
+import { Terms } from './Pages/FooterPages'
 
 import StatisticPage from './Pages/Statistics/StatisticPage'
 import Placeholders from './Pages/Placeholders'
@@ -124,8 +125,12 @@ export const routes = [
   },
   {
     path: "/login",
-    element: <LoginPage />
+    element: <LoginWrap />
   },
+  // {
+  //   path: "/login",
+  //   element: <LoginPage />
+  // },
   {
     path: "/restore",
     element: <RestorePass />
@@ -138,32 +143,31 @@ export const routes = [
     path: "/register",
     element: <RegisterPage />
   },
-  {
-
-    path: "public",
-    element: <PublicWrap />,
-    children: [
-      {
-        path: "about",
-        element: <AboutUs />,
-      },
-      {
-        path: "history",
-        element: <StoryMap />,
-      },
-      {
-        path: "analitics",
-        element: <Posibilities />,
-      },
-      {
-        path: "partners",
-        element: <Partners />,
-      },
-      {
-        path: "terms",
-        element: <Terms />,
-      },
-    ]
-  },
+  // {
+  //   path: "public",
+  //   element: <PublicWrap />,
+  //   children: [
+  //     {
+  //       path: "about",
+  //       element: <AboutUs />,
+  //     },
+  //     {
+  //       path: "history",
+  //       element: <StoryMap />,
+  //     },
+  //     {
+  //       path: "analitics",
+  //       element: <Posibilities />,
+  //     },
+  //     {
+  //       path: "partners",
+  //       element: <Partners />,
+  //     },
+  //     {
+  //       path: "terms",
+  //       element: <Terms />,
+  //     },
+  //   ]
+  // },
 
 ]

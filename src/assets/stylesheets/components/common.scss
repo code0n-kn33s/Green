@@ -257,7 +257,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .login-page.page {
-  min-height: calc(100vh - 100px) ;
+  min-height: calc(100vh - 100px);
   justify-content: center;
 }
 
@@ -266,7 +266,8 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 600;
   font-size: 20px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-top: 80px;
+  margin-bottom: 40px;
 }
 .logo-wrapper {
   height: 173px;
@@ -307,7 +308,7 @@ input[type="number"]::-webkit-outer-spin-button {
 body,
 html {
   // height: calc(100vh - 100px);
-  font-family: 'Tomorrow', sans-serif;
+  font-family: "Tomorrow", sans-serif;
 }
 
 .footer {
@@ -328,7 +329,7 @@ html {
   flex-wrap: wrap;
   position: relative;
 
-  &>div {
+  & > div {
     flex: 1;
   }
 
@@ -369,7 +370,7 @@ html {
     margin: 5px;
   }
 
-  @include media-query ($small) {
+  @include media-query($small) {
     margin-bottom: 30px;
   }
 }
@@ -382,11 +383,10 @@ html {
   position: relative;
 
   &:before {
-    content: '\25CF';
+    content: "\25CF";
     position: absolute;
     left: 12px;
     font-size: 15px;
-
   }
 }
 
@@ -417,7 +417,7 @@ html {
     height: 100%;
   }
 
-  @include media-query ($small) {
+  @include media-query($small) {
     display: none;
   }
 }
@@ -445,7 +445,6 @@ html {
   @include media-query($small) {
     margin-bottom: 20px;
   }
-
 }
 .about-us-img {
   position: absolute;
@@ -457,17 +456,15 @@ html {
   }
 }
 .about-ai {
-
 }
 .about-me-title {
-
 }
 
 .posibilities-content {
   padding: 20px;
   width: fit-content;
   margin: auto;
-  &>div{
+  & > div {
     margin-bottom: 5px;
   }
 }
@@ -478,18 +475,16 @@ html {
   justify-content: center;
   img {
     max-width: 150px;
-    @include media-query ($small) {
+    @include media-query($small) {
       max-width: 140px;
     }
-    @include media-query ($small-mid) {
+    @include media-query($small-mid) {
       max-width: 120px;
     }
-    @include media-query ($extra-small) {
+    @include media-query($extra-small) {
       max-width: 100px;
     }
   }
-
-
 }
 
 .posibilities-content-p {
@@ -508,43 +503,59 @@ html {
   position: relative;
 }
 
-.partners {}
-.partners-title {}
+.partners {
+}
+.partners-title {
+}
 .partners-info {
   display: flex;
   align-items: center;
-  @include media-query ($medium-mid) {
+  justify-content: space-between;
+
+  @include media-query($w1100) {
     flex-direction: column-reverse;
     align-items: center;
   }
 }
+
+.login-page.page {
+  padding: 60px 0 120px;
+}
 .partners-table {
-  @include media-query ($medium-mid) {
+  @include media-query($medium-mid) {
     margin-bottom: 30px;
   }
-  @include media-query ($small-mid) {
+  @include media-query($small-mid) {
     overflow-x: scroll;
     width: 100%;
   }
 }
 .partners-block-text {
-  @include media-query ($small) {
+  @include media-query($small) {
     margin-bottom: 30px;
-
   }
 }
 .partners-text {
   padding: 30px 20px;
-  &>div {
-    margin: 5px;
+  @include media-query($w1100) {
+    margin-bottom: 30px;
 
   }
+
+  & > div {
+    margin: 5px;
+  }
 }
-.partners-text-p {}
-.partners-text-list {}
-.partners-text-list-item {}
-.partners-text-list-item {}
-.partners-text-list-item {}
+.partners-text-p {
+}
+.partners-text-list {
+}
+.partners-text-list-item {
+}
+.partners-text-list-item {
+}
+.partners-text-list-item {
+}
 
 .partners-block-text {
   position: relative;
@@ -553,20 +564,18 @@ html {
   position: absolute;
   width: 30%;
   margin: auto;
-  left: 0;
-  right: -100px;
+
+  right: 5px;
   top: 0;
   transform: translatey(-100%);
-  @include media-query ($medium-mid) {
+  @include media-query($medium-mid) {
     display: none;
   }
 }
 
 .partners-table-wrap {
-
 }
 .partners-table-row {
-
 }
 .partners-table-item {
   min-width: 84px;
@@ -578,12 +587,11 @@ html {
 }
 
 .footer__main-links {
-  @include media-query ($small-mid) {
+  @include media-query($small-mid) {
     flex-direction: column;
     gap: 10px;
   }
 }
-
 
 * {
   scrollbar-width: thin;
@@ -606,37 +614,33 @@ html {
 }
 
 .partners-text {
-  max-width:536px;
+  max-width: 536px;
 }
 
 .partners-block-text {
-  @include media-query ($w900) {
+  @include media-query($w900) {
     margin-bottom: 30px;
   }
-
 }
 // private wrapper
 .private-wrap {
   padding: 60px 0 30px;
 
-
   .partners-info {
     display: flex;
     align-items: center;
-    @include media-query ($large-down) {
+    @include media-query($large-down) {
       flex-direction: column-reverse;
       align-items: center;
     }
   }
   .partners-text {
-    @include media-query ($large-down) {
+    @include media-query($large-down) {
       margin-bottom: 30px;
     }
     @include media-query($w750) {
-    margin-bottom: 4px;
-
-  }
-
+      margin-bottom: 4px;
+    }
   }
 
   .partners-block-img {
@@ -674,7 +678,7 @@ html {
   }
   .about-us-img {
     @include media-query($small) {
-      display: block ;
+      display: block;
       right: 10px;
     }
     @include media-query($w320) {
@@ -683,6 +687,93 @@ html {
     // @include media-query($w850) {
     //   flex-direction: column;
     // }
+  }
+}
 
+.login-wrap-container {
+  width: 80vw;
+  margin: auto;
+}
+
+.primary-login-page {
+  min-height: 100vh;
+
+  .primary-login-wrap {
+    text-align: center;
+    margin-top: 5%;
+  }
+  .primary-login-icon {
+    padding: 30px 0 30px;
+    svg {
+      width: 100%;
+    }
+  }
+  .primary-login-title {
+    font-size: 100px;
+    text-shadow: 4px 3px 0px gray;
+
+    margin-bottom: 20px;
+    @include media-query($w700) {
+      font-size: 70px;
+    }
+    @include media-query($w500) {
+      font-size: 46px;
+    }
+  }
+  .primary-login-pretitle {
+    font-size: 40px;
+    margin-bottom: 10px;
+
+    @include media-query($w500) {
+      font-size: 30px;
+    }
+
+  }
+  .primary-login-text {
+    font-size: 20px;
+    margin-bottom: 20px;
+
+    @include media-query($w500) {
+      font-size: 18px;
+    }
+
+  }
+    .primary-login-pretitle,
+    .primary-login-text {
+      text-shadow: 2px 2px 0px gray;
+    }
+
+  .primary-login-buttons {
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    @include media-query($w500) {
+      flex-direction: column;
+      gap: 30px;
+      justify-content: center;
+      align-items: center;
+    }
+
+  }
+  .primary-login-button {
+    border-radius: 20px;
+    padding: 8px 10px;
+    letter-spacing: 0.5px;
+    width: 120px;
+    background-color: #fff831;
+    color: black;
+    border: none;
+    font-size: 18px;
+    width: 164px;
+    transition: .3s ease;
+    cursor: pointer;
+    &:hover {
+      background-color: #FFA500;
+    }
+  }
+  .page .footer {
+    position: fixed;
+    bottom: 0;
   }
 }

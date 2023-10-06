@@ -67,7 +67,9 @@ $extra-large-up: 'extra-large-up';
 $widescreen: 'widescreen';
 $extra-widescreen: 'extra-widescreen';
 
-$w900: 'w850';
+$w1100: 'w1100';
+$w1000: 'w1000';
+$w900: 'w900';
 $w850: 'w850';
 $w800: 'w800';
 $w750: 'w750';
@@ -83,6 +85,8 @@ $w320: 'w320';
 // The `$breakpoints` list is used to build our media queries.
 // You can use these in the media-query mixin.
 $breakpoints: (
+  $w1100 '(max-width: 1100px)',
+  $w1000 '(max-width: 1000px)',
   $w900 '(max-width: 900px)',
   $w850 '(max-width: 850px)',
   $w800 '(max-width: 800px)',

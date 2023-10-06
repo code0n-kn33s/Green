@@ -290,7 +290,22 @@ const actionsSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        //ger currencies
+        //get getGlobalProfit
+        builder.addCase(getGlobalProfit.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(getGlobalProfit.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+
+            state.globalProfit = action.payload
+            state.error = ''
+        })
+        builder.addCase(getGlobalProfit.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.payload
+        })
+
+        //get currencies
         builder.addCase(getCurrencies.pending, (state, action) => {
             state.fething = "loading"
         })
@@ -322,7 +337,7 @@ const actionsSlice = createSlice({
             state.fething = "rejected"
             state.error = action.payload
         })
-        //get risks
+        //get user risks
         builder.addCase(getUserRisks.pending, (state, action) => {
             state.fething = "loading"
         })
