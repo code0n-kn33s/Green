@@ -45,9 +45,9 @@ export default function StatisticPage(params) {
                 Текущий баланс:
               </h2>
 
-              <p className="statistics-section__balance-counter">
+              {/* <p className="statistics-section__balance-counter">
                 <span className="statistics-section__balance-counter--usdt">${data?.user_balance} </span>
-              </p>
+              </p> */}
               <p className="statistics-section__balance-counter">
                 <span className="statistics-section__balance-counter--btc">BTC </span>
                 <span className="statistics-section__balance-counter--eq"> = </span>
@@ -122,17 +122,16 @@ export default function StatisticPage(params) {
                 </div>
               </div>
 
-              <div className="statistics-section__graphics-row">
+              {/* <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
                   <span className="statistics-section__graphics-row-heading"> Прибыль за сутки</span>
                   <span className="statistics-section__graphics-row-counter"> {data?.user_profit_last_week}$</span>
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
-                  {/* III Second */}
                   {data?.chart_data?.daily_profit_today && <G3 prop={data?.chart_data?.daily_profit_today} />}
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="statistics-section__graphics-column">

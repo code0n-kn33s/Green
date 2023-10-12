@@ -59,12 +59,12 @@ export default function ProfilePage() {
                       </p>
                     </div>
 
-                    <div className="profile-section__client-usd-info">
+                    {/* <div className="profile-section__client-usd-info">
                       <p className="profile-section__client-usd-info-title">Баланс USD:</p>
                       <p className="profile-section__client-usd-info-balance">
                         $ {localStorage.getItem('balance')} USD
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
