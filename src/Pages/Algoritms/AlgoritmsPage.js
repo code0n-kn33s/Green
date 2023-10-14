@@ -44,7 +44,7 @@ export default function Algoritms(params) {
               <div className="algorithms-section__item-body">
                 <div className="algorithms-section__item-row">
                   <div className="algorithms-section__item-row-left">Сумма:</div>
-                  <div className="algorithms-section__item-row-right bold">От 10 USD</div>
+                  <div className="algorithms-section__item-row-right bold">От 100 USDT</div>
                 </div>
                 <div className="algorithms-section__item-row bold">
                   <div className="algorithms-section__item-row-left">Доходность:</div>
@@ -64,7 +64,7 @@ export default function Algoritms(params) {
                   aria-haspopup="true"
                   aria-expanded="false"
                   aria-label=""
-                  onClick={() => openModal(10)}
+                  onClick={() => openModal(100)}
                 > Запустить AI</button>
               </modal-opener>
             </div>
@@ -75,7 +75,7 @@ export default function Algoritms(params) {
               <div className="algorithms-section__item-body">
                 <div className="algorithms-section__item-row">
                   <div className="algorithms-section__item-row-left">Сумма:</div>
-                  <div className="algorithms-section__item-row-right bold">От 500 USD</div>
+                  <div className="algorithms-section__item-row-right bold">От 500 USDT</div>
                 </div>
                 <div className="algorithms-section__item-row bold">
                   <div className="algorithms-section__item-row-left">Доходность:</div>

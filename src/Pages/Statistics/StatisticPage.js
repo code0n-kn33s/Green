@@ -42,7 +42,7 @@ export default function StatisticPage(params) {
           <div className="statistics-section__balance-wrapper">
             <div className="statistics-section__balance-current">
               <h2 className="statistics-section__balance-heading">
-                Текущий баланс:
+                Итоговый баланс:
               </h2>
 
               {/* <p className="statistics-section__balance-counter">
@@ -69,21 +69,21 @@ export default function StatisticPage(params) {
 
             <div className="statistics-section__balance-revenue-per-day">
               <h2 className="statistics-section__balance-heading">
-                Доход за 24 часа
+                Профит за 24 часа
               </h2>
 
               <p className="statistics-section__balance-counter">
-                <span className="statistics-section__balance-counter--usdt">${data?.user_profit_last_week}</span>
+                <span className="statistics-section__balance-counter--usdt">%{data?.user_profit_last_24_hours}</span>
               </p>
             </div>
 
             <div className="statistics-section__balance-last-interval">
               <h2 className="statistics-section__balance-heading">
-                Получено средств за последний период
+                Итоговый профит
               </h2>
 
               <p className="statistics-section__balance-counter">
-                <span className="statistics-section__balance-counter--usdt">${data?.user_total_profit}</span>
+                <span className="statistics-section__balance-counter--usdt">%{data?.user_total_profit}</span>
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function StatisticPage(params) {
                     Прибыль платформы от сделок за неделю
                   </span>
                   <span className="statistics-section__graphics-row-counter">
-                    {data?.user_profit_last_week}$
+                    {data?.user_profit_last_week}%
                   </span>
                 </h2>
 
@@ -171,7 +171,7 @@ export default function StatisticPage(params) {
 
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
-                  <span className="statistics-section__graphics-row-heading"> Процент доходности за неделю (%)</span>
+                  <span className="statistics-section__graphics-row-heading"> История доходности (%)</span>
 
                   {/* <span className="statistics-section__graphics-row-heading"> Прибыль за сутки</span> */}
                   {/* <span className="statistics-section__graphics-row-counter">{data?.user_total_profit}$</span> */}

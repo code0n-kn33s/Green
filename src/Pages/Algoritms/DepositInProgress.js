@@ -1,18 +1,15 @@
 import { useState, useRef, useEffect } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setSum, getUserWallet, getCurrencies } from '../../toolkitReducers/actions.slice'
+import { setSum, getUserWallet } from '../../toolkitReducers/actions.slice'
 
 
 export default function CustomSelect(params) {
-    const { currencies, wallet, currenciesFetch, error } = useSelector(state => state.state)
+    const { currencies, wallet } = useSelector(state => state.state)
     const { promotion, switchDone } = params
 
-    const [isSmallerSumUsd, showSmallerSumUsd] = useState(false)
-    const [isSmallerSumCripto, showSmallerSumCripto] = useState(false)
-    // const [isSmallerSum, showSmallerSum] = useState(false)
-    const [isSumUsd, setIsSumUsd] = useState('')
-    const [isSumCrypto, setIsSumCrypto] = useState('')
+    const [isSmallerSum, showSmallerSum] = useState(false)
+    const [isSum, setIsSum] = useState('')
     const [isOpenMenu, setOpenMenu] = useState(false)
     const [activeMenu, setActiveMenu] = useState(0)
     const [isCopied, setCopied] = useState(false)
@@ -21,18 +18,13 @@ export default function CustomSelect(params) {
     const inputRef = useRef(null)
 
     useEffect(() => {
-        currencies && dispatch(getUserWallet(currencies[activeMenu].value))
-    }, [])
-
-    useEffect(() => {
-        currencies && dispatch(getCurrencies())
+        dispatch(getUserWallet(currencies[activeMenu].value))
     }, [])
 
     const chooseMenuItem = (index) => {
         setActiveMenu(index)
         setOpenMenu(false)
-        showSmallerSumUsd(false)
-        showSmallerSumCripto(false)
+        showSmallerSum(false)
 
         dispatch(getUserWallet(currencies[index].value))
     }
@@ -44,82 +36,28 @@ export default function CustomSelect(params) {
         setTimeout(() => setCopied(false), 500)
     }
 
-    const sumChangeUsd = (e) => {
-        showSmallerSumUsd(false)
-        showSmallerSumCripto(false)
-        setIsSumCrypto('')
-        setIsSumUsd(e.target.value)
-    }
-    const sumChangeCrypto = (e) => {
-        showSmallerSumUsd(false)
-        showSmallerSumCripto(false)
-        setIsSumUsd('')
-        setIsSumCrypto(e.target.value)
+    const sumChange = (e) => {
+        showSmallerSum(false)
+        setIsSum(e.target.value)
     }
 
-    const checkSum = () => {
-        showSmallerSumUsd(false)
-        showSmallerSumCripto(false)
 
-        if (isSumCrypto === '' && isSumUsd !== '' && Number(isSumUsd) < Number(promotion)) {
-            showSmallerSumUsd(true)
-            return false
-        }
-
-        if (isSumUsd === '' && isSumCrypto !== '' && Number(getActiveValueCurrency())*Number(isSumCrypto) < Number(promotion)) {
-
-            showSmallerSumCripto(true)
-            return false
-        }
-        if (isSumCrypto === '' && isSumUsd === '') {
-
-            showSmallerSumCripto(true)
-            showSmallerSumUsd(true)
-            return false
-        }
-        return true
-    }
 
     const playNext = () => {
-        let summ = getFinalSum();
-        if (checkSum()) {
+        if (Number(isSum) < Number(promotion)) {
+            return showSmallerSum(true)
+        }
+
+        if ('done') {
+            switchDone(true)
+
             const obj = {
-                sum: summ ,
-                // sum: summ % 1 ?  summ.toFixed(6) : summ ,
+                sum: isSum,
                 typeSum: currencies[activeMenu].value
             }
-            if(!error) {
-                switchDone(true)
-                dispatch(setSum(obj))
-            }
+            dispatch(setSum(obj))
 
         }
-    }
-
-    const getActiveCurrency = () => {
-        return currencies[activeMenu].value
-    }
-
-    const getActiveValueCurrency = () => {
-        return currenciesFetch[getActiveCurrency()].rate
-    }
-
-    const getEqwiwalent = () => {
-        return 1 / getActiveValueCurrency()
-    }
-
-    const convertCriptToUSD = () => {
-        return Number(getActiveValueCurrency())*Number(isSumCrypto)
-    }
-
-    const getFinalSum = () => {
-        if (isSumUsd) {
-            return Number(isSumUsd) / getActiveValueCurrency()
-        }
-        if (isSumCrypto) {
-            return isSumCrypto
-        }
-        return 0
     }
 
     return (
@@ -165,44 +103,16 @@ export default function CustomSelect(params) {
                 />
             </custom-select>
             <br />
-            <div class="form-container rel currencies-exchange-wrap">
-                {currenciesFetch && <div className="currencies-exchange-input-values">
-                    <span>1 {getActiveCurrency().toUpperCase()}=</span>
+            <div class="form-container rel">
 
-                    <span>{Number(getActiveValueCurrency()).toFixed(7) + " USD"}</span>
-                </div>}
-                <input className="currencies-exchange-input" required onChange={sumChangeCrypto} value={isSumCrypto} type="number" placeholder={"Введите сумму в " + getActiveCurrency().toUpperCase()} name="cryptosum" />
-
-
-                {isSmallerSumCripto && <div class="modal-dialog__invoice-description-wrapper">
+                <input required onChange={sumChange} value={isSum} min={500} type="number" placeholder="Сумма" name="sum" />
+                {isSmallerSum && <div class="modal-dialog__invoice-description-wrapper">
                     <p class="modal-dialog__invoice-description">
-                        Внимание!<br /> сумма должна быть больше {currenciesFetch && getEqwiwalent() * promotion}{currenciesFetch && getActiveCurrency().toUpperCase()}
+                        Внимание!<br /> сумма должна быть больше {promotion}USDT
                     </p>
                 </div>}
             </div>
 
-            <div class="form-container rel currencies-exchange-wrap">
-                {currenciesFetch && <div className="currencies-exchange-input-values">
-                    <span>1 USD=</span>
-                    <span>  { getEqwiwalent().toFixed(7) + " " +   getActiveCurrency().toUpperCase()}</span>
-                </div>}
-
-                <input className="currencies-exchange-input" required onChange={sumChangeUsd} value={isSumUsd} min={500} type="number" placeholder={"Введите сумму в USD"} name="usdsum" />
-
-                {isSmallerSumUsd && <div class="modal-dialog__invoice-description-wrapper">
-                    <p class="modal-dialog__invoice-description">
-                        Внимание!<br /> сумма должна быть больше {promotion}USD
-                    </p>
-                </div>}
-            </div>
-
-            <div className="currencies-exchange-deposit" >
-
-                    <span>Сумма пополнения: </span>
-                    <div>{currenciesFetch && getActiveCurrency().toUpperCase()}: {currenciesFetch && getFinalSum()}  </div>
-                    <div>USD: {currenciesFetch && isSumCrypto ? convertCriptToUSD().toFixed(7) : Number(isSumUsd)} </div>
-
-            </div>
             <div class="tabs__list"
                 id="tabpanel-replenish-deposit-1"
                 role="tabpanel"
@@ -247,12 +157,12 @@ export default function CustomSelect(params) {
                             проверяйте адрес и тип монеты перед отправкой средств!
                         </p>
 
-                        <p class="modal-dialog__invoice-description">
+                        {/* <p class="modal-dialog__invoice-description">
                             Отправка другого типа средств, или суммой менее 100 USD,
                             может привести к их утере.
-                        </p>
+                        </p> */}
                     </div>
-                    {error?.sum}
+
                     <button className='modal-dialog__invoice-btn btn btn--primary btn--large' onClick={
                         playNext
                     }> Далее</button>

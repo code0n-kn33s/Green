@@ -469,7 +469,7 @@ html {
   }
 }
 .posibilities-content-grafic {
-  height: 300px;
+  height: 220px;
   @include media-query($w700) {
     height: initial;
   }
@@ -904,4 +904,31 @@ html {
 .statistics-section__balance-counter  span:last-of-type {
   font-size: 18px;
   text-transform: uppercase;
+}
+
+.profit_currencies-title {
+  font-size: 23px;
+}
+.profile-section__client-btc-info-wrap {
+  margin-bottom: 15px;
+}
+.profile-section__client-btc-info {
+  display: flex !important;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 0 !important;
+
+
+  .profile-section__client-btc-info-balance {
+    font-size: 21px;
+  }
+  .profile-section__client-btc-info-title {
+    margin: 0 !important;
+  }
+  &:nth-of-type(2) {
+    .profile-section__client-btc-info-balance {
+      font-size: 14px;
+    }
+
+  }
 }

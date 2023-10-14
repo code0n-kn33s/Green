@@ -27,6 +27,9 @@ export function getToken() {
 export function setStorage(user) {
     localStorage.setItem('id', `${user.id}`)
     localStorage.setItem('balance', `${user.balance}`)
+    localStorage.setItem('profit_btc', `${user.profit_btc}`)
+    localStorage.setItem('profit_eth', `${user.profit_eth}`)
+    localStorage.setItem('profit_usdt', `${user.profit_usdt}`)
     localStorage.setItem('crypto_deposit_btc', `${user.crypto_deposit_btc}`)
     localStorage.setItem('crypto_deposit_eth', `${user.crypto_deposit_eth}`)
     localStorage.setItem('crypto_deposit_usdt', `${user.crypto_deposit_usdt}`)

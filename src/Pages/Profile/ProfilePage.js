@@ -40,27 +40,54 @@ export default function ProfilePage() {
                       {localStorage.getItem('first_name')} {localStorage.getItem('last_name')}
                     </h2>
 
-                    <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Баланс BTC:</p>
+                  <div className="profile-section__client-btc-info-wrap">
+                      <p className="profit_currencies-title">BTC</p>
+                  <div className="profile-section__client-btc-info">
+                      <p className="profile-section__client-btc-info-title">Баланс:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('crypto_deposit_btc')} BTC
                       </p>
                     </div>
+                  <div className="profile-section__client-btc-info">
+                      <p className="profile-section__client-btc-info-title">Профит:</p>
+                      <p className="profile-section__client-btc-info-balance h3">
+                        {localStorage.getItem('profit_btc')} BTC
+                      </p>
+                    </div>
+                    </div>
+                    <div className="profile-section__client-btc-info-wrap">
+                    <p className="profit_currencies-title">ETH</p>
                     <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Баланс ETH:</p>
+                      <p className="profile-section__client-btc-info-title">Баланс:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('crypto_deposit_eth')} ETH
                       </p>
                     </div>
                     <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Баланс USDT:</p>
+                      <p className="profile-section__client-btc-info-title">Профит:</p>
+                      <p className="profile-section__client-btc-info-balance h3">
+                        {localStorage.getItem('profit_eth')} ETH
+                      </p>
+                    </div>
+                    </div>
+                    <div className="profile-section__client-btc-info-wrap">
+                    <p className="profit_currencies-title">USDT</p>
+                    <div className="profile-section__client-btc-info">
+                      <p className="profile-section__client-btc-info-title">Баланс:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('crypto_deposit_usdt')} USDT
                       </p>
                     </div>
+                    <div className="profile-section__client-btc-info">
+                      <p className="profile-section__client-btc-info-title">Профит:</p>
+                      <p className="profile-section__client-btc-info-balance h3">
+                        {localStorage.getItem('profit_usdt')} USDT
+                      </p>
+                    </div>
+                    </div>
 
                     {/* <div className="profile-section__client-usd-info">
-                      <p className="profile-section__client-usd-info-title">Баланс USD:</p>
+                      <p className="profile-section__client-usd-info-title">Баланс:</p>
                       <p className="profile-section__client-usd-info-balance">
                         $ {localStorage.getItem('balance')} USD
                       </p>

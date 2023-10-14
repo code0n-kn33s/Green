@@ -17,8 +17,10 @@ export function Posibilities(params) {
             <div className="posibilities-content bordered big-bordered">
                 <div className='posibilities-content-wrap'>
                     <div className="posibilities-content-title tb">
-                        Best pairs last 9 months ARBITECH7 version:
+                        Best pairs last 12 months ARBITECH7 version:
                     </div>
+                    <br/>
+
                     <div className="posibilities-content-text">
                         BTC/SOL/DYDX - 379%
                     </div>
@@ -28,15 +30,15 @@ export function Posibilities(params) {
                     <div className="posibilities-content-text">
                         Gala/USDT/BTC - 270%
                     </div>
-                    <div className="posibilities-content-p tb">
-                        Best partners last 9 months ARBITECH7version:
-                    </div>
+                    <br/>
                 </div>
 
                 <div className='posibilities-content-grafic'>
                     <G7 />
                 </div>
-
+                <div className="posibilities-content-p tb">
+                        Best partners last 12 months ARBITECH7version:
+                    </div>
                 <div className="posibilities-content-imgs">
                     <img src={circle} alt="" />
                     <img src={simplex} alt="" />
