@@ -66,7 +66,7 @@ export default function Footer(params) {
 
         </div>
         <div className="footer__main-social-links">
-          <a className="link" target="_blank" href="https://www.youtube.com/">
+          <a className="link" target="_blank" href="https://youtube.com/@Arbi_crypto?si=jrfFdjbzjO6lb7Cr">
             {/* <!--youtube--> */}
             <YouTubeIcon />
           </a>
@@ -78,7 +78,7 @@ export default function Footer(params) {
             {/* <!--facebook--> */}
             <Facebook />
           </a>
-          <a className="link" target="_blank" href="https://t.me/arbitech777">
+          <a className="link" target="_blank" href="https://t.me/arbitech7_support">
             {/* telegram */}
             <TelegramIcon />
           </a>

@@ -89,7 +89,10 @@ export default function Login(props) {
                                 Войти
                             </button>
 
-                            <Link className="link" to="/restore">Забыли пароль?</Link>
+                            <a className="link" target="_blank" href="https://t.me/arbitech7_support">
+                                Support
+                            </a>
+                            {/* <Link className="link" to="/restore">Забыли пароль?</Link> */}
                         </div>
                     </form>
 

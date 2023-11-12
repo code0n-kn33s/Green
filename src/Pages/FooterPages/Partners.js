@@ -46,7 +46,7 @@ export function Partners(params) {
                         </div>
                         <div className="partners-text-list terms-description-list">
                             <div className="partners-text-list-item terms-description-list-item">
-                                При командном обороте свыше 1000 usdt исобственном депо свыше 500 usdtначисляются бонусы согласно таблицы.
+                                При командном обороте свыше 1000 usdt исобственном депо свыше 500 usdt начисляются бонусы согласно таблицы.
                             </div>
                             <div className="partners-text-list-item terms-description-list-item">
                                 При обороте свыше 100 000 вы получаете

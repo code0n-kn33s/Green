@@ -22,9 +22,8 @@ export function AboutUs(params) {
                         </div>
                         <div className="tb">Possibilities :</div>
                         <ul className="about-me-l terms-description-list">
-                            <li className="about-me-li terms-description-list-item">Прои
-                                зводить арбитражные операции междуразличными крипто биржами в автоматическомрежиме быстро и с максимальным профитом</li>
-                            <li className="about-me-li terms-description-list-item">Получать рекомендации от службы поддержки онаиболее выгодных условиях и точках дляарбитража на основе глубокого анализа рынка.</li>
+                            <li className="about-me-li terms-description-list-item">Производить арбитражные операции между различными крипто биржами в автоматическом режиме быстро и с максимальным профитом</li>
+                            <li className="about-me-li terms-description-list-item">Получать рекомендации от службы поддержки о наиболее выгодных условиях и точках для арбитража на основе глубокого анализа рынка.</li>
                             <li className="about-me-li terms-description-list-item">Безопасность транзакций благодаря криптографии</li>
                         </ul>
                     </div>
@@ -41,9 +40,9 @@ export function AboutUs(params) {
                         <div className="tb">Research ARBITECH7 :</div>
                         <ul className="about-me-l terms-description-list">
                             <li className="about-me-li terms-description-list-item">
-                                выявить эффективные стратегии арбитража врежиме онлайн
+                                выявить эффективные стратегии арбитража в режиме онлайн
                             </li>
-                            <li className="about-me-li terms-description-list-item">усовершенствовать ПО для ускорения сделокарбитража.</li>
+                            <li className="about-me-li terms-description-list-item">усовершенствовать ПО для ускорения сделок арбитража.</li>
                             <li className="about-me-li terms-description-list-item">Farming эффективных связок</li>
                         </ul>
                         <div className="tb">Technology stack ARBITECH7 :</div>

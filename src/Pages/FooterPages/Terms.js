@@ -45,8 +45,8 @@ export function Terms(params) {
                         <ul className="terms-description-list">
                             <li className="terms-description-list-item" >Крипто распределяется автоматически по торговымпулам (группам) согласно выбраной стратегиириска/доходности</li>
                             <li className="terms-description-list-item" >сроки действия пула - один месяц</li>
-                            <li className="terms-description-list-item" >выбор уровня риска и доходности производитсяпользователем в момент пополнения пула -единоразово</li>
-                            <li className="terms-description-list-item" >увеличение степени риска/доходности -увеличивает шансы на потери. Принимайтерешения взвешенно!</li>
+                            <li className="terms-description-list-item" >выбор уровня риска и доходности производитсяпользователем в момент пополнения пула - единоразово</li>
+                            <li className="terms-description-list-item" >увеличение степени риска/доходности - увеличивает шансы на потери. Принимайте решения взвешенно!</li>
                             <li className="terms-description-list-item" >вывод доходности производится каждые 10 дней,т.е. 10го, 20го и 30го числа месяца</li>
                         </ul>
                     </div>

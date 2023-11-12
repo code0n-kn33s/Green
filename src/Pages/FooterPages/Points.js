@@ -64,7 +64,7 @@ export function Points(params) {
                                         Research
                                     </div>
                                     <div className="point-item-text">
-                                        Внедрили BIG DATA иMACHINE LEARNING.Разработан хаб на 100+
+                                        Внедрили BIG DATA и MACHINE LEARNING. Разработан хаб на 100+
                                         связок
                                     </div>
                                 </div>

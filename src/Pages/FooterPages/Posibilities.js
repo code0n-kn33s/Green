@@ -37,7 +37,7 @@ export function Posibilities(params) {
                     <G7 />
                 </div>
                 <div className="posibilities-content-p tb">
-                        Best partners last 12 months ARBITECH7version:
+                        Best partners last 12 months ARBITECH7 version:
                     </div>
                 <div className="posibilities-content-imgs">
                     <img src={circle} alt="" />
