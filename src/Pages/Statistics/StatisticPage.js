@@ -37,7 +37,7 @@ const {t} = useTranslation();
     <div className="statistics-page page">
       <div className="page__sections-wrapper medium-wrapper">
         <section className="statistics-section">
-          <h1 className="statistics-section__main-heading h3">Статистика</h1>
+          <h1 className="statistics-section__main-heading h3">{t("Статистика")}</h1>
 
           <div className="statistics-section__balance-wrapper">
             <div className="statistics-section__balance-current">
