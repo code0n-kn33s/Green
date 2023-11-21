@@ -2,9 +2,15 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { setToken, privateFetch, getToken, clearToken, setStorage } from '../helpers'
 import BrowserDetector from 'browser-dtector';
 
+const userLanguage = navigator.language || navigator.userLanguage;
+console.log("Язык браузера:", userLanguage.slice(0, 2));
+let lang = localStorage.getItem('lang')
+if(!lang) localStorage.setItem('lang', userLanguage.slice(0, 2))
 const browser = new BrowserDetector(window.navigator.userAgent);
 let showUserAgent = browser.parseUserAgent();
 
+console.log('browser :>> ', browser);
+console.log('showUserAgent :>> ', showUserAgent);
 const fieldsUserAgent = {
     isAndroid: false,
     isDesktop: true,
