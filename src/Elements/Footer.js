@@ -26,14 +26,14 @@ const {t} = useTranslation();
 
           {!isLogin ?
             <ul className="footer__main-links">
-              <li className="footer__main-links-item">
+              {/* <li className="footer__main-links-item">
                 <Link
                   to={localStorage.getItem('isAuth') ? "/profile" : "/login"}
                   style={{ "whiteSpace": "nowrap" }}
                 >
                   {t("Главная")}
                 </Link>
-              </li>
+              </li> */}
               {/* <li className="footer__main-links-item">
                 <Link
                   to={localStorage.getItem('isAuth') ? "/private/about" : "/public/about"}
