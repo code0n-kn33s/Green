@@ -4,11 +4,11 @@ import { getUserSessions, } from '../../toolkitReducers/actions.slice'
 import { getUserData } from '../../toolkitReducers/auth.slice'
 import { ReactComponent as Twitter } from '../../assets/icons/social-links/linkedin.svg'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useTranslation } from 'react-i18next';
 export default function ProfilePage() {
   const [useTwoFa, setTwoFa] = useState(false)
   const [useBot, setBot] = useState(false)
-
+const {t} = useTranslation();
   const dispatch = useDispatch()
   const sessions = useSelector(state => state.state.sessions)
 
@@ -23,10 +23,10 @@ export default function ProfilePage() {
 
       <div className="profile-page__sections-wrapper medium-wrapper">
         <section className="profile-section">
-          <h1 className="profile-section__heading h3">Профиль</h1>
+          <h1 className="profile-section__heading h3">{t("Профиль")}</h1>
 
           <div className="profile-section__wrapper rel">
-            <div className="profile-section__label">Настроить AI</div>
+            <div className="profile-section__label">{t("Настроить")} AI</div>
 
             <div className="profile-section__content-top">
               <div className="profile-section__content-top-side">
@@ -43,13 +43,13 @@ export default function ProfilePage() {
                   <div className="profile-section__client-btc-info-wrap">
                       <p className="profit_currencies-title">BTC</p>
                   <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Баланс:</p>
+                      <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('crypto_deposit_btc')} BTC
                       </p>
                     </div>
                   <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Профит:</p>
+                      <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('profit_btc')} BTC
                       </p>
@@ -58,13 +58,13 @@ export default function ProfilePage() {
                     <div className="profile-section__client-btc-info-wrap">
                     <p className="profit_currencies-title">ETH</p>
                     <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Баланс:</p>
+                      <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('crypto_deposit_eth')} ETH
                       </p>
                     </div>
                     <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Профит:</p>
+                      <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('profit_eth')} ETH
                       </p>
@@ -73,13 +73,13 @@ export default function ProfilePage() {
                     <div className="profile-section__client-btc-info-wrap">
                     <p className="profit_currencies-title">USDT</p>
                     <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Баланс:</p>
+                      <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('crypto_deposit_usdt')} USDT
                       </p>
                     </div>
                     <div className="profile-section__client-btc-info">
-                      <p className="profile-section__client-btc-info-title">Профит:</p>
+                      <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
                         {localStorage.getItem('profit_usdt')} USDT
                       </p>
@@ -97,9 +97,9 @@ export default function ProfilePage() {
 
                 <div className="profile-section__client-contacts">
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--login">
-                    <p className="profile-section__client-contacts-item-title">Login:</p>
+                    <p className="profile-section__client-contacts-item-title">{t("Login")}:</p>
                     <p className="profile-section__client-contacts-item-info">{localStorage.getItem('username')}</p>
-                    <Link to="/new-password" className="profile-section__client-contacts-item-link link">Сменить пароль</Link>
+                    <Link to="/new-password" className="profile-section__client-contacts-item-link link">{t("Сменить пароль")}</Link>
                   </div>
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--email">
                     <p className="profile-section__client-contacts-item-title">E-mail:</p>
@@ -107,15 +107,15 @@ export default function ProfilePage() {
                     {/* <a href="https://web.telegram.org/a/" className="profile-section__client-contacts-item-link link">Подтвердить</a> */}
                   </div>
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--get-money">
-                    <p className="profile-section__client-contacts-item-title">Вывод средств:</p>
-                    <Link to="/withdraw" className="profile-section__client-contacts-item-link link">Заполнить заявку</Link>
+                    <p className="profile-section__client-contacts-item-title">{t("Вывод средств")}:</p>
+                    <Link to="/withdraw" className="profile-section__client-contacts-item-link link">{t("Заполнить заявку")}</Link>
                   </div>
                 </div>
               </div>
 
               <div className="profile-section__content-top-side">
                 <p className="profile-section__heading">
-                  Реферальный ID
+                  {t("Реферальный ID")}
                 </p>
 
                 <div className="profile-section__input">
@@ -130,7 +130,7 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="profile-section__social-links-wrapper">
-                  <p className="profile-section__social-links-title">Поделится:</p>
+                  <p className="profile-section__social-links-title">{t("Поделится")}:</p>
 
                   <ul className="profile-section__social-links-list">
                     <a target="_blank" href="https://www.instagram.com/arbitech7/?igshid=MzRlODBiNWFlZA%3D%3D">
@@ -180,7 +180,7 @@ export default function ProfilePage() {
               <Link to="/profile/kyc/step1" className="profile-section__big-button link rel">
                 <div className="profile-section__big-button-left">
                   <span className="profile-section__big-button-title">KYC</span>
-                  <span className="profile-section__big-button-state">НАЧАТЬ</span>
+                  <span className="profile-section__big-button-state">{t("НАЧАТЬ")}</span>
                 </div>
 
                 <div className="profile-section__big-button-right">
@@ -202,7 +202,7 @@ export default function ProfilePage() {
                 <div className="profile-section__big-button-left">
                   <span className="profile-section__big-button-title">2FA</span>
                   <span className="profile-section__big-button-state">
-                    {useTwoFa ? "ВКЛ" : "ВЫКЛ"}
+                    {useTwoFa ? t("ВКЛ") : t("ВЫКЛ")}
                   </span>
                 </div>
 
@@ -217,8 +217,8 @@ export default function ProfilePage() {
 
               <div onClick={() => setBot(!useBot)} className="profile-section__big-button link rel">
                 <div className="profile-section__big-button-left">
-                  <span className="profile-section__big-button-title">TELEGRAM<br />БОТ</span>
-                  <span className="profile-section__big-button-state">{useBot ? "ВКЛ" : "ВЫКЛ"} </span>
+                  <span className="profile-section__big-button-title">TELEGRAM<br />{t("БОТ")}</span>
+                  <span className="profile-section__big-button-state">{useBot ? t("ВКЛ") : t("ВЫКЛ")} </span>
                 </div>
 
                 <div className="profile-section__big-button-right">
@@ -233,7 +233,7 @@ export default function ProfilePage() {
 
         <section className="sessions-section medium-wrapper">
           <div className="sessions-section__header">
-            <h2 className="sessions-section__header-heading">История сеансов</h2>
+            <h2 className="sessions-section__header-heading">{t("История сеансов")}</h2>
 
             {/* <div className="sessions-section__header-settings">
               <span>ОТОБРАЗИТЬ</span>
@@ -284,7 +284,7 @@ export default function ProfilePage() {
                 <th>
                   <div className="sessions-section__table-td-wrapper">
                     <span>
-                      Date
+                      {t("Дата")}
                     </span>
                     <span>
                       <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
@@ -310,7 +310,7 @@ export default function ProfilePage() {
                 <th>
                   <div className="sessions-section__table-td-wrapper">
                     <span>
-                      Browser
+                      {t("Browser")}
                     </span>
                     <span>
                       <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">

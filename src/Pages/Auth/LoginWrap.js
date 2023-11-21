@@ -1,6 +1,6 @@
 
 import { useRef, useEffect } from "react"
-
+import { useTranslation } from 'react-i18next';
 import { AboutUs } from '../FooterPages'
 import { StoryMap } from '../FooterPages'
 import { Posibilities } from '../FooterPages'
@@ -20,9 +20,8 @@ export function LoginWrap(params) {
     const refPoints = useRef(null)
     const refTerms = useRef(null)
     const refLogin = useRef(null)
-
+const {t} = useTranslation();
     useEffect(() => {
-        console.log('refAboutUs :>> ', refAboutUs);
         refPrimaryLogin.current.scrollIntoView({
             behavior: "smooth",
             block: "start"

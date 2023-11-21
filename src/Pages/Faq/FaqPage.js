@@ -6,6 +6,8 @@ import {
   getCurrencies
 } from '../../toolkitReducers/actions.slice'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next';
+
 
 export default function FaqPage(params) {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -15,6 +17,9 @@ export default function FaqPage(params) {
   const risks = useSelector(state => state.state.risks)
   const error = useSelector(state => state.state.error)
   const dispatch = useDispatch()
+
+  const { t } = useTranslation();
+
 
   useEffect(() => {
     dispatch(getRisks())
@@ -62,11 +67,11 @@ const setChecks = (value) => {
   return (
     <div className="page__sections-wrapper medium-wrapper">
       <section className="details-section" data-limit="2000">
-        <h1 className="details-section__main-heading h3">Алгоритмы</h1>
+        <h1 className="details-section__main-heading h3">{t('algoritms')}</h1>
 
         <form className="details-section__wrapper form details-section__form rel" action="/action_page.php" method="post">
-          <h2 className="details-section__heading">Настройка доходности: {percentage}%
-          <div style={{ fontWeight: 300, fontSize: '10px'}}>*доходность можно менять только после пополнения баланса</div>
+          <h2 className="details-section__heading">{t("Настройка доходности")}: {percentage}%
+          <div style={{ fontWeight: 300, fontSize: '10px'}}>*{t("доходность можно менять только после пополнения баланса")}</div>
           { error && <div>{error?.message}</div>}
           </h2>
           <div className="details-section__progress-bar-wrapper">
@@ -95,15 +100,14 @@ const setChecks = (value) => {
             </div>
 
             <p className="details-section__progress-bar-description">
-              *Увеличение доходности влечет за собой
-              риски утери средств. Использовать осторожно..
+              *{t("Увеличение доходности влечет за собой риски утери средств. Использовать осторожно..")}
             </p>
           </div>
 
           <div className="details-section__footer">
             <div className="details-section__footer-column">
               <h3 className="details-section__footer-column-heading bold">
-                Контроль риска 1 уровня:
+                {t("Контроль риска:", {value: 1})}
               </h3>
 
               <div className="details-section__footer-column-checkboxes">
@@ -118,7 +122,7 @@ const setChecks = (value) => {
                   />
 
                   <label htmlFor="controlLvl1-1">
-                    Разрешить длинные цепочки обмена
+                    {t("Разрешить длинные цепочки обмена")}
                   </label>
                 </div>
 
@@ -126,20 +130,20 @@ const setChecks = (value) => {
                   <input disabled checked={isPercentRists > 0 && true} data-min-price="1500" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl1-2" />
 
                   <label htmlFor="controlLvl1-2">
-                    Разрешить использовать новые токены
+                    {t("Разрешить использовать новые токены")}
                   </label>
                 </div>
               </div>
 
               <p className="details-section__footer-column-description">
-                *Доступно при размещении от 1500USD.
-                Каждый пункт добавляет до 5% доходности.
+                {t("*Доступно при размещении от 1500USD. Каждый пункт добавляет до 5% доходности.")}
               </p>
             </div>
 
             <div className="details-section__footer-column">
               <h3 className="details-section__footer-column-heading bold">
-                Контроль риска 2 уровня:
+              {t("Контроль риска:", {value: 2})}
+
               </h3>
 
               <div className="details-section__footer-column-checkboxes">
@@ -147,7 +151,7 @@ const setChecks = (value) => {
                   <input disabled checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-1" />
 
                   <label htmlFor="controlLvl2-1">
-                    Разрешить использовать новые обменные площадки
+                    {t("Разрешить использовать новые обменные площадки")}
                   </label>
                 </div>
 
@@ -155,21 +159,21 @@ const setChecks = (value) => {
                   <input disabled checked={isPercentRists > 1 && true} data-min-price="3000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl2-2" />
 
                   <label htmlFor="controlLvl2-2">
-                    Не использовать классические пары
+                    {t("Не использовать классические пары")}
                   </label>
                 </div>
               </div>
 
               <p className="details-section__footer-column-description">
-                *Доступно при размещении от 3000USD.
-                Каждый пункт добавляет до 10% доходности.
+                {t("*Доступно при размещении от 3000USD. Каждый пункт добавляет до 10% доходности.")}
               </p>
 
             </div>
 
             <div className="details-section__footer-column">
               <h3 className="details-section__footer-column-heading bold">
-                Контроль риска 3 уровня:
+              {t("Контроль риска:", {value: 3})}
+
               </h3>
 
               <div className="details-section__footer-column-checkboxes">
@@ -177,7 +181,7 @@ const setChecks = (value) => {
                   <input disabled data-min-price="5000" checked={isPercentRists > 2 && true} className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-1" />
 
                   <label htmlFor="controlLvl3-1">
-                    Использовать только новые токены
+                    {t("Использовать только новые токены")}
                   </label>
                 </div>
 
@@ -185,21 +189,20 @@ const setChecks = (value) => {
                   <input disabled checked={isPercentRists > 2 && true} data-min-price="5000" className="form__custom-checkbox" type="checkbox" name="accept" id="controlLvl3-2" />
 
                   <label htmlFor="controlLvl3-2">
-                    Использовать только свопы
+                    {t("Использовать только свопы")}
                   </label>
                 </div>
               </div>
 
               <p className="details-section__footer-column-description">
-                *Доступно при размещении от 5000USD.
-                Каждый пункт добавляет до 10% доходности.
+                {t("*Доступно при размещении от 5000USD. Каждый пункт добавляет до 10% доходности.")}
               </p>
             </div>
 
 
             <div className="details-section__footer-column">
               <button type="button" onClick={clickFaq} className="details-section__form-submit-btn btn btn--primary">
-                Применить
+                {t("Применить")}
               </button>
             </div>
           </div>
@@ -212,14 +215,14 @@ const setChecks = (value) => {
             <tr className="sessions-section__table-heading-row rel">
               <th>
                 <div className="sessions-section__table-td-wrapper">
-                  <span>Дата</span>
+                  <span>{t("Дата")}</span>
                 </div>
               </th>
 
               <th>
                 <div className="sessions-section__table-td-wrapper">
                   <span>
-                    Сумма
+                    {t("Сумма")}
                   </span>
                 </div>
               </th>
@@ -227,7 +230,7 @@ const setChecks = (value) => {
               <th>
                 <div className="sessions-section__table-td-wrapper">
                   <span>
-                  Тип
+                  {t("Тип")}
                   </span>
                 </div>
               </th>
@@ -235,7 +238,7 @@ const setChecks = (value) => {
               <th>
                 <div className="sessions-section__table-td-wrapper">
                   <span>
-                  Пользователь
+                  {t("Пользователь")}
                   </span>
                 </div>
               </th>
@@ -243,7 +246,7 @@ const setChecks = (value) => {
               <th>
                 <div className="sessions-section__table-td-wrapper">
                   <span>
-                    Статус
+                    {t("Статус")}
                   </span>
                 </div>
               </th>
@@ -256,7 +259,7 @@ const setChecks = (value) => {
                 {/* <td>{risk.risk}%</td> */}
                 <td>{risk.risk}%</td>
                 <td>{risk.user}</td>
-                <td>Success</td>
+                <td>{t("Success")}</td>
               </tr>
             ))}
 
@@ -297,7 +300,7 @@ const setChecks = (value) => {
           </div>
 
           <div className="sessions-section__footer-settings">
-            <span>На странице :</span>
+            <span>{t("На странице ")}:</span>
 
             <custom-select className="custom-select">
               <button

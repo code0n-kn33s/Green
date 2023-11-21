@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, getUserData, clearUserData } from './../../toolkitReducers';
 import { getToken } from "./../../helpers";
 import Footer from "../../Elements/Footer"
-
+import { useTranslation } from 'react-i18next';
 export default function Login(props) {
     const dispatch = useDispatch()
     const [useLogin, setLogin] = useState('')
@@ -16,7 +16,7 @@ export default function Login(props) {
     const isLoggedIn = useSelector(state => state.auth.isAuth)
     const errorText = useSelector(state => state.auth.error)
     const navigate = useNavigate();
-
+const {t} = useTranslation();
     // useEffect(() => {
     //     if (getToken() !== null) {
     //         dispatch(getUserData())
@@ -55,22 +55,22 @@ export default function Login(props) {
             <AuthLogo />
             <section className="login small-wrapper">
                 <div className="login__side">
-                    <h1 className="login__heading h3">Логин</h1>
-                    <p className="login__description">Вход в аккаунт     {errorText && <span aria-label="valid-email" className="form__error-message">- Неправилный email или пароль</span>}</p>
+                    <h1 className="login__heading h3">{t("Логин")}</h1>
+                    <p className="login__description">{t("Вход в аккаунт")}     {errorText && <span aria-label="valid-email" className="form__error-message">- {t("wrongLogin")}</span>}</p>
 
 
                     <form className="form-container" onSubmit={submitAuth}>
                         <div className="form-container js-form-parent">
-                            <label htmlFor="email">Email адрес</label>
+                            <label htmlFor="email">{t("Email адрес")}</label>
                             <input tabIndex="1" required type="text" value={useLogin} onChange={(e) => {
                                 setLogin(e.target.value)
                                 dispatch(clearUserData())
                             }} placeholder="Email" name="email" id="email" />
-                            <span aria-label="valid-email" className="form__error-message">Error message</span>
+                            <span aria-label="valid-email" className="form__error-message">{t("Error message")}</span>
                         </div>
 
                         <div className="form-container password">
-                            <label htmlFor="password">Пароль</label>
+                            <label htmlFor="password">{t("Пароль")}</label>
 
                             <div className="password__container">
                                 <button onClick={showPass} type="button" className="password__eye">
@@ -80,17 +80,17 @@ export default function Login(props) {
                                     setPassword(e.target.value)
                                     dispatch(clearUserData())
                                 }} placeholder="Password" name="password" id="password" />
-                                <span aria-label="valid-email" className="form__error-message">Error message</span>
+                                <span aria-label="valid-email" className="form__error-message">{t("Error message")}</span>
                             </div>
                         </div>
 
                         <div className="form-container__buttons-wrapper">
                             <button tabIndex="3" type="submit" className="js-send-btn btn">
-                                Войти
+                                {t("Войти")}
                             </button>
 
                             <a className="link" target="_blank" href="https://t.me/arbitech7_support">
-                                Support
+                                {t("Support")}
                             </a>
                             {/* <Link className="link" to="/restore">Забыли пароль?</Link> */}
                         </div>
@@ -99,9 +99,9 @@ export default function Login(props) {
                 </div>
 
                 <div className="login__side">
-                    <h2 className="login__heading h3">Создать Аккаунт</h2>
+                    <h2 className="login__heading h3">{t("Создать Аккаунт")}</h2>
 
-                    <Link className="btn" to="/register">Регистрация</Link>
+                    <Link className="btn" to="/register">{t("Регистрация")}</Link>
                 </div>
             </section>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { userLogout } from './../toolkitReducers'
-
+import { useTranslation } from 'react-i18next';
 import { ReactComponent as IconProfile } from '../assets/icons/ProfileIcon.svg'
 import { ReactComponent as TelegramIcon } from '../assets/icons/TelegramIcon.svg'
 import { ReactComponent as LoginIcon } from '../assets/icons/LoginIcon.svg'
@@ -11,7 +11,7 @@ import { ReactComponent as LogoutIcon } from '../assets/icons/LogoutIcon.svg'
 export default function Header() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
+const {t} = useTranslation();
   const logout = () => {
     dispatch(userLogout())
     navigate('/login')
@@ -22,7 +22,7 @@ export default function Header() {
     <header className="main-header">
       <div className="main-header__wrapper rel">
         <div className="main-header__content">
-          <span className="main-header__content-title">Balance update</span>
+          <span className="main-header__content-title">{t("Balance update")}</span>
           <span className="main-header__content-date">{new Date().toLocaleDateString()}</span>
         </div>
         <div className="main-header__icons">
@@ -45,7 +45,7 @@ export default function Header() {
                   <LoginIcon />
                 </div>
                 <p className="main-header__icons-profile-login-label">
-                  Профиль
+                  {t("Профиль")}
                 </p>
               </NavLink>
               <div onClick={logout} className="main-header__icons-profile-login-row main-header-icon">
@@ -53,7 +53,7 @@ export default function Header() {
                   <LogoutIcon />
                 </div>
                 <p className="main-header__icons-profile-login-label">
-                  Выход
+                  {t("Выход")}
                 </p>
               </div>
             </div>

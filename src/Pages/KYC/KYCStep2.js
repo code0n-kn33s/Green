@@ -1,4 +1,6 @@
+import { useTranslation } from 'react-i18next';
 export default function KYCStep2(params) {
+const {t} = useTranslation();
     return (
         <>
             <input id="file-input-1" type="file" name="passport" />
@@ -8,11 +10,11 @@ export default function KYCStep2(params) {
                     <path d="M11.6694 4.40253L8.45515 1.18823C8.20413 0.937255 7.79717 0.937255 7.54615 1.18823L4.33182 4.40253C4.08517 4.65792 4.09225 5.06488 4.34764 5.31153C4.59677 5.55215 4.99172 5.55215 5.24085 5.31153L7.35782 3.19457V13.8571C7.35782 14.2122 7.64563 14.5 8.00069 14.5C8.35575 14.5 8.64356 14.2122 8.64356 13.8571V3.19461L10.7605 5.31157C11.0159 5.55822 11.4229 5.55113 11.6695 5.29575C11.9101 5.04661 11.9101 4.65167 11.6694 4.40253Z" fill="#FFF831" stroke="#FFF831" stroke-width="0.4" />
                 </svg>
 
-                <span>ЗАГРУЗИТЬ</span>
+                <span>{t("ЗАГРУЗИТЬ")}</span>
             </label>
 
             <button type="button" class="file-input-reset hide btn--reset link">
-                <span>Удалить файл</span>
+                <span>{t("Удалить файл")}</span>
             </button>
         </>
     )

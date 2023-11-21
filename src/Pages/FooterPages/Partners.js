@@ -1,4 +1,5 @@
 
+import { useTranslation } from 'react-i18next';
 import people from './img/chudiki.png'
 
 const table = [
@@ -11,11 +12,13 @@ const table = [
 ]
 
 export function Partners(params) {
+    const {t} = useTranslation();
+
     return (
         <div className="partners">
 
             <div className="partners-title public-title">
-                Partners Program
+                {t("Partners Program")}
             </div>
             <div className="partners-info">
                 <div className="partners-table">
@@ -42,19 +45,17 @@ export function Partners(params) {
                     <img className="partners-block-img" src={people} alt="" />
                     <div className="partners-text bordered big-bordered">
                         <div className="partners-text-p">
-                            <b>ARBITECH7</b> - правила партнерской программы:
+                            <b>ARBITECH7</b> - {t("правила партнерской программы")}:
                         </div>
                         <div className="partners-text-list terms-description-list">
                             <div className="partners-text-list-item terms-description-list-item">
-                                При командном обороте свыше 1000 usdt исобственном депо свыше 500 usdt начисляются бонусы согласно таблицы.
+                                {t("rule1")}
                             </div>
                             <div className="partners-text-list-item terms-description-list-item">
-                                При обороте свыше 100 000 вы получаете
-                                единоразовый бонус 10%
+                                {t("rule2")}
                             </div>
                             <div className="partners-text-list-item terms-description-list-item">
-                                Лимиты по зачету пользователей:
-                                1й уровень - 10 чел, 2й уровень - 20 чел, 3, 4и 5й уровень - по 50 чел на каждый уровен
+                                {t("rule3")}
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 export const Popup = (props) => {
+  const {t} = useTranslation();
+
     // const dispatch = useDispatch()
     // const navigate = useNavigate()
     const {isVisible, setVisible, setText} = props
@@ -12,7 +16,7 @@ export const Popup = (props) => {
     return (
       <>
         {isVisible && <div class="tooltip">
-           <div>Данные были успешно обновленны</div>
+           <div>{t("Данные были успешно обновленны")}</div>
 
 
             <button
@@ -20,7 +24,7 @@ export const Popup = (props) => {
               onClick={setVisible}
               type="button"
             >
-              Готово
+              {t("Готово")}
             </button>
 
         </div>}

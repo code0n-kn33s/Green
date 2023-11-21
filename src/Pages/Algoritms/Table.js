@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import { ReactComponent as OkIcon } from '../../assets/icons/OkIcon.svg'
 import { getRisks } from '../../toolkitReducers/actions.slice'
-
+import { useTranslation } from 'react-i18next';
 export default function Table(params) {
   const risks = useSelector(state => state.state.risks)
   const dispatch = useDispatch()
-
+const {t} = useTranslation();
   useEffect(() => {
     dispatch(getRisks())
   }, [dispatch])
@@ -17,14 +17,14 @@ export default function Table(params) {
         <tr className="algorithms-history__table-heading-row rel">
           <th>
             <div className="algorithms-history__table-td-wrapper">
-              <span>Дата</span>
+              <span>{t("Дата")}</span>
             </div>
           </th>
 
           <th>
             <div className="algorithms-history__table-td-wrapper">
               <span>
-                Сумма профита
+                {t("Сумма профита")}
               </span>
             </div>
           </th>
@@ -32,7 +32,7 @@ export default function Table(params) {
           <th>
             <div className="algorithms-history__table-td-wrapper">
               <span>
-                Профит дня
+                {t("Профит дня")}
               </span>
             </div>
           </th>

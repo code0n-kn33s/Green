@@ -1,10 +1,11 @@
-
+import { useTranslation } from 'react-i18next';
 export function Points(params) {
+    const {t} = useTranslation();
     return (
         <>
             <div className="points">
                 <div className="points-title public-title">
-                    Story map
+                    {t("Story map")}
                 </div>
                 <div className="points-info">
                     <div className="points-info-wrap">
@@ -15,10 +16,10 @@ export function Points(params) {
                                 </div>
                                 <div className="point-item-hidden">
                                     <div className="point-item-title">
-                                        Development
+                                        {t("Development")}
                                     </div>
                                     <div className="point-item-text">
-                                        Команда приступила к созданиюалгоритма на основе Chat GPT.Спустя 10 месяцев продукт в стадииальфа тест
+                                        {t("teamStart")}
                                     </div>
                                 </div>
                             </div>
@@ -28,12 +29,10 @@ export function Points(params) {
                                 </div>
                                 <div className="point-item-hidden">
                                     <div className="point-item-title">
-                                        Progress
+                                        {t("Progress")}
                                     </div>
                                     <div className="point-item-text">
-                                        Март 2023 публичный старт
-                                        ARBITECH7.
-                                        Август 2023 зафиксировано1000+ клиентских аккаунтов
+                                        {t("m23")}
                                     </div>
                                 </div>
                             </div>
@@ -46,12 +45,10 @@ export function Points(params) {
                                 </div>
                                 <div className="point-item-hidden">
                                     <div className="point-item-title">
-                                        Ideas
+                                        {t("Ideas")}
                                     </div>
                                     <div className="point-item-text">
-                                        Крипто арбитраж, это постояннорастущий рынок с множествоме
-                                        жеминутных возможностей ирисков.
-                                        Идея создать алгоритм на основеАI для делегирования торговли.Пользователю остается тольковыбрать критерии риска.
+                                        {t("CryproArbitrag")}
                                     </div>
                                 </div>
                             </div>
@@ -61,11 +58,10 @@ export function Points(params) {
                                 </div>
                                 <div className="point-item-hidden">
                                     <div className="point-item-title">
-                                        Research
+                                        {t("Research")}
                                     </div>
                                     <div className="point-item-text">
-                                        Внедрили BIG DATA и MACHINE LEARNING. Разработан хаб на 100+
-                                        связок
+                                        {t("bigData")}
                                     </div>
                                 </div>
                             </div>

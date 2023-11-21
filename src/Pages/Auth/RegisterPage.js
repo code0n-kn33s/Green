@@ -5,13 +5,13 @@ import { AuthLogo } from './AuthLogo';
 import { BackButton } from '../../Elements/Library';
 import { registerNewUser, resetRegister } from './../../toolkitReducers';
 import { ReactComponent as IconYeas } from '../../assets/icons/PassIcon.svg'
-
+import { useTranslation } from 'react-i18next';
 
 export default function RegisterPage() {
     const [showPass, setShowPass] = useState(false)
     const [isError, setisError] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
-
+const {t} = useTranslation();
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -66,15 +66,15 @@ export default function RegisterPage() {
             <section className="register small-wrapper">
                 <div className="register__headings-wrapper headings-wrapper auth-headings">
                     <BackButton />
-                    <h1 className="register__heading h3">Регистрация</h1>
-                    <p className="register__description">Заполните пожалуйста информацию ниже:</p>
+                    <h1 className="register__heading h3">{t("Регистрация")}</h1>
+                    <p className="register__description">{t("Заполните пожалуйста информацию ниже")}:</p>
                 </div>
 
                 <form className="form register__form" onSubmit={handleSubmit}>
                     <div className="form__main-content">
                         <div className="register__side">
                             <div className="form-container">
-                                <label htmlFor="username">Имя пользователя</label>
+                                <label htmlFor="username">{t("Имя пользователя")}</label>
                                 <input
                                     required
                                     type="text"
@@ -89,7 +89,7 @@ export default function RegisterPage() {
 
                             </div>
                             <div className="form-container js-form-parent">
-                                <label htmlFor="email">Email адрес</label>
+                                <label htmlFor="email">{t("Email адрес")}</label>
                                 <input
                                     required
                                     type="email"
@@ -101,11 +101,11 @@ export default function RegisterPage() {
                                     onChange={handleChange}
                                 />
                                 {registerErrors?.email && <div>{registerErrors?.email[0]}</div>}
-                                <span aria-label="valid-email" className="form__error-message">Неверный формат</span>
+                                <span aria-label="valid-email" className="form__error-message">{t("Неверный формат")}</span>
                             </div>
 
                             <div className="form-container password">
-                                <label htmlFor="password">Пароль</label>
+                                <label htmlFor="password">{t("Пароль")}</label>
 
                                 <div className="password__container" >
                                     <button type="button" className="password__eye" onClick={() => setShowPass(!showPass)}>
@@ -123,11 +123,11 @@ export default function RegisterPage() {
                                         value={formData.password}
                                         onChange={handleChange}
                                     />
-                                    {isError ? <span aria-label="valid-email" className={`${isError && "active"}  password-error form__error-message`} >Passwords must be the same</span> : null}
+                                    {isError ? <span aria-label="valid-email" className={`${isError && "active"}  password-error form__error-message`} >{t("Passwords must be the same")}</span> : null}
                                 </div>
                             </div>
                             <div className="form-container password">
-                                <label htmlFor="confirm-password">Повторить пароль</label>
+                                <label htmlFor="confirm-password">{t("Повторить пароль")}</label>
 
                                 <div className="password__container">
 
@@ -141,13 +141,13 @@ export default function RegisterPage() {
                                         value={formData.confirmPassword}
                                         onChange={handleChange}
                                     />
-                                    <span aria-label="valid-email" className="form__error-message">Error message</span>
+                                    <span aria-label="valid-email" className="form__error-message">{t("Error message")}</span>
                                 </div>
                             </div>
                             <div className="form-container">
                                 <label htmlFor="ref-id">Ref ID</label>
                                 <input
-                                    placeholder="7809432"
+                                    placeholder=""
                                     type="text"
                                     name="refID"
                                     id="ref-id"
@@ -168,12 +168,12 @@ export default function RegisterPage() {
                                     tabIndex="6"
                                 />
                                 <label htmlFor="accept">
-                                    Я согласен с условиями пользования платформой
+                                    {t("Я согласен с условиями пользования платформой")}
                                 </label>
                             </div>
 
                             <button type="submit" className="js-send-btn btn" tabIndex="7">
-                                Зарегистрироваться
+                                {t("Зарегистрироваться")}
                             </button>
                         </div>
                     </div>

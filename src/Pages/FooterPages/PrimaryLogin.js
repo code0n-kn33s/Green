@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ReactComponent as LogoIcon } from '../../assets/images/logo.svg';
-
+import { useTranslation } from 'react-i18next';
 export function PrimaryLogin(params) {
-
+const {t} = useTranslation();
 
     const scrollBottom = () => {
         // window.scrollIntoView({})
@@ -22,18 +22,18 @@ export function PrimaryLogin(params) {
                     ARBITECH7
                 </div>
                 <div className="primary-login-pretitle">
-                    AI - powered project
+                    AI - {t("powered project")}
                 </div>
                 <div className="primary-login-text">
-                    designed for cryptocurrency arbitrage
+                    {t("designed for cryptocurrency arbitrage")}
                 </div>
                 <div className="primary-login-buttons">
                     <button onClick={scrollBottom} className="primary-login-button">
-                        LOG IN</button>
+                        {t("LOG IN")}</button>
 
                     <Link to="/register">
                         <button className="primary-login-button">
-                            REGISTRATION</button>
+                            {t("REGISTRATION")}</button>
                     </Link>
                 </div>
             </div>

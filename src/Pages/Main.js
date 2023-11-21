@@ -4,6 +4,7 @@ import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import Aside from "../Elements/Aside";
 import Overlay from "../Elements/Overlay";
 import Footer from '../Elements/Footer';
+import { useTranslation } from 'react-i18next';
 import { getToken } from '../helpers';
 import { useDispatch, useSelector } from "react-redux";
 import { closeTooltip, openTooltip, openLiq, closeLiq } from "../toolkitReducers";
@@ -12,6 +13,8 @@ export default function Main() {
   const {fetching} = useSelector(state => state.state)
   const navigate = useNavigate()
   const location = useLocation()
+
+  const {t} = useTranslation();
 
   React.useEffect(() => {
     if(location.pathname === "/" && getToken() !== null) {
@@ -46,6 +49,7 @@ export default function Main() {
 export const Tooltip = (props) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { t } = useTranslation();
 
   const { tooltip } = useSelector(({ state }) => state)
 
@@ -57,7 +61,7 @@ export const Tooltip = (props) => {
   return (
     <>
       {tooltip && <div class="tooltip">
-         <div>Данные были успешно обновленны</div>
+         <div>{t("Данные были успешно обновленны")}</div>
 
 
           <button
@@ -65,7 +69,7 @@ export const Tooltip = (props) => {
             onClick={clickDone}
             type="button"
           >
-            Готово
+            {t("Готово")}
           </button>
 
       </div>}
@@ -77,6 +81,8 @@ export const Liquidated = (props) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { liq } = useSelector((state) => state.auth)
+  const { t } = useTranslation();
+
 
   React.useEffect(() => {
     if (liq === true) {
@@ -94,10 +100,10 @@ export const Liquidated = (props) => {
       {(liq) && <div class="tooltip">
 
         {liq && <div className="tooltip-liqi">
-          <h2>УВЕДОМЛЕНИЕ О ЛИКВИДАЦИИ ПОЗИЦИИ!</h2>
-          <p>Мы с сожалением сообщаем вам, что ваша позиция на арбитражном аккаунте Arbitech7, была ликвидирована.</p>
-          <p>Пожалуйста, подходите к управлению рисками со всей ответственностью.</p>
-          <p>Узнайте больше о том, как минимизировать риски, на странице  «Управление рисками»</p>
+          <h2>{t("УВЕДОМЛЕНИЕ О ЛИКВИДАЦИИ ПОЗИЦИИ!")}</h2>
+          <p>{t("Мы с сожалением сообщаем вам, что ваша позиция на арбитражном аккаунте Arbitech7, была ликвидирована.")}</p>
+          <p>{t("Пожалуйста, подходите к управлению рисками со всей ответственностью.")}</p>
+          <p>{t("Узнайте больше о том, как минимизировать риски, на странице  «Управление рисками»")}</p>
 
 
         </div>
@@ -108,7 +114,7 @@ export const Liquidated = (props) => {
             onClick={clickDone}
             type="button"
           >
-            Готово
+            {t("Готово")}
           </button>
         </div>
       </div>}

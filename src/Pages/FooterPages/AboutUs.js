@@ -1,6 +1,7 @@
 import chudik from './img/chudik.png'
-
+import { useTranslation } from 'react-i18next';
 export function AboutUs(params) {
+    const {t} = useTranslation();
     return (
 
         <div className="about-us-wrap">
@@ -9,7 +10,7 @@ export function AboutUs(params) {
                 <div className="about-me">
 
                     <div className="about-me-title public-title">
-                        About ME
+                        {t("About ME")}
                     </div>
 
                     <div className="about-me-info-wrap">
@@ -17,14 +18,14 @@ export function AboutUs(params) {
                     <div className="about-me-info bordered big-bordered">
 
                         <div className="about-me-p">
-                            <span className="tb">HELLO! </span>
-                            Я - искусственный интеллект. Разработан для ассистирования в крипто арбитраже
+                            <span className="tb">{t("HELLO")}! </span>
+                            {t("iam")}
                         </div>
-                        <div className="tb">Possibilities :</div>
+                        <div className="tb">{t("Possibilities")} :</div>
                         <ul className="about-me-l terms-description-list">
-                            <li className="about-me-li terms-description-list-item">Производить арбитражные операции между различными крипто биржами в автоматическом режиме быстро и с максимальным профитом</li>
-                            <li className="about-me-li terms-description-list-item">Получать рекомендации от службы поддержки о наиболее выгодных условиях и точках для арбитража на основе глубокого анализа рынка.</li>
-                            <li className="about-me-li terms-description-list-item">Безопасность транзакций благодаря криптографии</li>
+                            <li className="about-me-li terms-description-list-item">{t("operations")}</li>
+                            <li className="about-me-li terms-description-list-item">{t("take")}.</li>
+                            <li className="about-me-li terms-description-list-item">{t("Безопасность транзакций благодаря криптографии")}</li>
                         </ul>
                     </div>
                     </div>
@@ -35,24 +36,24 @@ export function AboutUs(params) {
                     </div>
                     <div className="about-me-info bordered big-bordered">
                         <div className="about-me-p">
-                            <span className="tb">ARBITECH7</span> - преумножение капитала
+                            <span className="tb">ARBITECH7</span> - {t("преумножение капитала")}
                         </div>
-                        <div className="tb">Research ARBITECH7 :</div>
+                        <div className="tb">{t("Research")} ARBITECH7 :</div>
                         <ul className="about-me-l terms-description-list">
                             <li className="about-me-li terms-description-list-item">
-                                выявить эффективные стратегии арбитража в режиме онлайн
+                                {t("выявить эффективные стратегии арбитража в режиме онлайн")}
                             </li>
-                            <li className="about-me-li terms-description-list-item">усовершенствовать ПО для ускорения сделок арбитража.</li>
-                            <li className="about-me-li terms-description-list-item">Farming эффективных связок</li>
+                            <li className="about-me-li terms-description-list-item">{t("усовершенствовать ПО для ускорения сделок арбитража")}.</li>
+                            <li className="about-me-li terms-description-list-item">{t("Формирование эффективных связок")}</li>
                         </ul>
-                        <div className="tb">Technology stack ARBITECH7 :</div>
+                        <div className="tb">{t("Technology stack")} ARBITECH7 :</div>
                         <ul className="about-me-l terms-description-list">
                             <li className="about-me-li terms-description-list-item">
-                                Learning Machine
+                                {t("Learning Machine")}
                             </li>
-                            <li className="about-me-li terms-description-list-item">Big Data</li>
-                            <li className="about-me-li terms-description-list-item">Chat GPT</li>
-                            <li className="about-me-li terms-description-list-item">Blockchain</li>
+                            <li className="about-me-li terms-description-list-item">{t("Big Data")}</li>
+                            <li className="about-me-li terms-description-list-item">{t("Chat GPT")}</li>
+                            <li className="about-me-li terms-description-list-item">{t("Blockchain")}</li>
                         </ul>
                     </div>
 

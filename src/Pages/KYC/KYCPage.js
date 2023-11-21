@@ -1,9 +1,9 @@
 import { Outlet, Link, useLocation } from 'react-router-dom'
-
+import { useTranslation } from 'react-i18next';
 export default function KYCPage(params) {
     const location = useLocation()
     const regex = /\/(\w+)$/
-
+const {t} = useTranslation();
     const tabIndex = regex.exec(location.pathname)[0]
     let activeTab = tabIndex === '/step1' ? true : false
 
@@ -15,7 +15,7 @@ export default function KYCPage(params) {
                         <h1 class="KYS-section__heading h3">KYS</h1>
 
                         <div class="KYS-section__wrapper rel">
-                            <div class="KYS-section__label">Настроить AI</div>
+                            <div class="KYS-section__label">{t("Настроить")} AI</div>
 
                             <form class="form KYS__form" action="/action_page.php" method="post">
                                 <tabs-component class="tabs">
@@ -28,7 +28,7 @@ export default function KYCPage(params) {
                                                 id="tab-1"
                                                 aria-controls="tabpanel-1"
                                                 aria-selected={activeTab}>
-                                                <span class="world_1">Шаг</span>
+                                                <span class="world_1">{t("Шаг")}</span>
                                                 <span class="world_2">1</span>
                                             </div>
 
@@ -39,7 +39,7 @@ export default function KYCPage(params) {
                                                 id="tab-2"
                                                 aria-controls="tabpanel-2"
                                                 aria-selected={!activeTab}>
-                                                <span class="world_1">Шаг</span>
+                                                <span class="world_1">{t("Шаг")}</span>
                                                 <span class="world_2">2</span>
                                             </div>
                                         </div>
@@ -56,7 +56,7 @@ export default function KYCPage(params) {
                                     </div>
                                 </tabs-component>
 
-                                <span class="form__error-message hide">Данные заполнены не корректно или не полностью</span>
+                                <span class="form__error-message hide">{t("Данные заполнены не корректно или не полностью")}</span>
                             </form>
                         </div>
                     </section>

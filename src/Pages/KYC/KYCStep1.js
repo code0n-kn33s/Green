@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { transportKissFields } from '../../toolkitReducers/actions.slice'
-
+import { useTranslation } from 'react-i18next';
 function KYCPage({ tab }) {
     const [formData, setFormData] = useState({
         name: { value: '', required: true },
@@ -14,7 +14,7 @@ function KYCPage({ tab }) {
         city: { value: '', required: false },
     });
 
-
+const {t} = useTranslation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -77,34 +77,34 @@ function KYCPage({ tab }) {
                 aria-labelledby="tab-1"
             >
                 <div className="KYS-section__inputs-wrapper">
-                    <h2 className="KYS-section__inputs-heading">Общая Информация</h2>
+                    <h2 className="KYS-section__inputs-heading">{t("Общая Информация")}</h2>
 
                     <div className="KYS-section__inputs-row">
                         <div className="form-container">
                             <input
                                 required={formData.name.required}
                                 type="text"
-                                placeholder="Имя *"
+                                placeholder={t("Имя *")}
                                 name="name"
                                 id="name"
                                 value={formData.name.value}
                                 onChange={handleInputChange}
                                 className={errors.name ? 'error' : ''}
                             />
-                            {errors.name && <span className="error-message">Заполните поле</span>}
+                            {errors.name && <span className="error-message">{t("Заполните поле")}</span>}
                         </div>
                         <div className="form-container">
                             <input
                                 required={formData.surname.required}
                                 type="text"
-                                placeholder="Фамилия"
+                                placeholder={t("Фамилия")}
                                 name="surname"
                                 id="surname"
                                 value={formData.surname.value}
                                 onChange={handleInputChange}
                                 className={errors.surname ? 'error' : ''}
                             />
-                            {errors.surname && <span className="error-message">Заполните поле</span>}
+                            {errors.surname && <span className="error-message">{t("Заполните поле")}</span>}
                         </div>
                     </div>
 
@@ -113,7 +113,7 @@ function KYCPage({ tab }) {
                         <div className="form-container">
                             <input
                                 type="tel"
-                                placeholder="Номер телефона"
+                                placeholder={t("Номер телефона")}
                                 name="phone"
                                 id="phone"
                                 value={formData.phone.value}
@@ -125,14 +125,14 @@ function KYCPage({ tab }) {
                             <input
                                 required={formData.birthday.required}
                                 type="date"
-                                placeholder="Дата Рождения *"
+                                placeholder={t("Дата Рождения *")}
                                 name="birthday"
                                 id="birthday"
                                 value={formData.birthday.value}
                                 onChange={handleInputChange}
                                 className={errors.birthday ? 'error' : ''}
                             />
-                            {errors.birthday && <span className="error-message">Заполните поле</span>}
+                            {errors.birthday && <span className="error-message">{t("Заполните поле")}</span>}
                         </div>
                     </div>
                 </div>
@@ -145,14 +145,14 @@ function KYCPage({ tab }) {
                             <input
                                 required={formData.telegram.required}
                                 type="text"
-                                placeholder="Telegram *"
+                                placeholder={t("Telegram *")}
                                 name="telegram"
                                 id="telegram"
                                 value={formData.telegram.value}
                                 onChange={handleInputChange}
                                 className={errors.telegram ? 'error' : ''}
                             />
-                            {errors.telegram && <span className="error-message">Заполните поле</span>}
+                            {errors.telegram && <span className="error-message">{t("Заполните поле")}</span>}
                         </div>
                     </div>
 
@@ -161,28 +161,28 @@ function KYCPage({ tab }) {
                             <input
                                 required={formData.country.required}
                                 type="text"
-                                placeholder="Страна *"
+                                placeholder={t("Страна *")}
                                 name="country"
                                 id="country"
                                 value={formData.country.value}
                                 onChange={handleInputChange}
                                 className={errors.country ? 'error' : ''}
                             />
-                            {errors.country && <span className="error-message">Заполните поле</span>}
+                            {errors.country && <span className="error-message">{t("Заполните поле")}</span>}
                         </div>
 
                         <div className="form-container">
                             <input
                                 required={formData.city.required}
                                 type="text"
-                                placeholder="Город"
+                                placeholder={t("Город")}
                                 name="city"
                                 id="city"
                                 value={formData.city.value}
                                 onChange={handleInputChange}
                                 className={errors.city ? 'error' : ''}
                             />
-                            {errors.city && <span className="error-message">Заполните поле</span>}
+                            {errors.city && <span className="error-message">{t("Заполните поле")}</span>}
                         </div>
                     </div>
                 </div>

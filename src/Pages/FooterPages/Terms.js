@@ -1,5 +1,6 @@
 
 import chudik from './img/chudik.png'
+import { useTranslation } from 'react-i18next';
 
 const risks = {
     "BASE": "15-30% monthly",
@@ -11,11 +12,14 @@ const risks = {
 }
 
 export function Terms(params) {
+
+    const {t} = useTranslation();
+
     return (
         <>
             <div className="terms">
                 <div className="public-title">
-                    Terms & Conditions AI ARBITECH7
+                    {t("Terms & Conditions")} AI ARBITECH7
                 </div>
                 <div className="terms-info">
                     <div className="description-img-wrap">
@@ -41,13 +45,13 @@ export function Terms(params) {
                     </div>
                     <div className="terms-description bordered big-bordered">
 
-                        <div className="terms-description">ARBITECH7 - правила преумножения крипто:</div>
+                        <div className="terms-description">ARBITECH7 - {t("правила преумножения крипто")}:</div>
                         <ul className="terms-description-list">
-                            <li className="terms-description-list-item" >Крипто распределяется автоматически по торговымпулам (группам) согласно выбраной стратегиириска/доходности</li>
-                            <li className="terms-description-list-item" >сроки действия пула - один месяц</li>
-                            <li className="terms-description-list-item" >выбор уровня риска и доходности производитсяпользователем в момент пополнения пула - единоразово</li>
-                            <li className="terms-description-list-item" >увеличение степени риска/доходности - увеличивает шансы на потери. Принимайте решения взвешенно!</li>
-                            <li className="terms-description-list-item" >вывод доходности производится каждые 10 дней,т.е. 10го, 20го и 30го числа месяца</li>
+                            <li className="terms-description-list-item" >{t("distributed")}</li>
+                            <li className="terms-description-list-item" >{t("сроки действия пула - один месяц")}</li>
+                            <li className="terms-description-list-item" >{t("choose")}</li>
+                            <li className="terms-description-list-item" >{t("увеличение степени риска/доходности - увеличивает шансы на потери. Принимайте решения взвешенно")}!</li>
+                            <li className="terms-description-list-item" >{t("profit10")}</li>
                         </ul>
                     </div>
                 </div>

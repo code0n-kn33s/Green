@@ -10,6 +10,8 @@ import {
   setUserRisks,
   setSum,
 } from '../../toolkitReducers/actions.slice'
+import { useTranslation } from 'react-i18next';
+
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function Algoritms(params) {
@@ -17,6 +19,7 @@ export default function Algoritms(params) {
   const [isPromotion, setPromotion] = useState(100)
   const dispatch = useDispatch()
 
+  const {t} = useTranslation();
   const wallet = useSelector(state => state.state.wallet)
   const statistics = useSelector(state => state.state.statistics)
   // const risks = useSelector(state => state.state.risks)
@@ -35,24 +38,24 @@ export default function Algoritms(params) {
       <ModalDialog modalState={isModal} setModalState={openModal} promotion={isPromotion}/>
       <div className="algorithms-page__sections-wrapper page__sections-wrapper medium-wrapper">
         <section className="algorithms-section">
-          <h1 className="algorithms-section__heading h3">Пулы</h1>
+          <h1 className="algorithms-section__heading h3">{t("pulls")}</h1>
 
           <div className="algorithms-section__wrapper">
             <div className="algorithms-section__item">
-              <h2 className="algorithms-section__item-heading">Test AI</h2>
+              <h2 className="algorithms-section__item-heading">{t("Test")} AI</h2>
 
               <div className="algorithms-section__item-body">
                 <div className="algorithms-section__item-row">
-                  <div className="algorithms-section__item-row-left">Сумма:</div>
-                  <div className="algorithms-section__item-row-right bold">От 100 USDT</div>
+                  <div className="algorithms-section__item-row-left">{t("Сумма")}:</div>
+                  <div className="algorithms-section__item-row-right bold">{t("От")} 100 USDT</div>
                 </div>
                 <div className="algorithms-section__item-row bold">
-                  <div className="algorithms-section__item-row-left">Доходность:</div>
-                  <div className="algorithms-section__item-row-right bold">До 25%</div>
+                  <div className="algorithms-section__item-row-left">{t("Доходность")}:</div>
+                  <div className="algorithms-section__item-row-right bold">{t("До")} 25%</div>
                 </div>
                 <div className="algorithms-section__item-row">
-                  <div className="algorithms-section__item-row-left">Возможность тонкой настройки:</div>
-                  <div className="algorithms-section__item-row-right bold">Отсутсвует</div>
+                  <div className="algorithms-section__item-row-left">{t("Возможность тонкой настройки")}:</div>
+                  <div className="algorithms-section__item-row-right bold">{t("Отсутсвует")}</div>
                 </div>
               </div>
 
@@ -65,25 +68,25 @@ export default function Algoritms(params) {
                   aria-expanded="false"
                   aria-label=""
                   onClick={() => openModal(100)}
-                > Запустить AI</button>
+                > {t("Запустить")} AI</button>
               </modal-opener>
             </div>
 
             <div className="algorithms-section__item">
-              <h2 className="algorithms-section__item-heading">Custom AI</h2>
+              <h2 className="algorithms-section__item-heading">{t("Custom")} AI</h2>
 
               <div className="algorithms-section__item-body">
                 <div className="algorithms-section__item-row">
-                  <div className="algorithms-section__item-row-left">Сумма:</div>
-                  <div className="algorithms-section__item-row-right bold">От 500 USDT</div>
+                  <div className="algorithms-section__item-row-left">{t("Сумма")}:</div>
+                  <div className="algorithms-section__item-row-right bold">{t("От")} 500 USDT</div>
                 </div>
                 <div className="algorithms-section__item-row bold">
-                  <div className="algorithms-section__item-row-left">Доходность:</div>
-                  <div className="algorithms-section__item-row-right bold">До 75%</div>
+                  <div className="algorithms-section__item-row-left">{t("Доходность")}:</div>
+                  <div className="algorithms-section__item-row-right bold">{t("До")} 75%</div>
                 </div>
                 <div className="algorithms-section__item-row">
-                  <div className="algorithms-section__item-row-left">Возможность тонкой настройки:</div>
-                  <div className="algorithms-section__item-row-right bold">Доступна кастомизация</div>
+                  <div className="algorithms-section__item-row-left">{t("Возможность тонкой настройки")}:</div>
+                  <div className="algorithms-section__item-row-right bold">{t("Доступна кастомизация")}</div>
                 </div>
               </div>
 
@@ -97,7 +100,7 @@ export default function Algoritms(params) {
                   aria-label=""
                   onClick={() => openModal(500)}
 
-                  > Запустить AI</button>
+                  > {t("Запустить")} AI</button>
               </modal-opener>
             </div>
 

@@ -1,0 +1,76 @@
+// main-nav.scss
+
+.main-nav {
+    // Add your main nav styles here
+  }
+
+  .main-nav__wrapper {
+    // Add wrapper styles
+  }
+
+  .main-nav__first-lvl {
+    list-style: none;
+    padding: 0;
+  }
+
+  .main-nav__first-lvl-item {
+    margin-bottom: 10px;
+  }
+
+  .main-nav__first-lvl-item-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .main-nav__second-lvl {
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .main-nav__second-lvl-item {
+    margin-bottom: 5px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: #333; // Adjust color as needed
+  }
+
+  .custom-select {
+    position: relative;
+    display: inline-block;
+  }
+
+  .custom-select__btn {
+    // Add button styles
+  }
+
+  .custom-select__btn-text {
+    margin-right: 5px;
+  }
+
+  .custom-select__dropdown {
+    // position: absolute;
+    // top: 100%;
+    // left: 0;
+    // display: none;
+  }
+
+  .custom-select__dropdown-option {
+    // Add dropdown option styles
+    cursor: pointer;
+  }
+
+  .custom-select__dropdown-option.selected {
+    text-decoration: underline;
+  }
+
+  .custom-select__dropdown-button {
+    // Add dropdown button styles
+  }
+
+  .custom-select__input-hidden {
+    display: none;
+  }
+
+  // Add additional styles as needed

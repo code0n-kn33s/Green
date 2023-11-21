@@ -1,0 +1,261 @@
+{
+    "Welcome to React": "Welcome to React",
+    "change to": "change to",
+    "english":"english",
+    "russian":"russian",
+    "refresh page":"refresh page",
+
+    "Настройка доходности": "Setting up profitability",
+    "доходность можно менять только после пополнения баланса": "profitability can be changed only after replenishing the balance",
+    "Увеличение доходности влечет за собой риски утери средств. Использовать осторожно..": "An increase in profitability entails the risk of losing funds. Use with caution..",
+    "Контроль риска:": "Risk control {{ value }} level:",
+
+    "Разрешить длинные цепочки обмена":"Allow long exchange chains",
+    "Разрешить использовать новые токены":"Allow new tokens to be used",
+    "*Доступно при размещении от 1500USD. Каждый пункт добавляет до 5% доходности.":"*Available for placements starting from 1500USD. Each point adds up to 5% profitability.",
+    "Разрешить использовать новые обменные площадки":"Allow the use of new exchange platforms",
+    "Не использовать классические пары":"Do not use classic pairs",
+    "*Доступно при размещении от 3000USD. Каждый пункт добавляет до 10% доходности.":"*Available for placements starting from 3000USD. Each point adds up to 10% profitability.",
+    "Использовать только новые токены":"Use only new tokens Use only swaps",
+    "Использовать только свопы":"Использовать только свопы",
+    "*Доступно при размещении от 5000USD. Каждый пункт добавляет до 10% доходности.": "*Available for placements starting from 5000USD. Each point adds up to 10% profitability.",
+    "statisticsSection1": "*Data update time refers to UTC + 0 time zone. The data maintenance time is 0am - 2am (UTC+0) every day. During this period, the calculation of today;s data is based on the assetst of previous day. After maintenance, all data will be displayed properly.",
+    "statisticsSection2": "*Statement: due to the complexity of financial data, there might be nuances and delay. Data displayed above is for reference only. We sincerely apologize for any inconvenience.",
+
+    "Применить":"Apply",
+    "Дата":"Date",
+    "Сумма":"Sum",
+    "Тип":"Type",
+    "Пользователь":"User",
+    "Статус":"Status",
+    "На странице ":"На On the page",
+    "pulls": "Pulls",
+    "statistics": "Statistics",
+    "Test": "Test",
+    "algoritms": "Algoritms",
+    "Login": "Login",
+    "Browser": "Browser",
+
+    "Terms & Conditions": "Terms & Conditions",
+    "REGISTRATION": "REGISTRATION",
+    "Best pairs last 12 months ARBITECH7 version:": "Best pairs last 12 months ARBITECH7 version:",
+    "Best partners last 12 months ARBITECH7 version": "Best partners last 12 months ARBITECH7 version",
+    "Story map": "Story map",
+    "Development": "Development",
+    "CryproArbitrag": "Crypto arbitrage is an ever-growing market with many toffee opportunities every minute. The idea is to create an AI-based algorithm for trading delegation. The user can only select risk criteria.",
+    "От": "From",
+    "Доходность": "Yield",
+    "До": "To",
+    "Возможность тонкой настройки": "Fine-Tuning Capability",
+    "Отсутсвует": "Not available",
+    "Запустить": "Launch",
+    "Custom": "Custom",
+    "Доступна кастомизация": "Customization available",
+
+    "Главная": "Home",
+    "О компании": "About Us",
+    "Правила": "Rules",
+    "Аналитика": "Analytics",
+    "Партнеры": "Partners",
+    "Все права защищены": "All rights reserved",
+    "Balance update": "Balance updated",
+    "Профиль": "Profile",
+    "Выход": "Logout",
+    "Данные были успешно обновленны": "Data has been successfully updated",
+    "Готово": "Done",
+    "Вход": "Login",
+    "История": "History",
+    "УВЕДОМЛЕНИЕ О ЛИКВИДАЦИИ ПОЗИЦИИ!": "LIQUIDATION POSITION NOTIFICATION!",
+    "Мы с сожалением сообщаем вам, что ваша позиция на арбитражном аккаунте Arbitech7, была ликвидирована.": "We regret to inform you that your position on the arbitrage account Arbitech7 has been liquidated.",
+    "Пожалуйста, подходите к управлению рисками со всей ответственностью.": "Please approach risk management with full responsibility.",
+    "Узнайте больше о том, как минимизировать риски, на странице  «Управление рисками»": "Learn more about how to minimize risks on the 'Risk Management' page",
+    "Итоговый баланс": "Final balance",
+    "Профит за 24 часа": "Profit for 24 hours",
+    "Итоговый профит": "Total profit",
+    "Доходы пользователей": "User earnings",
+    "Прибыль платформы от сделок за неделю": "Platform profit from trades for the week",
+    "Размещено в": "Placed in",
+    "История доходности": "Profit history",
+    "Настроить": "Configure",
+    "Профит": "Profit",
+    "Баланс": "Balance",
+    "Сменить пароль": "Change password",
+    "Вывод средств": "Withdraw funds",
+    "Заполнить заявку": "Fill out the application",
+    "Реферальный ID": "Referral ID",
+    "Поделится": "Share",
+    "НАЧАТЬ": "START",
+    "БОТ": "BOT",
+    "ВКЛ": "ON",
+    "ВЫКЛ": "OFF",
+    "История сеансов": "Session history",
+    "ЗАГРУЗИТЬ": "UPLOAD",
+    "ID-Карта": "ID Card",
+    "Удалить файл": "Delete file",
+    "Назад": "Back",
+    "Общая Информация": "General Information",
+    "Заполните поле": "Fill in the field",
+    "Имя *": "First Name *",
+    "Фамилия": "Last Name",
+    "Номер телефона": "Phone Number",
+    "Дата Рождения *": "Date of Birth *",
+    "Telegram *": "Telegram *",
+    "Страна *": "Country *",
+    "Город": "City",
+    "Шаг": "Step",
+
+    "Данные заполнены не корректно или не полностью": "Data is filled in incorrectly or incompletely",
+
+    "правила преумножения крипто": "crypto multiplication rules",
+    "distributed": "Crypto is automatically distributed among trading pools (groups) according to the selected risk/profit strategy",
+    "сроки действия пула - один месяц": "pool duration is one month",
+    "choose": "the user chooses the level of risk and profitability when replenishing the pool - one-time",
+    "увеличение степени риска/доходности - увеличивает шансы на потери. Принимайте решения взвешенно": "increasing the level of risk/profitability increases the chances of losses. Make decisions wisely",
+    "profit10": "profit withdrawal is made every 10 days, i.e., on the 10th, 20th, and 30th of the month",
+
+    "primary1": "Hello! I am an artificial intelligence created to assist in crypto arbitrage. Let me tell you the story of how I was developed.",
+
+    "primary2": "My creators noticed the growing popularity of cryptocurrency and the potential it offers. They understood that the price differences of cryptocurrencies on different exchanges could create opportunities for profitable arbitrage. However, they also realized that manual analysis and execution of trades on different platforms require a significant amount of time and effort.",
+
+    "primary3": "The solution was to create me - a crypto arbitrage platform based on advanced artificial intelligence technologies. I am designed to automate the crypto arbitrage process, providing accurate market analysis and instant trade execution.",
+
+    "primary4": "With the help of my data analysis and decision-making algorithms, I can quickly process information about cryptocurrency prices on different exchanges and identify potential arbitrage opportunities. Once such an opportunity is detected, I automatically and without delays execute the trade to maximize your profit.",
+
+    "primary5": "Today, I am ready to help you gain an advantage in the world of cryptocurrency and arbitrage. Join the platform and trust my capabilities to simplify your crypto arbitrage experience and increase your profitability.",
+
+    "primary6": "Together we can achieve new heights in the cryptocurrency industry! Join the artificial intelligence-based crypto arbitrage platform right now!",
+
+    "primary166": "The artificial intelligence-based crypto-arbitrage market presents significant prospects. Here are a few reasons why this market has potential:",
+
+    "primary7": "Growing popularity of crypto: Cryptocurrencies are becoming more widespread and attractive to investors and transfer platforms. Economic sanctions and regulations stimulate interest in this asset and create more opportunities for crypto-arbitrage.",
+    "primary8": "Price differences on different exchanges: Cryptocurrency prices can vary significantly on different exchanges. This opens up opportunities for profitable crypto-arbitrage, where AI-based arbitrage bots can quickly recognize and exploit these differences.",
+    "primary9": "Speed and efficiency: Using artificial intelligence allows automating the crypto-arbitrage process and making it faster and more efficient. This allows investors to react instantly to arbitrage opportunities and gain profit.",
+    "primary10": "Increasing market liquidity: AI-based crypto-arbitrage market can contribute to increasing liquidity in cryptocurrency markets. As arbitrage bots actively trade on different exchanges, they can contribute to aligning prices and reducing differences between exchanges.",
+    "primary11": "Advancements in artificial intelligence technologies: With the development of artificial intelligence technologies, there is an improvement in the performance and efficiency of arbitrage algorithms. This opens up new opportunities for accurate market analysis and data-driven decision-making.",
+    "primary12": "Overall, the AI-based crypto-arbitrage market presents prospects for investors looking to profit from differences in cryptocurrency prices on different exchanges. It combines the growth opportunities of the crypto market with the advantages of artificial intelligence automation.",
+    "primary13": "Hello, I am the artificial intelligence Arbitech7, developed to address the following tasks:",
+    "primary14": "1. Economic sanctions and regulations stimulate interest in crypto and create more opportunities for crypto-arbitrage.",
+    "primary15": "2. Differences in prices on different platforms. This opens up opportunities for profitable crypto-arbitrage, where AI-based arbitrage bots can quickly recognize and exploit these differences.",
+    "primary16": "3. Use of AI automates analysis and trades. This allows investors to react instantly to arbitrage opportunities and gain profit.",
+    "primary17": "4. The crypto-arbitrage market with AI can increase market liquidity. As arbitrage bots actively trade on different platforms, they can contribute to aligning prices and reducing differences between platforms.",
+
+    "primary18": "5. New opportunities for accurate market analysis and data-driven decision-making.",
+
+
+    "Возможности и прибыльность": "Possibilities & Profitability",
+    "Possibilities & Profitability": "Possibilities & Profitability",
+
+"Лучшие пары за последние 12 месяцев, по версии ARBITECH7:": "Best pairs last 12 months ARBITECH7 version:",
+"Лучшие партнеры за последние 12 месяцев по версии ARBITECH7": "Best partners last 12 months ARBITECH7 version",
+
+"Карта истории": "Story map",
+
+"teamStart": "The team began creating an algorithm based on Chat GPT. After 10 months, the product is in the alpha testing stage.",
+
+"Progress": "Progress",
+
+"m23": "In March 2023, the public launch of ARBITECH7. By August 2023, 1000+ client accounts have been recorded.",
+
+"Ideas": "Ideas",
+
+"Крипто-арбитраж - это постоянно растущий рынок с множеством минутных возможностей и рисков. Идея создать алгоритм на основе AI для делегирования торговли. Пользователю остается только выбрать критерии риска.": "Crypto arbitrage is a constantly growing market with numerous minute opportunities and risks. The idea is to create an AI-based algorithm for trade delegation. The user only needs to choose the risk criteria.",
+
+"Research": "Research",
+"wrongLogin": "Incorrect email or password",
+
+"bigData": "Implemented BIG DATA and MACHINE LEARNING. Developed a hub with 100+ connections.",
+
+"powered project": "powered project",
+"designed for cryptocurrency arbitrage": "designed for cryptocurrency arbitrage",
+"LOG IN": "LOG IN",
+"преумножение капитала": "capital multiplication",
+"HELLO": "HELLO",
+"About ME": "About ME",
+"iam": "I am an artificial intelligence. Developed to assist in crypto arbitrage.",
+
+"Возможности": "Possibilities",
+"operations": "Conduct arbitrage operations between different crypto exchanges automatically, quickly, and with maximum profit.",
+
+"take": "Receive recommendations from customer support about the most favorable conditions and points for arbitrage based on deep market analysis.",
+
+"Безопасность транзакций благодаря криптографии": "Transaction security thanks to cryptography",
+"выявить эффективные стратегии арбитража в режиме онлайн": "Identify effective arbitrage strategies in real-time",
+
+"усовершенствовать ПО для ускорения сделок арбитража": "Improve software to speed up arbitrage transactions",
+
+"Формирование эффективных связок": "Formation of effective connections",
+
+"Technology stack": "Technology stack",
+
+"Learning Machine": "Learning Machine",
+"Big Data": "Big Data",
+"Chat GPT": "Chat GPT",
+"Blockchain": "Blockchain",
+
+"Сброс пароля": "Password Reset",
+"Установить новый пароль": "Set a new password",
+"Пароль": "Password",
+"Error message": "Error message",
+"Повторите пароль": "Repeat password",
+"Введите имейл адрес для сброса пароля": "Enter your email address to reset your password",
+
+"Email адрес": "Email address",
+"Отправить": "Send",
+
+"Регистрация": "Registration",
+"Заполните пожалуйста информацию ниже": "Please fill in the information below",
+"Имя пользователя": "Username",
+
+"Неверный формат": "Invalid format",
+"Passwords must be the same": "Passwords must be the same",
+"Повторить пароль": "Repeat password",
+"Я согласен с условиями пользования платформой": "I agree to the terms of use of the platform",
+"Зарегистрироваться": "Register",
+
+"Логин": "Login",
+"Вход в аккаунт": "Log in to your account",
+"Неправильный email или пароль": "Invalid email or password",
+"Войти": "Log in",
+"Support": "Support",
+"Создать Аккаунт": "Create an Account",
+
+"Сумма профита": "Profit amount",
+"Профит дня": "Daily profit",
+"Настройка": "Settings",
+"Выбор монеты": "Coin selection",
+"Внимание!": "Attention!",
+"Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!": "Transactions take some time. Depending on the network load, the funds will appear in your balance!",
+"ГОТОВО": "READY",
+"сумма должна быть больше": "The amount must be greater than",
+"Адрес": "Address",
+"проверяйте адрес и тип монеты перед отправкой средств!": "Check the address and coin type before sending funds!",
+"Далее": "Next",
+"правила партнерской программы": "Affiliate program rules",
+"Partners Program": "Partners Program",
+
+
+
+
+"rule1" : "When a team turnover exceeds 1000 usdt in its own depot over 500 usdt, bonuses are awarded according to the table.",
+
+"rule2" : "With a turnover over 100,000 you receive a one-time bonus of 10%",
+
+"rule3" : "User account limits: 1st level - 10 people, 2nd level - 20 people, 3, 4 and 5th levels - 50 people per level",
+
+
+
+
+
+
+
+
+    "Success":"Success"
+}
+
+
+
+
+
+
+
+

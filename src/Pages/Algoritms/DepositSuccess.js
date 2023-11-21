@@ -1,10 +1,10 @@
-
+import { useTranslation } from 'react-i18next';
 export default function DepositSuccess(props) {
     const clickDone = () => {
         props.switchDone(false)
         props.setModalState()
     }
-
+    const {t} = useTranslation();
     return (
         <div class="modal-dialog__success-wrapper">
             <div class="modal-dialog__success-icon">
@@ -22,15 +22,15 @@ export default function DepositSuccess(props) {
             </div>
 
             <h2 class="modal-dialog__success-heading bold">
-                Внимание!
+                {t("Внимание!")}
             </h2>
 
             <p class="modal-dialog__success-description bold">
-                Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!
+                {t("Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!")}
             </p>
 
             <button onClick={clickDone} class="modal-dialog__success-btn btn btn--primary btn--large" type="button" data-close-popup>
-                ГОТОВО
+                {t("ГОТОВО")}
             </button>
         </div>
     )

@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setSum, getUserWallet } from '../../toolkitReducers/actions.slice'
-
+import { useTranslation } from 'react-i18next';
 
 export default function CustomSelect(params) {
     const { currencies, wallet } = useSelector(state => state.state)
     const { promotion, switchDone } = params
-
+const {t} = useTranslation();
     const [isSmallerSum, showSmallerSum] = useState(false)
     const [isSum, setIsSum] = useState('')
     const [isOpenMenu, setOpenMenu] = useState(false)
@@ -108,7 +108,7 @@ export default function CustomSelect(params) {
                 <input required onChange={sumChange} value={isSum} min={500} type="number" placeholder="Сумма" name="sum" />
                 {isSmallerSum && <div class="modal-dialog__invoice-description-wrapper">
                     <p class="modal-dialog__invoice-description">
-                        Внимание!<br /> сумма должна быть больше {promotion}USDT
+                        {t("Внимание!")}<br /> {t("сумма должна быть больше")} {promotion}USDT
                     </p>
                 </div>}
             </div>
@@ -121,7 +121,7 @@ export default function CustomSelect(params) {
 
                 <div class="modal-dialog__invoice-wrapper">
                     <p class="modal-dialog__invoice-heading">
-                        Адрес
+                        {t("Адрес")}
                     </p>
 
 
@@ -153,8 +153,8 @@ export default function CustomSelect(params) {
 
                     <div class="modal-dialog__invoice-description-wrapper">
                         <p class="modal-dialog__invoice-description bold">
-                            Внимание,<br />
-                            проверяйте адрес и тип монеты перед отправкой средств!
+                            {t("Внимание!")}<br />
+                            {t("проверяйте адрес и тип монеты перед отправкой средств!")}
                         </p>
 
                         {/* <p class="modal-dialog__invoice-description">
@@ -165,7 +165,7 @@ export default function CustomSelect(params) {
 
                     <button className='modal-dialog__invoice-btn btn btn--primary btn--large' onClick={
                         playNext
-                    }> Далее</button>
+                    }> {t("Далее")}</button>
 
                 </div>
             </div>

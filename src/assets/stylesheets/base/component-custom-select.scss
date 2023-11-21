@@ -4,7 +4,7 @@
   transition: max-height 0.2s ease-out;
 */
 
-custom-select {
+.custom-select {
   //use you variables
   --duration-default: 0.3s;
 
@@ -56,7 +56,8 @@ custom-select {
 
   .custom-select__dropdown {
     position: absolute;
-    padding: 10px 20px;
+    padding: 20px;
+    border: 1px solid;
     top: 0;
     left: 0;
     right: 0;
@@ -71,7 +72,7 @@ custom-select {
     z-index: 0;
   }
 
-  .custom-select__dropdown[aria-expanded="true"] {
+  .custom-select__dropdown.active {
     opacity: 1;
     visibility: visible;
     z-index: 2;

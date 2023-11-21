@@ -9,12 +9,12 @@ import G3 from './G3'
 import G2 from './G2'
 import G1 from './G1'
 import G7 from '../FooterPages/G7'
-
+import { useTranslation } from 'react-i18next';
 export default function StatisticPage(params) {
   // const chartRef = useRef(null);
   // const data = useSelector(state => state.state.statistics)
   const dispatch = useDispatch();
-
+const {t} = useTranslation();
   // const {
   //   // chart_data,
   //   user_balance,
@@ -42,7 +42,7 @@ export default function StatisticPage(params) {
           <div className="statistics-section__balance-wrapper">
             <div className="statistics-section__balance-current">
               <h2 className="statistics-section__balance-heading">
-                Итоговый баланс:
+                {t("Итоговый баланс")}:
               </h2>
 
               {/* <p className="statistics-section__balance-counter">
@@ -69,7 +69,7 @@ export default function StatisticPage(params) {
 
             <div className="statistics-section__balance-revenue-per-day">
               <h2 className="statistics-section__balance-heading">
-                Профит за 24 часа
+                {t("Профит за 24 часа")}
               </h2>
 
               <p className="statistics-section__balance-counter">
@@ -79,7 +79,7 @@ export default function StatisticPage(params) {
 
             <div className="statistics-section__balance-last-interval">
               <h2 className="statistics-section__balance-heading">
-                Итоговый профит
+                {t("Итоговый профит")}
               </h2>
 
               <p className="statistics-section__balance-counter">
@@ -94,7 +94,7 @@ export default function StatisticPage(params) {
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
                   <span className="statistics-section__graphics-row-heading">
                     {/* {data?.chart_data?.datasets[0].label} */}
-                    Доходы пользователей 75%
+                    {t("Доходы пользователей")} 75%
                   </span>
                   {/* <span className="statistics-section__graphics-row-counter"> 0$</span> */}
                 </h2>
@@ -109,7 +109,7 @@ export default function StatisticPage(params) {
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
                   <span className="statistics-section__graphics-row-heading">
-                    Прибыль платформы от сделок за неделю
+                    {t("Прибыль платформы от сделок за неделю")}
                   </span>
                   <span className="statistics-section__graphics-row-counter">
                     {data?.user_profit_last_week}%
@@ -137,7 +137,7 @@ export default function StatisticPage(params) {
             <div className="statistics-section__graphics-column">
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
-                  <span className="statistics-section__graphics-row-heading"> Размещено в AI Arbitrage</span>
+                  <span className="statistics-section__graphics-row-heading"> {t("Размещено в")} AI Arbitrage</span>
                 </h2>
 
                 <div className="statistics-section__graphics-row-body">
@@ -171,7 +171,7 @@ export default function StatisticPage(params) {
 
               <div className="statistics-section__graphics-row">
                 <h2 className="statistics-section__graphics-row-heading-wrapper">
-                  <span className="statistics-section__graphics-row-heading"> История доходности (%)</span>
+                  <span className="statistics-section__graphics-row-heading"> {t("История доходности")} (%)</span>
 
                   {/* <span className="statistics-section__graphics-row-heading"> Прибыль за сутки</span> */}
                   {/* <span className="statistics-section__graphics-row-counter">{data?.user_total_profit}$</span> */}
@@ -188,9 +188,8 @@ export default function StatisticPage(params) {
           </div>
 
           <div className="statistics-section__footer">
-            <p>*Data update time refers to UTC + 0 time zone. The data maintenance time is 0am - 2am (UTC+0) every day. During this period, the calculation of today;s data is based on the assetst of previous
-              day. After maintenance, all data will be displayed properly.</p>
-            <p> *Statement: due to the complexity of financial data, there might be nuances and delay. Data displayed above is for reference only. We sincerely apologize for any inconvenience.</p>
+            <p>{t("statisticsSection1")}</p>
+            <p>{t("statisticsSection2")}</p>
           </div>
         </section>
       </div>

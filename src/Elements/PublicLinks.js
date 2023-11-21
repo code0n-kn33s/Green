@@ -1,6 +1,6 @@
-
+import { useTranslation } from 'react-i18next';
 export function PublicLinks(params) {
-
+const {t} = useTranslation();
     const currentRef = (anchor) => {
         params.findRef(anchor)
     }
@@ -11,47 +11,47 @@ export function PublicLinks(params) {
                 <li
                     onClick={() => currentRef('main')}
                     className="footer__main-links-item" >
-                    Главная
+                    {t("Главная")}
                 </li>
 
                 <li
                     onClick={() => currentRef('about')} className="footer__main-links-item"
                     style={{ "whiteSpace": "nowrap" }}
                 >
-                    О компании
+                    {t("О компании")}
                 </li>
 
                 <li
                     onClick={() => currentRef('analitics')}
                     className="footer__main-links-item">
-                    Аналитика
+                    {t("Аналитика")}
                 </li>
                 <li
                     onClick={() => currentRef('partners')}
                     className="footer__main-links-item">
 
-                    Партнеры
+                    {t("Партнеры")}
                 </li>
 
                 <li
                     onClick={() => currentRef('story')}
                     className="footer__main-links-item">
 
-                    История
+                    {t("История")}
                 </li>
 
                 <li
                     onClick={() => currentRef('rules')}
                     className="footer__main-links-item"
                 >
-                    Правила
+                    {t("Правила")}
                 </li>
 
                 <li
                     onClick={() => currentRef('enter')}
                     className="footer__main-links-item"
                 >
-                    Вход
+                    {t("Вход")}
                 </li>
             </ul>
 

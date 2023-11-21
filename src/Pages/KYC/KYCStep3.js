@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { clearKissFields, setKiss } from '../../toolkitReducers/actions.slice'
 
-
+import { useTranslation } from 'react-i18next';
 import { ReactComponent as Icon1 } from './Icon1.svg'
 import { ReactComponent as Icon2 } from './Icon2.svg'
 
@@ -13,7 +13,7 @@ export default function KYCPage(params) {
   const { kissFields } = useSelector(state => state.state)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+const {t} = useTranslation();
   const handleFileChange = (event) => {
     const file = event.target.files[0]; // Получаем первый выбранный файл
 
@@ -78,7 +78,7 @@ export default function KYCPage(params) {
           <Icon1 />
         </div>
 
-        <p className="form-container--placeholder-title">ID-Карта</p>
+        <p className="form-container--placeholder-title">{t("ID-Карта")}</p>
       </div>}
 
       <input
@@ -90,11 +90,11 @@ export default function KYCPage(params) {
 
       <label htmlFor="file-input-2" className="btn btn--secondary">
         <Icon2 />
-        <span onClick={handleUpload}>ЗАГРУЗИТЬ</span>
+        <span onClick={handleUpload}>{t("ЗАГРУЗИТЬ")}</span>
       </label>
 
       <button type="button" className="file-input-reset hide btn--reset link">
-        <span>Удалить файл</span>
+        <span>{t("Удалить файл")}</span>
       </button>
       <div className='kiss-buttons-wrap'>
         <button
@@ -106,7 +106,7 @@ export default function KYCPage(params) {
           aria-controls="tabpanel-2"
           aria-selected="false"
         >
-          Назад
+          {t("Назад")}
         </button>
         <button
           className="KYS-section__next-page btn btn--primary"
@@ -117,7 +117,7 @@ export default function KYCPage(params) {
           aria-controls="tabpanel-2"
           aria-selected="false"
         >
-          Готово
+          {t("Готово")}
         </button>
 
       </div>
