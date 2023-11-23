@@ -12,32 +12,11 @@ import './aside.scss';
 
 export default function Aside(props) {
   const [dropdownState, setDropdownState] = useState(false)
-  // const [currentLanguage, setCurrentLanguage] = useState(
-  //   localStorage.getItem('language') || 'russian'
-  // );
-
-  //
   const { t } = useTranslation();
-  const [language, setLanguage] = useLocalStorage('lang', 'ru');
-
-  const handleLenguageChange = () => {
-      if (language === 'en') {
-          i18n.changeLanguage('ru');
-          setLanguage('ru');
-      } else if (language === 'ru') {
-          i18n.changeLanguage('en');
-          setLanguage('en');
-      }
-  };
-
-  //
-  const dropdownRef = useRef(null);
+  const [language, setLanguage] = useLocalStorage('lang', 'en');
   const dropdownWindowRef = useRef(null);
 
   useEffect(() => {
-    // Update language in localStorage when it changes
-    // localStorage.setItem('language', language);
-
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
@@ -60,14 +39,21 @@ export default function Aside(props) {
 
 
     setDropdownState(false)
-
   };
+
+  // const handleLenguageChange = () => {
+  //     if (language === 'en') {
+  //         i18n.changeLanguage('ru');
+  //         setLanguage('ru');
+  //     } else if (language === 'ru') {
+  //         i18n.changeLanguage('en');
+  //         setLanguage('en');
+  //     }
+  // };
 
   const handleLanguageClick = () => {
     setDropdownState(!dropdownState)
   };
-
-  console.log(">>>>", language)
 
   return (
     <aside className="main-nav">
