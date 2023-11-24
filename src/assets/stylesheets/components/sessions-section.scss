@@ -42,7 +42,7 @@
     border-radius: $main-border-radius;
     font-weight: 600;
 
-    .custom-select__dropdown[aria-expanded=true] {
+    .custom-select__dropdown.active {
       border: $main-border;
       border-radius: $main-border-radius;
     }

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { ReactComponent as LogoIcon } from '../../assets/images/logo.svg';
 import { useTranslation } from 'react-i18next';
+
+import CustomSelect from './../../Elements/Library/CustomSelect';
+
 export function PrimaryLogin(params) {
 const {t} = useTranslation();
 

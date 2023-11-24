@@ -7,6 +7,10 @@ import { loginUser, getUserData, clearUserData } from './../../toolkitReducers';
 import { getToken } from "./../../helpers";
 import Footer from "../../Elements/Footer"
 import { useTranslation } from 'react-i18next';
+
+import CustomSelect  from '../../Elements/Library/CustomSelect';
+
+
 export default function Login(props) {
     const dispatch = useDispatch()
     const [useLogin, setLogin] = useState('')
@@ -100,6 +104,9 @@ const {t} = useTranslation();
 
                 <div className="login__side">
                     <h2 className="login__heading h3">{t("Создать Аккаунт")}</h2>
+                    <div className="login__heading">
+                    <CustomSelect />
+                        </div>
 
                     <Link className="btn" to="/register">{t("Регистрация")}</Link>
                 </div>

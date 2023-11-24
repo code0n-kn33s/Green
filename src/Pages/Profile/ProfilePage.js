@@ -18,6 +18,12 @@ const {t} = useTranslation();
     dispatch(getUserData())
   }, [dispatch])
 
+  const trunc = (number) => {
+    let precision = 3;
+    let truncatedNumber = Math.trunc(number * Math.pow(10, precision)) / Math.pow(10, precision)
+
+    return truncatedNumber
+  }
   return (
     <div className="profile-page__body-wrapper">
 
@@ -45,13 +51,13 @@ const {t} = useTranslation();
                   <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {localStorage.getItem('crypto_deposit_btc')} BTC
+                        {trunc(localStorage.getItem('crypto_deposit_btc'))} BTC
                       </p>
                     </div>
                   <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {localStorage.getItem('profit_btc')} BTC
+                        {trunc(localStorage.getItem('profit_btc'))} BTC
                       </p>
                     </div>
                     </div>
@@ -60,13 +66,13 @@ const {t} = useTranslation();
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {localStorage.getItem('crypto_deposit_eth')} ETH
+                        {trunc(localStorage.getItem('crypto_deposit_eth'))} ETH
                       </p>
                     </div>
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {localStorage.getItem('profit_eth')} ETH
+                        {trunc(localStorage.getItem('profit_eth'))} ETH
                       </p>
                     </div>
                     </div>
@@ -75,13 +81,13 @@ const {t} = useTranslation();
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {localStorage.getItem('crypto_deposit_usdt')} USDT
+                        {trunc(localStorage.getItem('crypto_deposit_usdt'))} USDT
                       </p>
                     </div>
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {localStorage.getItem('profit_usdt')} USDT
+                        {trunc(localStorage.getItem('profit_usdt'))} USDT
                       </p>
                     </div>
                     </div>
@@ -89,7 +95,7 @@ const {t} = useTranslation();
                     {/* <div className="profile-section__client-usd-info">
                       <p className="profile-section__client-usd-info-title">Баланс:</p>
                       <p className="profile-section__client-usd-info-balance">
-                        $ {localStorage.getItem('balance')} USD
+                        $ {trunc(localStorage.getItem('balance'))} USD
                       </p>
                     </div> */}
                   </div>

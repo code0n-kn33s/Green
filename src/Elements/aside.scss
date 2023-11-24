@@ -1,5 +1,15 @@
 // main-nav.scss
 
+  .header-select {
+    margin-bottom: 0;
+  }
+  .custom-select__btn{
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    padding: 0;
+  }
+
 .main-nav {
     // Add your main nav styles here
   }

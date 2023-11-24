@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 export default function CustomSelect(params) {
     const { currencies, wallet } = useSelector(state => state.state)
     const { promotion, switchDone } = params
-const {t} = useTranslation();
+    const { t } = useTranslation();
     const [isSmallerSum, showSmallerSum] = useState(false)
     const [isSum, setIsSum] = useState('')
     const [isOpenMenu, setOpenMenu] = useState(false)
@@ -41,8 +41,6 @@ const {t} = useTranslation();
         setIsSum(e.target.value)
     }
 
-
-
     const playNext = () => {
         if (Number(isSum) < Number(promotion)) {
             return showSmallerSum(true)
@@ -60,6 +58,8 @@ const {t} = useTranslation();
         }
     }
 
+    console.log('isOpenMenu :>> ', isOpenMenu);
+
     return (
         <>
             <custom-select class="custom-select">
@@ -72,7 +72,13 @@ const {t} = useTranslation();
                     </span>
                 </button>
 
-                <ul data-dropdown class="custom-select__dropdown list-menu" id="dropdown-2" aria-expanded={isOpenMenu ? 'true' : 'false'}>
+                <ul
+                    data-dropdown
+                    class={`custom-select__dropdown list-menu
+                        ${isOpenMenu ? 'active' : ''}`}
+                    id="dropdown-2"
+                    aria-expanded={isOpenMenu ? 'true' : 'false'}
+                >
                     {currencies.map((item) => {
                         return (
                             <li class="custom-select__dropdown-option"
