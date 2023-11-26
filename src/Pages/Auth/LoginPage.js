@@ -104,7 +104,7 @@ const {t} = useTranslation();
 
                 <div className="login__side">
                     <h2 className="login__heading h3">{t("Создать Аккаунт")}</h2>
-                    <div className="login__heading">
+                    <div className="fixed-select">
                     <CustomSelect />
                         </div>
 
