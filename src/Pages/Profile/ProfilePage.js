@@ -105,7 +105,7 @@ const {t} = useTranslation();
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--login">
                     <p className="profile-section__client-contacts-item-title">{t("Login")}:</p>
                     <p className="profile-section__client-contacts-item-info">{localStorage.getItem('username')}</p>
-                    <Link to="/new-password" className="profile-section__client-contacts-item-link link">{t("Сменить пароль")}</Link>
+                    {/* <Link to="/new-password" className="profile-section__client-contacts-item-link link">{t("Сменить пароль")}</Link> */}
                   </div>
                   <div className="profile-section__client-contacts-item profile-section__client-contacts-item--email">
                     <p className="profile-section__client-contacts-item-title">E-mail:</p>

@@ -145,108 +145,112 @@
     "Возможности и прибыльность": "Possibilities & Profitability",
     "Possibilities & Profitability": "Possibilities & Profitability",
 
-"Лучшие пары за последние 12 месяцев, по версии ARBITECH7:": "Best pairs last 12 months ARBITECH7 version:",
-"Лучшие партнеры за последние 12 месяцев по версии ARBITECH7": "Best partners last 12 months ARBITECH7 version",
+    "Лучшие пары за последние 12 месяцев, по версии ARBITECH7:": "Best pairs last 12 months ARBITECH7 version:",
+    "Лучшие партнеры за последние 12 месяцев по версии ARBITECH7": "Best partners last 12 months ARBITECH7 version",
 
-"Карта истории": "Story map",
+    "Карта истории": "Story map",
 
-"teamStart": "The team began creating an algorithm based on Chat GPT. After 10 months, the product is in the alpha testing stage.",
+    "teamStart": "The team began creating an algorithm based on Chat GPT. After 10 months, the product is in the alpha testing stage.",
 
-"Progress": "Progress",
+    "Progress": "Progress",
 
-"m23": "In March 2023, the public launch of ARBITECH7. By August 2023, 1000+ client accounts have been recorded.",
+    "m23": "In March 2023, the public launch of ARBITECH7. By August 2023, 1000+ client accounts have been recorded.",
 
-"Ideas": "Ideas",
+    "Ideas": "Ideas",
 
-"Крипто-арбитраж - это постоянно растущий рынок с множеством минутных возможностей и рисков. Идея создать алгоритм на основе AI для делегирования торговли. Пользователю остается только выбрать критерии риска.": "Crypto arbitrage is a constantly growing market with numerous minute opportunities and risks. The idea is to create an AI-based algorithm for trade delegation. The user only needs to choose the risk criteria.",
+    "Крипто-арбитраж - это постоянно растущий рынок с множеством минутных возможностей и рисков. Идея создать алгоритм на основе AI для делегирования торговли. Пользователю остается только выбрать критерии риска.": "Crypto arbitrage is a constantly growing market with numerous minute opportunities and risks. The idea is to create an AI-based algorithm for trade delegation. The user only needs to choose the risk criteria.",
 
-"Research": "Research",
-"wrongLogin": "Incorrect email or password",
+    "Research": "Research",
+    "wrongLogin": "Incorrect email or password",
 
-"bigData": "Implemented BIG DATA and MACHINE LEARNING. Developed a hub with 100+ connections.",
+    "bigData": "Implemented BIG DATA and MACHINE LEARNING. Developed a hub with 100+ connections.",
 
-"powered project": "powered project",
-"designed for cryptocurrency arbitrage": "designed for cryptocurrency arbitrage",
-"LOG IN": "LOG IN",
-"преумножение капитала": "capital multiplication",
-"HELLO": "HELLO",
-"About ME": "About ME",
-"iam": "I am an artificial intelligence. Developed to assist in crypto arbitrage.",
+    "powered project": "powered project",
+    "designed for cryptocurrency arbitrage": "designed for cryptocurrency arbitrage",
+    "LOG IN": "LOG IN",
+    "преумножение капитала": "capital multiplication",
+    "HELLO": "HELLO",
+    "About ME": "About ME",
+    "iam": "I am an artificial intelligence. Developed to assist in crypto arbitrage.",
 
-"Возможности": "Possibilities",
-"operations": "Conduct arbitrage operations between different crypto exchanges automatically, quickly, and with maximum profit.",
+    "Возможности": "Possibilities",
+    "operations": "Conduct arbitrage operations between different crypto exchanges automatically, quickly, and with maximum profit.",
 
-"take": "Receive recommendations from customer support about the most favorable conditions and points for arbitrage based on deep market analysis.",
+    "take": "Receive recommendations from customer support about the most favorable conditions and points for arbitrage based on deep market analysis.",
 
-"Безопасность транзакций благодаря криптографии": "Transaction security thanks to cryptography",
-"выявить эффективные стратегии арбитража в режиме онлайн": "Identify effective arbitrage strategies in real-time",
+    "Безопасность транзакций благодаря криптографии": "Transaction security thanks to cryptography",
+    "выявить эффективные стратегии арбитража в режиме онлайн": "Identify effective arbitrage strategies in real-time",
 
-"усовершенствовать ПО для ускорения сделок арбитража": "Improve software to speed up arbitrage transactions",
+    "усовершенствовать ПО для ускорения сделок арбитража": "Improve software to speed up arbitrage transactions",
 
-"Формирование эффективных связок": "Formation of effective connections",
+    "Формирование эффективных связок": "Formation of effective connections",
 
-"Technology stack": "Technology stack",
+    "Technology stack": "Technology stack",
 
-"Learning Machine": "Learning Machine",
-"Big Data": "Big Data",
-"Chat GPT": "Chat GPT",
-"Blockchain": "Blockchain",
+    "Learning Machine": "Learning Machine",
+    "Big Data": "Big Data",
+    "Chat GPT": "Chat GPT",
+    "Blockchain": "Blockchain",
 
-"Сброс пароля": "Password Reset",
-"Установить новый пароль": "Set a new password",
-"Пароль": "Password",
-"Error message": "Error message",
-"Повторите пароль": "Repeat password",
-"Введите имейл адрес для сброса пароля": "Enter your email address to reset your password",
+    "Сброс пароля": "Password Reset",
+    "Установить новый пароль": "Set a new password",
+    "Пароль": "Password",
+    "Error message": "Error message",
+    "Повторите пароль": "Repeat password",
+    "Введите имейл адрес для сброса пароля": "Enter your email address to reset your password",
 
-"Email адрес": "Email address",
-"Отправить": "Send",
+    "Email адрес": "Email address",
+    "Отправить": "Send",
 
-"Регистрация": "Registration",
-"Заполните пожалуйста информацию ниже": "Please fill in the information below",
-"Имя пользователя": "Username",
+    "Регистрация": "Registration",
+    "Заполните пожалуйста информацию ниже": "Please fill in the information below",
+    "Имя пользователя": "Username",
 
-"Неверный формат": "Invalid format",
-"Passwords must be the same": "Passwords must be the same",
-"Повторить пароль": "Repeat password",
-"Я согласен с условиями пользования платформой": "I agree to the terms of use of the platform",
-"Зарегистрироваться": "Register",
+    "Неверный формат": "Invalid format",
+    "Passwords must be the same": "Passwords must be the same",
+    "Повторить пароль": "Repeat password",
+    "Я согласен с условиями пользования платформой": "I agree to the terms of use of the platform",
+    "Зарегистрироваться": "Register",
 
-"Логин": "Login",
-"Вход в аккаунт": "Log in to your account",
-"Неправильный email или пароль": "Invalid email or password",
-"Войти": "Log in",
-"Support": "Support",
-"Создать Аккаунт": "Create an Account",
+    "Логин": "Login",
+    "Вход в аккаунт": "Log in to your account",
+    "Неправильный email или пароль": "Invalid email or password",
+    "Войти": "Log in",
+    "Support": "Support",
+    "Создать Аккаунт": "Create an Account",
 
-"Сумма профита": "Profit amount",
-"Профит дня": "Daily profit",
-"Настройка": "Settings",
-"Выбор монеты": "Coin selection",
-"Внимание!": "Attention!",
-"Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!": "Transactions take some time. Depending on the network load, the funds will appear in your balance!",
-"ГОТОВО": "READY",
-"сумма должна быть больше": "The amount must be greater than",
-"Адрес": "Address",
-"проверяйте адрес и тип монеты перед отправкой средств!": "Check the address and coin type before sending funds!",
-"Далее": "Next",
-"правила партнерской программы": "Affiliate program rules",
-"Partners Program": "Partners Program",
-
-
-
-
-"rule1" : "When a team turnover exceeds 1000 usdt in its own depot over 500 usdt, bonuses are awarded according to the table.",
-
-"rule2" : "With a turnover over 100,000 you receive a one-time bonus of 10%",
-
-"rule3" : "User account limits: 1st level - 10 people, 2nd level - 20 people, 3, 4 and 5th levels - 50 people per level",
+    "Сумма профита": "Profit amount",
+    "Профит дня": "Daily profit",
+    "Настройка": "Settings",
+    "Выбор монеты": "Coin selection",
+    "Внимание!": "Attention!",
+    "Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!": "Transactions take some time. Depending on the network load, the funds will appear in your balance!",
+    "ГОТОВО": "READY",
+    "сумма должна быть больше": "The amount must be greater than",
+    "Адрес": "Address",
+    "проверяйте адрес и тип монеты перед отправкой средств!": "Check the address and coin type before sending funds!",
+    "Далее": "Next",
+    "правила партнерской программы": "Affiliate program rules",
+    "Partners Program": "Partners Program",
 
 
 
 
+    "rule1" : "When a team turnover exceeds 1000 usdt in its own depot over 500 usdt, bonuses are awarded according to the table.",
+
+    "rule2" : "With a turnover over 100,000 you receive a one-time bonus of 10%",
+
+    "rule3" : "User account limits: 1st level - 10 people, 2nd level - 20 people, 3, 4 and 5th levels - 50 people per level",
 
 
+    "Выберите монету": "Select a coin",
+    "Сеть": "Network",
+    "Адрес получателя": "Receiver's Address",
+    "ДАЛЕЕ": "NEXT",
+    "Общий баланс": "Summary balance",
+    "Доступный баланс": "Available balance",
+    "Средства могут сниматься раз в 10 дней": "Funds can be withdrawn once every 10 days",
+    "Платформа не снимает комиссию за вывод средств. Комиссия сети блокчейн будет взята из суммы транзакции.": "The platform does not charge fees for withdrawals. The blockchain network commission will be taken from the transaction amount.",
 
 
     "Success":"Success"

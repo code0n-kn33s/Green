@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Dropdown } from './Dropdown';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux'
 import { setWithdrawal } from '../../toolkitReducers/actions.slice'
 
@@ -10,8 +11,9 @@ function WithdrawPage() {
     const [walletAddress, setWalletAddress] = useState('');
     const [addToDeposit, setAddToDeposit] = useState(false);
     const { error } = useSelector(({state}) => state)
-    const dispatch = useDispatch()
+    const {t} = useTranslation();
 
+    const dispatch = useDispatch()
     const handleCoinChange = (index) => {
         setSelectedCoin(currencies[index])
     };
@@ -57,14 +59,14 @@ function WithdrawPage() {
         <div className="withdrawal-page page">
             <div className="page__sections-wrapper medium-wrapper">
                 <section className="withdrawal-section">
-                    <h1 className="withdrawal-section__main-heading h3">Вывод средств</h1>
+                    <h1 className="withdrawal-section__main-heading h3">{t("Вывод средств")}</h1>
 
                     <form className="withdrawal-section__wrapper form withdrawal-section__form rel" onSubmit={handleSubmit}>
                         <div className="withdrawal-section__wrapper-side">
                             <div className="tabs-component tabs">
                                 <div className="tabs__wrapper rel">
                                     <div className="withdrawal-section__header">
-                                        <h2 className="withdrawal-section__body-heading">Выберите монету</h2>
+                                        <h2 className="withdrawal-section__body-heading">{t("Выберите монету")}</h2>
 
                                         <div className="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
                                             <Dropdown
@@ -75,7 +77,7 @@ function WithdrawPage() {
 
                                     <div className="tabs__list" id="tabpanel-replenish-deposit-1" role="tabpanel" tabIndex="0" aria-labelledby="tab-replenish-deposit-1">
                                         <div className="withdrawal-section__invoice-wrapper">
-                                            <p className="withdrawal-section__invoice-network-heading">Сеть</p>
+                                            <p className="withdrawal-section__invoice-network-heading">{t("Сеть")}</p>
 
                                             <div className="withdrawal-section__progress-bar">
                                                 <div className="form-container form-container--range form-container--range-bg range">
@@ -106,7 +108,7 @@ function WithdrawPage() {
                                             </div>
 
                                             <div className="form-container form-container--wallet">
-                                                <label htmlFor="walletEth">Адрес получателя</label>
+                                                <label htmlFor="walletEth">{t("Адрес получателя")}</label>
                                                 <input
                                                     type="text"
                                                     name="walletEth"
@@ -124,23 +126,23 @@ function WithdrawPage() {
                             </div>
 
                             <button className="withdrawal-section__invoice-btn btn btn--secondary" type="submit">
-                                ДАЛЕЕ
+                                {t("ДАЛЕЕ")}
                             </button>
 
                             <p className="withdrawal-section__description">
-                                *Платформа не снимает комиссию за вывод средств. Комиссия сети блокчейн будет взята из суммы транзакции.
+                                *{t("Платформа не снимает комиссию за вывод средств. Комиссия сети блокчейн будет взята из суммы транзакции.")}
                             </p>
                         </div>
 
                         <div className="withdrawal-section__wrapper-side">
                             <div className="withdrawal-section__balance withdrawal-section__balance--full">
-                                <h3 className="withdrawal-section__balance-heading">Общий баланс:</h3>
+                                <h3 className="withdrawal-section__balance-heading">{("Общий баланс")}:</h3>
                                 <p className="withdrawal-section__balance-money">
                                     { showCurrentCoin() }
                                 </p>
                             </div>
                             <div className="withdrawal-section__balance withdrawal-section__balance--available">
-                                <h3 className="withdrawal-section__balance-heading">Доступный баланс:</h3>
+                                <h3 className="withdrawal-section__balance-heading">{("Доступный баланс")}:</h3>
                                 <p className="withdrawal-section__balance-money">
                                     {showCurrentCoin() }
                                 </p>
@@ -162,7 +164,7 @@ function WithdrawPage() {
                                     *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
                                 </p> */}
                                 {error && <p style={{fontSize: "20px", lineHeight: "1.5"}}className="withdrawal-section__add-deposit-description">
-                                    *Средства могут сниматься раз в 10 дней
+                                    *{t("Средства могут сниматься раз в 10 дней")}
                                 </p>}
                             </div>
                         </div>
