@@ -111,7 +111,7 @@ export default function CustomSelect(params) {
             <br />
             <div class="form-container rel">
 
-                <input required onChange={sumChange} value={isSum} min={500} type="number" placeholder="Сумма" name="sum" />
+                <input required onChange={sumChange} value={isSum} min={500} type="number" placeholder={t("Сумма")} name="sum" />
                 {isSmallerSum && <div class="modal-dialog__invoice-description-wrapper">
                     <p class="modal-dialog__invoice-description">
                         {t("Внимание!")}<br /> {t("сумма должна быть больше")} {promotion}USDT

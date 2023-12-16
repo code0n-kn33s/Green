@@ -113,7 +113,7 @@ function WithdrawPage() {
                                                     type="text"
                                                     name="walletEth"
                                                     id="walletEth"
-                                                    placeholder="Введите адрес для отправки"
+                                                    placeholder={t("Введите адрес для отправки")}
                                                     value={walletAddress}
                                                     onChange={handleWalletAddressChange}
                                                 />

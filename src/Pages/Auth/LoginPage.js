@@ -83,7 +83,7 @@ const {t} = useTranslation();
                                 <input tabIndex="2"  required type={!visionPassword ? 'password' : 'text'} value={usePassword} onChange={(e) => {
                                     setPassword(e.target.value)
                                     dispatch(clearUserData())
-                                }} placeholder="Password" name="password" id="password" />
+                                }} placeholder={t("Password")} name="password" id="password" />
                                 <span aria-label="valid-email" className="form__error-message">{t("Error message")}</span>
                             </div>
                         </div>

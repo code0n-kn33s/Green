@@ -78,7 +78,7 @@ const {t} = useTranslation();
                                 <input
                                     required
                                     type="text"
-                                    placeholder="Имя пользователя"
+                                    placeholder={t("Имя пользователя")}
                                     name="username"
                                     tabIndex="1"
                                     id="username"
@@ -116,7 +116,7 @@ const {t} = useTranslation();
                                     <input
                                         required
                                         type={showPass ? "text" : "password"}
-                                        placeholder="Password"
+                                        placeholder={t("Password")}
                                         name="password"
                                         tabIndex="3"
                                         id="password"
@@ -134,7 +134,7 @@ const {t} = useTranslation();
                                     <input
                                         required
                                         type={showPass ? "text" : "password"}
-                                        placeholder="Password"
+                                        placeholder={t("Password")}
                                         name="confirmPassword"
                                         id="confirm-password"
                                         tabIndex="4"
