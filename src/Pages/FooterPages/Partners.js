@@ -45,7 +45,7 @@ export function Partners(params) {
                     <img className="partners-block-img" src={people} alt="" />
                     <div className="partners-text bordered big-bordered">
                         <div className="partners-text-p">
-                            <b>ARBITECH7</b> - {t("правила партнерской программы")}:
+                            <b>{t("ARBITECH")}7</b> - {t("правила партнерской программы")}:
                         </div>
                         <div className="partners-text-list terms-description-list">
                             <div className="partners-text-list-item terms-description-list-item">

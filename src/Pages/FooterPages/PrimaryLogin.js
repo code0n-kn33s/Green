@@ -22,7 +22,7 @@ const {t} = useTranslation();
                     <LogoIcon />
                 </div>
                 <div className="primary-login-title">
-                    ARBITECH7
+                    {t("ARBITECH")}7
                 </div>
                 <div className="primary-login-pretitle">
                     AI - {t("powered project")}
