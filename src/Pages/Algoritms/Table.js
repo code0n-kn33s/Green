@@ -71,7 +71,7 @@ const {t} = useTranslation();
               </a>
             </td> */}
             </tr>
-          ))
+          )).reverse()
         }
       </tbody>
     </table>

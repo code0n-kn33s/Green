@@ -106,12 +106,12 @@
 
     "Данные заполнены не корректно или не полностью": "Data is filled in incorrectly or incompletely",
     "Статистика": "Statistics",
-    "правила преумножения крипто": "crypto multiplication rules",
-    "distributed": "Crypto is automatically distributed among trading pools (groups) according to the selected risk/profit strategy",
+    "правила преумножения крипто": "Cryptocurrency Multiplication  Rules",
+    "distributed": "Cryptocurrency is automatically distributed among trading pools (groups) according to the chosen risk/profit strategy. The pool duration is - three months.",
     "сроки действия пула - один месяц": "pool duration is one month",
-    "choose": "the user chooses the level of risk and profitability when replenishing the pool - one-time",
-    "увеличение степени риска/доходности - увеличивает шансы на потери. Принимайте решения взвешенно": "increasing the level of risk/profitability increases the chances of losses. Make decisions wisely",
-    "profit10": "profit withdrawal is made every 10 days, i.e., on the 10th, 20th, and 30th of the month",
+    "choose": "The user selects the risk and profit level at the moment of pool replenishment - once.",
+    "увеличение степени риска/доходности - увеличивает шансы на потери. Принимайте решения взвешенно": "Increasing the level of risk/profit enhances the likelihood of losses. Make decisions thoughtfully!",
+    "profit10": "Profit withdrawal occurs every 10 days, i.e., on the 10th, 20th, and 30th days of the month. The ARBITECH7 platform deducts 40% of the standard client's profit and 20% of the VIP client's profit for the development and stabilization pool. A VIP client is someone with a trading pool of 50,000 USDT or equivalent .",
 
     "primary1": "Hello! I am an artificial intelligence created to assist in crypto arbitrage. Let me tell you the story of how I was developed.",
 
@@ -236,11 +236,11 @@
 
 
 
-    "rule1" : "When a team turnover exceeds 1000 usdt in its own depot over 500 usdt, bonuses are awarded according to the table.",
+    "rule1" : "Bonuses are awarded for team turnover exceeding 1000 USDT and personal deposits exceeding 500 USDT, as per the table.",
 
-    "rule2" : "With a turnover over 100,000 you receive a one-time bonus of 10%",
+    "rule2" : "The ARBITECH7 platform deducts 40% of the standard client's profit and 20% of the VIP client's profit for the development and stabilization pool. A VIP client is someone with a trading pool of 50,000 USDT or equivalent ",
 
-    "rule3" : "User account limits: 1st level - 10 people, 2nd level - 20 people, 3, 4 and 5th levels - 50 people per level",
+    "rule3" : "User counting limits: 1st level - 10 people, 2nd level - 20 people, 3rd, 4th, and 5th levels - up to 50 people for each level.",
 
 
     "Выберите монету": "Select a coin",

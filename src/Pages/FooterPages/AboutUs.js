@@ -32,7 +32,7 @@ export function AboutUs(params) {
                 </div>
                 <div className="about-ai">
                     <div className="about-me-title public-title">
-                        R&D AI ARBITECH7
+                        R&D AI {t("ARBITECH")}7
                     </div>
                     <div className="about-me-info bordered big-bordered">
                         <div className="about-me-p">

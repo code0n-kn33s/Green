@@ -19,7 +19,7 @@ export function Terms(params) {
         <>
             <div className="terms">
                 <div className="public-title">
-                    {t("Terms & Conditions")} AI ARBITECH7
+                    {t("Terms & Conditions")} AI {t("ARBITECH")}7
                 </div>
                 <div className="terms-info">
                     <div className="description-img-wrap">
