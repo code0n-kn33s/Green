@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ReactComponent as LogoIcon } from '../../assets/images/logo.svg';
+// import { ReactComponent as LogoIcon } from '../../assets/images/logo.svg';
 import { useTranslation } from 'react-i18next';
 
 import CustomSelect from './../../Elements/Library/CustomSelect';
+import logoPNg from '../../assets/images/logo.png';
 
 export function PrimaryLogin(params) {
 const {t} = useTranslation();
@@ -19,7 +20,8 @@ const {t} = useTranslation();
         <div className="primary-login-page">
             <div className="primary-login-wrap">
                 <div className="primary-login-icon">
-                    <LogoIcon />
+                    {/* <LogoIcon /> */}
+                    <img src={logoPNg} alt="" />
                 </div>
                 <div className="primary-login-title">
                     {t("ARBITECH")}7

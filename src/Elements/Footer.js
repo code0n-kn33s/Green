@@ -8,6 +8,7 @@ import { ReactComponent as YouTubeIcon } from '../assets/icons/YouTubeIcon.svg';
 import { ReactComponent as Facebook } from '../assets/icons/Facebook.svg';
 import { ReactComponent as InstaIcon } from '../assets/icons/InstaIcon.svg';
 import { ReactComponent as LogoIcon } from './../assets/images/logo.svg';
+import logoPNg from './../assets/images/logo.png';
 
 export default function Footer(params) {
   const location = useLocation();
@@ -21,7 +22,10 @@ const {t} = useTranslation();
           <div className="footer__main-info-logo rel">
             {/* <a className="logo-link img-abs" href="/index.html"></a> */}
             {/* <img className="img-abs" src="./../assets/images/logo.svg" alt="logotype"/> */}
-            <Link to="/profile">  <LogoIcon className="img-abs" /> </Link>
+            <Link to="/profile">
+              <LogoIcon className="img-abs" />
+                    {/* <img src={logoPNg} alt="" /> */}
+            </Link>
           </div>
 
           {!isLogin ?

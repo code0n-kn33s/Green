@@ -4,7 +4,7 @@ import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import Footer from './../../Elements/Footer'
 import { ReactComponent as LogoIcon } from './../../assets/images/logo.svg';
 import { useTranslation } from 'react-i18next';
-
+import logoPNg from '../../assets/images/logo.png';
 
 export function PublicWrap(params) {
 const {t} = useTranslation();
@@ -15,8 +15,8 @@ const {t} = useTranslation();
 
             {/* // !localStorage.getItem('isAuth') && "active" */}
             <div className="logo-wrapper">
-
-                <LogoIcon className="logo-public" />
+                    <img src={logoPNg} alt="" />
+                {/* <LogoIcon className="logo-public" /> */}
             </div>
 
             <div className={` footer-links `}>
