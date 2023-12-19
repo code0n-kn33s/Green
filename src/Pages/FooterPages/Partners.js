@@ -5,10 +5,10 @@ import people from './img/chudiki.png'
 const table = [
     ['PARTNER', 'Bonus', 'Bonus', 'Bonus', 'Bonus', 'Bonus',],
     ["Level 1", '10 %', '', '', '', ''],
-    ["Level 2", '10 %', '7.5 %', '', '', ''],
-    ["Level 3", '10 %', '7 %', '5 %', '', ''],
-    ["Level 4", '10 %', '6.5 %', '5 %', '3 %', ''],
-    ["Level 5", '10 %', '5.5 %', '4.5 %', '3 %', '2 %',],
+    ["Level 2", '10 %', '5 %', '', '', ''],
+    ["Level 3", '10 %', '5 %', '3 %', '', ''],
+    ["Level 4", '10 %', '5 %', '3 %', '2 %', ''],
+    ["Level 5", '10 %', '5 %', '3 %', '2 %', '1 %',],
 ]
 
 export function Partners(params) {

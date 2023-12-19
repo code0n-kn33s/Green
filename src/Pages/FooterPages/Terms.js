@@ -3,12 +3,12 @@ import chudik from './img/chudik.png'
 import { useTranslation } from 'react-i18next';
 
 const risks = {
-    "BASE": "15-30% monthly",
+    "BASE": "15-25% monthly",
     "BASE+15%": "17-35% monthly",
-    "BASE+30%": "20-39% monthly",
-    "BASE+45%": "23-45% monthly",
-    "BASE+60%": "30-50% monthly",
-    "BASE+75%": "40-75% monthly",
+    "BASE+30%": "20-30% monthly",
+    "BASE+45%": "23-30% monthly",
+    "BASE+60%": "30-45% monthly",
+    "BASE+75%": "40-55% monthly",
 }
 
 export function Terms(params) {
