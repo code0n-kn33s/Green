@@ -1,19 +1,19 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { setBetHistory } from '../../toolkitReducers/actions.slice'
+import { setTransactionsHistory } from '../../toolkitReducers/actions.slice'
 
 
 import moment from 'moment';
 
 export default function OptionsTable(params) {
-    const betHistory = useSelector(state => state.state.betHistory)
+    const transactionsHistory = useSelector(state => state.state.transactionsHistory)
     const dispatch = useDispatch()
     const { t } = useTranslation();
 
 
     useEffect(() => {
-        dispatch(setBetHistory())
+        dispatch(setTransactionsHistory())
     }, [dispatch])
 
     return (
@@ -28,7 +28,7 @@ export default function OptionsTable(params) {
                         <th>
                             <div className="sessions-section__table-td-wrapper">
                                 <span>
-                                    {t("Дата")}
+                                    {t("id")}
                                 </span>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
@@ -41,7 +41,20 @@ export default function OptionsTable(params) {
                         <th>
                             <div className="sessions-section__table-td-wrapper">
                                 <span>
-                                    {t("bet_type")}
+                                    {t("from_balance")}
+                                </span>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                                        <path d="M9 6L5 2L1 6" stroke="#FFF831" strokeWidth="1.5" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div className="sessions-section__table-td-wrapper">
+                                <span>
+                                    {t("to_balance")}
                                 </span>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
@@ -78,7 +91,7 @@ export default function OptionsTable(params) {
                         <th>
                             <div className="sessions-section__table-td-wrapper">
                                 <span>
-                                    {t("expiration_time_minutes")}
+                                    {t("date")}
                                 </span>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
@@ -87,31 +100,22 @@ export default function OptionsTable(params) {
                                 </span>
                             </div>
                         </th>
-                        <th>
-                            <div className="sessions-section__table-td-wrapper">
-                                <span>
-                                    {t("status")}
-                                </span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
-                                        <path d="M9 6L5 2L1 6" stroke="#FFF831" strokeWidth="1.5" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </th>
+
                     </tr>
 
                     {
-                        betHistory?.bet_history
-                            && betHistory?.bet_history.length
-                            ? betHistory?.bet_history.map((betHistory, index) => (
+                        transactionsHistory
+                            && transactionsHistory?.length
+                            ? transactionsHistory.map((transaction, index) => (
                                 <tr key={index} className="betHistorys-section__table-body-row">
-                                    <td>{moment(betHistory.expiration_time).format('L')}</td>
-                                    <td>{betHistory.bet_type}</td>
-                                    <td>{betHistory.amount}</td>
-                                    <td>{betHistory.currency.toUpperCase()}</td>
-                                    <td>{moment(betHistory.expiration_time).format('h:mm')}</td>
-                                    <td>{betHistory.status}</td>
+
+                                    <td>{transaction.id}</td>
+                                    <td>{transaction.from_balance}</td>
+                                    <td>{transaction.to_balance}</td>
+                                    <td>{transaction.amount}</td>
+                                    <td>{transaction.from_ticker.toUpperCase()}</td>
+                                    <td>{moment(transaction.timestamp).format()}</td>
+
                                 </tr>
                             )).reverse() : ''
                     }

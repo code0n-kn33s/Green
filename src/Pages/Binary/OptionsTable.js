@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { setBetHistory } from '../../toolkitReducers/actions.slice'
@@ -6,15 +6,22 @@ import { setBetHistory } from '../../toolkitReducers/actions.slice'
 
 import moment from 'moment';
 
-export default function OptionsTable(params) {
+export default function OptionsTable({ shouldRerender }) {
     const betHistory = useSelector(state => state.state.betHistory)
+
     const dispatch = useDispatch()
     const { t } = useTranslation();
 
 
     useEffect(() => {
         dispatch(setBetHistory())
-    }, [dispatch])
+    }, [ shouldRerender])
+
+    useEffect(() => {
+        if (shouldRerender === true) {
+            dispatch(setBetHistory())
+        }
+    }, [ shouldRerender])
 
     return (
         <section className="sessions-section medium-wrapper">
@@ -25,6 +32,18 @@ export default function OptionsTable(params) {
             <div className="sessions-section__table-wrapper">
                 <table className="sessions-section__table-body">
                     <tr className="sessions-section__table-heading-row rel">
+                        <th>
+                            <div className="sessions-section__table-td-wrapper">
+                                <span>
+                                    ID
+                                </span>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                                        <path d="M9 6L5 2L1 6" stroke="#FFF831" strokeWidth="1.5" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </th>
                         <th>
                             <div className="sessions-section__table-td-wrapper">
                                 <span>
@@ -106,6 +125,7 @@ export default function OptionsTable(params) {
                             && betHistory?.bet_history.length
                             ? betHistory?.bet_history.map((betHistory, index) => (
                                 <tr key={index} className="betHistorys-section__table-body-row">
+                                    <td>{betHistory.id}</td>
                                     <td>{moment(betHistory.expiration_time).format('L')}</td>
                                     <td>{betHistory.bet_type}</td>
                                     <td>{betHistory.amount}</td>

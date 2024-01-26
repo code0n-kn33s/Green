@@ -1,6 +1,5 @@
 // TradingViewChart.jsx
-import React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, memo } from 'react';
 import TradingViewWidget from 'react-tradingview-widget';
 
 function TradingViewChart(props) {
@@ -53,4 +52,4 @@ const Spinner = () => {
   return <div className="site-spinner"><span className="loader"></span></div>
 }
 
-export default TradingViewChart;
+export default memo(TradingViewChart);

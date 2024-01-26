@@ -37,6 +37,7 @@ export default function Binary(props) {
   const [percentCoefficient, setPercentCoefficient] = useState("80%");
   const [isErrors, setErrors] = useState([])
   const [freeBalance, setFreeBalance] = useState(null)
+  const [shouldRerender, setShouldRerender] = useState(false);
 
   const [isModal, setModal] = useState(false)
   const [modalText, setModalText] = useState(false)
@@ -114,6 +115,9 @@ export default function Binary(props) {
     } else {
       dispatch(setBinary(obj))
       openModal(t("Ваша ставка принята"))
+      setShouldRerender(true)
+
+      setTimeout(() => setShouldRerender(false), 0)
     }
 
   }
@@ -261,7 +265,7 @@ export default function Binary(props) {
         <ModalDialog modalState={isModal} setModalState={openModal} modalText={modalText}/>
 
       </div>
-      <OptionsTable />
+      <OptionsTable shouldRerender={shouldRerender}/>
     </div>
 
   )

@@ -16,7 +16,7 @@ function WithdrawPage() {
     const [percentage, setPercentage] = useState(0);
     const [walletAddress, setWalletAddress] = useState('');
     const [addToDeposit, setAddToDeposit] = useState(false);
-    const [amount, setAmount] = useState(false);
+    const [amount, setAmount] = useState(null);
     const [amountSumm, setAmountSumm] = useState("");
     const [localError, setLocalError] = useState("");
     const { error } = useSelector(({ state }) => state)
@@ -81,13 +81,14 @@ function WithdrawPage() {
         if(selectedFrom === selectedTo) {
             setLocalError("Балансы не должны совпадать")
         }
-        else if(amount < 0) {
+        else if(amount < 0 || amount == 0) {
             setLocalError("Сумма должна быть больше 0")
         }
         else if(amount > showCurrentCoin()) {
             setLocalError("Сумма должна быть превышать баланс")
         }
         else {
+            console.log('amount :>> ', amount == 0);
             dispatch(setTransfer({
                 withdrawal_sum: amount,
                 currency: selectedCoin.value,
@@ -106,7 +107,7 @@ function WithdrawPage() {
     }
 
     const changeAmountSumm = (e) => {
-        setAmount(e.target.value)
+        setAmount(parseFloat(e.target.value));
     }
 
     return (
@@ -131,7 +132,7 @@ function WithdrawPage() {
                                             </div>
                                             <div className="tabs-with-dropdown-input">
                                                 <input
-                                                    type="text"
+                                                    type="number"
                                                     placeholder={t("введите сумму")}
                                                     value={amount}
                                                     onChange={changeAmountSumm}

@@ -147,6 +147,22 @@ export const setUserRisks = createAsyncThunk(
     }
 )
 
+export const setTransactionsHistory = createAsyncThunk(
+    'async/setTransactionsHistory',
+    async function (param, options) {
+        const response = await privateFetch('transaction_history/')
+        const data = await response.json()
+
+        if (!response.ok) {
+            return options.rejectWithValue(data);
+
+        }
+
+
+        return data
+
+    }
+)
 export const setBetHistory = createAsyncThunk(
     'async/setBetHistory',
     async function (param, options) {
@@ -328,6 +344,7 @@ const actionsSlice = createSlice({
         currenciesFetch: null,
         risks: null,
         betHistory: null,
+        transactionsHistory: null,
         statistics: null,
         tooltip: false,
         tooltipText: '',
@@ -448,6 +465,20 @@ const actionsSlice = createSlice({
             state.fething = "rejected"
             state.error = action.payload
         })
+        //setTransactionsHistory
+        builder.addCase(setTransactionsHistory.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(setTransactionsHistory.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+
+            state.transactionsHistory = action.payload
+            state.error = ''
+        })
+        builder.addCase(setTransactionsHistory.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.payload
+        })
 
         //set Kiss
         builder.addCase(setKiss.pending, (state, action) => {
@@ -510,9 +541,9 @@ const actionsSlice = createSlice({
                 console.log('error :>> ', action.payload);
                 state.error = action.payload?.error
             } else {
-                state.tooltip = true
-                state.tooltipRedirect = false
-                state.tooltipText = "Заявка на перевод средств принята"
+                // state.tooltip = true
+                // state.tooltipRedirect = false
+                // state.tooltipText = "Заявка на перевод средств принята"
 
                 state.error = ''
             }

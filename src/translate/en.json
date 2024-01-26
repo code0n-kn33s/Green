@@ -287,6 +287,9 @@
     "Done": "Done",
     "transaction successfull": "Transaction successfull",
 
+    "from_balance": "from balance",
+    "to_balance": "to balance",
+
 
     "Success":"Success"
 }

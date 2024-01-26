@@ -283,6 +283,9 @@
     "Start": "Старт",
     "Done": "Понятно",
 
+    "from_balance": "с баланса",
+    "to_balance": "на баланс",
+
     "transaction successfull": "Транзакция успешная",
 
     "Success":"Success"
