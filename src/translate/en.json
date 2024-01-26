@@ -24,7 +24,7 @@
 
     "Применить":"Apply",
     "Дата":"Date",
-    "Сумма":"Sum",
+    "Сумма":"Amount",
     "Тип":"Type",
     "Пользователь":"User",
     "Статус":"Status",
@@ -234,9 +234,6 @@
     "правила партнерской программы": "Affiliate program rules",
     "Partners Program": "Partners Program",
 
-
-
-
     "rule1" : "Bonuses are awarded for team turnover exceeding 1000 USDT and personal deposits exceeding 500 USDT, as per the table.",
 
     "rule2" : "The ARBITECH7 platform deducts 40% of the standard client's profit and 20% of the VIP client's profit for the development and stabilization pool. A VIP client is someone with a trading pool of 50,000 USDT or equivalent ",
@@ -254,6 +251,43 @@
     "Платформа не снимает комиссию за вывод средств. Комиссия сети блокчейн будет взята из суммы транзакции.": "The platform does not charge fees for withdrawals. The blockchain network commission will be taken from the transaction amount.",
 
     "ARBITECH": "ARBITECH",
+
+    "binary": "Auction",
+    "binary_auction": "Binary auction",
+    "balance": "Balance",
+
+    "deposit": "deposit",
+    "withdraw": "withdraw",
+    "transfer": "transfer",
+    "TransferPageTitle": "Transfer Page",
+    "fill address withdraw": "Fill address withdraw and sum",
+
+
+    "bet_type": "Type",
+    "amount": "Amount",
+    "currency": "Currency",
+    "expiration_time_minutes": "Expiration",
+
+    "Invalid balances provided": "Invalid balances provided",
+    "status": "Status",
+
+    "сумма не должна равняться 0": "the sum must not be equal to 0",
+    "сумма не должна быть более баланса": "the amount should not be more than the balance",
+    "История ставок": "Bet history",
+    "История транзакций": "Transactions history",
+    "введите сумму": "input the amount",
+
+    "Балансы не должны совпадать": "Balances should not match",
+
+    "Сумма должна быть больше 0": "The amount must be greater than 0",
+    "Сумма не должна превышать баланс": "The amount must be less than the balance",
+    "Ваша ставка принята": "Your bet approved",
+
+    "Start": "Start",
+    "Done": "Done",
+    "transaction successfull": "Transaction successfull",
+
+
     "Success":"Success"
 }
 

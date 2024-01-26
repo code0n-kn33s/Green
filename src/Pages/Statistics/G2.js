@@ -8,6 +8,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+
 import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
@@ -69,13 +70,14 @@ export const data1 = {
 
 
 export default function G2(props) {
+
     const data = {
 
         labels: props.prop.labels,
         // labels: ['Su', 'Mo', 'Th', 'We', 'Tu', 'Fr', 'Sa'],
         datasets: [
             {
-                label: 'Прибыль платформы от сделок',
+                label: 'Platform profit from transactions',
                 data: props.prop.data ,
                 // data: [10, 20, -30, 40, 50, 60, 70],
                 borderColor: "#FFF831",

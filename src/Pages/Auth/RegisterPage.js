@@ -11,7 +11,8 @@ export default function RegisterPage() {
     const [showPass, setShowPass] = useState(false)
     const [isError, setisError] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
-const {t} = useTranslation();
+    const {t} = useTranslation();
+    
     const [formData, setFormData] = useState({
         username: '',
         email: '',

@@ -31,6 +31,10 @@ import { Posibilities } from './Pages/FooterPages'
 import { Partners } from './Pages/FooterPages'
 import { Terms } from './Pages/FooterPages'
 
+import BinaryPage from './Pages/Binary'
+import TransferPage from './Pages/Binary/TransferPage'
+import BalancePage from './Pages/Binary/BalancePage'
+
 import StatisticPage from './Pages/Statistics/StatisticPage'
 import Placeholders from './Pages/Placeholders'
 import PlaceholdersItem from './Pages/PlaceholdersItem'
@@ -47,7 +51,6 @@ export const routes = [
     element: <Main />,
     children: [
       {
-
         path: "private",
         element: <PrivateWrap />,
         children: [
@@ -71,8 +74,20 @@ export const routes = [
       },
 
       {
+        path: "binary",
+        element: <BinaryPage />,
+      },
+      {
+        path: "binary/transfer",
+        element: <TransferPage />,
+      },
+      {
         path: "profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "balance",
+        element: <BalancePage />,
       },
       {
         path: "statistics",
@@ -127,10 +142,6 @@ export const routes = [
     path: "/login",
     element: <LoginWrap />
   },
-  // {
-  //   path: "/login",
-  //   element: <LoginPage />
-  // },
   {
     path: "/restore",
     element: <RestorePass />

@@ -1,12 +1,13 @@
 
-import DepositWrap from './DepositWrap'
-import {useState} from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next';
+import { ReactComponent as ApprovedBet } from './assets/bet-casino-coin-svgrepo-com.svg'
 
 export default function Modal(params) {
-    const { modalState, setModalState, promotion } = params;
+    const { modalState, setModalState, modalText } = params;
     const [isDone, setDone] = useState(false)
-const {t} = useTranslation();
+    const { t } = useTranslation();
+
     const switchDone = (bool) => {
         setDone(bool)
     }
@@ -26,12 +27,24 @@ const {t} = useTranslation();
                         </svg>
                     </button>
 
-                    <DepositWrap
-                        isDone={isDone}
-                        setDone={setDone}
-                        switchDone={switchDone}
-                        promotion={promotion}
-                        setModalState={setModalState} />
+                    <div className="modal-content-wrap">
+                        <div className="modal-content-icon">
+                            <ApprovedBet />
+                        </div>
+                        <br />
+                        <br />
+                        <div className="modal-content-title">
+                            {modalText}
+                        </div>
+                        <div
+                            className={`binary-right-bet-button active`}
+                            onClick={closeChest}
+                        >
+                            <i>{t("Done")}</i>
+                        </div>
+                    </div>
+
+
 
                 </div>
             </modal-dialog>

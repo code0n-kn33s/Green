@@ -6,8 +6,8 @@ export default function DepositSuccess(props) {
     }
     const {t} = useTranslation();
     return (
-        <div class="modal-dialog__success-wrapper">
-            <div class="modal-dialog__success-icon">
+        <div className="modal-dialog__success-wrapper">
+            <div className="modal-dialog__success-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="138" height="138" viewBox="0 0 138 138" fill="none">
                     <g clipPath="url(#clip0_101_1867)">
                         <path d="M94.8767 43.6763L61.4808 77.6931L44.3688 60.5121L35.1919 69.6893L62.1707 96.5993L105.503 54.5784L94.8767 43.6763Z" fill="#FFF831" />
@@ -21,15 +21,15 @@ export default function DepositSuccess(props) {
                 </svg>
             </div>
 
-            <h2 class="modal-dialog__success-heading bold">
+            <h2 className="modal-dialog__success-heading bold">
                 {t("Внимание!")}
             </h2>
 
-            <p class="modal-dialog__success-description bold">
+            <p className="modal-dialog__success-description bold">
                 {t("Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!")}
             </p>
 
-            <button onClick={clickDone} class="modal-dialog__success-btn btn btn--primary btn--large" type="button" data-close-popup>
+            <button onClick={clickDone} className="modal-dialog__success-btn btn btn--primary btn--large" type="button" data-close-popup>
                 {t("ГОТОВО")}
             </button>
         </div>

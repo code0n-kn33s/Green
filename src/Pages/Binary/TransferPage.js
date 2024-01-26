@@ -1,27 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dropdown } from './Dropdown';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux'
-import { setWithdrawal } from '../../toolkitReducers/actions.slice'
+import { setTransfer } from '../../toolkitReducers/actions.slice'
+import TransferSelects from './TransferSelects'
+import ModalDialog from './Modal'
+
+const balances = ["main", "options", "arbitech"]
 
 function WithdrawPage() {
     const { currencies } = useSelector(state => state.state)
     const [selectedCoin, setSelectedCoin] = useState(currencies[0]);
+    const [selectedFrom, setSelectedFrom] = useState(balances[0]);
+    const [selectedTo, setSelectedTo] = useState(balances[0]);
     const [percentage, setPercentage] = useState(0);
     const [walletAddress, setWalletAddress] = useState('');
     const [addToDeposit, setAddToDeposit] = useState(false);
-    const [localError, setLocalError] = useState('');
-
+    const [amount, setAmount] = useState(false);
+    const [amountSumm, setAmountSumm] = useState("");
+    const [localError, setLocalError] = useState("");
     const { error } = useSelector(({ state }) => state)
     const { t } = useTranslation();
+    const [activeTab, setActiveTab] = useState('main');
+    const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+
+    const [isModal, setModal] = useState(false)
+    const [modalText, setModalText] = useState(false)
+
+
+
+    useEffect(() => {
+        let getAmount = `${selectedFrom}_crypto_balance_${selectedCoin.value}`
+
+        const depositAmount = parseFloat(localStorage.getItem(getAmount)) || 0;
+
+        setAmount(depositAmount * parseFloat(percentage) / 100);
+    }, [selectedCoin, selectedCoin.value, percentage, selectedFrom]);
+
+
+    const openModal = (text) => {
+        setModalText(text)
+        setModal(!isModal)
+      }
+
 
     const handleCoinChange = (index) => {
         setSelectedCoin(currencies[index])
     };
 
+    const handleFromChange = (index, direction) => {
+        setLocalError("")
+
+
+        if (direction === "from") setSelectedFrom(balances[index])
+        if (direction === "to") setSelectedTo(balances[index])
+    };
+
     const handlePercentageChange = (event) => {
+        setLocalError("")
+
         setPercentage(event.target.value);
     };
 
@@ -33,36 +71,50 @@ function WithdrawPage() {
         setAddToDeposit(event.target.checked);
     };
 
+    const switchFrom = () => {
+        activeTab === 'main' ? setActiveTab('arbitech') : setActiveTab('main')
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if(walletAddress && parseInt(sumPercents()) > 0) {
-            dispatch(setWithdrawal({
-                withdrawal_sum: sumPercents(),
-                currency: selectedCoin.value,
-                address: walletAddress,
-            }))
-        } else {
-            setLocalError('fill address withdraw')
+        if(selectedFrom === selectedTo) {
+            setLocalError("Балансы не должны совпадать")
         }
+        else if(amount < 0) {
+            setLocalError("Сумма должна быть больше 0")
+        }
+        else if(amount > showCurrentCoin()) {
+            setLocalError("Сумма должна быть превышать баланс")
+        }
+        else {
+            dispatch(setTransfer({
+                withdrawal_sum: amount,
+                currency: selectedCoin.value,
+                from: selectedFrom,
+                to: selectedTo,
+            }))
+            openModal(t("transaction successfull"))
+        }
+
     };
 
     const showCurrentCoin = () => {
-        if (selectedCoin.value === 'btc') return localStorage.getItem('crypto_deposit_btc') + " BTC"
-        if (selectedCoin.value === 'eth') return localStorage.getItem('crypto_deposit_eth') + " ETH"
-        if (selectedCoin.value === 'usdt') return localStorage.getItem('crypto_deposit_usdt') + " USDT"
+        let getAmount = `${selectedFrom}_crypto_balance_${selectedCoin.value}`
+
+        return localStorage.getItem(getAmount) + " " + selectedCoin.value.toUpperCase()
     }
 
-    const sumPercents = () => {
-        const depositAmount = parseFloat(localStorage.getItem(`crypto_deposit_${selectedCoin.value}`)) || 0;
-        return depositAmount * parseFloat(percentage) / 100;
+    const changeAmountSumm = (e) => {
+        setAmount(e.target.value)
     }
 
     return (
-        <div className="withdrawal-page page">
+        <div className="withdrawal-page page transfer-page">
+            <ModalDialog modalState={isModal} setModalState={openModal} modalText={modalText}/>
             <div className="page__sections-wrapper medium-wrapper">
                 <section className="withdrawal-section">
-                    <h1 className="withdrawal-section__main-heading h3">{t("Вывод средств")}</h1>
+                    <h1 className="withdrawal-section__main-heading h3">{t("TransferPageTitle")}</h1>
 
                     <div className="withdrawal-section__wrapper form withdrawal-section__form rel" >
                         <div className="withdrawal-section__wrapper-side">
@@ -71,10 +123,20 @@ function WithdrawPage() {
                                     <div className="withdrawal-section__header">
                                         <h2 className="withdrawal-section__body-heading">{t("Выберите монету")}</h2>
 
-                                        <div className="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
-                                            <Dropdown
-                                                handleCoinChange={handleCoinChange}
-                                            />
+                                        <div className="tabs-with-dropdown">
+                                            <div className="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
+                                                <Dropdown
+                                                    handleCoinChange={handleCoinChange}
+                                                />
+                                            </div>
+                                            <div className="tabs-with-dropdown-input">
+                                                <input
+                                                    type="text"
+                                                    placeholder={t("введите сумму")}
+                                                    value={amount}
+                                                    onChange={changeAmountSumm}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -104,23 +166,22 @@ function WithdrawPage() {
 
                                                     <div className="min-max__range-item-wrapper">
                                                         {/* поставить пересчет в процентах */}
-                                                        <p className="min-max__range-item-min">{sumPercents() + " " + selectedCoin.value.toUpperCase()}</p>
+                                                        <p className="min-max__range-item-min">{amount + " " + selectedCoin.value.toUpperCase()}</p>
                                                         <p className="min-max__range-item-max">{showCurrentCoin()}</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="form-container form-container--wallet">
-                                                <label htmlFor="walletEth">{t("Адрес получателя")}</label>
-                                                <input
-                                                    type="text"
-                                                    name="walletEth"
-                                                    id="walletEth"
-                                                    placeholder={t("Введите адрес для отправки")}
-                                                    value={walletAddress}
-                                                    onChange={handleWalletAddressChange}
-                                                />
-                                            </div>
+                                            {/* выбрать откуда и куда перекидывать */}
+
+                                            <TransferSelects
+                                                activeTab={activeTab}
+                                                switchFrom={switchFrom}
+                                                handleFromChange={handleFromChange}
+                                                balances={balances}
+                                            />
+
+
                                         </div>
                                     </div>
 
@@ -128,8 +189,8 @@ function WithdrawPage() {
                                 </div>
                             </div>
 
-                            <button className="withdrawal-section__invoice-btn btn btn--secondary" onClick={handleSubmit} type="submit">
-                                {t("ДАЛЕЕ")}
+                            <button className="withdrawal-section__invoice-btn btn btn--secondary" onClick={handleSubmit}>
+                                {t("transfer")}
                             </button>
 
                             <p className="withdrawal-section__description">
@@ -152,26 +213,22 @@ function WithdrawPage() {
                             </div>
 
                             <div className="withdrawal-section__add-deposit">
-                                {/* <div className="form-container--checkbox checkbox">
-                                    <input
-                                        className="form__custom-checkbox"
-                                        type="checkbox"
-                                        name="accept"
-                                        id="addToDeposit"
-                                        checked={addToDeposit}
-                                        onChange={handleAddToDepositChange}
-                                    />
-                                    <label htmlFor="addToDeposit">Добавить остаток к размещенной сумме</label>
-                                </div> */}
-                                {/* <p className="withdrawal-section__add-deposit-description">
-                                    *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
-                                </p> */}
-                                {error && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
-                                    *{t("Средства могут сниматься раз в 10 дней")}
-                                </p>}
-                                {localError && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
-                                    *{t("fill address withdraw")}
-                                </p>}
+                                <>
+                                    {error && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
+                                        {error === "Invalid balances provided"
+                                            ? t("Invalid balances provided")
+                                            : error
+                                        }
+
+                                    </p>}
+                                </>
+                                <>
+                                    {
+                                        localError && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
+                                            {t(localError)}
+                                        </p>
+                                    }
+                                </>
                             </div>
                         </div>
                     </div>

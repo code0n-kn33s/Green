@@ -49,19 +49,22 @@ export default function Main() {
 export const Tooltip = (props) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const redirect = useSelector((state) => state.state.tooltipRedirect)
+  const text = useSelector((state) => state.state.tooltipText)
   const { t } = useTranslation();
 
   const { tooltip } = useSelector(({ state }) => state)
 
   const clickDone = () => {
-    navigate('/profile')
+    // navigate('/profile')
+    console.log('redirect :>> ', redirect);
     dispatch(closeTooltip())
   }
 
   return (
     <>
       {tooltip && <div class="tooltip">
-         <div>{t("Данные были успешно обновленны")}</div>
+         <div>{text ? text : t("Данные были успешно обновленны")}</div>
 
 
           <button

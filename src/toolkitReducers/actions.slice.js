@@ -147,6 +147,23 @@ export const setUserRisks = createAsyncThunk(
     }
 )
 
+export const setBetHistory = createAsyncThunk(
+    'async/setBetHistory',
+    async function (param, options) {
+        const response = await privateFetch('bet_history/')
+        const data = await response.json()
+
+        if (!response.ok) {
+            return options.rejectWithValue(data);
+
+        }
+
+
+        return data
+
+    }
+)
+
 export const setSum = createAsyncThunk(
     'async/setSum',
     async function (param, options) {
@@ -214,6 +231,55 @@ export const setWithdrawal = createAsyncThunk(
     }
 )
 
+export const setBinary = createAsyncThunk(
+    'async/setBinary',
+    async function (param, options) {
+        const response = await privateFetch('make_bet/', {
+            method: 'POST',
+            body: JSON.stringify({
+                bet_type: param.upDownValue === 'up' ? 'Higher' : 'Lower',
+                amount: param.investment,
+                currency: param.selectedPair,
+                expiration_time_minutes: param.formTime,
+            })
+        })
+        const data = await response.json()
+
+        if (!response.ok) {
+            return options.rejectWithValue(data);
+
+        }
+
+        return data
+    }
+)
+
+export const setTransfer = createAsyncThunk(
+    'async/setTransfer',
+    async function (param, options) {
+        const response = await privateFetch('balance_transaction/', {
+            method: 'POST',
+            body: JSON.stringify({
+                amount: param.withdrawal_sum,
+                from_ticker: param.currency,
+                to_ticker: param.currency,
+                from_balance: param.from,
+                to_balance: param.to,
+            })
+        })
+        const data = await response.json()
+
+        if (!response.ok) {
+            return options.rejectWithValue(data);
+
+        }
+
+
+        return data
+
+    }
+)
+
 export const setKiss = createAsyncThunk(
     'async/setKiss',
     async function (param, options) {
@@ -261,6 +327,7 @@ const actionsSlice = createSlice({
         globalProfit: null,
         currenciesFetch: null,
         risks: null,
+        betHistory: null,
         statistics: null,
         tooltip: false,
         tooltipText: '',
@@ -358,12 +425,26 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setRisks.fulfilled, (state, action) => {
             state.fething = "fullfilled"
-            state.tooltip = true
+            // state.tooltip = true
 
             // state.statistics = action.payload
             state.error = ''
         })
         builder.addCase(setRisks.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.payload
+        })
+        //setBetHistory
+        builder.addCase(setBetHistory.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(setBetHistory.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+
+            state.betHistory = action.payload
+            state.error = ''
+        })
+        builder.addCase(setBetHistory.rejected, (state, action) => {
             state.fething = "rejected"
             state.error = action.payload
         })
@@ -374,7 +455,7 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setKiss.fulfilled, (state, action) => {
             state.fething = "fullfilled"
-            state.tooltip = true
+            // state.tooltip = true
 
             // state.statistics = action.payload
             state.error = ''
@@ -396,6 +477,48 @@ const actionsSlice = createSlice({
             state.error = ''
         })
         builder.addCase(setWithdrawal.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.payload
+        })
+
+        //set make bet setBinary
+        builder.addCase(setBinary.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(setBinary.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+            state.tooltipRedirect = false
+            state.tooltipText = "Ставка принята. Прогресс можете отслеживать во вкладке Баланс - История Сеансов"
+
+            // state.statistics = action.payload
+            state.error = ''
+        })
+        builder.addCase(setBinary.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.payload
+        })
+
+        //set Transfer
+        builder.addCase(setTransfer.pending, (state, action) => {
+            state.fething = "loading"
+        })
+
+        builder.addCase(setTransfer.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+
+            if(action.payload?.error) {
+                console.log('error :>> ', action.payload);
+                state.error = action.payload?.error
+            } else {
+                state.tooltip = true
+                state.tooltipRedirect = false
+                state.tooltipText = "Заявка на перевод средств принята"
+
+                state.error = ''
+            }
+        })
+
+        builder.addCase(setTransfer.rejected, (state, action) => {
             state.fething = "rejected"
             state.error = action.payload
         })

@@ -247,7 +247,7 @@
 
       .custom-select__dropdown-button {
         display: flex;
-        border-bottom: $main-border;
+        // border-bottom: $main-border;
         padding-bottom: 8px;
         padding-left: 23px;
       }
@@ -391,4 +391,63 @@
       }
     }
   }
+}
+
+.ballance-page {
+
+  .profile-section__content-top-side-wrap {
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+  }
+  .profit_currencies-title {
+    font-size: 18px;
+  }
+  .profile-section__client-btc-info .profile-section__client-btc-info-balance {
+    font-size: 16px;
+  }
+}
+
+.binary-right-values-wrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tabs-with-dropdown {
+  display: flex;
+  // flex: 1 1;
+  &> * {
+    width: 50%;
+  }
+
+  .tabs__navigation {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid;
+    .custom-select__btn {
+      border: none !important;
+    }
+  }
+
+  .tabs-with-dropdown-input {
+    background-color: transparent;
+    border: 1px solid;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    height: 36px;
+    input {
+      padding: 8px 15px 8px 43px;
+      background-color: transparent;
+      color: yellow;
+      line-height: 1;
+      height: 100%;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      border: none;
+      outline: none;
+
+    }
+  }
+
 }

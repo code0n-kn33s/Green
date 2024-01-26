@@ -5,10 +5,11 @@ import { getUserData } from '../../toolkitReducers/auth.slice'
 import { ReactComponent as Twitter } from '../../assets/icons/social-links/linkedin.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next';
+
 export default function ProfilePage() {
   const [useTwoFa, setTwoFa] = useState(false)
   const [useBot, setBot] = useState(false)
-const {t} = useTranslation();
+  const {t} = useTranslation();
   const dispatch = useDispatch()
   const sessions = useSelector(state => state.state.sessions)
 
@@ -51,13 +52,13 @@ const {t} = useTranslation();
                   <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {trunc(localStorage.getItem('crypto_deposit_btc'))} BTC
+                        {trunc(localStorage.getItem('main_crypto_balance_btc'))} BTC
                       </p>
                     </div>
                   <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {trunc(localStorage.getItem('profit_btc'))} BTC
+                        {trunc(localStorage.getItem('main_profit_btc'))} BTC
                       </p>
                     </div>
                     </div>
@@ -66,13 +67,13 @@ const {t} = useTranslation();
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {trunc(localStorage.getItem('crypto_deposit_eth'))} ETH
+                        {trunc(localStorage.getItem('main_crypto_balance_eth'))} ETH
                       </p>
                     </div>
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {trunc(localStorage.getItem('profit_eth'))} ETH
+                        {trunc(localStorage.getItem('main_profit_eth'))} ETH
                       </p>
                     </div>
                     </div>
@@ -81,13 +82,13 @@ const {t} = useTranslation();
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {trunc(localStorage.getItem('crypto_deposit_usdt'))} USDT
+                        {trunc(localStorage.getItem('main_crypto_balance_usdt'))} USDT
                       </p>
                     </div>
                     <div className="profile-section__client-btc-info">
                       <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                       <p className="profile-section__client-btc-info-balance h3">
-                        {trunc(localStorage.getItem('profit_usdt'))} USDT
+                        {trunc(localStorage.getItem('main_profit_usdt'))} USDT
                       </p>
                     </div>
                     </div>

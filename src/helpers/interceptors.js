@@ -25,20 +25,9 @@ export function getToken() {
 }
 
 export function setStorage(user) {
-    localStorage.setItem('id', `${user.id}`)
-    localStorage.setItem('balance', `${user.balance}`)
-    localStorage.setItem('profit_btc', `${user.profit_btc}`)
-    localStorage.setItem('profit_eth', `${user.profit_eth}`)
-    localStorage.setItem('profit_usdt', `${user.profit_usdt}`)
-    localStorage.setItem('crypto_deposit_btc', `${user.crypto_deposit_btc}`)
-    localStorage.setItem('crypto_deposit_eth', `${user.crypto_deposit_eth}`)
-    localStorage.setItem('crypto_deposit_usdt', `${user.crypto_deposit_usdt}`)
-    localStorage.setItem('is_active', `${user.is_active}`)
-    localStorage.setItem('username', `${user.username}`)
-    localStorage.setItem('email', `${user.email}`)
-    localStorage.setItem('first_name', `${user.first_name}`)
-    localStorage.setItem('last_name', `${user.last_name}`)
-    localStorage.setItem('isAuth', `true`)
+    for(let field in user){
+        localStorage.setItem(field, user[field])
+    }
 }
 
 export function privateFetch (url, options, exclude) {
