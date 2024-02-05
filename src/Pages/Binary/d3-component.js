@@ -7,9 +7,9 @@ function TradingViewChart(props) {
   const [widgetLoaded, setWidgetLoaded] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setWidgetLoaded(true)
-    }, 500);
+    // setTimeout(() => {
+    //   setWidgetLoaded(true)
+    // }, 1500);
 
     console.log('TradingView :>> ', window.TradingView);
     return () => {
@@ -23,7 +23,7 @@ function TradingViewChart(props) {
 
   return (
     <div className="tradingview-container">
-      {widgetLoaded && props.selectedPair && props.minutes ?
+      { props.selectedPair && props.minutes ?
         <TradingViewWidget
           symbol={props.symbols[props.selectedPair]}
           interval={props.minutes}

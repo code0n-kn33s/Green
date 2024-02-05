@@ -909,8 +909,11 @@ html {
 .profit_currencies-title {
   font-size: 23px;
 }
-.profile-section__client-btc-info-wrap {
+.profile-section__client-info-wrapper {
   margin-bottom: 15px;
+  &.new .profile-section__client-info {
+    justify-content: center !important;
+  }
 }
 .profile-section__client-btc-info {
   display: flex !important;

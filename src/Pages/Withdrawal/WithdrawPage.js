@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dropdown } from './Dropdown';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,11 +11,20 @@ function WithdrawPage() {
     const [walletAddress, setWalletAddress] = useState('');
     const [addToDeposit, setAddToDeposit] = useState(false);
     const [localError, setLocalError] = useState('');
+    const [amount, setAmount] = useState(0);
 
     const { error } = useSelector(({ state }) => state)
     const { t } = useTranslation();
 
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        let getAmount = `arbitech_crypto_balance_${selectedCoin.value}`
+
+        const depositAmount = parseFloat(localStorage.getItem(getAmount)) || 0;
+
+        setAmount(depositAmount * parseFloat(percentage) / 100);
+    }, [selectedCoin, selectedCoin.value, percentage]);
 
     const handleCoinChange = (index) => {
         setSelectedCoin(currencies[index])
@@ -36,9 +45,9 @@ function WithdrawPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if(walletAddress && parseInt(sumPercents()) > 0) {
+        if (walletAddress && parseInt(amount) > 0) {
             dispatch(setWithdrawal({
-                withdrawal_sum: sumPercents(),
+                withdrawal_sum: amount,
                 currency: selectedCoin.value,
                 address: walletAddress,
             }))
@@ -47,15 +56,15 @@ function WithdrawPage() {
         }
     };
 
-    const showCurrentCoin = () => {
-        if (selectedCoin.value === 'btc') return localStorage.getItem('crypto_deposit_btc') + " BTC"
-        if (selectedCoin.value === 'eth') return localStorage.getItem('crypto_deposit_eth') + " ETH"
-        if (selectedCoin.value === 'usdt') return localStorage.getItem('crypto_deposit_usdt') + " USDT"
+
+    const changeAmountSumm = (e) => {
+        setAmount(parseFloat(e.target.value));
     }
 
-    const sumPercents = () => {
-        const depositAmount = parseFloat(localStorage.getItem(`crypto_deposit_${selectedCoin.value}`)) || 0;
-        return depositAmount * parseFloat(percentage) / 100;
+
+    const showCurrentCoin = () => {
+        return localStorage.getItem(`arbitech_crypto_balance_${selectedCoin.value}`) + ' ' + selectedCoin.value.toUpperCase()
+
     }
 
     return (
@@ -71,11 +80,37 @@ function WithdrawPage() {
                                     <div className="withdrawal-section__header">
                                         <h2 className="withdrawal-section__body-heading">{t("Выберите монету")}</h2>
 
-                                        <div className="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
+                                        {/* <div className="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
                                             <Dropdown
                                                 handleCoinChange={handleCoinChange}
                                             />
-                                        </div>
+                                        </div> */}
+
+
+                                        {/*  */}
+
+
+
+                                            <div className="tabs-with-dropdown">
+                                                <div className="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
+                                                    <Dropdown
+                                                        handleCoinChange={handleCoinChange}
+                                                    />
+                                                </div>
+                                                <div className="tabs-with-dropdown-input">
+                                                    <input
+                                                        type="number"
+                                                        placeholder={t("введите сумму")}
+                                                        value={amount}
+                                                        onChange={changeAmountSumm}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                        {/*  */}
+
+
+
                                     </div>
 
                                     <div className="tabs__list" id="tabpanel-replenish-deposit-1" role="tabpanel" tabIndex="0" aria-labelledby="tab-replenish-deposit-1">
@@ -104,7 +139,7 @@ function WithdrawPage() {
 
                                                     <div className="min-max__range-item-wrapper">
                                                         {/* поставить пересчет в процентах */}
-                                                        <p className="min-max__range-item-min">{sumPercents() + " " + selectedCoin.value.toUpperCase()}</p>
+                                                        <p className="min-max__range-item-min">{amount + " " + selectedCoin.value.toUpperCase()}</p>
                                                         <p className="min-max__range-item-max">{showCurrentCoin()}</p>
                                                     </div>
                                                 </div>

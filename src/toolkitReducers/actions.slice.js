@@ -256,7 +256,7 @@ export const setBinary = createAsyncThunk(
                 bet_type: param.upDownValue === 'up' ? 'Higher' : 'Lower',
                 amount: param.investment,
                 currency: param.selectedPair,
-                expiration_time_minutes: param.formTime,
+                expiration_time: param.formTime,
             })
         })
         const data = await response.json()
@@ -277,8 +277,8 @@ export const setTransfer = createAsyncThunk(
             method: 'POST',
             body: JSON.stringify({
                 amount: param.withdrawal_sum,
-                from_ticker: param.currency,
-                to_ticker: param.currency,
+                from_ticker: param.from_ticker,
+                to_ticker: param.to_ticker,
                 from_balance: param.from,
                 to_balance: param.to,
             })

@@ -42,7 +42,7 @@ function WithdrawPage() {
     const openModal = (text) => {
         setModalText(text)
         setModal(!isModal)
-      }
+    }
 
 
     const handleCoinChange = (index) => {
@@ -78,24 +78,51 @@ function WithdrawPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if(selectedFrom === selectedTo) {
+        if (selectedFrom === selectedTo) {
             setLocalError("Балансы не должны совпадать")
         }
-        else if(amount < 0 || amount == 0) {
+        else if (amount < 0 || amount == 0) {
             setLocalError("Сумма должна быть больше 0")
         }
-        else if(amount > showCurrentCoin()) {
+        else if (amount > showCurrentCoin()) {
             setLocalError("Сумма должна быть превышать баланс")
         }
         else {
-            console.log('amount :>> ', amount == 0);
-            dispatch(setTransfer({
-                withdrawal_sum: amount,
-                currency: selectedCoin.value,
-                from: selectedFrom,
-                to: selectedTo,
-            }))
-            openModal(t("transaction successfull"))
+            // console.log('selectedTo :>> ', selectedTo);
+            // console.log('selectedFrom :>> ', selectedFrom);
+            // console.log('selectedCoin.value :>> ', selectedCoin.value);
+
+            if (selectedTo === "options") {
+                dispatch(setTransfer({
+                    withdrawal_sum: amount,
+                    from_ticker: selectedCoin.value,
+                    to_ticker: "usdt",
+                    from: selectedFrom,
+                    to: selectedTo,
+                }))
+
+                openModal(t("transaction successfull"))
+            } else if (selectedFrom === "options") {
+                dispatch(setTransfer({
+                    withdrawal_sum: amount,
+                    from_ticker: "usdt",
+                    to_ticker: selectedCoin.value,
+                    from: selectedFrom,
+                    to: selectedTo,
+                }))
+
+                openModal(t("transaction successfull"))
+            } else {
+                dispatch(setTransfer({
+                    withdrawal_sum: amount,
+                    from_ticker: selectedCoin.value,
+                    to_ticker: selectedCoin.value,
+                    from: selectedFrom,
+                    to: selectedTo,
+                }))
+
+                openModal(t("transaction successfull"))
+            }
         }
 
     };
@@ -112,7 +139,7 @@ function WithdrawPage() {
 
     return (
         <div className="withdrawal-page page transfer-page">
-            <ModalDialog modalState={isModal} setModalState={openModal} modalText={modalText}/>
+            <ModalDialog modalState={isModal} setModalState={openModal} modalText={modalText} />
             <div className="page__sections-wrapper medium-wrapper">
                 <section className="withdrawal-section">
                     <h1 className="withdrawal-section__main-heading h3">{t("TransferPageTitle")}</h1>

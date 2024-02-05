@@ -272,7 +272,7 @@
     "status": "Status",
 
     "сумма не должна равняться 0": "the sum must not be equal to 0",
-    "сумма не должна быть более баланса": "the amount should not be more than the balance",
+    "сумма не должна быть более баланса": "the amount should be less than the balance",
     "История ставок": "Bet history",
     "История транзакций": "Transactions history",
     "введите сумму": "input the amount",

@@ -16,17 +16,21 @@ export default function ProfilePage() {
 
   const inputRef = useRef()
 
+
+
+
   useEffect(() => {
     dispatch(getUserSessions())
     dispatch(getUserData())
     dispatch(setBetHistory())
+
   }, [dispatch])
 
   const trunc = (number) => {
     let precision = 3;
     let truncatedNumber = Math.trunc(number * Math.pow(10, precision)) / Math.pow(10, precision)
 
-    return truncatedNumber
+    return truncatedNumber;
   }
 
   return (
@@ -242,7 +246,7 @@ export default function ProfilePage() {
                   </div>
 
                   <div className="profile-section__client-info">
-                    <div className="profile-section__client-btc-info-wrap">
+                    {/* <div className="profile-section__client-btc-info-wrap">
                       <p className="profit_currencies-title">BTC</p>
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
@@ -256,8 +260,8 @@ export default function ProfilePage() {
                           {trunc(localStorage.getItem('options_profit_btc'))} BTC
                         </p>
                       </div>
-                    </div>
-                    <div className="profile-section__client-btc-info-wrap">
+                    </div> */}
+                    {/* <div className="profile-section__client-btc-info-wrap">
                       <p className="profit_currencies-title">ETH</p>
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
@@ -271,8 +275,8 @@ export default function ProfilePage() {
                           {trunc(localStorage.getItem('options_profit_eth'))} ETH
                         </p>
                       </div>
-                    </div>
-                    <div className="profile-section__client-btc-info-wrap">
+                    </div> */}
+                    <div className="profile-section__client-btc-info-wrap new">
                       <p className="profit_currencies-title">USDT</p>
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>

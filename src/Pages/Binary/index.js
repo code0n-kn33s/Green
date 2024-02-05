@@ -19,7 +19,7 @@ import { ReactComponent as StartIcon } from './assets/play-round-icon.svg'
 const symbols = {
   "BTC/USDT": "BTCUSDT",
   "ETH/USDT": "ETHUSDT",
-  "USDT/ETH": "USDTETH",
+  "USDT/ETH": "USDT/BINANCE:ETHUSD",
   "BTC/ETH": "BTCETH",
   "ETH/BTC": "ETHBTC",
   "USDT/BTC": "USDTBTC",
@@ -38,7 +38,7 @@ export default function Binary(props) {
   const [isErrors, setErrors] = useState([])
   const [freeBalance, setFreeBalance] = useState(null)
   const [shouldRerender, setShouldRerender] = useState(false);
-
+  const [activeButton, setActiveButton] = useState(null);
   const [isModal, setModal] = useState(false)
   const [modalText, setModalText] = useState(false)
 
@@ -59,7 +59,8 @@ export default function Binary(props) {
   useEffect(() => {
     setPairHandle();
 
-    let balance = window.localStorage.getItem(`options_crypto_balance_${singlePair.toLowerCase()}`);
+    let balance = window.localStorage.getItem(`options_crypto_balance_usdt`);
+    console.log('balance :>> ', balance);
     setFreeBalance(balance)
   }, [singlePair, selectedPair])
 
@@ -88,7 +89,7 @@ export default function Binary(props) {
     setMinutes(direction);
   }
 
-  const startBinary = () => {
+  const startBinary = (buttonType) => {
     // console.log('singlePair :>> ', singlePair);
     // console.log('payout :>> ', payout);
     // console.log('pairFetchValue :>> ', pairFetchValue[0][4]);
@@ -105,7 +106,7 @@ export default function Binary(props) {
       pairFetchValue: pairFetchValue,
       investment: investment,
       formTime: formTime,
-      upDownValue: upDownValue,
+      upDownValue: buttonType,
     }
 
     if (investment === 0) {
@@ -116,41 +117,27 @@ export default function Binary(props) {
       dispatch(setBinary(obj))
       openModal(t("Ваша ставка принята"))
       setShouldRerender(true)
+      getUpAndDown(buttonType);
 
       setTimeout(() => setShouldRerender(false), 0)
     }
 
   }
 
+  const handleButtonClick = (buttonType) => {
+
+    props.startBinary(buttonType)
+    // Здесь можно добавить дополнительную логику в зависимости от типа кнопки (Up или Down)
+  };
+
   const profitFormula = () => {
-    if (pairFetchValue && pairFetchValue[0]) {
-      const payoutCoefficient = parseFloat(percentCoefficient) / 100; // Преобразование коэффициента в число
-      const candleCloseValue = parseFloat(pairFetchValue[0][4]);
+    // const payoutCoefficient = parseFloat(percentCoefficient) / 100; // Преобразование коэффициента в число
+    // const candleCloseValue = parseFloat(pairFetchValue[0][4]);
+    // if (pairFetchValue && pairFetchValue[0]) {  }
 
-      // Рассчитываем время ставки в часах
-      const betTimeInHours = parseInt(formTime) / 60;
+    let potentialPayout = investment * 0.8 + investment;
 
-      // Рассчитываем потенциальный заработок и выплату с учетом времени и изменения цены
-      const potentialProfit = (investment * payoutCoefficient * candleCloseValue) * betTimeInHours;
-
-      let potentialPayout = null;
-
-      if (upDownValue === 'up') {
-        potentialPayout = investment + potentialProfit;
-      } else {
-        potentialPayout = investment - potentialProfit;
-      }
-
-      // console.log('Потенциальный заработок на повышение:', potentialProfit);
-      // console.log('Потенциальная выплата на повышение:', potentialPayout);
-
-      // // Добавим также вывод результатов в формате, аналогичном калькулятору Binance
-      // console.log('Начальная маржа:', investment * candleCloseValue);
-      // console.log('PNL:', potentialProfit);
-      // console.log('ROI:', (potentialProfit / (investment * candleCloseValue)) * 100 + '%');
-
-      setPayout(potentialPayout)
-    }
+    setPayout(potentialPayout)
   }
 
   const getInvestment = (investment) => {
@@ -169,10 +156,14 @@ export default function Binary(props) {
     profitFormula()
   }
 
-  const getUpAndDown = (time) => {
+  const getUpAndDown = (typeButton) => {
     resetErrors()
-    setUpDownValue(time)
+    setUpDownValue(typeButton)
     profitFormula()
+
+    setTimeout(() => {
+      setUpDownValue(null)
+    }, 500);
   }
 
   const trunc = (number) => {
@@ -194,14 +185,15 @@ export default function Binary(props) {
 
 
   const getBalance = (x) => {
-    switch (singlePair) {
-      case "ETH":
-        return trunc(localStorage.getItem('crypto_deposit_eth'))
-      case "BTC":
-        return trunc(localStorage.getItem('crypto_deposit_btc'))
-      case "USDT":
-        return trunc(localStorage.getItem('crypto_deposit_usdt'))
-    }
+    // switch (singlePair) {
+    //   case "ETH":
+    //     return trunc(localStorage.getItem('crypto_deposit_eth'))
+    //   case "BTC":
+    //     return trunc(localStorage.getItem('crypto_deposit_btc'))
+    //   case "USDT":
+    //     return trunc(localStorage.getItem('crypto_deposit_usdt'))
+    // }
+    return parseFloat(localStorage.getItem('options_crypto_balance_usdt'))
   }
 
 
@@ -245,27 +237,28 @@ export default function Binary(props) {
 
           <UpBet
             selectedPair={selectedPair}
-            getBalance={getBalance}
+            getBalance={freeBalance}
             payout={payout}
             singlePair={singlePair}
-            getUpAndDown={getUpAndDown}
+            startBinary={startBinary}
+            activeButton={upDownValue}
           />
 
-          <div
+          {/* <div
             className={`binary-right-bet-button active`}
             // onClick={() => profitFormula()}
             onClick={() => startBinary()}
           >
             <i>Start</i> <span><StartIcon /></span>
-          </div>
+          </div> */}
           <br />
           {isErrors && isErrors.map((item, index) => <div key={index}>{t(item)}</div>)}
         </div>
 
-        <ModalDialog modalState={isModal} setModalState={openModal} modalText={modalText}/>
+        <ModalDialog modalState={isModal} setModalState={openModal} modalText={modalText} />
 
       </div>
-      <OptionsTable shouldRerender={shouldRerender}/>
+      <OptionsTable shouldRerender={shouldRerender} />
     </div>
 
   )

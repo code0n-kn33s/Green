@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect} from 'react';
 
 
 export default function InpuForm(params) {
-    const [time, setTime] = useState('00:10');
+    const [time, setTime] = useState(10);
     const timeInputRef = useRef(null);
 
 
@@ -32,11 +32,11 @@ export default function InpuForm(params) {
     return (
         <div>
             <div className="binary-input-form-wrap">
-                <div className="binary-input-form-label"> Time: </div>
+                <div className="binary-input-form-label"> Time (minutes): </div>
                 <div className="binary-input-form">
                     <button className="binary-input-form-button" onClick={decrementTime}>-</button>
                     <input
-                        type="time"
+                        type="number"
                         ref={timeInputRef}
                         value={time}
                         className="binary-input"
