@@ -13,3 +13,6 @@ export { Points } from './Points'
 
 export { PublicWrap } from './PublicWrap'
 export { PrivateWrap } from './PrivateWrap'
+
+export { OurProducts } from './OurProducts'
+export { BinaryOption } from './BinaryOption'

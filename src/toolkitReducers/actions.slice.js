@@ -458,7 +458,14 @@ const actionsSlice = createSlice({
         builder.addCase(setBetHistory.fulfilled, (state, action) => {
             state.fething = "fullfilled"
 
-            state.betHistory = action.payload
+            state.betHistory = action.payload.bet_history
+
+            let pendings = action.payload.bet_history.filter((bet) => {
+                   return bet.status === "Pending"
+            })
+
+            console.log('>>>>pendings :>> ', pendings);
+
             state.error = ''
         })
         builder.addCase(setBetHistory.rejected, (state, action) => {
@@ -471,7 +478,7 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setTransactionsHistory.fulfilled, (state, action) => {
             state.fething = "fullfilled"
-
+console.log('!!!!!!!action.payload :>> ', action.payload);
             state.transactionsHistory = action.payload
             state.error = ''
         })

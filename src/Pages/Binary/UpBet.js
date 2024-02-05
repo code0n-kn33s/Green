@@ -20,12 +20,7 @@ export default function UpBet(props) {
             {/* {props.singlePair} */}
           </div>
         </div>
-        <div className="binary-right-value">
-          <div className="binary-right-text"> Your balance: </div>
-          <div className="binary-right-profit"> {window.localStorage.getItem(`options_crypto_balance_usdt`)} USDT
-            {/* {props.singlePair}  */}
-          </div>
-        </div>
+        
       </div>
       <div
         className={`binary-right-bet-button ${activeButton === 'down' ? 'active' : ''}`}

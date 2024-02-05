@@ -286,6 +286,50 @@
     "from_balance": "с баланса",
     "to_balance": "на баланс",
 
+    "our-products-title-section1": "Бинарный опцион",
+    "our-products-subtitle-section1": "Минимальный счет от $10: ",
+    "our-products-text-section1": "Начните торговать с минимальными вложениями. Наш минимальный счет составляет всего 10 долларов США, что дает вам возможность начинать совершать сделки с минимальными вложениями.",
+
+    "our-products-title-section2": "Ai Арбитраж",
+    "our-products-subtitle-section2": "Безостановочный трейдинг",
+    "our-products-text-section2": "На нашей платформе нет ограничений на количество сделок, которые могут быть совершены одновременно..",
+
+    "our-products-title-section3": "Крипто кошелек",
+    "our-products-subtitle-section3": "24/7 Поддержка",
+    "our-products-text-section3": "Поддержка клиентов доступна круглосуточно.",
+
+    "Binary Option": "Бинарный опцион",
+    "binary-option-section-title-section1": "Преимущества бинарных опционов на криптовалюты:",
+    "binary-option-section-subtitle1-section1": "Высокая волатильность: ",
+    "binary-option-section-text1-section1": "Криптовалюты, такие как Биткойн, Эфириум и другие, известны своей высокой волатильностью. Это создает уникальные возможности для получения прибыли даже от небольших движений цен..",
+    "binary-option-section-subtitle2-section1": "24/7 Торговля: ",
+    "binary-option-section-text2-section1": "Рынок криптовалют работает круглосуточно и без выходных, предоставляя вам гибкость и быстрый доступ к торговле в любое время.",
+
+    "binary-option-section-title-section2": "Как это работает: ",
+    "binary-option-section-subtitle1-section2": "Выберите актив: ",
+    "binary-option-section-text1-section2": "Выберите актив, которым хотите торговать.",
+    "binary-option-section-subtitle2-section2": "Сделать прогноз: ",
+    "binary-option-section-text2-section2": "Определить, увеличится или уменьшится стоимость актива в течение определенного периода.",
+    "binary-option-section-subtitle3-section2": "Получите прибыль: ",
+    "binary-option-section-text3-section2": "Если ваш прогноз окажется верным, вы получите прибыль! Не теряйте времени, присоединяйтесь к нашей платформе сегодня! Начните свой путь к финансовому успеху с бинарными опционами",
+
+    "binary-option-section-title-section3": "Мгновенные результаты:",
+    "binary-option-section-subtitle1-section3": "С бинарными опционами",
+    "binary-option-section-text1-section3": " вы мгновенно узнаете результат своей сделки. Нет необходимости ждать в течение длительного времени; если ваш прогноз верен, вы получите прибыль в короткие сроки.",
+    "binary-option-section-subtitle2-section3": "Простота и прозрачность: ",
+    "binary-option-section-text2-section3": "Наша платформа делает торговлю бинарными опционами на криптовалюты простой и понятной. Вы всегда будете в курсе рисков и потенциальной прибыли.",
+    "binary-option-section-subtitle3-section3": "Возможности диверсификации: ",
+    "binary-option-section-text3-section3": "Торгуйте бинарными опционами на различные криптовалютные активы, расширяя свой портфель и максимизируя потенциальную прибыль.",
+
+
+
+    "our-products-button-text": "Изучить",
+    "Our Products": "Наши продукты",
+
+    "OurProducts":  "Продукты",
+    "BinaryOption": "Опцион",
+
+
     "transaction successfull": "Транзакция успешная",
 
     "Success":"Success"

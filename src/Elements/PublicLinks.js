@@ -15,6 +15,20 @@ const {t} = useTranslation();
                 </li>
 
                 <li
+                    onClick={() => currentRef('ourproducts')} className="footer__main-links-item"
+                    style={{ "whiteSpace": "nowrap" }}
+                >
+                    {t("OurProducts")}
+                </li>
+
+                <li
+                    onClick={() => currentRef('binaryoption')} className="footer__main-links-item"
+                    style={{ "whiteSpace": "nowrap" }}
+                >
+                    {t("BinaryOption")}
+                </li>
+
+                <li
                     onClick={() => currentRef('about')} className="footer__main-links-item"
                     style={{ "whiteSpace": "nowrap" }}
                 >

@@ -15,10 +15,11 @@ export default function OptionsTable({ shouldRerender }) {
 
     useEffect(() => {
         dispatch(setBetHistory())
-    }, [ shouldRerender])
-
+    }, [ dispatch])
+console.log('shouldRerender :>> ', shouldRerender);
     useEffect(() => {
         if (shouldRerender === true) {
+            console.log('@@@ DOONE :>> ');
             dispatch(setBetHistory())
         }
     }, [ shouldRerender])
@@ -121,9 +122,8 @@ export default function OptionsTable({ shouldRerender }) {
                     </tr>
 
                     {
-                        betHistory?.bet_history
-                            && betHistory?.bet_history.length
-                            ? betHistory?.bet_history.map((betHistory, index) => (
+                        betHistory && betHistory?.length
+                            ? betHistory?.map((betHistory, index) => (
                                 <tr key={index} className="betHistorys-section__table-body-row">
                                     <td>{betHistory.id}</td>
                                     <td>{moment(betHistory.expiration_time).format('L')}</td>

@@ -103,6 +103,7 @@ export default function OptionsTable(params) {
 
                     </tr>
 
+
                     {
                         transactionsHistory
                             && transactionsHistory?.length

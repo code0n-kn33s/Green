@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setBinary } from '../../toolkitReducers';
+import { setBinary, setBetHistory } from '../../toolkitReducers';
 
 import InputFormTime from './InputFormTime';
 import InputFormValue from './InputFormValue';
@@ -60,7 +60,7 @@ export default function Binary(props) {
     setPairHandle();
 
     let balance = window.localStorage.getItem(`options_crypto_balance_usdt`);
-    console.log('balance :>> ', balance);
+
     setFreeBalance(balance)
   }, [singlePair, selectedPair])
 
@@ -76,12 +76,12 @@ export default function Binary(props) {
 
     const url2 = `https://api.binance.com/api/v1/klines?symbol=${selectedPair.replace(/\//g, "")}&interval=${time[minutes]}&limit=1`
 
-    fetch(url2)
-      .then(response => response.json())
-      .then(data => {
-        setPairFetchValue(data);
-      })
-      .catch(error => console.error('Ошибка при получении данных:', error));
+    // fetch(url2)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setPairFetchValue(data);
+    //   })
+    //   .catch(error => console.error('Ошибка при получении данных:', error));
   }
 
   const getMinutes = (direction) => {
@@ -103,7 +103,6 @@ export default function Binary(props) {
     let obj = {
       minutes: minutes,
       selectedPair: selectedPair,
-      pairFetchValue: pairFetchValue,
       investment: investment,
       formTime: formTime,
       upDownValue: buttonType,
@@ -116,10 +115,11 @@ export default function Binary(props) {
     } else {
       dispatch(setBinary(obj))
       openModal(t("Ваша ставка принята"))
-      setShouldRerender(true)
-      getUpAndDown(buttonType);
 
-      setTimeout(() => setShouldRerender(false), 0)
+      getUpAndDown(buttonType);
+      // dispatch(setBetHistory())
+      setTimeout(() => setShouldRerender(true), 1000)
+      setTimeout(() => setShouldRerender(false), 1500)
     }
 
   }
@@ -185,14 +185,6 @@ export default function Binary(props) {
 
 
   const getBalance = (x) => {
-    // switch (singlePair) {
-    //   case "ETH":
-    //     return trunc(localStorage.getItem('crypto_deposit_eth'))
-    //   case "BTC":
-    //     return trunc(localStorage.getItem('crypto_deposit_btc'))
-    //   case "USDT":
-    //     return trunc(localStorage.getItem('crypto_deposit_usdt'))
-    // }
     return parseFloat(localStorage.getItem('options_crypto_balance_usdt'))
   }
 

@@ -8,6 +8,10 @@ import { Partners } from '../FooterPages'
 import { Terms } from '../FooterPages'
 import { Points } from '../FooterPages'
 import { PrimaryLogin } from '../FooterPages'
+
+import { OurProducts } from '../FooterPages'
+import { BinaryOption } from '../FooterPages'
+
 import Login from './LoginPage'
 import Footer from './../../Elements/Footer'
 
@@ -20,7 +24,14 @@ export function LoginWrap(params) {
     const refPoints = useRef(null)
     const refTerms = useRef(null)
     const refLogin = useRef(null)
-const {t} = useTranslation();
+    const refOurProducts = useRef(null)
+    const refBinaryOption = useRef(null)
+
+
+
+
+    const { t } = useTranslation();
+
     useEffect(() => {
         refPrimaryLogin.current.scrollIntoView({
             behavior: "smooth",
@@ -29,10 +40,22 @@ const {t} = useTranslation();
     }, [])
 
     const clickeRef = (elem) => {
-        console.log('elem :>> ', elem);
-
         if (elem === 'main') {
             refPrimaryLogin.current.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+        if (elem === 'ourproducts') {
+            refOurProducts.current.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+        if (elem === 'binaryoption') {
+            refBinaryOption.current.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
@@ -50,7 +73,6 @@ const {t} = useTranslation();
                 behavior: "smooth",
                 block: "start"
             });
-
         }
         if (elem === 'partners') {
             refPartners.current.scrollIntoView({
@@ -85,6 +107,8 @@ const {t} = useTranslation();
         <div className="login-wrap-page page">
             <div className="login-wrap-container">
                 <div ref={refPrimaryLogin}> <PrimaryLogin /> </div>
+                <div ref={refOurProducts}> <OurProducts /> </div>
+                <div ref={refBinaryOption}> <BinaryOption /> </div>
                 <div ref={refAboutUs}> <AboutUs /> </div>
                 <div ref={refStoryMap}> <StoryMap /> </div>
                 <div ref={refPosibilities}> <Posibilities /> </div>

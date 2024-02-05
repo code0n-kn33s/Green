@@ -16,13 +16,13 @@ $mc: #fff831;
 }
 .binary-left-top {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   margin-bottom: 10px;
-  padding: 4px 30px;
+  padding: 4px 0px;
 }
 .binary-left-title {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
   @include media-query($w950) {
     display: none;

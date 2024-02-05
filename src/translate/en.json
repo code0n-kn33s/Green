@@ -287,6 +287,50 @@
     "Done": "Done",
     "transaction successfull": "Transaction successfull",
 
+    "OurProducts":  "Products",
+    "BinaryOption": "Option",
+
+
+    "our-products-title-section1": "Binar option",
+    "our-products-subtitle-section1": "Minimum Account from $10: ",
+    "our-products-text-section1": "Start trading with minimal investments. Our minimum account is only $10, giving you the opportunity to begin making deals with minimal investments.",
+
+    "our-products-title-section2": "Ai Arbitage",
+    "our-products-subtitle-section2": "Non-stop Trading",
+    "our-products-text-section2": "On our platform, there are no restrictions on the number of trades that can be executed simultaneously.",
+
+    "our-products-title-section3": "Crypto Wallet",
+    "our-products-subtitle-section3": "24/7 Operation",
+    "our-products-text-section3": "Customer support is available around the clock.",
+
+    "our-products-button-text": "Learn More",
+    "Our Products": "Our Products",
+
+    "Binary Option": "Binary Option",
+    "binary-option-section-title-section1": "Advantages of Binary Options on Cryptocurrencies:",
+    "binary-option-section-subtitle1-section1": "High Volatility: ",
+    "binary-option-section-text1-section1": "Cryptocurrencies like Bitcoin, Ethereum, and others are known for their high volatility. This creates unique opportunities to profit from even small price movements.",
+    "binary-option-section-subtitle2-section1": "24/7 Trading: ",
+    "binary-option-section-text2-section1": "The cryptocurrency market operates 24/7, providing you the flexibility and quick access to trade at any time",
+    
+    "binary-option-section-title-section2": "How It Works: ",
+    "binary-option-section-subtitle1-section2": "Choose an Asset: ",
+    "binary-option-section-text1-section2": "Select the asset you want to trade.",
+    "binary-option-section-subtitle2-section2": "Make a Prediction: ",
+    "binary-option-section-text2-section2": "Determine whether the value of the asset will increase or decrease within a specified period.",
+    "binary-option-section-subtitle3-section2": "Get Profit: ",
+    "binary-option-section-text3-section2": "If your prediction is correct, you'll earn a profit! Don't waste time, join our platform today! Start your journey to financial success with binary options",
+
+    "binary-option-section-title-section3": "Instant Results:",
+    "binary-option-section-subtitle1-section3": "With binary options",
+    "binary-option-section-text1-section3": " you know the result of your trade instantly. No need to wait for extended periods; if your forecast is correct, you receive a profit in a short time.",
+    "binary-option-section-subtitle2-section3": "Simplicity and Transparency: ",
+    "binary-option-section-text2-section3": "Our platform makes trading binary options on cryptocurrencies easy and understandable. You'll always be aware of risks and potential profits.",
+    "binary-option-section-subtitle3-section3": "Diversification Opportunities: ",
+    "binary-option-section-text3-section3": "Trade binary options on various cryptocurrency assets, expanding your portfolio and maximizing potential gains",
+
+
+
     "from_balance": "from balance",
     "to_balance": "to balance",
 

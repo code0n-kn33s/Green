@@ -53,3 +53,130 @@
     left: 50px;
     top: 50px;
 }
+
+.our-products {}
+.our-products-title {
+  text-align: center;
+}
+.our-products-section-wrap {
+  display: flex;
+  border-radius: 10px;
+  justify-content: space-between;
+  border: 1px solid;
+  padding: 40px 35px;
+  gap: 30px;
+  @include media-query($w850) {
+
+    padding: 25px 18px;
+  }
+  @include media-query($w700) {
+
+
+    flex-direction: column;
+  }
+}
+.our-products-section {
+  flex: 1;
+  padding: 15px;
+  &:first-of-type {
+    border-right: 3px solid;
+    border-radius: 10px;
+
+  }
+  &:last-of-type {
+    border-left: 3px solid;
+    border-radius: 10px;
+  }
+  @include media-query($w700) {
+    border: none !important;
+  }
+}
+.our-products-section-img {
+  img {
+
+    height: 120px;
+    width: auto;
+  }
+}
+.our-products-section-title {
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 24px;
+}
+.our-products-section-subtitle {
+  font-weight: 500;
+  font-size: 16px;
+  margin: 15px 0;
+
+}
+.our-products-section-text {
+  font-size: 14px;
+  max-width: 80%;
+  line-height: 1.5;
+}
+.our-products-section-button {
+  padding: 11px 27px;
+  border-radius: 10px;
+}
+
+.binary-option-wrap {
+  margin: 50px 0 50px;
+}
+.binary-option-title {
+  text-align: center;
+}
+.binary-option-img {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.binary-option-sections {
+  display: flex;
+  @include media-query($w700) {
+    flex-direction: column;
+  }
+}
+.binary-option-section {
+  &:first-of-type {
+    .binary-option-section-listitem {
+      padding-left: 0;
+
+    }
+  }
+  &:last-of-type {
+    .binary-option-section-listitem {
+      border: none;
+
+    }
+  }
+}
+.binary-option-section-title {
+  margin: 15px 0 20px;
+  font-weight: 600;
+  font-size: 18px;
+
+}
+.binary-option-section-listitem {
+
+  padding: 0 15px;
+
+  border-right: 1px solid;
+
+  &>* {
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  @include media-query($w700) {
+    border: none;
+    padding: 0;
+  }
+}
+.binary-option-section-subtitle {
+
+}
+.binary-option-section-text {
+
+}
