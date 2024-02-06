@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { setToken, privateFetch, getToken, clearToken } from '../helpers'
+import moment from 'moment'
 
 export const getCurrencies = createAsyncThunk(
     'async/getCurrencies',
@@ -171,11 +172,10 @@ export const setBetHistory = createAsyncThunk(
 
         if (!response.ok) {
             return options.rejectWithValue(data);
-
         }
 
 
-        return data
+        return { data, oldState: options.getState() }
 
     }
 )
@@ -344,6 +344,7 @@ const actionsSlice = createSlice({
         currenciesFetch: null,
         risks: null,
         betHistory: null,
+        pendingBets: [],
         transactionsHistory: null,
         statistics: null,
         tooltip: false,
@@ -458,13 +459,23 @@ const actionsSlice = createSlice({
         builder.addCase(setBetHistory.fulfilled, (state, action) => {
             state.fething = "fullfilled"
 
-            state.betHistory = action.payload.bet_history
+            const { bet_history } = action.payload.data
+            state.betHistory = bet_history
 
-            let pendings = action.payload.bet_history.filter((bet) => {
-                   return bet.status === "Pending"
-            })
+            // let resolvedPendings = []
+            let pendings = bet_history.filter((bet) => bet.status === "Pending")
 
-            console.log('>>>>pendings :>> ', pendings);
+            // не работает
+            // pendings.forEach(pendingBet => {
+            //     console.log('## first :>> ', pendingBet);
+            //     if (pendingBet.status !== "Pending") {
+            //         console.log('## sectond :>> ', pendingBet);
+            //         resolvedPendings.push(pendingBet)
+            //         console.log('## third :>> ', resolvedPendings);
+            //     }
+            // })
+
+            state.pendingBets = pendings;
 
             state.error = ''
         })
@@ -478,7 +489,7 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setTransactionsHistory.fulfilled, (state, action) => {
             state.fething = "fullfilled"
-console.log('!!!!!!!action.payload :>> ', action.payload);
+
             state.transactionsHistory = action.payload
             state.error = ''
         })
@@ -544,7 +555,7 @@ console.log('!!!!!!!action.payload :>> ', action.payload);
         builder.addCase(setTransfer.fulfilled, (state, action) => {
             state.fething = "fullfilled"
 
-            if(action.payload?.error) {
+            if (action.payload?.error) {
                 console.log('error :>> ', action.payload);
                 state.error = action.payload?.error
             } else {

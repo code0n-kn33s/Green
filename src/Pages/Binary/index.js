@@ -236,13 +236,6 @@ export default function Binary(props) {
             activeButton={upDownValue}
           />
 
-          {/* <div
-            className={`binary-right-bet-button active`}
-            // onClick={() => profitFormula()}
-            onClick={() => startBinary()}
-          >
-            <i>Start</i> <span><StartIcon /></span>
-          </div> */}
           <br />
           {isErrors && isErrors.map((item, index) => <div key={index}>{t(item)}</div>)}
         </div>

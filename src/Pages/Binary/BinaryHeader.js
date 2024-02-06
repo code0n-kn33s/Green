@@ -1,12 +1,24 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux'
+import moment from 'moment';
 
 export default function BinaryHeader(params) {
+    const pendingBets = useSelector(({ state }) => state.pendingBets)
     const { t } = useTranslation();
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+    }, [])
 
     const changeMinutes = (e) => {
         if (e.target.tagName === "BUTTON") params.getMinutes(e.target.dataset.time)
     }
+
+
 
     return (
         <div>
@@ -29,6 +41,27 @@ export default function BinaryHeader(params) {
                     <button data-time="60" className={params.minutes === "60" && 'active'}>1H</button>
                     <button data-time="D" className={params.minutes === "D" && 'active'}>1D</button>
                 </div>
+            </div>
+            <div>
+                {pendingBets && pendingBets.length ?
+                    (
+                        <>
+                            Текущие ставки: <br />
+                            {pendingBets.map(p => (
+                                <div key={p.id} className="bets-list">
+                                    <div className="bet-item">{p.id}</div>
+                                    <div className="bet-item">{moment(p.expiration_time).format('L')}</div>
+                                    <div className="bet-item">{p.bet_type}</div>
+                                    <div className="bet-item">{p.amount}</div>
+                                    <div className="bet-item">{p.currency.toUpperCase()}</div>
+                                    <div className="bet-item">{moment(p.expiration_time).format('h:mm')}</div>
+                                    <div className="bet-item">{p.status}</div>
+                                </div>
+                            ))}
+                        </>
+                    )
+                    : ''}
+
             </div>
         </div>
     )
