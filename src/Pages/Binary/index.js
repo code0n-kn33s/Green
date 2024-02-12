@@ -19,11 +19,11 @@ import { ReactComponent as StartIcon } from './assets/play-round-icon.svg'
 const symbols = {
   "BTC/USDT": "BTCUSDT",
   "ETH/USDT": "ETHUSDT",
-  "USDT/ETH": "USDT/BINANCE:ETHUSD",
-  "BTC/ETH": "BTCETH",
   "ETH/BTC": "ETHBTC",
-  "USDT/BTC": "USDTBTC",
 };
+// "USDT/BTC": "USDTBTC",
+// "BTC/ETH": "BTCETH",
+// "USDT/ETH": "USDT/BINANCE:ETHUSD",
 
 export default function Binary(props) {
   const [minutes, setMinutes] = useState("60");
@@ -115,11 +115,12 @@ export default function Binary(props) {
     } else {
       dispatch(setBinary(obj))
       openModal(t("Ваша ставка принята"))
-
+      setShouldRerender(true)
       getUpAndDown(buttonType);
-      // dispatch(setBetHistory())
-      setTimeout(() => setShouldRerender(true), 1000)
-      setTimeout(() => setShouldRerender(false), 1500)
+      dispatch(setBetHistory())
+
+      setTimeout(() => dispatch(setBetHistory()), 500)
+      setTimeout(() => setShouldRerender(false), 10)
     }
 
   }
@@ -236,6 +237,13 @@ export default function Binary(props) {
             activeButton={upDownValue}
           />
 
+          {/* <div
+            className={`binary-right-bet-button active`}
+            // onClick={() => profitFormula()}
+            onClick={() => startBinary()}
+          >
+            <i>Start</i> <span><StartIcon /></span>
+          </div> */}
           <br />
           {isErrors && isErrors.map((item, index) => <div key={index}>{t(item)}</div>)}
         </div>

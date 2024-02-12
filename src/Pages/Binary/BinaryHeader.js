@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import Timer from './Timer'
 
 import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment';
@@ -10,22 +11,20 @@ export default function BinaryHeader(params) {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [])
+    // }, [])
 
     const changeMinutes = (e) => {
         if (e.target.tagName === "BUTTON") params.getMinutes(e.target.dataset.time)
     }
-
-
 
     return (
         <div>
             <div className="binary-left-top">
                 <div className="binary-left-title">
                     {/* {t("binary_auction")} */}
-                    Your balance: {window.localStorage.getItem(`options_crypto_balance_usdt`)} USDT
+                    Your balance: {window.localStorage.getItem(`options_crypto_balance_usdt`).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} USDT
                     <div className="binary-right-value">
                         <div className="binary-right-text">  </div>
                         <div className="binary-right-profit">
@@ -50,17 +49,18 @@ export default function BinaryHeader(params) {
                             {pendingBets.map(p => (
                                 <div key={p.id} className="bets-list">
                                     <div className="bet-item">{p.id}</div>
-                                    <div className="bet-item">{moment(p.expiration_time).format('L')}</div>
                                     <div className="bet-item">{p.bet_type}</div>
                                     <div className="bet-item">{p.amount}</div>
                                     <div className="bet-item">{p.currency.toUpperCase()}</div>
                                     <div className="bet-item">{moment(p.expiration_time).format('h:mm')}</div>
                                     <div className="bet-item">{p.status}</div>
+                                    <Timer expiration_time={p.expiration_time} id={p.id}/>
                                 </div>
-                            ))}
+                            )).reverse()}
                         </>
                     )
                     : ''}
+
 
             </div>
         </div>

@@ -13,22 +13,14 @@ export default function OptionsTable({ shouldRerender }) {
     const { t } = useTranslation();
 
 
-    useEffect(() => {
-        dispatch(setBetHistory())
-        let i = setInterval(() => {
-            dispatch(setBetHistory())
-        }, 30000);
-        return () => {
-            clearInterval(i)
-        }
-    }, [dispatch])
+
+    // useEffect(() => {
+    //         dispatch(setBetHistory())
+    // }, [shouldRerender])
 
     useEffect(() => {
-        if (shouldRerender === true) {
-            console.log('@@@ DOONE :>> ');
-            dispatch(setBetHistory())
-        }
-    }, [shouldRerender])
+        dispatch(setBetHistory())
+    }, [])
 
     return (
         <section className="sessions-section medium-wrapper">

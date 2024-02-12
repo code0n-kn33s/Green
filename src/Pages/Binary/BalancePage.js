@@ -6,18 +6,22 @@ import { ReactComponent as Twitter } from '../../assets/icons/social-links/linke
 import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next';
 import HistoryTable from './HistoryTable';
+import ModalDialog from './DepositMain/Modal'
 
 export default function ProfilePage() {
   const [useTwoFa, setTwoFa] = useState(false)
   const [useBot, setBot] = useState(false)
+  const [isModal, setModal] = useState(false)
+
   const { t } = useTranslation();
   const dispatch = useDispatch()
 
 
   const inputRef = useRef()
 
-
-
+  const openModal = () => {
+    setModal(!isModal)
+  }
 
   useEffect(() => {
     dispatch(getUserSessions())
@@ -34,12 +38,12 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="profile-page__body-wrapper balance-page">
+    <div className="profile-page__body-wrapper balance-page algorithms-page algorithms-page__body-wrapper page__body-wrapper">
 
+      <ModalDialog modalState={isModal} setModalState={openModal}/>
       <div className="profile-page__sections-wrapper medium-wrapper">
         <section className="profile-section">
           {/* <h1 className="profile-section__heading h3">{t("Профиль")}</h1> */}
-
           <div className="profile-section__wrapper ballance-page rel">
 
 
@@ -61,12 +65,7 @@ export default function ProfilePage() {
                           {trunc(localStorage.getItem('main_crypto_balance_btc'))} BTC
                         </p>
                       </div>
-                      <div className="profile-section__client-btc-info">
-                        <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
-                        <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('main_profit_btc'))} BTC
-                        </p>
-                      </div>
+
                     </div>
                     <div className="profile-section__client-btc-info-wrap">
                       <p className="profit_currencies-title">ETH</p>
@@ -76,12 +75,7 @@ export default function ProfilePage() {
                           {trunc(localStorage.getItem('main_crypto_balance_eth'))} ETH
                         </p>
                       </div>
-                      <div className="profile-section__client-btc-info">
-                        <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
-                        <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('main_profit_eth'))} ETH
-                        </p>
-                      </div>
+
                     </div>
                     <div className="profile-section__client-btc-info-wrap">
                       <p className="profit_currencies-title">USDT</p>
@@ -91,18 +85,13 @@ export default function ProfilePage() {
                           {trunc(localStorage.getItem('main_crypto_balance_usdt'))} USDT
                         </p>
                       </div>
-                      <div className="profile-section__client-btc-info">
-                        <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
-                        <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('main_profit_usdt'))} USDT
-                        </p>
-                      </div>
+
                     </div>
                   </div>
                   <div className="profile-section__content-bottom">
-                    <Link to="/algoritms" className="profile-section__big-button link rel">
+                    <div onClick={() => openModal()} className="profile-section__big-button link rel">
                       <button className='withdrawal-button'>{t("deposit")}</button>
-                    </Link>
+                    </div>
                     <Link to="/withdraw" className="profile-section__big-button link rel">
                       <button className='withdrawal-button'>{t("withdraw")}</button>
                     </Link>
@@ -284,12 +273,7 @@ export default function ProfilePage() {
                           {trunc(localStorage.getItem('options_crypto_balance_usdt'))} USDT
                         </p>
                       </div>
-                      <div className="profile-section__client-btc-info">
-                        <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
-                        <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('options_profit_usdt'))} USDT
-                        </p>
-                      </div>
+
                     </div>
                   </div>
                 </div>

@@ -2,12 +2,14 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as ApprovedBet } from './assets/bet-casino-coin-svgrepo-com.svg'
+import { useDispatch, useSelector } from 'react-redux';
+import { setBetHistory } from '../../toolkitReducers/actions.slice'
 
 export default function Modal(params) {
     const { modalState, setModalState, modalText } = params;
     const [isDone, setDone] = useState(false)
     const { t } = useTranslation();
-
+    const dispatch = useDispatch()
     const switchDone = (bool) => {
         setDone(bool)
     }
@@ -15,6 +17,7 @@ export default function Modal(params) {
     const closeChest = () => {
         setModalState()
         setDone(false)
+        dispatch(setBetHistory())
     }
 
     return (

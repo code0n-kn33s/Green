@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect} from 'react';
 
 
 export default function InpuForm(params) {
-    const [time, setTime] = useState(10);
+    const [time, setTime] = useState(1);
     const timeInputRef = useRef(null);
 
 

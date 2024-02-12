@@ -8,7 +8,7 @@ export default function UpBet(props) {
   return (
     <div>
       <div
-        className={`binary-right-bet-button ${activeButton === 'up' ? 'active' : ''}`}
+        className={`binary-right-bet-button active`}
         onClick={() => startBinary('up')}
       >
         <i>UP</i> <span><Up /></span>
@@ -20,10 +20,10 @@ export default function UpBet(props) {
             {/* {props.singlePair} */}
           </div>
         </div>
-        
+
       </div>
       <div
-        className={`binary-right-bet-button ${activeButton === 'down' ? 'active' : ''}`}
+        className={`binary-right-bet-button active`}
         onClick={() => startBinary('down')}
       >
         <i>DOWN</i> <span><Down /></span>

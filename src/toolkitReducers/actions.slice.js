@@ -201,6 +201,27 @@ export const setSum = createAsyncThunk(
 
     }
 )
+export const depositSum = createAsyncThunk(
+    'async/depositSum',
+    async function (param, options) {
+        const response = await privateFetch('deposit_sum/', {
+            method: 'POST', body: JSON.stringify({
+                sum: param.sum,
+                type: param.typeSum,
+            })
+        })
+        const data = await response.json()
+
+        if (!response.ok) {
+            return options.rejectWithValue(data);
+
+        }
+
+
+        return data
+
+    }
+)
 export const setRisks = createAsyncThunk(
     'async/setRisks',
     async function (param, options) {
@@ -583,6 +604,20 @@ const actionsSlice = createSlice({
             state.error = ''
         })
         builder.addCase(setSum.rejected, (state, action) => {
+            state.fething = "rejected"
+            state.error = action.payload
+        })
+        //deposit Sum
+        builder.addCase(depositSum.pending, (state, action) => {
+            state.fething = "loading"
+        })
+        builder.addCase(depositSum.fulfilled, (state, action) => {
+            state.fething = "fullfilled"
+
+            // state.statistics = action.payload
+            state.error = ''
+        })
+        builder.addCase(depositSum.rejected, (state, action) => {
             state.fething = "rejected"
             state.error = action.payload
         })

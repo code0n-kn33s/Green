@@ -13,14 +13,14 @@ export default function InputForm(params) {
 
   const increaseInvestment = () => {
     setInvestment((prevInvestment) => {
-      const newValue = parseFloat((prevInvestment + 0.1).toFixed(2));
+      const newValue = parseFloat((prevInvestment + 1).toFixed(2));
       return newValue >= 0 ? newValue : prevInvestment;
     });
   };
 
   const decreaseInvestment = () => {
     setInvestment((prevInvestment) => {
-      const newValue = parseFloat((prevInvestment - 0.1).toFixed(2));
+      const newValue = parseFloat((prevInvestment - 1).toFixed(2));
       return newValue >= 0 ? newValue : prevInvestment;
     });
   };
