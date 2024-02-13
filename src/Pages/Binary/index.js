@@ -30,7 +30,7 @@ export default function Binary(props) {
   const [selectedPair, setSelectedPair] = useState(Object.keys(symbols)[0]); // Используем первый ключ по умолчанию
   const [singlePair, setSinglePair] = useState("BTC");
   const [payout, setPayout] = useState(0);
-  const [investment, setInvestment] = useState(null);
+  const [investment, setInvestment] = useState(0);
   const [formTime, setFormTime] = useState(null);
   const [upDownValue, setUpDownValue] = useState(null);
   const [pairFetchValue, setPairFetchValue] = useState(null);
@@ -41,6 +41,7 @@ export default function Binary(props) {
   const [activeButton, setActiveButton] = useState(null);
   const [isModal, setModal] = useState(false)
   const [modalText, setModalText] = useState(false)
+
 
   const openModal = (text) => {
     setModalText(text)
@@ -83,6 +84,8 @@ export default function Binary(props) {
     //   })
     //   .catch(error => console.error('Ошибка при получении данных:', error));
   }
+
+
 
   const getMinutes = (direction) => {
     resetErrors()
@@ -223,6 +226,10 @@ export default function Binary(props) {
             />
             <InputFormValue
               getInvestment={getInvestment}
+              // handleInputChange={handleInputChange}
+              investment={investment}
+              setInvestment={setInvestment}
+              profitFormula={profitFormula}
             />
           </div>
 

@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
-export default function InputForm(params) {
-  const [investment, setInvestment] = useState(0);
+export default function InputForm({
+  // handleInputChange,
+  investment,
+  getInvestment,
+  profitFormula,
+  setInvestment }) {
 
   useEffect(() => {
-    params.getInvestment(investment)
-  }, [investment])
+    profitFormula();
+  }, [investment, profitFormula]);
 
   const handleInputChange = (e) => {
     setInvestment(parseFloat(e.target.value));
+    profitFormula()
   };
+
 
   const increaseInvestment = () => {
     setInvestment((prevInvestment) => {
       const newValue = parseFloat((prevInvestment + 1).toFixed(2));
       return newValue >= 0 ? newValue : prevInvestment;
     });
+    profitFormula()
   };
 
   const decreaseInvestment = () => {
@@ -23,6 +30,7 @@ export default function InputForm(params) {
       const newValue = parseFloat((prevInvestment - 1).toFixed(2));
       return newValue >= 0 ? newValue : prevInvestment;
     });
+    profitFormula()
   };
 
   return (
@@ -39,6 +47,7 @@ export default function InputForm(params) {
           <input
             type="number"
             className="binary-input"
+            placeholder='0 USDT'
             value={investment}
             onChange={handleInputChange}
             min={0}
