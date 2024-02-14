@@ -72,7 +72,7 @@ function WithdrawPage() {
 
 
     const showCurrentCoin = () => {
-        return localStorage.getItem(`main_crypto_balance_${selectedCoin.value}`).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1") + ' ' + selectedCoin.value.toUpperCase()
+        return localStorage.getItem(`main_crypto_balance_${selectedCoin.value}`) + ' ' + selectedCoin.value.toUpperCase()
 
     }
 
