@@ -54,6 +54,9 @@
     @include media-query($extra-small) {
       margin-bottom: 30px;
     }
+    @include media-query($w500) {
+      overflow-x: scroll;
+    }
 
     table {
       width: 100%;

@@ -19,22 +19,27 @@ function WithdrawPage() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        let getAmount = `arbitech_crypto_balance_${selectedCoin.value}`
+        let getAmount = `main_crypto_balance_${selectedCoin.value}`
 
-        const depositAmount = parseFloat(localStorage.getItem(getAmount)) || 0;
+        const depositAmount = parseFloat(localStorage.getItem(getAmount));
 
         setAmount(depositAmount * parseFloat(percentage) / 100);
     }, [selectedCoin, selectedCoin.value, percentage]);
 
     const handleCoinChange = (index) => {
+        setLocalError("")
+
         setSelectedCoin(currencies[index])
     };
 
     const handlePercentageChange = (event) => {
+        setLocalError("")
+
         setPercentage(event.target.value);
     };
 
     const handleWalletAddressChange = (event) => {
+        setLocalError("")
         setWalletAddress(event.target.value);
     };
 
@@ -45,25 +50,29 @@ function WithdrawPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (walletAddress && parseInt(amount) > 0) {
+        if (!walletAddress) {
+            setLocalError('fill address withdraw')
+        } else if(Number(amount) <= 0) {
+            setLocalError('amount should be more than 0')
+        } else {
             dispatch(setWithdrawal({
                 withdrawal_sum: amount,
                 currency: selectedCoin.value,
                 address: walletAddress,
             }))
-        } else {
-            setLocalError('fill address withdraw')
         }
     };
 
 
     const changeAmountSumm = (e) => {
+        setLocalError("")
+
         setAmount(parseFloat(e.target.value));
     }
 
 
     const showCurrentCoin = () => {
-        return localStorage.getItem(`arbitech_crypto_balance_${selectedCoin.value}`) + ' ' + selectedCoin.value.toUpperCase()
+        return localStorage.getItem(`main_crypto_balance_${selectedCoin.value}`).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1") + ' ' + selectedCoin.value.toUpperCase()
 
     }
 
@@ -201,9 +210,9 @@ function WithdrawPage() {
                                 {/* <p className="withdrawal-section__add-deposit-description">
                                     *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
                                 </p> */}
-                                {error && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
+                                {/* {error && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
                                     *{t("Средства могут сниматься раз в 10 дней")}
-                                </p>}
+                                </p>} */}
                                 {localError && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
                                     *{t("fill address withdraw")}
                                 </p>}

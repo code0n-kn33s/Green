@@ -62,7 +62,7 @@ export default function ProfilePage() {
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('main_crypto_balance_btc'))} BTC
+                          {trunc(localStorage.getItem('main_crypto_balance_btc').toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1"))} BTC
                         </p>
                       </div>
 
@@ -72,7 +72,7 @@ export default function ProfilePage() {
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('main_crypto_balance_eth'))} ETH
+                          {trunc(localStorage.getItem('main_crypto_balance_eth').toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1"))} ETH
                         </p>
                       </div>
 
@@ -82,7 +82,7 @@ export default function ProfilePage() {
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('main_crypto_balance_usdt'))} USDT
+                          {trunc(localStorage.getItem('main_crypto_balance_usdt')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} USDT
                         </p>
                       </div>
 
@@ -115,7 +115,7 @@ export default function ProfilePage() {
                         <path d="M7.91647 15H3.04176C1.9159 15 1 14.0187 1 12.8125V5.40234C1 4.19612 1.9159 3.21484 3.04176 3.21484H7.91647C9.04233 3.21484 9.95824 4.19612 9.95824 5.40234V12.8125C9.95824 14.0187 9.04233 15 7.91647 15ZM3.04176 4.30859C2.47888 4.30859 2.02088 4.79929 2.02088 5.40234V12.8125C2.02088 13.4156 2.47888 13.9062 3.04176 13.9062H7.91647C8.47935 13.9062 8.93736 13.4156 8.93736 12.8125V5.40234C8.93736 4.79929 8.47935 4.30859 7.91647 4.30859H3.04176ZM12 11.4453V3.1875C12 1.98128 11.0841 1 9.95824 1H4.29234C4.0104 1 3.7819 1.24481 3.7819 1.54688C3.7819 1.84894 4.0104 2.09375 4.29234 2.09375H9.95824C10.5211 2.09375 10.9791 2.58444 10.9791 3.1875V11.4453C10.9791 11.7474 11.2076 11.9922 11.4896 11.9922C11.7715 11.9922 12 11.7474 12 11.4453Z" fill="#FFF831" stroke="#FFF831" strokeWidth="0.5" />
                       </svg>
                     </label>
-                    <input className="copy-email" type="text" name="register-link" id="register-link" value={"1000" + localStorage.getItem('id')} readOnly ref={inputRef} />
+                    <input className="copy-email" type="text" name="register-link" id="register-link" value={"10000" + localStorage.getItem('id')} readOnly ref={inputRef} />
                   </copy-past>
                 </div>
 
@@ -182,13 +182,13 @@ export default function ProfilePage() {
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('arbitech_crypto_balance_btc'))} BTC
+                          {trunc(localStorage.getItem('arbitech_crypto_balance_btc')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} BTC
                         </p>
                       </div>
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('arbitech_profit_btc'))} BTC
+                          {trunc(localStorage.getItem('arbitech_profit_btc')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} BTC
                         </p>
                       </div>
                     </div>
@@ -197,13 +197,13 @@ export default function ProfilePage() {
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('arbitech_crypto_balance_eth'))} ETH
+                          {trunc(localStorage.getItem('arbitech_crypto_balance_eth')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} ETH
                         </p>
                       </div>
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('arbitech_profit_eth'))} ETH
+                          {trunc(localStorage.getItem('arbitech_profit_eth')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} ETH
                         </p>
                       </div>
                     </div>
@@ -212,13 +212,13 @@ export default function ProfilePage() {
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('arbitech_crypto_balance_usdt'))} USDT
+                          {trunc(localStorage.getItem('arbitech_crypto_balance_usdt')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} USDT
                         </p>
                       </div>
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Профит")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('arbitech_profit_usdt'))} USDT
+                          {trunc(localStorage.getItem('arbitech_profit_usdt')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} USDT
                         </p>
                       </div>
                     </div>
@@ -270,7 +270,7 @@ export default function ProfilePage() {
                       <div className="profile-section__client-btc-info">
                         <p className="profile-section__client-btc-info-title">{t("Баланс")}:</p>
                         <p className="profile-section__client-btc-info-balance h3">
-                          {trunc(localStorage.getItem('options_crypto_balance_usdt'))} USDT
+                          {trunc(localStorage.getItem('options_crypto_balance_usdt')).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} USDT
                         </p>
                       </div>
 

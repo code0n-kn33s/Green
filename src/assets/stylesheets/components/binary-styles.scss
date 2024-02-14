@@ -311,6 +311,7 @@ button {
     @include media-query($w1000) {
       margin-bottom: 16px;
     }
+
   }
 }
 
@@ -393,6 +394,9 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+  @include media-query($w600) {
+    flex-direction: column !important;
   }
 }
 
