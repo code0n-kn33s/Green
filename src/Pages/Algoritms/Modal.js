@@ -1,12 +1,14 @@
 
 import DepositWrap from './DepositWrap'
-import {useState} from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 
 export default function Modal(params) {
     const { modalState, setModalState, promotion } = params;
-    const [isDone, setDone] = useState(false)
-const {t} = useTranslation();
+    const [isDone, setDone] = useState(false);
+    
+    const { t } = useTranslation();
+
     const switchDone = (bool) => {
         setDone(bool)
     }

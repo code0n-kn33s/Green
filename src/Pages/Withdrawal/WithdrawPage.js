@@ -3,6 +3,7 @@ import { Dropdown } from './Dropdown';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux'
 import { setWithdrawal } from '../../toolkitReducers/actions.slice'
+import { getUserData } from '../../toolkitReducers/auth.slice'
 
 function WithdrawPage() {
     const { currencies } = useSelector(state => state.state)
@@ -61,6 +62,9 @@ function WithdrawPage() {
                 address: walletAddress,
             }))
         }
+        setTimeout(() => {
+            dispatch(getUserData())
+        }, 1000);
     };
 
 

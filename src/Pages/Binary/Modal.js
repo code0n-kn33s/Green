@@ -10,6 +10,7 @@ export default function Modal(params) {
     const [isDone, setDone] = useState(false)
     const { t } = useTranslation();
     const dispatch = useDispatch()
+    
     const switchDone = (bool) => {
         setDone(bool)
     }

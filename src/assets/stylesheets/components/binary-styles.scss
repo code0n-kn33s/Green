@@ -19,12 +19,21 @@ $mc: #fff831;
   align-items: baseline;
   justify-content: space-between;
   padding: 4px 0px;
+
+  @include media-query($w900) {
+    flex-direction: column;
+    .binary-left-time {
+      margin-bottom: 20px;
+    }
+
+  }
 }
 .binary-left-title {
   font-size: 16px;
   font-weight: 600;
+  margin-right: 15px;
   @include media-query($w950) {
-    display: none;
+    // display: none;
   }
 }
 .binary-left-time {
@@ -311,7 +320,6 @@ button {
     @include media-query($w1000) {
       margin-bottom: 16px;
     }
-
   }
 }
 
@@ -374,9 +382,8 @@ button {
     height: 100%;
   }
 
-  .text {
-  }
-  .icon {
+  @include media-query($w500) {
+    padding-left: 0;
   }
 }
 
@@ -448,8 +455,12 @@ button {
 .bets-list {
   display: flex;
   gap: 10px;
+  justify-content: space-between;
   margin-bottom: 15px;
+  @include media-query($w850) {
+    flex-wrap: wrap;
+    font-size: 16px;
+  }
 }
 .bet-item {
-  min-width: 50px;
 }

@@ -4,8 +4,9 @@ import DepositSuccess from "./DepositSuccess"
 import { useTranslation } from 'react-i18next';
 
 export default function DepositWrap(params) {
-    const {isDone, switchDone, promotion} = params
-const {t} = useTranslation();
+    const { isDone, switchDone, promotion } = params
+    const { t } = useTranslation();
+
     return (
         <div className="modal-dialog__body rel">
             <div className="modal-dialog__body-wrapper">

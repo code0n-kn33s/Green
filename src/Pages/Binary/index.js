@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { getUserData } from '../../toolkitReducers/auth.slice'
 
 import { setBinary, setBetHistory } from '../../toolkitReducers';
 
@@ -52,13 +53,14 @@ export default function Binary(props) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchCandleData();
+  // useEffect(() => {
+  //   fetchCandleData();
 
-  }, [selectedPair, minutes]);
+  // }, [selectedPair, minutes]);
 
   useEffect(() => {
     setPairHandle();
+    // dispatch(getUserData());
 
     let balance = window.localStorage.getItem(`options_crypto_balance_usdt`);
 
@@ -123,6 +125,7 @@ export default function Binary(props) {
       dispatch(setBetHistory())
 
       setTimeout(() => dispatch(setBetHistory()), 500)
+      setTimeout(() => dispatch(getUserData()), 1000)
       setTimeout(() => setShouldRerender(false), 10)
     }
 

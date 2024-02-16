@@ -225,7 +225,10 @@
     "Настройка": "Settings",
     "Выбор монеты": "Coin selection",
     "Внимание!": "Attention!",
-    "Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!": "Transactions take some time. Depending on the network load, the funds will appear in your balance!",
+
+    "Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!": "Transactions take some time. Depending on the network load, funds will appear on your balance!",
+    "AI takes some time to launch": "AI takes some time to launch!",
+
     "ГОТОВО": "READY",
     "сумма должна быть больше": "The amount must be greater than",
     "Адрес": "Address",
@@ -245,7 +248,7 @@
     "Сеть": "Network",
     "Адрес получателя": "Receiver's Address",
     "ДАЛЕЕ": "NEXT",
-    "Общий баланс": "Summary balance",
+    "Общий баланс": "Balance",
     "Доступный баланс": "Available balance",
     "Средства могут сниматься раз в 10 дней": "Funds can be withdrawn once every 10 days",
     "Платформа не снимает комиссию за вывод средств. Комиссия сети блокчейн будет взята из суммы транзакции.": "The platform does not charge fees for withdrawals. The blockchain network commission will be taken from the transaction amount.",
@@ -330,11 +333,10 @@
     "binary-option-section-text3-section3": "Trade binary options on various cryptocurrency assets, expanding your portfolio and maximizing potential gains",
     "Deposit": "Deposit",
 
-
-
     "from_balance": "from balance",
     "to_balance": "to balance",
-
+    
+    "Main Balance": "Main Balance",
 
     "Success":"Success"
 }

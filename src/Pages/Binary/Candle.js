@@ -28,58 +28,58 @@ class CandleChart extends Component {
     // }
   }
 
-  fetchCandleData() {
-    fetch(`https://api.binance.com/api/v1/klines?symbol=BTCUSDT&interval=${this.props.minutes}&limit=100`)
-      .then(response => response.json())
-      .then(data => {
-        // Преобразовываем данные в нужный формат
-        const formattedData = data.map(item => ({
-          x: new Date(item[0]),
-          open: parseFloat(item[1]),
-          high: parseFloat(item[2]),
-          low : parseFloat(item[3]),
-          close: parseFloat(item[4]),
-        }));
+  // fetchCandleData() {
+  //   fetch(`https://api.binance.com/api/v1/klines?symbol=BTCUSDT&interval=${this.props.minutes}&limit=100`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       // Преобразовываем данные в нужный формат
+  //       const formattedData = data.map(item => ({
+  //         x: new Date(item[0]),
+  //         open: parseFloat(item[1]),
+  //         high: parseFloat(item[2]),
+  //         low : parseFloat(item[3]),
+  //         close: parseFloat(item[4]),
+  //       }));
 
-        // Обновляем состояние компонента с полученными данными
-        this.setState({ data: formattedData });
-      })
-      .catch(error => console.error('Ошибка при получении данных:', error));
-  }
+  //       // Обновляем состояние компонента с полученными данными
+  //       this.setState({ data: formattedData });
+  //     })
+  //     .catch(error => console.error('Ошибка при получении данных:', error));
+  // }
 
-  setupSocket() {
-    const socket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m");
+  // setupSocket() {
+  //   const socket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m");
 
-    socket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-    //   console.log('>>> socket data :>> ', data);
+  //   socket.onmessage = (event) => {
+  //     const data = JSON.parse(event.data);
+  //   //   console.log('>>> socket data :>> ', data);
 
-      // Обработка данных свечи из сокета
-      const newCandle = {
-        x: new Date(data.k.t),
-        open: parseFloat(data.k.o),
-        high: parseFloat(data.k.h),
-        low : parseFloat(data.k.l),
-        close: parseFloat(data.k.c),
-      };
+  //     // Обработка данных свечи из сокета
+  //     const newCandle = {
+  //       x: new Date(data.k.t),
+  //       open: parseFloat(data.k.o),
+  //       high: parseFloat(data.k.h),
+  //       low : parseFloat(data.k.l),
+  //       close: parseFloat(data.k.c),
+  //     };
 
-      // Ограничиваем количество отображаемых свечей, например, до 100
-      const updatedData = [...this.state.data, newCandle].slice(-100);
+  //     // Ограничиваем количество отображаемых свечей, например, до 100
+  //     const updatedData = [...this.state.data, newCandle].slice(-100);
 
-      // Обновляем состояние компонента с новыми данными
-      updatedData && this.setState({ data: updatedData });
-    };
+  //     // Обновляем состояние компонента с новыми данными
+  //     updatedData && this.setState({ data: updatedData });
+  //   };
 
-    socket.onclose = (event) => {
-      console.error("Соединение закрыто:", event);
-    };
+  //   socket.onclose = (event) => {
+  //     console.error("Соединение закрыто:", event);
+  //   };
 
-    socket.onerror = (error) => {
-      console.error("Ошибка:", error);
-    };
+  //   socket.onerror = (error) => {
+  //     console.error("Ошибка:", error);
+  //   };
 
-    this.socket = socket;
-  }
+  //   this.socket = socket;
+  // }
 
   componentWillUnmount() {
     // Закрытие соединения с сокетом при размонтировании компонента

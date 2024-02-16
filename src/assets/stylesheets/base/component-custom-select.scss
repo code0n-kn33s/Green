@@ -5,12 +5,11 @@
 */
 
 .custom-select {
-  //use you variables
   --duration-default: 0.3s;
 
   position: relative;
   display: block;
-  min-width: 155px;
+
 
   span, button {
     transition: all var(--duration-default) linear;

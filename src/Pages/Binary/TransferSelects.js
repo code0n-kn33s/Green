@@ -4,7 +4,7 @@ import DropdownTransferSelects from './DropdownTransferSelects'
 
 
 export default function TransferSelects(params) {
-    const { activeTab, switchFrom, handleFromChange, balances } = params
+    const { handleFromChange, balances } = params
 
     return (
         <div className="form-container form-container--wallet">

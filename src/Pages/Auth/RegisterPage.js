@@ -12,7 +12,7 @@ export default function RegisterPage() {
     const [isError, setisError] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
     const {t} = useTranslation();
-    
+
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -74,21 +74,6 @@ export default function RegisterPage() {
                 <form className="form register__form" onSubmit={handleSubmit}>
                     <div className="form__main-content">
                         <div className="register__side">
-                            <div className="form-container">
-                                <label htmlFor="username">{t("Имя пользователя")}</label>
-                                <input
-                                    required
-                                    type="text"
-                                    placeholder={t("Имя пользователя")}
-                                    name="username"
-                                    tabIndex="1"
-                                    id="username"
-                                    value={formData.username}
-                                    onChange={handleChange}
-                                />
-                                {registerErrors?.username && <div>{registerErrors?.username[0]}</div>}
-
-                            </div>
                             <div className="form-container js-form-parent">
                                 <label htmlFor="email">{t("Email адрес")}</label>
                                 <input
@@ -103,6 +88,21 @@ export default function RegisterPage() {
                                 />
                                 {registerErrors?.email && <div>{registerErrors?.email[0]}</div>}
                                 <span aria-label="valid-email" className="form__error-message">{t("Неверный формат")}</span>
+                            </div>
+                            <div className="form-container">
+                                <label htmlFor="username">{t("Имя пользователя")}</label>
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder={t("Имя пользователя")}
+                                    name="username"
+                                    tabIndex="1"
+                                    id="username"
+                                    value={formData.username}
+                                    onChange={handleChange}
+                                />
+                                {registerErrors?.username && <div>{registerErrors?.username[0]}</div>}
+
                             </div>
 
                             <div className="form-container password">

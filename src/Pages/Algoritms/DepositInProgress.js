@@ -8,7 +8,7 @@ export default function CustomSelect(params) {
     const { currencies, wallet } = useSelector(state => state.state)
     const { promotion, switchDone } = params
     const { t } = useTranslation();
-    const [isSmallerSum, showSmallerSum] = useState(false)
+    const [isError, showError] = useState(false)
     const [isSum, setIsSum] = useState('')
     const [isOpenMenu, setOpenMenu] = useState(false)
     const [activeMenu, setActiveMenu] = useState(0)
@@ -24,7 +24,7 @@ export default function CustomSelect(params) {
     const chooseMenuItem = (index) => {
         setActiveMenu(index)
         setOpenMenu(false)
-        showSmallerSum(false)
+        showError("")
 
         dispatch(getUserWallet(currencies[index].value))
     }
@@ -37,25 +37,31 @@ export default function CustomSelect(params) {
     }
 
     const sumChange = (e) => {
-        showSmallerSum(false)
+        showError("")
         setIsSum(e.target.value)
     }
 
+    const balanceArbitech = () => Number(localStorage.getItem(`arbitech_crypto_balance_${currencies[activeMenu].value}`)).toString()
+
     const playNext = () => {
+        if (Number(isSum) <= 0) {
+            return showError(t(`Сумма должна быть больше 0`))
+        }
+
         if (Number(isSum) < Number(promotion)) {
-            return showSmallerSum(true)
+            return showError(`${t('сумма должна быть больше')} ${promotion}USDT`)
         }
 
-        if ('done') {
-            switchDone(true)
-
-            const obj = {
-                sum: isSum,
-                typeSum: currencies[activeMenu].value
-            }
-            dispatch(setSum(obj))
-
+        if (Number(balanceArbitech()) < Number(isSum)) {
+            return showError(t(`Сумма должна быть превышать баланс`))
         }
+        switchDone(true)
+
+        const obj = {
+            sum: isSum,
+            typeSum: currencies[activeMenu].value
+        }
+        dispatch(setSum(obj))
     }
 
 
@@ -67,7 +73,7 @@ export default function CustomSelect(params) {
                         <path d="M0.721313 1.42859L6.86885 7.50002L13.0164 1.42859" stroke="#FFF831" color="currentColor" strokeWidth="1.5" />
                     </svg>
                     <span data-button-label className="custom-select__btn-text">
-                        {currencies[activeMenu].name}
+                        {(balanceArbitech()) + " "  + currencies[activeMenu].name}
                     </span>
                 </button>
 
@@ -111,9 +117,9 @@ export default function CustomSelect(params) {
             <div className="form-container rel">
 
                 <input required onChange={sumChange} value={isSum} min={500} type="number" placeholder={t("Сумма")} name="sum" />
-                {isSmallerSum && <div className="modal-dialog__invoice-description-wrapper">
+                {isError && <div className="modal-dialog__invoice-description-wrapper">
                     <p className="modal-dialog__invoice-description">
-                        {t("Внимание!")}<br /> {t("сумма должна быть больше")} {promotion}USDT
+                        {t("Внимание!")}<br /> {t(isError)}
                     </p>
                 </div>}
             </div>

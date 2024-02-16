@@ -24,7 +24,7 @@ export default function BinaryHeader(params) {
             <div className="binary-left-top">
                 <div className="binary-left-title">
                     {/* {t("binary_auction")} */}
-                    Your balance: {window.localStorage.getItem(`options_crypto_balance_usdt`).toString().replace(/(\.[0-9]*[1-9])?0+$/, "$1")} USDT
+                    Your balance: {Number(window.localStorage.getItem(`options_crypto_balance_usdt`)).toString()} USDT
                     <div className="binary-right-value">
                         <div className="binary-right-text">  </div>
                         <div className="binary-right-profit">

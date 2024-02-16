@@ -3,6 +3,7 @@ import { Dropdown } from './Dropdown';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux'
 import { setTransfer } from '../../toolkitReducers/actions.slice'
+import { getUserData } from '../../toolkitReducers/auth.slice'
 import TransferSelects from './TransferSelects'
 import ModalDialog from './Modal'
 
@@ -14,21 +15,16 @@ function WithdrawPage() {
     const [selectedFrom, setSelectedFrom] = useState(balances[0]);
     const [selectedTo, setSelectedTo] = useState(balances[0]);
     const [percentage, setPercentage] = useState(0);
-    const [walletAddress, setWalletAddress] = useState('');
-    const [addToDeposit, setAddToDeposit] = useState(false);
     const [amount, setAmount] = useState(null);
-    const [amountSumm, setAmountSumm] = useState("");
     const [localError, setLocalError] = useState("");
+
     const { error } = useSelector(({ state }) => state)
     const { t } = useTranslation();
-    const [activeTab, setActiveTab] = useState('main');
     const dispatch = useDispatch();
 
 
     const [isModal, setModal] = useState(false)
     const [modalText, setModalText] = useState(false)
-
-
 
     useEffect(() => {
         let getAmount = `${selectedFrom}_crypto_balance_${selectedCoin.value}`
@@ -63,35 +59,21 @@ function WithdrawPage() {
         setPercentage(event.target.value);
     };
 
-    const handleWalletAddressChange = (event) => {
-        setWalletAddress(event.target.value);
-    };
-
-    const handleAddToDepositChange = (event) => {
-        setAddToDeposit(event.target.checked);
-    };
-
-    const switchFrom = () => {
-        activeTab === 'main' ? setActiveTab('arbitech') : setActiveTab('main')
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        let balance = `${selectedFrom}_crypto_balance_${selectedCoin.value}`
+
         if (selectedFrom === selectedTo) {
-            setLocalError("Балансы не должны совпадать")
+            setLocalError("Balances shold not be the same")
         }
-        else if (amount < 0 || amount == 0) {
-            setLocalError("Сумма должна быть больше 0")
+        else if (Number(amount) < 0 || Number(amount) == 0) {
+            setLocalError("Summ should be more that 0")
         }
-        else if (amount > showCurrentCoin()) {
-            setLocalError("Сумма должна быть превышать баланс")
+        else if (Number(amount) > Number(balance)) {
+            setLocalError("Summ should be less that ballance")
         }
         else {
-            // console.log('selectedTo :>> ', selectedTo);
-            // console.log('selectedFrom :>> ', selectedFrom);
-            // console.log('selectedCoin.value :>> ', selectedCoin.value);
-
             if (selectedTo === "options") {
                 dispatch(setTransfer({
                     withdrawal_sum: amount,
@@ -100,8 +82,6 @@ function WithdrawPage() {
                     from: selectedFrom,
                     to: selectedTo,
                 }))
-
-                openModal(t("transaction successfull"))
             } else if (selectedFrom === "options") {
                 dispatch(setTransfer({
                     withdrawal_sum: amount,
@@ -110,8 +90,6 @@ function WithdrawPage() {
                     from: selectedFrom,
                     to: selectedTo,
                 }))
-
-                openModal(t("transaction successfull"))
             } else {
                 dispatch(setTransfer({
                     withdrawal_sum: amount,
@@ -121,14 +99,24 @@ function WithdrawPage() {
                     to: selectedTo,
                 }))
 
-                openModal(t("transaction successfull"))
             }
+            openModal(t("transaction successfull"))
+
+            setTimeout(() => {
+                dispatch(getUserData())
+            }, 1000);
         }
 
     };
 
     const showCurrentCoin = () => {
         let getAmount = `${selectedFrom}_crypto_balance_${selectedCoin.value}`
+
+        return localStorage.getItem(getAmount) + " " + selectedCoin.value.toUpperCase()
+    }
+
+    const showToCoin = () => {
+        let getAmount = `${selectedTo}_crypto_balance_${selectedCoin.value}`
 
         return localStorage.getItem(getAmount) + " " + selectedCoin.value.toUpperCase()
     }
@@ -155,6 +143,8 @@ function WithdrawPage() {
                                             <div className="tabs__navigation hide-scrollbar" role="tablist" aria-labelledby="tablist">
                                                 <Dropdown
                                                     handleCoinChange={handleCoinChange}
+                                                    selectedFrom={selectedFrom}
+                                                    selectedTo={selectedTo}
                                                 />
                                             </div>
                                             <div className="tabs-with-dropdown-input">
@@ -203,8 +193,6 @@ function WithdrawPage() {
                                             {/* выбрать откуда и куда перекидывать */}
 
                                             <TransferSelects
-                                                activeTab={activeTab}
-                                                switchFrom={switchFrom}
                                                 handleFromChange={handleFromChange}
                                                 balances={balances}
                                             />
@@ -228,9 +216,15 @@ function WithdrawPage() {
 
                         <div className="withdrawal-section__wrapper-side">
                             <div className="withdrawal-section__balance withdrawal-section__balance--full">
-                                <h3 className="withdrawal-section__balance-heading">{t("Общий баланс")}:</h3>
+                                <h3 className="withdrawal-section__balance-heading">{t("Общий баланс") + " " + selectedFrom}:</h3>
                                 <p className="withdrawal-section__balance-money">
                                     {showCurrentCoin()}
+                                </p>
+                            </div>
+                            <div className="withdrawal-section__balance withdrawal-section__balance--full">
+                                <h3 className="withdrawal-section__balance-heading">{t("Общий баланс") + " " + selectedTo}:</h3>
+                                <p className="withdrawal-section__balance-money">
+                                    {showToCoin()}
                                 </p>
                             </div>
                             <div className="withdrawal-section__balance withdrawal-section__balance--available">

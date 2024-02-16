@@ -3,6 +3,7 @@ import ModalDialog from './Modal'
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { setBetHistory } from '../../toolkitReducers/actions.slice'
+import { getUserData } from '../../toolkitReducers/auth.slice'
 
 const CountdownTimer = ({ expiration_time, id }) => {
     const [targetTime] = useState(new Date(expiration_time));
@@ -83,6 +84,8 @@ const CountdownTimer = ({ expiration_time, id }) => {
             if (remaining <= 0) {
                 clearInterval(timer);
                 handleTimeout();
+                dispatch(getUserData());
+
             }
         }, 1000);
 

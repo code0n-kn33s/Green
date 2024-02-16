@@ -249,7 +249,7 @@
         display: flex;
         // border-bottom: $main-border;
         padding-bottom: 8px;
-        padding-left: 23px;
+
       }
 
       .custom-select__dropdown-option {
@@ -446,7 +446,11 @@
       box-shadow: none;
       border: none;
       outline: none;
+      @include media-query($w500) {
+        padding: 0;
+        border-left: 15px solid transparent;
 
+      }
     }
   }
 

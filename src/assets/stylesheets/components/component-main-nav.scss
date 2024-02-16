@@ -3,7 +3,7 @@
   padding: 53px 42px;
   border-right: $main-border;
 
-  @include media-query($small) {
+  @include media-query($w850) {
     max-width: unset;
     padding: 15px;
     border-right: unset;
