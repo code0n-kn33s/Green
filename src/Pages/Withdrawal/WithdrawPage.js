@@ -21,7 +21,7 @@ function WithdrawPage() {
 
     useEffect(() => {
         let getAmount = `main_crypto_balance_${selectedCoin.value}`
-
+        console.log('^^^ error :>> ', error);
         const depositAmount = parseFloat(localStorage.getItem(getAmount));
 
         setAmount(depositAmount * parseFloat(percentage) / 100);
@@ -215,9 +215,9 @@ function WithdrawPage() {
                                     *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
                                 </p> */}
                                 {error && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
-                                    {/* *{t("Средства могут сниматься раз в 10 дней")} */}
+                                    *{t("Средства могут сниматься раз в 10 дней")}
 
-                                    {error}
+                                    {/* {error} */}
                                 </p>}
                                 {localError && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
                                     *{t("fill address withdraw")}
