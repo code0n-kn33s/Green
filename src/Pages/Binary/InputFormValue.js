@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
+import { useTranslation } from 'react-i18next';
 export default function InputForm({
   // handleInputChange,
   investment,
   getInvestment,
   profitFormula,
   setInvestment }) {
-
+  const { t } = useTranslation();
   useEffect(() => {
     profitFormula();
   }, [investment, profitFormula]);
@@ -36,7 +36,7 @@ export default function InputForm({
   return (
     <div>
       <div className="binary-input-form-wrap">
-        <div className="binary-input-form-label"> Investment: </div>
+        <div className="binary-input-form-label"> {t("Investment")}: </div>
         <div className="binary-input-form">
           <button
             className="binary-input-form-button"

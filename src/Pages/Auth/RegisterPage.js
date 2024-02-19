@@ -3,15 +3,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AuthLogo } from './AuthLogo';
 import { BackButton } from '../../Elements/Library';
-import { registerNewUser, resetRegister } from './../../toolkitReducers';
+import { registerNewUser, loginUser, resetRegister, getUserData } from './../../toolkitReducers';
 import { ReactComponent as IconYeas } from '../../assets/icons/PassIcon.svg'
 import { useTranslation } from 'react-i18next';
+import { getToken } from "./../../helpers";
 
 export default function RegisterPage() {
     const [showPass, setShowPass] = useState(false)
     const [isError, setisError] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
     const {t} = useTranslation();
+    const isLoggedIn = useSelector(state => state.auth.isAuth)
 
     const [formData, setFormData] = useState({
         username: '',
@@ -21,6 +23,7 @@ export default function RegisterPage() {
         refID: '',
         acceptTerms: false,
     });
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isRegistered = useSelector((state) => state.auth.registered)
@@ -32,13 +35,22 @@ export default function RegisterPage() {
 
         if (isRegistered && isMounted && !registerErrors) {
             dispatch(resetRegister())
-            navigate('/login');
+
+            // navigate('/profile');
         }
         return () => {
             setIsMounted(false);
 
         };
     }, [isRegistered, isMounted]);
+
+    useEffect(() => {
+        if (getToken() !== null) {
+            dispatch(getUserData())
+        }
+
+        isLoggedIn && navigate('/profile')
+    },[isLoggedIn])
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -55,6 +67,13 @@ export default function RegisterPage() {
 
         if (formData.password === formData.confirmPassword) {
             dispatch(registerNewUser(formData))
+
+            const data = { useLogin: formData.email, usePassword: formData.password }
+
+            setTimeout(() => {
+                dispatch(loginUser(data))
+
+            }, 1000);
         } else {
             setisError(true)
         }

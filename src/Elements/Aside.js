@@ -51,7 +51,8 @@ export default function Aside(props) {
           <li className="main-nav__first-lvl-item">
             <NavLink className="link" to="statistics">
               <span>
-                <StatisticIcon />
+                <AttentionIcon />
+
               </span>
               <span>
                 {t("statistics")}
@@ -62,7 +63,8 @@ export default function Aside(props) {
           <li className="main-nav__first-lvl-item">
             <NavLink className="link" to="faq">
               <span>
-                <AttentionIcon />
+              <StatisticIcon />
+
               </span>
               <span>
                 {t("algoritms")}

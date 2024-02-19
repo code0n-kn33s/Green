@@ -38,7 +38,11 @@ export default function CustomSelect(params) {
 
     const sumChange = (e) => {
         showError("")
-        setIsSum(e.target.value)
+        let num = e.target.value
+
+        if (num >= 0) {
+            setIsSum(num)
+        }
     }
 
     const balanceArbitech = () => Number(localStorage.getItem(`arbitech_crypto_balance_${currencies[activeMenu].value}`)).toString()
@@ -116,7 +120,7 @@ export default function CustomSelect(params) {
             <br />
             <div className="form-container rel">
 
-                <input required onChange={sumChange} value={isSum} min={500} type="number" placeholder={t("Сумма")} name="sum" />
+                <input required onChange={sumChange} value={isSum} min="0" type="number" placeholder={t("Сумма")} name="sum" />
                 {isError && <div className="modal-dialog__invoice-description-wrapper">
                     <p className="modal-dialog__invoice-description">
                         {t("Внимание!")}<br /> {t(isError)}

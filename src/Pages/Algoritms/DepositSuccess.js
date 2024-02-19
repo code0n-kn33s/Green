@@ -26,7 +26,7 @@ export default function DepositSuccess(props) {
             </h2>
 
             <p className="modal-dialog__success-description bold">
-                {t("AI takes some time to launch!")}
+                {t("AI takes some time to launch")}
             </p>
 
             <button onClick={clickDone} className="modal-dialog__success-btn btn btn--primary btn--large" type="button" data-close-popup>

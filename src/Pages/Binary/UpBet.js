@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ReactComponent as Up } from './assets/up.svg';
 import { ReactComponent as Down } from './assets/down.svg';
-
+import { useTranslation } from 'react-i18next';
 export default function UpBet(props) {
   const { activeButton, startBinary } = props;
-
+const { t } = useTranslation();
   return (
     <div>
       <div
@@ -15,7 +15,7 @@ export default function UpBet(props) {
       </div>
       <div className="binary-right-values-wrap">
         <div className="binary-right-value">
-          <div className="binary-right-text"> Your payout: </div>
+          <div className="binary-right-text"> {t("Your payout")}: </div>
           <div className="binary-right-profit"> {props.payout} USDT
             {/* {props.singlePair} */}
           </div>

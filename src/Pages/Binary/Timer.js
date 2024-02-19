@@ -103,10 +103,10 @@ const CountdownTimer = ({ expiration_time, id }) => {
 
         if (filteredBet.status === "Win") {
             setModal(true);
-            setModalText("You win! Congratulations! ");
+            setModalText(t("win"));
         } else if (filteredBet.status === "Lose") {
             setModal(true);
-            setModalText("You lose. Next time luck be on your side! ");
+            setModalText(t("lose"));
         } else if (filteredBet.status === "Pending") {
 
         }

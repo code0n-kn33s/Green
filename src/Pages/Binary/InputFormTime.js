@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect} from 'react';
-
+import { useTranslation } from 'react-i18next';
 
 export default function InpuForm(params) {
     const [time, setTime] = useState(1);
     const timeInputRef = useRef(null);
-
+  const { t } = useTranslation();
 
     useEffect(() => {
         params.getFormTime(time)
@@ -32,7 +32,7 @@ export default function InpuForm(params) {
     return (
         <div>
             <div className="binary-input-form-wrap">
-                <div className="binary-input-form-label"> Time (minutes): </div>
+            <div className="binary-input-form-label"> {t("Time")} ({t("minutes")}): </div>
                 <div className="binary-input-form">
                     <button className="binary-input-form-button" onClick={decrementTime}>-</button>
                     <input

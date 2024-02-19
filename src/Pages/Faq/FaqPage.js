@@ -72,7 +72,6 @@ const setChecks = (value) => {
         <form className="details-section__wrapper form details-section__form rel" action="/action_page.php" method="post">
           <h2 className="details-section__heading">{t("Настройка доходности")}: {percentage}%
           <div style={{ fontWeight: 300, fontSize: '10px'}}>*{t("доходность можно менять только после пополнения баланса")}</div>
-          { error && <div>{error?.message}</div>}
           </h2>
           <div className="details-section__progress-bar-wrapper">
             <div className="details-section__progress-bar">
@@ -84,7 +83,7 @@ const setChecks = (value) => {
                   <li className="range__list-item">60%</li>
                   <li className="range__list-item">75%</li>
                 </ul>
-                <input disabled
+                <input
                   type="range"
                   value={percentage}
                   onChange={handlePercentageChange}
@@ -199,6 +198,7 @@ const setChecks = (value) => {
               </p>
             </div>
 
+            { error && <div>{error?.message}</div>}
 
             <div className="details-section__footer-column">
               <button type="button" onClick={clickFaq} className="details-section__form-submit-btn btn btn--primary">

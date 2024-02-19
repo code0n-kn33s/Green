@@ -20,7 +20,8 @@ export default function Login(props) {
     const isLoggedIn = useSelector(state => state.auth.isAuth)
     const errorText = useSelector(state => state.auth.error)
     const navigate = useNavigate();
-const {t} = useTranslation();
+    const {t} = useTranslation();
+    
     // useEffect(() => {
     //     if (getToken() !== null) {
     //         dispatch(getUserData())

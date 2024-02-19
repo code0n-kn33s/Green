@@ -226,6 +226,8 @@
     "Выбор монеты": "Coin selection",
     "Внимание!": "Attention!",
 
+    "Риски могут быть изменены раз в сутки после депозита.": "Risks can be changed once a day after the deposit.",
+
     "Транзакции занимают некоторое время. В зависимости от загрузки сети средства появятся у Вас на балансе!": "Transactions take some time. Depending on the network load, funds will appear on your balance!",
     "AI takes some time to launch": "AI takes some time to launch!",
 
@@ -262,10 +264,16 @@
     "deposit": "deposit",
     "withdraw": "withdraw",
     "transfer": "transfer",
+    "TRANSFER": "TRANSFER",
     "TransferPageTitle": "Transfer Page",
     "fill address withdraw": "Fill address withdraw and sum",
-
-
+    "Investment": "Investment",
+    "Your payout": "Your payout",
+    "win": "You win! Congratulations! ",
+    "lose": "You lose. Next time luck be on your side! ",
+    "Your balance": "Your balance",
+    "Time": "Time",
+    "minutes": "minutes",
     "bet_type": "Type",
     "amount": "Amount",
     "currency": "Currency",
@@ -335,7 +343,7 @@
 
     "from_balance": "from balance",
     "to_balance": "to balance",
-    
+
     "Main Balance": "Main Balance",
 
     "Success":"Success"
