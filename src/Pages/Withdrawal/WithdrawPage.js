@@ -214,9 +214,10 @@ function WithdrawPage() {
                                 {/* <p className="withdrawal-section__add-deposit-description">
                                     *Средства будут добавлены к размещенным на платформе. Период размещения будет обновлен.
                                 </p> */}
-                                {/* {error && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
-                                    *{t("Средства могут сниматься раз в 10 дней")}
-                                </p>} */}
+                                {error && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
+                                    {/* *{t("Средства могут сниматься раз в 10 дней")} */}
+                                    error
+                                </p>}
                                 {localError && <p style={{ fontSize: "20px", lineHeight: "1.5" }} className="withdrawal-section__add-deposit-description">
                                     *{t("fill address withdraw")}
                                 </p>}

@@ -464,7 +464,7 @@ const actionsSlice = createSlice({
         })
         builder.addCase(setRisks.fulfilled, (state, action) => {
             state.fething = "fullfilled"
-            // state.tooltip = true
+            state.tooltip = true
 
             // state.statistics = action.payload
             state.error = ''
