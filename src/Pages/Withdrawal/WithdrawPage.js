@@ -161,8 +161,7 @@ function WithdrawPage() {
                                             <div className="form-container form-container--wallet">
                                                 <label htmlFor="walletEth">{t("Адрес получателя")}</label>
                                                 <input
-                                                    type="number"
-                                                    min="0"
+                                                    type="text"
                                                     name="walletEth"
                                                     id="walletEth"
                                                     placeholder={t("Введите адрес для отправки")}
